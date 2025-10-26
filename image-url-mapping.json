@@ -1,0 +1,222 @@
+[
+  {
+    "local": "TOPO_compost.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492913/Soul%20Miner%27s/products/compost/TOPO_compost.jpg.jpg",
+    "publicId": "Soul Miner's/products/compost/TOPO_compost.jpg",
+    "category": "compost",
+    "dimensions": {
+      "width": 750,
+      "height": 500
+    },
+    "sizeKB": 35
+  },
+  {
+    "local": "compost-action.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492914/Soul%20Miner%27s/products/compost/compost-action.jpg.jpg",
+    "publicId": "Soul Miner's/products/compost/compost-action.jpg",
+    "category": "compost",
+    "dimensions": {
+      "width": 800,
+      "height": 534
+    },
+    "sizeKB": 170
+  },
+  {
+    "local": "compost-blend.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492915/Soul%20Miner%27s/products/compost/compost-blend.jpg.jpg",
+    "publicId": "Soul Miner's/products/compost/compost-blend.jpg",
+    "category": "compost",
+    "dimensions": {
+      "width": 657,
+      "height": 800
+    },
+    "sizeKB": 37
+  },
+  {
+    "local": "TOPO_natural.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492915/Soul%20Miner%27s/products/mulch/TOPO_natural.jpg.jpg",
+    "publicId": "Soul Miner's/products/mulch/TOPO_natural.jpg",
+    "category": "mulch",
+    "dimensions": {
+      "width": 750,
+      "height": 500
+    },
+    "sizeKB": 52
+  },
+  {
+    "local": "TOPO_brown.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492916/Soul%20Miner%27s/products/mulch/TOPO_brown.jpg.jpg",
+    "publicId": "Soul Miner's/products/mulch/TOPO_brown.jpg",
+    "category": "mulch",
+    "dimensions": {
+      "width": 750,
+      "height": 500
+    },
+    "sizeKB": 48
+  },
+  {
+    "local": "brown-mulch.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492917/Soul%20Miner%27s/products/mulch/brown-mulch.jpg.jpg",
+    "publicId": "Soul Miner's/products/mulch/brown-mulch.jpg",
+    "category": "mulch",
+    "dimensions": {
+      "width": 800,
+      "height": 800
+    },
+    "sizeKB": 166
+  },
+  {
+    "local": "brown-mulch-action.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492917/Soul%20Miner%27s/products/mulch/brown-mulch-action.jpg.jpg",
+    "publicId": "Soul Miner's/products/mulch/brown-mulch-action.jpg",
+    "category": "mulch",
+    "dimensions": {
+      "width": 800,
+      "height": 533
+    },
+    "sizeKB": 84
+  },
+  {
+    "local": "TOPO_pinebark.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492918/Soul%20Miner%27s/products/mulch/TOPO_pinebark.jpg.jpg",
+    "publicId": "Soul Miner's/products/mulch/TOPO_pinebark.jpg",
+    "category": "mulch",
+    "dimensions": {
+      "width": 750,
+      "height": 500
+    },
+    "sizeKB": 42
+  },
+  {
+    "local": "TOPO_black.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492918/Soul%20Miner%27s/products/mulch/TOPO_black.jpg.jpg",
+    "publicId": "Soul Miner's/products/mulch/TOPO_black.jpg",
+    "category": "mulch",
+    "dimensions": {
+      "width": 750,
+      "height": 500
+    },
+    "sizeKB": 44
+  },
+  {
+    "local": "black-mulch.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492919/Soul%20Miner%27s/products/mulch/black-mulch.jpg.jpg",
+    "publicId": "Soul Miner's/products/mulch/black-mulch.jpg",
+    "category": "mulch",
+    "dimensions": {
+      "width": 800,
+      "height": 369
+    },
+    "sizeKB": 51
+  },
+  {
+    "local": "black-mulch-application.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492919/Soul%20Miner%27s/products/mulch/black-mulch-application.jpg.jpg",
+    "publicId": "Soul Miner's/products/mulch/black-mulch-application.jpg",
+    "category": "mulch",
+    "dimensions": {
+      "width": 800,
+      "height": 533
+    },
+    "sizeKB": 139
+  },
+  {
+    "local": "red-mulch.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492920/Soul%20Miner%27s/products/mulch/red-mulch.jpg.jpg",
+    "publicId": "Soul Miner's/products/mulch/red-mulch.jpg",
+    "category": "mulch",
+    "dimensions": {
+      "width": 800,
+      "height": 532
+    },
+    "sizeKB": 76
+  },
+  {
+    "local": "TOPO_single.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492920/Soul%20Miner%27s/products/mulch/TOPO_single.jpg.jpg",
+    "publicId": "Soul Miner's/products/mulch/TOPO_single.jpg",
+    "category": "mulch",
+    "dimensions": {
+      "width": 750,
+      "height": 500
+    },
+    "sizeKB": 46
+  },
+  {
+    "local": "TOPO_woodchips.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492921/Soul%20Miner%27s/products/mulch/TOPO_woodchips.jpg.jpg",
+    "publicId": "Soul Miner's/products/mulch/TOPO_woodchips.jpg",
+    "category": "mulch",
+    "dimensions": {
+      "width": 750,
+      "height": 500
+    },
+    "sizeKB": 43
+  },
+  {
+    "local": "TOPO_topsoil.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492921/Soul%20Miner%27s/products/soil/TOPO_topsoil.jpg.jpg",
+    "publicId": "Soul Miner's/products/soil/TOPO_topsoil.jpg",
+    "category": "soil",
+    "dimensions": {
+      "width": 750,
+      "height": 500
+    },
+    "sizeKB": 34
+  },
+  {
+    "local": "top-soil-action.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492922/Soul%20Miner%27s/products/soil/top-soil-action.jpg.jpg",
+    "publicId": "Soul Miner's/products/soil/top-soil-action.jpg",
+    "category": "soil",
+    "dimensions": {
+      "width": 800,
+      "height": 533
+    },
+    "sizeKB": 181
+  },
+  {
+    "local": "bioretention-soil-0.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492923/Soul%20Miner%27s/products/soil/bioretention-soil-0.jpg.jpg",
+    "publicId": "Soul Miner's/products/soil/bioretention-soil-0.jpg",
+    "category": "soil",
+    "dimensions": {
+      "width": 1200,
+      "height": 800
+    },
+    "sizeKB": 159
+  },
+  {
+    "local": "bioretention-soil-1.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492923/Soul%20Miner%27s/products/soil/bioretention-soil-1.jpg.jpg",
+    "publicId": "Soul Miner's/products/soil/bioretention-soil-1.jpg",
+    "category": "soil",
+    "dimensions": {
+      "width": 1200,
+      "height": 800
+    },
+    "sizeKB": 149
+  },
+  {
+    "local": "bioretention-soil-10.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492924/Soul%20Miner%27s/products/soil/bioretention-soil-10.jpg.jpg",
+    "publicId": "Soul Miner's/products/soil/bioretention-soil-10.jpg",
+    "category": "soil",
+    "dimensions": {
+      "width": 1202,
+      "height": 800
+    },
+    "sizeKB": 181
+  },
+  {
+    "local": "topsoil-compost.jpg",
+    "cloudinary": "https://res.cloudinary.com/southland-organics/image/upload/v1761492925/Soul%20Miner%27s/products/specialty/topsoil-compost.jpg.jpg",
+    "publicId": "Soul Miner's/products/specialty/topsoil-compost.jpg",
+    "category": "specialty",
+    "dimensions": {
+      "width": 800,
+      "height": 534
+    },
+    "sizeKB": 57
+  }
+]
