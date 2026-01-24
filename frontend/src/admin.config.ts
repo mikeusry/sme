@@ -65,7 +65,7 @@ export const adminConfig: AdminConfig = {
   siteUrl: 'https://soulminerseden.com',
   modules: {
     dashboard: true,
-    siteReview: false,    // Not needed yet
+    siteReview: true,     // AI detection via Mothership Supabase
     contentQueue: false,  // Not needed yet
     voiceSystem: false,   // Not needed yet
     seoAudit: false,      // Not needed yet

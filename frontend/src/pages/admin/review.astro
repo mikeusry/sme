@@ -1,0 +1,188 @@
+---
+/**
+ * Site Review - AI Detection
+ *
+ * Uses Mothership Supabase for AI detection via Originality.ai
+ * Brand slug: soul-miners-eden
+ * Table: sme_ai_detection
+ */
+
+import AdminLayout from '../../layouts/AdminLayout.astro';
+
+// AI Detection thresholds (from Mothership admin-core)
+const AI_THRESHOLDS = {
+  PASS: 20,      // <20% AI = pass
+  WARNING: 40,   // 20-40% AI = warning
+  FAIL: 100,     // >40% AI = fail
+};
+
+// For now, show local content audit until Supabase scanning is run
+// This tracks our "real vs fake" content policy
+const localContentAudit = [
+  { page: '/', path: 'index.astro', status: 'pending', source: 'crawl', notes: 'Needs review' },
+  { page: '/about', path: 'about.astro', status: 'warning', source: 'mixed', notes: 'The Farm section is FAKE' },
+  { page: '/contact', path: 'contact.astro', status: 'warning', source: 'mixed', notes: 'FAQ section is FAKE' },
+  { page: '/products', path: 'products/index.astro', status: 'pass', source: 'crawl', notes: 'Real content from crawl' },
+  { page: '/products/compost', path: 'products/compost.astro', status: 'pass', source: 'crawl', notes: 'Real content' },
+  { page: '/products/[slug]', path: 'products/[slug].astro', status: 'pass', source: 'data', notes: 'Uses crawled-products.json' },
+];
+
+const summary = {
+  totalPages: localContentAudit.length,
+  passing: localContentAudit.filter(p => p.status === 'pass').length,
+  warning: localContentAudit.filter(p => p.status === 'warning').length,
+  pending: localContentAudit.filter(p => p.status === 'pending').length,
+};
+
+function getStatusColor(status: string) {
+  switch (status) {
+    case 'pass': return '#22c55e';
+    case 'warning': return '#f59e0b';
+    case 'fail': return '#ef4444';
+    default: return '#78716c';
+  }
+}
+
+function getStatusBg(status: string) {
+  switch (status) {
+    case 'pass': return '#dcfce7';
+    case 'warning': return '#fef3c7';
+    case 'fail': return '#fee2e2';
+    default: return '#f5f5f4';
+  }
+}
+---
+
+<AdminLayout title="Site Review" description="AI detection and content originality audit">
+  <!-- Info Banner -->
+  <div style="background: #dbeafe; border: 1px solid #3b82f6; border-radius: 8px; padding: 1rem; margin-bottom: 2rem; display: flex; gap: 0.75rem; align-items: flex-start;">
+    <svg style="width: 20px; height: 20px; color: #3b82f6; flex-shrink: 0; margin-top: 2px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>
+    <div style="font-size: 0.875rem;">
+      <strong style="color: #1d4ed8;">Mothership Integration</strong>
+      <p style="color: #1e40af; margin: 0.25rem 0 0 0;">
+        AI detection uses Originality.ai via Mothership Supabase. Run scan with:<br>
+        <code style="background: #bfdbfe; padding: 0.125rem 0.375rem; border-radius: 4px; font-size: 0.75rem;">
+          node scripts/seo-ai-detection.js --brand soul-miners-eden --batch --sitemap
+        </code>
+      </p>
+    </div>
+  </div>
+
+  <!-- Summary Stats -->
+  <div class="admin-grid-4" style="margin-bottom: 2rem;">
+    <div class="admin-card">
+      <div class="admin-stat">
+        <div class="stat-value">{summary.totalPages}</div>
+        <div class="stat-label">Total Pages</div>
+      </div>
+    </div>
+    <div class="admin-card">
+      <div class="admin-stat">
+        <div class="stat-value" style="color: #22c55e;">{summary.passing}</div>
+        <div class="stat-label">Passing</div>
+      </div>
+    </div>
+    <div class="admin-card">
+      <div class="admin-stat">
+        <div class="stat-value" style="color: #f59e0b;">{summary.warning}</div>
+        <div class="stat-label">Warning</div>
+      </div>
+    </div>
+    <div class="admin-card">
+      <div class="admin-stat">
+        <div class="stat-value" style="color: #78716c;">{summary.pending}</div>
+        <div class="stat-label">Pending</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Thresholds Reference -->
+  <div class="admin-card" style="margin-bottom: 2rem;">
+    <div class="admin-card-header">
+      <h2 class="admin-card-title">AI Detection Thresholds</h2>
+    </div>
+    <div class="admin-card-body">
+      <div style="display: flex; gap: 2rem; font-size: 0.875rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span style="width: 12px; height: 12px; background: #22c55e; border-radius: 50%;"></span>
+          <span><strong>Pass</strong>: &lt;{AI_THRESHOLDS.PASS}% AI</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span style="width: 12px; height: 12px; background: #f59e0b; border-radius: 50%;"></span>
+          <span><strong>Warning</strong>: {AI_THRESHOLDS.PASS}-{AI_THRESHOLDS.WARNING}% AI</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span style="width: 12px; height: 12px; background: #ef4444; border-radius: 50%;"></span>
+          <span><strong>Fail</strong>: &gt;{AI_THRESHOLDS.WARNING}% AI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Audit Table -->
+  <div class="admin-card">
+    <div class="admin-card-header">
+      <h2 class="admin-card-title">Content Source Audit</h2>
+      <span style="font-size: 0.75rem; color: #78716c;">Local audit - tracks real vs fake content</span>
+    </div>
+    <div class="admin-card-body" style="padding: 0;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem;">
+        <thead>
+          <tr style="background: #f5f5f4;">
+            <th style="text-align: left; padding: 0.75rem 1rem; color: #78716c; font-weight: 500;">Page</th>
+            <th style="text-align: left; padding: 0.75rem 1rem; color: #78716c; font-weight: 500;">Source</th>
+            <th style="text-align: left; padding: 0.75rem 1rem; color: #78716c; font-weight: 500;">Status</th>
+            <th style="text-align: left; padding: 0.75rem 1rem; color: #78716c; font-weight: 500;">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {localContentAudit.map(item => (
+            <tr style="border-bottom: 1px solid #e7e5e4;">
+              <td style="padding: 0.75rem 1rem;">
+                <div style="font-weight: 500;">{item.page}</div>
+                <div style="font-size: 0.75rem; color: #78716c;">{item.path}</div>
+              </td>
+              <td style="padding: 0.75rem 1rem;">
+                <span style={`padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; background: ${item.source === 'crawl' ? '#dcfce7' : item.source === 'data' ? '#dbeafe' : '#fef3c7'}; color: ${item.source === 'crawl' ? '#166534' : item.source === 'data' ? '#1d4ed8' : '#92400e'};`}>
+                  {item.source}
+                </span>
+              </td>
+              <td style="padding: 0.75rem 1rem;">
+                <span style={`padding: 0.25rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; background: ${getStatusBg(item.status)}; color: ${getStatusColor(item.status)};`}>
+                  {item.status}
+                </span>
+              </td>
+              <td style="padding: 0.75rem 1rem; color: #78716c;">
+                {item.notes.includes('FAKE') ? (
+                  <span style="color: #d946ef;">{item.notes}</span>
+                ) : (
+                  item.notes
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Fake Content Warning -->
+  <div style="background: #fdf4ff; border: 2px solid #d946ef; border-radius: 8px; padding: 1rem; margin-top: 2rem;">
+    <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+      <span style="font-size: 1.25rem;">⚠️</span>
+      <div>
+        <strong style="color: #a21caf;">Fake Content Policy</strong>
+        <p style="color: #86198f; font-size: 0.875rem; margin: 0.25rem 0 0 0;">
+          Pages with <strong>FAKE</strong> sections are marked in magenta on the live site.
+          These need real content from the client or crawled sources before launch.
+        </p>
+        <ul style="color: #86198f; font-size: 0.875rem; margin: 0.5rem 0 0 0; padding-left: 1.25rem;">
+          <li><code>/about</code> - "The Farm" section needs real copy</li>
+          <li><code>/contact</code> - FAQ section needs real questions from client</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</AdminLayout>
