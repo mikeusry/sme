@@ -15,7 +15,6 @@
     "@tailwindcss/vite": "^4.1.16",
     "astro": "^5.15.1",
     "cloudinary": "^2.8.0",
-    "point-dog": "github:mikeusry/mothership#main&path:packages/admin-core",
     "tailwindcss": "^4.1.16"
   },
   "devDependencies": {
