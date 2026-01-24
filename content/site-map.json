@@ -1,0 +1,47 @@
+{
+  "extractedAt": "2026-01-24T22:06:27.609Z",
+  "totalPages": 67,
+  "breakdown": {
+    "home": 1,
+    "products": 12,
+    "blog": 8,
+    "recipes": 34,
+    "about": 1,
+    "contact": 1,
+    "other": 8
+  },
+  "productSlugs": [
+    "compost",
+    "topsoil",
+    "double-ground-hardwood-mulch",
+    "brown-mulch",
+    "pine-bark-mulch",
+    "black-mulch",
+    "red-mulch",
+    "wood-chips",
+    "bioretention-soil",
+    "single-ground-mulch",
+    "used-turf",
+    "sod-soil"
+  ],
+  "blogSlugs": [
+    "how-to-use-bloom",
+    "introducing-bloom-fertilizer-for-potted-plants-gardens-and-more",
+    "plant-care-for-beginners",
+    "our-chicken-coop-build-grain-bin-chicken-coop",
+    "farm-box-story",
+    "growing-lettuce-and-launching",
+    "nourish-your-body-and-your-soul-during-uncertain-times",
+    "home-schoolers-visit-the-farm"
+  ],
+  "otherUrls": [
+    "https://www.soulminerseden.com/sustainable-agriculture-farming-practices",
+    "https://www.soulminerseden.com/people/alyssa",
+    "https://www.soulminerseden.com/tags/fennel",
+    "https://www.soulminerseden.com/tags/christmas",
+    "https://soulminerseden.com/products/roost",
+    "https://www.soulminerseden.com/tags/italian",
+    "https://www.soulminerseden.com/recipe/favorites",
+    "https://www.soulminerseden.com/recipe/video"
+  ]
+}

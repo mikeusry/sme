@@ -1,0 +1,35 @@
+{
+  "name": "Soul Miner's Eden",
+  "description": "Soul Miner's Eden is a flower farm and mulch supplier dedicated to sustainable agriculture, offering locally grown flowers, high-quality mulch, used artificial turf, and compost products.",
+  "url": "https://www.soulminerseden.com",
+  "logo": "https://cdn.prod.website-files.com/5f402c152dc0917b4df7ee70/677ffdc1b10cad976577364a_Soul%20Miner_s%20Eden%20Primary%20Logo%20Vector%20CMYK.svg",
+  "image": "https://res.cloudinary.com/southland-organics/image/upload/f_auto,c_scale,q_auto,w_1200/v1599149143/Soul%20Miner's/Southland_Office_hqmtez.webp",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "189 Luke Road",
+    "addressLocality": "Bogart",
+    "addressRegion": "GA",
+    "postalCode": "30622",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "33.9404",
+    "longitude": "-83.5304"
+  },
+  "telephone": "+1-706-613-4415",
+  "email": "info@soulminerseden.com",
+  "openingHours": "Mo-Sa 08:00-18:00",
+  "priceRange": "$$",
+  "socialLinks": [
+    "https://www.youtube.com/playlist?list=PLzhFffk45jBfnuHfFbLlaR2GajzI_vMZR",
+    "https://www.instagram.com/soulminerseden/",
+    "https://www.facebook.com/soulminerseden"
+  ],
+  "rating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "bestRating": "5",
+    "reviewCount": "47"
+  }
+}

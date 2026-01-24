@@ -1,0 +1,176 @@
+{
+  "url": "https://www.soulminerseden.com/",
+  "title": "Soul Miner’s Eden | Flower Farm, Landscape Supply & Land Care in Georgia",
+  "description": "Discover UPICK flowers, premium landscape supplies, and natural garden solutions at Soul Miner’s Eden. Visit our farm or shop mulch, compost, and more!",
+  "jsonLd": [
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://g.page/soulminerseden",
+      "name": "Soul Miner's Eden",
+      "description": "Soul Miner's Eden is a flower farm and mulch supplier dedicated to sustainable agriculture, offering locally grown flowers, high-quality mulch, used artificial turf, and compost products.",
+      "url": "https://www.soulminerseden.com",
+      "logo": "https://cdn.prod.website-files.com/5f402c152dc0917b4df7ee70/677ffdc1b10cad976577364a_Soul%20Miner_s%20Eden%20Primary%20Logo%20Vector%20CMYK.svg",
+      "image": "https://res.cloudinary.com/southland-organics/image/upload/f_auto,c_scale,q_auto,w_1200/v1599149143/Soul%20Miner's/Southland_Office_hqmtez.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "189 Luke Road",
+        "addressLocality": "Bogart",
+        "addressRegion": "GA",
+        "postalCode": "30622",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "33.9404",
+        "longitude": "-83.5304"
+      },
+      "openingHours": "Mo-Sa 08:00-18:00",
+      "telephone": "+1-706-613-4415",
+      "email": "info@soulminerseden.com",
+      "priceRange": "$$",
+      "sameAs": [
+        "https://www.youtube.com/playlist?list=PLzhFffk45jBfnuHfFbLlaR2GajzI_vMZR",
+        "https://www.instagram.com/soulminerseden/",
+        "https://www.facebook.com/soulminerseden"
+      ],
+      "offersDeliveryMethod": {
+        "@type": "DeliveryTimeSettings",
+        "deliveryMethod": "DeliveryModeOwnFleet",
+        "areaServed": {
+          "@type": "GeoCircle",
+          "geoMidpoint": {
+            "@type": "GeoCoordinates",
+            "latitude": "33.9404",
+            "longitude": "-83.5304"
+          },
+          "geoRadius": 64374
+        }
+      },
+      "availableAtOrFrom": {
+        "@type": "Place",
+        "name": "Soul Miner's Eden Pickup Location",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "189 Luke Road",
+          "addressLocality": "Bogart",
+          "addressRegion": "GA",
+          "postalCode": "30622",
+          "addressCountry": "US"
+        }
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Products and Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Soul Miner’s Humus Compost",
+              "description": "Premium humus compost, rich in nutrients and beneficial microbes, perfect for improving soil health and plant growth.",
+              "image": "https://cdn.prod.website-files.com/5f402c152dc0917b4df7ee70/678ce50907aa363b4c945a53_top-soil-action.jpg",
+              "offers": {
+                "@type": "Offer",
+                "priceSpecification": {
+                  "@type": "UnitPriceSpecification",
+                  "priceCurrency": "USD",
+                  "price": 25,
+                  "unitText": "per cubic yard"
+                },
+                "availability": "https://schema.org/InStock",
+                "seller": {
+                  "@id": "https://g.page/soulminerseden"
+                }
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Fresh Flowers",
+              "description": "Locally grown seasonal flowers available for bouquets, events, and wholesale.",
+              "image": "https://cdn.prod.website-files.com/5f402c152dc0917b4df7ee70/5f620a4a2cc72385ec8a1cc5_DripLineFarm.jpg",
+              "offers": {
+                "@type": "Offer",
+                "priceCurrency": "USD",
+                "price": 20,
+                "availability": "https://schema.org/InStock"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Mulch",
+              "description": "High-quality mulch for landscaping and gardening.",
+              "image": "https://cdn.prod.website-files.com/5f402c152dc0917b4df7ee70/6782826ee8901387fc71c278_TOPO_brown.jpg",
+              "offers": {
+                "@type": "Offer",
+                "priceCurrency": "USD",
+                "price": 15,
+                "availability": "https://schema.org/InStock"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Used Artificial Turf",
+              "description": "Heavy-duty used artificial turf, perfect for outdoor projects. Each roll weighs approximately 1,300 lbs and measures 57' x 7'.",
+              "image": "https://cdn.prod.website-files.com/5f402c152dc0917b4df7ee70/6791648ae535956943359b0e_used_turf-for-sale-3.jpg",
+              "offers": {
+                "@type": "Offer",
+                "priceCurrency": "USD",
+                "price": 100,
+                "availability": "https://schema.org/InStock"
+              },
+              "weight": {
+                "@type": "QuantitativeValue",
+                "value": 1300,
+                "unitText": "lbs"
+              },
+              "size": {
+                "@type": "QuantitativeValue",
+                "value": "57 feet x 7 feet"
+              }
+            }
+          }
+        ]
+      },
+      "service": {
+        "@type": "Service",
+        "name": "Farm Tour",
+        "description": "Guided tours of our flower farm showcasing sustainable farming practices.",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "https://g.page/soulminerseden",
+          "name": "Soul Miner's Eden"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "bestRating": "5",
+          "reviewCount": "47"
+        },
+        "review": {
+          "@type": "Review",
+          "reviewBody": "Visitors love our farm tours, appreciating the hands-on experience and insights into sustainable farming.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "4.9",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Verified Visitor"
+          }
+        }
+      }
+    }
+  ],
+  "content": "Soul Miner’s Eden | Flower Farm, Landscape Supply & Land Care in Georgia\nThe Story Behind Soul Miner’s Eden\nAt Soul Miner’s Eden, we are dedicated to cultivating beauty and abundance across our 65-acre farm. The name Soul Miner’s Eden was born in the earliest days of transformation—long hours on a tractor and chainsaw, clearing invasive species and reclaiming neglected fields. As we worked, came purpose. Came inspiration. John Mark Comer’s Garden City reframed how we saw this land—not just as a farm, but as a calling to restore, steward, and create.\n“We’re called to a very specific kind of work—to make a Garden-like world where image bearers can flourish and thrive.”\nJohn Mark Comer in Garden City\n“Our job is to make the invisible God visible — to mirror and mimic what He is like to the world.”\nGarden City: Work, Rest, and the Art of Being Human."
+}
