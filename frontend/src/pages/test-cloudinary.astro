@@ -1,0 +1,345 @@
+---
+/**
+ * Cloudinary Test Page
+ *
+ * Demonstrates usage of CloudinaryImage components with different variants
+ *
+ * Access at: http://localhost:4321/test-cloudinary
+ */
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CloudinaryImage from '../components/CloudinaryImage.astro';
+import ProductImage from '../components/ProductImage.astro';
+import HeroImage from '../components/HeroImage.astro';
+import Avatar from '../components/Avatar.astro';
+---
+
+<BaseLayout title="Cloudinary Image Test - Soul Miner's Eden">
+  <div class="container-custom py-12">
+    <h1 class="text-4xl font-bold mb-8">Cloudinary Image Components Test</h1>
+
+    <!-- Hero Image Example -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-4">Hero Image Component</h2>
+      <p class="text-warm-700 mb-6">
+        Large banner images with overlay and optimal cropping
+      </p>
+      <HeroImage
+        publicId="farm/hero-landscape.jpg"
+        alt="Soul Miner's Eden Farm Landscape"
+        height={600}
+        overlay={true}
+      />
+      <pre class="mt-4 bg-warm-100 p-4 rounded-lg text-sm overflow-x-auto"><code>&lt;HeroImage
+  publicId="farm/hero-landscape.jpg"
+  alt="Soul Miner's Eden Farm Landscape"
+  height={600}
+  overlay={true}
+/&gt;</code></pre>
+    </section>
+
+    <!-- Product Images -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-4">Product Image Component</h2>
+      <p class="text-warm-700 mb-6">
+        Optimized product images with consistent styling
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Hero variant -->
+        <div>
+          <h3 class="font-semibold mb-3">Hero (800x800)</h3>
+          <ProductImage
+            publicId="products/compost/certified-organic.jpg"
+            alt="Certified Organic Compost"
+            variant="hero"
+          />
+          <pre class="mt-2 bg-warm-100 p-2 rounded text-xs overflow-x-auto"><code>variant="hero"</code></pre>
+        </div>
+
+        <!-- Gallery variant -->
+        <div>
+          <h3 class="font-semibold mb-3">Gallery (600x600)</h3>
+          <ProductImage
+            publicId="products/mulch/hardwood-mulch.jpg"
+            alt="Premium Hardwood Mulch"
+            variant="gallery"
+          />
+          <pre class="mt-2 bg-warm-100 p-2 rounded text-xs overflow-x-auto"><code>variant="gallery"</code></pre>
+        </div>
+
+        <!-- Card variant -->
+        <div>
+          <h3 class="font-semibold mb-3">Card (400x400)</h3>
+          <ProductImage
+            publicId="products/soil/garden-soil.jpg"
+            alt="Premium Garden Soil"
+            variant="card"
+          />
+          <pre class="mt-2 bg-warm-100 p-2 rounded text-xs overflow-x-auto"><code>variant="card"</code></pre>
+        </div>
+
+        <!-- Thumbnail variant -->
+        <div>
+          <h3 class="font-semibold mb-3">Thumbnail (300x300)</h3>
+          <ProductImage
+            publicId="products/specialty/topsoil.jpg"
+            alt="Screened Topsoil"
+            variant="thumbnail"
+          />
+          <pre class="mt-2 bg-warm-100 p-2 rounded text-xs overflow-x-auto"><code>variant="thumbnail"</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Avatar Component -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-4">Avatar Component</h2>
+      <p class="text-warm-700 mb-6">
+        Profile images with face detection and circular cropping
+      </p>
+
+      <div class="flex flex-wrap items-end gap-8">
+        <div class="text-center">
+          <Avatar
+            publicId="team/mike-usry.jpg"
+            alt="Mike Usry"
+            size="sm"
+            border={true}
+          />
+          <p class="mt-2 text-sm">Small (80px)</p>
+        </div>
+
+        <div class="text-center">
+          <Avatar
+            publicId="team/team-member-2.jpg"
+            alt="Team Member"
+            size="md"
+            border={true}
+          />
+          <p class="mt-2 text-sm">Medium (120px)</p>
+        </div>
+
+        <div class="text-center">
+          <Avatar
+            publicId="team/team-member-3.jpg"
+            alt="Team Member"
+            size="lg"
+            border={true}
+          />
+          <p class="mt-2 text-sm">Large (200px)</p>
+        </div>
+
+        <div class="text-center">
+          <Avatar
+            publicId="team/team-member-4.jpg"
+            alt="Team Member"
+            size="xl"
+            border={true}
+          />
+          <p class="mt-2 text-sm">X-Large (300px)</p>
+        </div>
+      </div>
+
+      <pre class="mt-6 bg-warm-100 p-4 rounded-lg text-sm overflow-x-auto"><code>&lt;Avatar
+  publicId="team/mike-usry.jpg"
+  alt="Mike Usry"
+  size="lg"
+  border={true}
+/&gt;</code></pre>
+    </section>
+
+    <!-- Custom CloudinaryImage -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-4">Custom CloudinaryImage Component</h2>
+      <p class="text-warm-700 mb-6">
+        Full control over transformations and effects
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Original -->
+        <div>
+          <h3 class="font-semibold mb-3">Original</h3>
+          <CloudinaryImage
+            publicId="services/grazing-goats.jpg"
+            alt="Grazing Services"
+            width={400}
+            height={300}
+            class="rounded-lg shadow-md"
+          />
+          <pre class="mt-2 bg-warm-100 p-2 rounded text-xs overflow-x-auto"><code>// No effects</code></pre>
+        </div>
+
+        <!-- Blur effect -->
+        <div>
+          <h3 class="font-semibold mb-3">With Blur</h3>
+          <CloudinaryImage
+            publicId="services/grazing-goats.jpg"
+            alt="Grazing Services - Blurred"
+            width={400}
+            height={300}
+            blur={300}
+            class="rounded-lg shadow-md"
+          />
+          <pre class="mt-2 bg-warm-100 p-2 rounded text-xs overflow-x-auto"><code>blur={300}</code></pre>
+        </div>
+
+        <!-- Saturation effect -->
+        <div>
+          <h3 class="font-semibold mb-3">Enhanced Saturation</h3>
+          <CloudinaryImage
+            publicId="services/grazing-goats.jpg"
+            alt="Grazing Services - Enhanced"
+            width={400}
+            height={300}
+            saturation={50}
+            class="rounded-lg shadow-md"
+          />
+          <pre class="mt-2 bg-warm-100 p-2 rounded text-xs overflow-x-auto"><code>saturation={50}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Responsive Images -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-4">Responsive Images</h2>
+      <p class="text-warm-700 mb-6">
+        Automatic srcset generation for optimal performance across devices
+      </p>
+
+      <CloudinaryImage
+        publicId="farm/wide-landscape.jpg"
+        alt="Farm Landscape"
+        width={1200}
+        height={600}
+        responsive={true}
+        class="rounded-lg shadow-lg"
+      />
+
+      <pre class="mt-6 bg-warm-100 p-4 rounded-lg text-sm overflow-x-auto"><code>&lt;CloudinaryImage
+  publicId="farm/wide-landscape.jpg"
+  alt="Farm Landscape"
+  width={1200}
+  height={600}
+  responsive={true}
+  class="rounded-lg shadow-lg"
+/&gt;
+
+// Generates srcset with multiple sizes:
+// 400w, 800w, 1200w, 1600w, 2400w</code></pre>
+    </section>
+
+    <!-- Different Formats -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-4">Format Optimization</h2>
+      <p class="text-warm-700 mb-6">
+        Automatic format selection (WebP, AVIF) based on browser support
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <h3 class="font-semibold mb-3">Auto Format</h3>
+          <CloudinaryImage
+            publicId="products/compost/compost-pile.jpg"
+            alt="Compost Pile"
+            width={400}
+            height={300}
+            format="auto"
+            class="rounded-lg"
+          />
+          <pre class="mt-2 bg-warm-100 p-2 rounded text-xs"><code>format="auto"</code></pre>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-3">WebP</h3>
+          <CloudinaryImage
+            publicId="products/compost/compost-pile.jpg"
+            alt="Compost Pile - WebP"
+            width={400}
+            height={300}
+            format="webp"
+            class="rounded-lg"
+          />
+          <pre class="mt-2 bg-warm-100 p-2 rounded text-xs"><code>format="webp"</code></pre>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-3">AVIF</h3>
+          <CloudinaryImage
+            publicId="products/compost/compost-pile.jpg"
+            alt="Compost Pile - AVIF"
+            width={400}
+            height={300}
+            format="avif"
+            class="rounded-lg"
+          />
+          <pre class="mt-2 bg-warm-100 p-2 rounded text-xs"><code>format="avif"</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Documentation -->
+    <section class="mb-16 bg-primary-50 p-8 rounded-xl border border-primary-200">
+      <h2 class="text-2xl font-bold mb-4">Component Documentation</h2>
+
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-lg mb-2">CloudinaryImage</h3>
+          <p class="text-warm-700 mb-2">Base component with full transformation control</p>
+          <ul class="list-disc list-inside space-y-1 text-sm text-warm-600">
+            <li>All Cloudinary transformations supported</li>
+            <li>Responsive srcset generation</li>
+            <li>Lazy loading with Intersection Observer</li>
+            <li>Automatic fallback and error handling</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-lg mb-2">ProductImage</h3>
+          <p class="text-warm-700 mb-2">Preset configurations for product images</p>
+          <ul class="list-disc list-inside space-y-1 text-sm text-warm-600">
+            <li>Variants: hero (800px), gallery (600px), card (400px), thumbnail (300px)</li>
+            <li>Optimized for e-commerce display</li>
+            <li>Hover effects included</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-lg mb-2">HeroImage</h3>
+          <p class="text-warm-700 mb-2">Large banner images with overlay support</p>
+          <ul class="list-disc list-inside space-y-1 text-sm text-warm-600">
+            <li>1920px width for full-screen display</li>
+            <li>Optional gradient overlay</li>
+            <li>Eager loading for above-the-fold images</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-lg mb-2">Avatar</h3>
+          <p class="text-warm-700 mb-2">Profile images with face detection</p>
+          <ul class="list-disc list-inside space-y-1 text-sm text-warm-600">
+            <li>Sizes: sm (80px), md (120px), lg (200px), xl (300px)</li>
+            <li>Circular cropping with face detection</li>
+            <li>Optional border styling</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Environment Setup -->
+    <section class="bg-secondary-100 p-8 rounded-xl border border-secondary-300">
+      <h2 class="text-2xl font-bold mb-4">Environment Configuration</h2>
+      <pre class="bg-warm-900 text-warm-100 p-4 rounded-lg text-sm overflow-x-auto"><code># .env file
+PUBLIC_CLOUDINARY_CLOUD_NAME=southland-organics
+PUBLIC_CLOUDINARY_API_KEY=246196521633339
+CLOUDINARY_API_SECRET=vQLdl6oOHdhvLgQqC8CnfqAxjAY
+PUBLIC_CLOUDINARY_FOLDER=Soul Miner's</code></pre>
+
+      <div class="mt-6 space-y-2 text-sm">
+        <p><strong>Cloud:</strong> southland-organics</p>
+        <p><strong>Folder:</strong> Soul Miner's</p>
+        <p><strong>Console:</strong> <a href="https://console.cloudinary.com/app/c-a0276fd53d03a5dd1b597bfb77def6/assets/media_library/folders/00df434792288f5ebc6767f5f7c9450a4c" target="_blank" class="text-primary-600 hover:underline">View in Cloudinary →</a></p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

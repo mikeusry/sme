@@ -1,0 +1,258 @@
+---
+/**
+ * Products Index Page
+ *
+ * Browse all Soul Miner's Eden products with filtering and search
+ * Route: /products
+ */
+
+import MainLayout from '../../layouts/MainLayout.astro';
+import ProductCard from '../../components/products/ProductCard.astro';
+import MaterialCalculator from '../../components/products/MaterialCalculator.astro';
+import { getAllProducts, getFeaturedProducts, getCategoryDisplayName } from '../../lib/products';
+
+const allProducts = getAllProducts();
+const featuredProducts = getFeaturedProducts();
+
+// Get unique categories
+const categories = ['all', 'compost', 'mulch', 'soil', 'specialty'] as const;
+---
+
+<MainLayout
+  title="Premium Landscape Supply Products | Soul Miner's Eden"
+  description="Browse our full selection of certified organic compost, premium mulch, quality topsoil, and specialty landscape products. Local delivery available in Athens, GA."
+>
+  <!-- Page Header -->
+  <div class="bg-gradient-to-br from-primary-500 to-primary-600 text-white py-16">
+    <div class="container-custom">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4">
+          Premium Landscape Supply
+        </h1>
+        <p class="text-xl md:text-2xl text-primary-100 mb-6">
+          Georgia's ONLY certified organic compost, plus premium mulch, quality topsoil, and specialty products for all your landscaping needs.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <span class="trust-badge bg-white/20 border-white/40 text-white">
+            ✓ Certified Organic
+          </span>
+          <span class="trust-badge bg-white/20 border-white/40 text-white">
+            ✓ Local Delivery
+          </span>
+          <span class="trust-badge bg-white/20 border-white/40 text-white">
+            ✓ Family Owned
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-custom py-12">
+    <!-- Featured Products -->
+    {featuredProducts.length > 0 && (
+      <section class="mb-16">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h2 class="text-3xl font-display font-bold text-warm-900 mb-2">
+              Featured Products
+            </h2>
+            <p class="text-warm-700">Our most popular and highly-rated landscape supplies</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {featuredProducts.map(product => (
+            <ProductCard product={product} variant="featured" />
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Material Calculator -->
+    <section class="mb-16">
+      <MaterialCalculator />
+    </section>
+
+    <!-- All Products with Filters -->
+    <section>
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
+        <div>
+          <h2 class="text-3xl font-display font-bold text-warm-900 mb-2">
+            All Products
+          </h2>
+          <p class="text-warm-700" id="product-count">
+            Showing {allProducts.length} products
+          </p>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="flex flex-wrap gap-2">
+          {categories.map(category => (
+            <button
+              class={`filter-btn px-4 py-2 rounded-lg font-semibold transition-all ${
+                category === 'all'
+                  ? 'bg-primary-600 text-white'
+                  : 'bg-secondary-100 text-warm-700 hover:bg-secondary-200'
+              }`}
+              data-category={category}
+            >
+              {category === 'all' ? 'All Products' : getCategoryDisplayName(category)}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="mb-8">
+        <input
+          type="search"
+          id="product-search"
+          class="input max-w-2xl"
+          placeholder="Search products by name or description..."
+        />
+      </div>
+
+      <!-- Products Grid -->
+      <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {allProducts.map(product => (
+          <div class="product-item" data-category={product.category} data-name={product.name.toLowerCase()} data-description={product.description.toLowerCase()}>
+            <ProductCard product={product} />
+          </div>
+        ))}
+      </div>
+
+      <!-- No Results Message -->
+      <div id="no-results" class="hidden text-center py-16">
+        <div class="max-w-md mx-auto">
+          <svg class="w-24 h-24 mx-auto mb-4 text-secondary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <h3 class="text-2xl font-bold text-warm-900 mb-2">No products found</h3>
+          <p class="text-warm-600 mb-6">Try adjusting your search or filters</p>
+          <button
+            class="btn-outline"
+            onclick="document.getElementById('product-search').value = ''; document.querySelector('[data-category=all]').click();"
+          >
+            Clear Filters
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="mt-16 bg-gradient-to-br from-primary-600 to-primary-700 text-white rounded-2xl p-8 md:p-12">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">
+          Need Help Choosing?
+        </h2>
+        <p class="text-xl text-primary-100 mb-8">
+          Our team is here to help you select the right products for your project. Get expert advice and personalized recommendations.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="tel:+17066134415" class="btn bg-white text-primary-600 hover:bg-primary-50 text-lg px-8 py-4">
+            📞 Call (706) 613-4415
+          </a>
+          <a href="/contact-us" class="btn border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4">
+            Request a Quote
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</MainLayout>
+
+<script>
+  // Get elements
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const searchInput = document.getElementById('product-search') as HTMLInputElement;
+  const productItems = document.querySelectorAll('.product-item');
+  const productsGrid = document.getElementById('products-grid');
+  const noResults = document.getElementById('no-results');
+  const productCount = document.getElementById('product-count');
+
+  let currentCategory = 'all';
+  let currentSearch = '';
+
+  // Filter products
+  function filterProducts() {
+    let visibleCount = 0;
+
+    productItems.forEach(item => {
+      const category = item.getAttribute('data-category');
+      const name = item.getAttribute('data-name') || '';
+      const description = item.getAttribute('data-description') || '';
+
+      // Check category filter
+      const categoryMatch = currentCategory === 'all' || category === currentCategory;
+
+      // Check search filter
+      const searchMatch =
+        currentSearch === '' ||
+        name.includes(currentSearch) ||
+        description.includes(currentSearch);
+
+      // Show/hide product
+      if (categoryMatch && searchMatch) {
+        (item as HTMLElement).style.display = 'block';
+        visibleCount++;
+      } else {
+        (item as HTMLElement).style.display = 'none';
+      }
+    });
+
+    // Update count
+    if (productCount) {
+      productCount.textContent = `Showing ${visibleCount} product${visibleCount !== 1 ? 's' : ''}`;
+    }
+
+    // Show/hide no results message
+    if (visibleCount === 0) {
+      productsGrid?.classList.add('hidden');
+      noResults?.classList.remove('hidden');
+    } else {
+      productsGrid?.classList.remove('hidden');
+      noResults?.classList.add('hidden');
+    }
+  }
+
+  // Category filter click handler
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Update active state
+      filterButtons.forEach(btn => {
+        btn.classList.remove('bg-primary-600', 'text-white');
+        btn.classList.add('bg-secondary-100', 'text-warm-700');
+      });
+      button.classList.remove('bg-secondary-100', 'text-warm-700');
+      button.classList.add('bg-primary-600', 'text-white');
+
+      // Update current category
+      currentCategory = button.getAttribute('data-category') || 'all';
+
+      // Filter products
+      filterProducts();
+    });
+  });
+
+  // Search input handler
+  searchInput?.addEventListener('input', (e) => {
+    currentSearch = (e.target as HTMLInputElement).value.toLowerCase();
+    filterProducts();
+  });
+</script>
+
+<style>
+  .product-item {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

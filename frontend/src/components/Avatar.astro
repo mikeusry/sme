@@ -1,0 +1,103 @@
+---
+/**
+ * Avatar Component
+ *
+ * Specialized component for profile/team member images
+ * with circular cropping and face detection
+ *
+ * @example
+ * <Avatar
+ *   publicId="team/mike-usry.jpg"
+ *   alt="Mike Usry"
+ *   size="lg"
+ * />
+ */
+
+import CloudinaryImage from './CloudinaryImage.astro';
+
+export interface Props {
+  /** Image path within Cloudinary */
+  publicId: string;
+  /** Alt text for accessibility */
+  alt: string;
+  /** Avatar size preset */
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  /** Additional CSS classes */
+  class?: string;
+  /** Show border */
+  border?: boolean;
+  /** Additional HTML attributes */
+  [key: string]: any;
+}
+
+const {
+  publicId,
+  alt,
+  size = 'md',
+  class: className = '',
+  border = false,
+  ...rest
+} = Astro.props;
+
+// Size configurations
+const sizes = {
+  sm: { width: 80, height: 80 },
+  md: { width: 120, height: 120 },
+  lg: { width: 200, height: 200 },
+  xl: { width: 300, height: 300 },
+};
+
+const config = sizes[size];
+---
+
+<CloudinaryImage
+  publicId={publicId}
+  alt={alt}
+  width={config.width}
+  height={config.height}
+  crop="fill"
+  gravity="faces"
+  quality="auto"
+  format="auto"
+  responsive={false}
+  class={`avatar avatar-${size} ${border ? 'avatar-border' : ''} ${className}`}
+  {...rest}
+/>
+
+<style>
+  .avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    display: inline-block;
+  }
+
+  .avatar-border {
+    border: 3px solid var(--color-primary-500, #b59289);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .avatar-sm {
+    width: 80px;
+    height: 80px;
+  }
+
+  .avatar-md {
+    width: 120px;
+    height: 120px;
+  }
+
+  .avatar-lg {
+    width: 200px;
+    height: 200px;
+  }
+
+  .avatar-xl {
+    width: 300px;
+    height: 300px;
+  }
+
+  .avatar:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+  }
+</style>

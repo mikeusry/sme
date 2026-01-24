@@ -1,0 +1,104 @@
+---
+/**
+ * ProductImage Component
+ *
+ * Specialized component for product images with consistent styling
+ * and optimal transformations for e-commerce
+ *
+ * @example
+ * <ProductImage
+ *   publicId="products/compost-pile.jpg"
+ *   alt="Certified Organic Compost"
+ *   variant="hero"
+ * />
+ */
+
+import CloudinaryImage from './CloudinaryImage.astro';
+
+export interface Props {
+  /** Image path within Cloudinary */
+  publicId: string;
+  /** Alt text for accessibility */
+  alt: string;
+  /** Image variant (hero, gallery, thumbnail, card) */
+  variant?: 'hero' | 'gallery' | 'thumbnail' | 'card';
+  /** Additional CSS classes */
+  class?: string;
+  /** Loading priority */
+  loading?: 'lazy' | 'eager';
+  /** Fetch priority for critical images */
+  fetchpriority?: 'high' | 'low' | 'auto';
+  /** Additional HTML attributes */
+  [key: string]: any;
+}
+
+const {
+  publicId,
+  alt,
+  variant = 'card',
+  class: className = '',
+  loading = 'lazy',
+  fetchpriority = 'auto',
+  ...rest
+} = Astro.props;
+
+// Variant configurations optimized for product display
+const variants = {
+  hero: {
+    width: 800,
+    height: 800,
+    class: 'product-image-hero rounded-xl shadow-lg',
+  },
+  gallery: {
+    width: 600,
+    height: 600,
+    class: 'product-image-gallery rounded-lg',
+  },
+  thumbnail: {
+    width: 300,
+    height: 300,
+    class: 'product-image-thumbnail rounded-md',
+  },
+  card: {
+    width: 400,
+    height: 400,
+    class: 'product-image-card rounded-lg',
+  },
+};
+
+const config = variants[variant];
+---
+
+<CloudinaryImage
+  publicId={publicId}
+  alt={alt}
+  width={config.width}
+  height={config.height}
+  crop="fill"
+  gravity="auto"
+  quality="auto"
+  format="auto"
+  responsive={true}
+  loading={loading}
+  fetchpriority={fetchpriority}
+  class={`${config.class} ${className}`}
+  {...rest}
+/>
+
+<style>
+  .product-image-hero,
+  .product-image-gallery,
+  .product-image-thumbnail,
+  .product-image-card {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .product-image-hero:hover,
+  .product-image-card:hover {
+    transform: scale(1.02);
+  }
+
+  .product-image-thumbnail:hover {
+    transform: scale(1.05);
+  }
+</style>

@@ -1,0 +1,236 @@
+---
+/**
+ * Mulch Category Page
+ *
+ * Premium mulch products for beautiful landscapes
+ * Route: /products/mulch
+ */
+
+import MainLayout from '../../layouts/MainLayout.astro';
+import ProductCard from '../../components/products/ProductCard.astro';
+import MaterialCalculator from '../../components/products/MaterialCalculator.astro';
+import { getProductsByCategory } from '../../lib/products';
+
+const products = getProductsByCategory('mulch');
+---
+
+<MainLayout
+  title="Premium Mulch Products Athens GA | Soul Miner's Eden"
+  description="High-quality mulch for landscaping and gardening. Natural and dyed options including hardwood, pine bark, and colored mulch. Local delivery in Athens, GA."
+>
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-secondary-700 to-warm-900 text-white py-20">
+    <div class="container-custom">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4">
+          Premium Mulch & Wood Products
+        </h1>
+        <p class="text-xl md:text-2xl text-warm-200 mb-6">
+          Transform your landscape with high-quality mulch. Natural and dyed options for every project, from elegant hardwood to vibrant colored mulch.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <span class="badge bg-white/20 border-white/40 text-white">
+            7 Varieties
+          </span>
+          <span class="badge bg-white/20 border-white/40 text-white">
+            Natural & Dyed
+          </span>
+          <span class="badge bg-white/20 border-white/40 text-white">
+            Long-Lasting Color
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-custom py-16">
+    <!-- Introduction -->
+    <section class="mb-16">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-6">
+          Why Choose Our Mulch?
+        </h2>
+        <p class="text-xl text-warm-700 leading-relaxed">
+          From finely-ground hardwood to vibrant colored options, our mulch products provide superior weed suppression, moisture retention, and aesthetic appeal for your landscape beds.
+        </p>
+      </div>
+    </section>
+
+    <!-- Benefits Grid -->
+    <section class="mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="text-center p-6">
+          <div class="text-5xl mb-4">🌿</div>
+          <h3 class="font-bold text-lg mb-2 text-warm-900">Weed Suppression</h3>
+          <p class="text-sm text-warm-700">Blocks sunlight to prevent weed growth naturally</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="text-5xl mb-4">💧</div>
+          <h3 class="font-bold text-lg mb-2 text-warm-900">Moisture Retention</h3>
+          <p class="text-sm text-warm-700">Reduces watering needs by retaining soil moisture</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="text-5xl mb-4">🌡️</div>
+          <h3 class="font-bold text-lg mb-2 text-warm-900">Temperature Control</h3>
+          <p class="text-sm text-warm-700">Insulates soil from extreme temperatures</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="text-5xl mb-4">🎨</div>
+          <h3 class="font-bold text-lg mb-2 text-warm-900">Curb Appeal</h3>
+          <p class="text-sm text-warm-700">Enhances landscape appearance instantly</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products by Type -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-display font-bold text-warm-900 mb-8 text-center">
+        Choose Your Mulch
+      </h2>
+
+      <!-- Natural Mulch -->
+      <div class="mb-12">
+        <h3 class="text-2xl font-bold text-warm-900 mb-4">Natural Mulch</h3>
+        <p class="text-warm-700 mb-6">Authentic wood color that weathers naturally over time</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {products.filter(p => ['double-ground-hardwood-mulch', 'pine-bark-mulch', 'single-ground-mulch', 'wood-chips'].includes(p.slug)).map(product => (
+            <ProductCard product={product} />
+          ))}
+        </div>
+      </div>
+
+      <!-- Dyed Mulch -->
+      <div>
+        <h3 class="text-2xl font-bold text-warm-900 mb-4">Dyed Mulch</h3>
+        <p class="text-warm-700 mb-6">Long-lasting color that maintains its vibrancy all season</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {products.filter(p => ['brown-mulch', 'black-mulch', 'red-mulch'].includes(p.slug)).map(product => (
+            <ProductCard product={product} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Material Calculator -->
+    <section class="mb-16">
+      <MaterialCalculator />
+    </section>
+
+    <!-- Mulch Guide -->
+    <section class="mb-16">
+      <div class="bg-secondary-100 rounded-2xl p-8 md:p-12 border border-secondary-300">
+        <h2 class="text-3xl font-display font-bold text-warm-900 mb-8 text-center">
+          Mulch Selection Guide
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="font-bold text-xl mb-4 text-warm-900">Double Ground Hardwood</h3>
+            <p class="text-warm-700 mb-3">
+              <strong>Best for:</strong> Flower beds, foundation plantings, vegetable gardens
+            </p>
+            <p class="text-warm-700 mb-3">
+              <strong>Benefits:</strong> Fine texture, excellent coverage, natural color, enriches soil as it breaks down
+            </p>
+            <p class="text-warm-700">
+              <strong>Coverage:</strong> 1 cubic yard covers ~100 sq ft at 3" depth
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-xl mb-4 text-warm-900">Colored Mulch (Brown/Black/Red)</h3>
+            <p class="text-warm-700 mb-3">
+              <strong>Best for:</strong> High-visibility areas, modern landscapes, commercial properties
+            </p>
+            <p class="text-warm-700 mb-3">
+              <strong>Benefits:</strong> Color lasts all season, dramatic visual impact, professional appearance
+            </p>
+            <p class="text-warm-700">
+              <strong>Coverage:</strong> 1 cubic yard covers ~100 sq ft at 3" depth
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-xl mb-4 text-warm-900">Pine Bark</h3>
+            <p class="text-warm-700 mb-3">
+              <strong>Best for:</strong> Acid-loving plants (azaleas, rhododendrons, blueberries)
+            </p>
+            <p class="text-warm-700 mb-3">
+              <strong>Benefits:</strong> Natural reddish color, pleasant scent, creates acidic conditions, slow decomposition
+            </p>
+            <p class="text-warm-700">
+              <strong>Coverage:</strong> 1 cubic yard covers ~100 sq ft at 3" depth
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-xl mb-4 text-warm-900">Wood Chips</h3>
+            <p class="text-warm-700 mb-3">
+              <strong>Best for:</strong> Pathways, play areas, dog runs, natural landscapes
+            </p>
+            <p class="text-warm-700 mb-3">
+              <strong>Benefits:</strong> Most economical, soft cushioned surface, excellent drainage, rustic appearance
+            </p>
+            <p class="text-warm-700">
+              <strong>Coverage:</strong> 1 cubic yard covers ~100 sq ft at 3" depth
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Application Tips -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-display font-bold text-warm-900 mb-8 text-center">
+        Application Tips
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div class="bg-primary-50 rounded-xl p-6 border border-primary-200">
+          <div class="text-3xl mb-3">📏</div>
+          <h3 class="font-bold text-lg mb-3 text-warm-900">Proper Depth</h3>
+          <p class="text-warm-700 text-sm">
+            Apply 2-3 inches for most applications. Too thick can prevent water from reaching soil; too thin reduces effectiveness.
+          </p>
+        </div>
+
+        <div class="bg-primary-50 rounded-xl p-6 border border-primary-200">
+          <div class="text-3xl mb-3">🌱</div>
+          <h3 class="font-bold text-lg mb-3 text-warm-900">Around Plants</h3>
+          <p class="text-warm-700 text-sm">
+            Keep mulch 2-3 inches away from plant stems and tree trunks to prevent moisture-related diseases and rot.
+          </p>
+        </div>
+
+        <div class="bg-primary-50 rounded-xl p-6 border border-primary-200">
+          <div class="text-3xl mb-3">🔄</div>
+          <h3 class="font-bold text-lg mb-3 text-warm-900">Refresh Annually</h3>
+          <p class="text-warm-700 text-sm">
+            Top-dress with 1-2 inches of fresh mulch each spring to maintain appearance and effectiveness as old mulch breaks down.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="text-center">
+      <div class="bg-gradient-to-br from-warm-800 to-warm-900 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">
+          Ready to Beautify Your Landscape?
+        </h2>
+        <p class="text-xl text-warm-200 mb-8">
+          Order premium mulch today with local delivery throughout Athens and surrounding areas.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="tel:+17066134415" class="btn bg-white text-warm-900 hover:bg-warm-100 text-lg px-8 py-4">
+            📞 Call (706) 613-4415
+          </a>
+          <a href="/contact-us" class="btn border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4">
+            Request a Quote
+          </a>
+        </div>
+        <p class="mt-6 text-sm text-warm-200">
+          🚚 Delivery: $40 base + $1.25/mile after 20 miles | 📍 Pickup available in Bogart, GA
+        </p>
+      </div>
+    </section>
+  </div>
+</MainLayout>

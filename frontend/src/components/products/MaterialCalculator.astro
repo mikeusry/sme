@@ -1,0 +1,253 @@
+---
+/**
+ * Material Calculator Component
+ *
+ * High-conversion tool for calculating cubic yards needed for projects
+ * Reduces friction by helping customers determine exact quantities
+ *
+ * Features:
+ * - Calculate volume from dimensions
+ * - Product recommendations
+ * - Cost estimation
+ * - Add to quote/cart
+ */
+---
+
+<div class="material-calculator card bg-gradient-to-br from-primary-50 to-white border-2 border-primary-200">
+  <!-- Header -->
+  <div class="mb-6">
+    <h3 class="text-2xl font-display font-bold text-warm-900 mb-2">
+      Material Calculator
+    </h3>
+    <p class="text-warm-700">
+      Calculate how much material you need for your project. Get instant pricing and recommendations.
+    </p>
+  </div>
+
+  <!-- Calculator Form -->
+  <form id="material-calculator-form" class="space-y-6">
+    <!-- Dimensions Input -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <!-- Length -->
+      <div>
+        <label for="calc-length" class="block text-sm font-semibold text-warm-800 mb-2">
+          Length (feet)
+        </label>
+        <input
+          type="number"
+          id="calc-length"
+          name="length"
+          class="input"
+          placeholder="20"
+          min="0"
+          step="0.1"
+          required
+        />
+      </div>
+
+      <!-- Width -->
+      <div>
+        <label for="calc-width" class="block text-sm font-semibold text-warm-800 mb-2">
+          Width (feet)
+        </label>
+        <input
+          type="number"
+          id="calc-width"
+          name="width"
+          class="input"
+          placeholder="10"
+          min="0"
+          step="0.1"
+          required
+        />
+      </div>
+
+      <!-- Depth -->
+      <div>
+        <label for="calc-depth" class="block text-sm font-semibold text-warm-800 mb-2">
+          Depth (inches)
+        </label>
+        <input
+          type="number"
+          id="calc-depth"
+          name="depth"
+          class="input"
+          placeholder="3"
+          min="0"
+          step="0.5"
+          required
+        />
+      </div>
+    </div>
+
+    <!-- Project Type (Optional for recommendations) -->
+    <div>
+      <label for="calc-project-type" class="block text-sm font-semibold text-warm-800 mb-2">
+        Project Type (optional)
+      </label>
+      <select id="calc-project-type" name="projectType" class="select">
+        <option value="">Select project type...</option>
+        <option value="garden">Garden Bed / Vegetable Garden</option>
+        <option value="lawn">Lawn Installation / Repair</option>
+        <option value="landscape">Landscape Beds / Mulching</option>
+        <option value="playground">Playground / Pathway</option>
+      </select>
+    </div>
+
+    <!-- Calculate Button -->
+    <button
+      type="submit"
+      class="btn-primary w-full text-lg py-4 shadow-lg hover:shadow-xl"
+    >
+      Calculate Material Needed →
+    </button>
+  </form>
+
+  <!-- Results (Hidden until calculated) -->
+  <div id="calculator-results" class="hidden mt-8 pt-8 border-t-2 border-primary-200">
+    <!-- Volume Results -->
+    <div class="bg-white rounded-lg p-6 mb-6 shadow-md border border-secondary-200">
+      <h4 class="text-lg font-bold text-warm-900 mb-4">Volume Needed</h4>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <p class="text-sm text-warm-600 mb-1">Cubic Yards</p>
+          <p class="text-3xl font-bold text-primary-600" id="result-cubic-yards">-</p>
+        </div>
+        <div>
+          <p class="text-sm text-warm-600 mb-1">Cubic Feet</p>
+          <p class="text-3xl font-bold text-secondary-700" id="result-cubic-feet">-</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recommended Products -->
+    <div id="recommended-products" class="space-y-4">
+      <h4 class="text-lg font-bold text-warm-900 mb-4">Recommended Products</h4>
+      <!-- Products will be inserted here dynamically -->
+    </div>
+  </div>
+
+  <!-- Quick Reference -->
+  <div class="mt-6 p-4 bg-warm-100 rounded-lg border border-secondary-200">
+    <p class="text-xs font-semibold text-warm-800 mb-2">📏 Quick Reference</p>
+    <ul class="text-xs text-warm-700 space-y-1">
+      <li>• 1 cubic yard = 27 cubic feet</li>
+      <li>• Standard mulch depth: 2-3 inches</li>
+      <li>• Compost/soil depth: 3-6 inches</li>
+      <li>• 1 cubic yard covers ~100 sq ft at 3" depth</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  import { calculateCubicYards, recommendProducts, getProductBySlug, type Product } from '../../lib/products';
+
+  // Get form and results elements
+  const form = document.getElementById('material-calculator-form') as HTMLFormElement;
+  const resultsDiv = document.getElementById('calculator-results');
+  const cubicYardsEl = document.getElementById('result-cubic-yards');
+  const cubicFeetEl = document.getElementById('result-cubic-feet');
+  const recommendedProductsEl = document.getElementById('recommended-products');
+
+  // Handle form submission
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Get form values
+    const formData = new FormData(form);
+    const length = parseFloat(formData.get('length') as string);
+    const width = parseFloat(formData.get('width') as string);
+    const depth = parseFloat(formData.get('depth') as string);
+    const projectType = formData.get('projectType') as 'garden' | 'lawn' | 'landscape' | 'playground' | '';
+
+    // Validate inputs
+    if (!length || !width || !depth || length <= 0 || width <= 0 || depth <= 0) {
+      alert('Please enter valid dimensions');
+      return;
+    }
+
+    // Calculate volume
+    const cubicYards = calculateCubicYards({ length, width, depth });
+    const cubicFeet = cubicYards * 27;
+
+    // Update results
+    if (cubicYardsEl) cubicYardsEl.textContent = cubicYards.toFixed(1);
+    if (cubicFeetEl) cubicFeetEl.textContent = cubicFeet.toFixed(1);
+
+    // Get recommended products
+    let products: Product[] = [];
+    if (projectType) {
+      products = recommendProducts(projectType);
+    } else {
+      // Default recommendations
+      products = [
+        getProductBySlug('humus-compost'),
+        getProductBySlug('double-ground-hardwood-mulch'),
+        getProductBySlug('topsoil'),
+      ].filter((p): p is Product => p !== undefined);
+    }
+
+    // Display recommended products
+    if (recommendedProductsEl && products.length > 0) {
+      recommendedProductsEl.innerHTML = `
+        <h4 class="text-lg font-bold text-warm-900 mb-4">Recommended Products</h4>
+        <div class="space-y-3">
+          ${products.map(product => {
+            const totalCost = (product.price * cubicYards).toFixed(2);
+            return `
+              <div class="bg-white rounded-lg p-4 border border-secondary-200 hover:border-primary-300 transition-colors">
+                <div class="flex justify-between items-start mb-2">
+                  <div class="flex-1">
+                    <h5 class="font-bold text-warm-900 mb-1">${product.name}</h5>
+                    <p class="text-sm text-warm-600 mb-2">${product.description}</p>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between pt-3 border-t border-secondary-100">
+                  <div>
+                    <p class="text-xs text-warm-600 mb-1">Estimated Cost</p>
+                    <p class="text-2xl font-bold text-accent-600">$${totalCost}</p>
+                    <p class="text-xs text-warm-600 mt-1">${cubicYards.toFixed(1)} cu yd × $${product.price}/${product.unit}</p>
+                  </div>
+                  <a
+                    href="/products/${product.slug}"
+                    class="btn-primary text-sm px-6 py-2"
+                  >
+                    View Product →
+                  </a>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+    }
+
+    // Show results
+    resultsDiv?.classList.remove('hidden');
+
+    // Smooth scroll to results
+    resultsDiv?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>
+
+<style>
+  .material-calculator {
+    position: relative;
+  }
+
+  /* Smooth transitions */
+  #calculator-results {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

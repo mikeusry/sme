@@ -1,0 +1,299 @@
+---
+/**
+ * Dynamic Product Detail Page
+ *
+ * Displays full product information with images, pricing, benefits, and CTA
+ * Route: /products/{slug}
+ */
+
+import MainLayout from '../../layouts/MainLayout.astro';
+import ProductImage from '../../components/ProductImage.astro';
+import ProductCard from '../../components/products/ProductCard.astro';
+import MaterialCalculator from '../../components/products/MaterialCalculator.astro';
+import { getAllProducts, getProductBySlug, getRelatedProducts, formatPrice } from '../../lib/products';
+
+// Get the product slug from the URL
+export async function getStaticPaths() {
+  const products = getAllProducts();
+
+  return products.map(product => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+const { slug } = Astro.params;
+const product = getProductBySlug(slug);
+
+// 404 if product not found
+if (!product) {
+  return Astro.redirect('/404');
+}
+
+// Get related products
+const relatedProducts = getRelatedProducts(product.slug, 4);
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Products', href: '/products' },
+  { label: product.name, href: `/products/${product.slug}` },
+];
+---
+
+<MainLayout title={product.seo.title} description={product.seo.description}>
+  <!-- Breadcrumbs -->
+  <div class="bg-warm-50 border-b border-secondary-200 py-3">
+    <div class="container-custom">
+      <nav class="flex items-center gap-2 text-sm">
+        {breadcrumbs.map((crumb, index) => (
+          <Fragment>
+            {index > 0 && <span class="text-secondary-400">/</span>}
+            {index === breadcrumbs.length - 1 ? (
+              <span class="text-warm-700 font-semibold">{crumb.label}</span>
+            ) : (
+              <a href={crumb.href} class="text-primary-600 hover:text-primary-700 transition-colors">
+                {crumb.label}
+              </a>
+            )}
+          </Fragment>
+        ))}
+      </nav>
+    </div>
+  </div>
+
+  <!-- Product Detail -->
+  <div class="container-custom py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+      <!-- Left: Product Images -->
+      <div class="space-y-4">
+        <!-- Main Image -->
+        <div class="rounded-xl overflow-hidden shadow-lg border border-secondary-200">
+          <ProductImage
+            publicId={product.images.primary}
+            alt={product.name}
+            variant="hero"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+
+        <!-- Gallery (if available) -->
+        {product.images.gallery && product.images.gallery.length > 0 && (
+          <div class="grid grid-cols-3 gap-4">
+            {product.images.gallery.map(image => (
+              <div class="rounded-lg overflow-hidden border border-secondary-200 hover:border-primary-400 transition-colors cursor-pointer">
+                <ProductImage
+                  publicId={image}
+                  alt={`${product.name} - Gallery`}
+                  variant="thumbnail"
+                />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <!-- Right: Product Info -->
+      <div class="space-y-6">
+        <!-- Category & Certifications -->
+        <div class="flex items-center gap-3 flex-wrap">
+          <span class="badge badge-info text-xs uppercase tracking-wide">
+            {product.category}
+          </span>
+          {product.certifications?.map(cert => (
+            <span class="trust-badge text-xs">
+              {cert}
+            </span>
+          ))}
+        </div>
+
+        <!-- Product Name -->
+        <h1 class="text-4xl md:text-5xl font-display font-bold text-warm-900">
+          {product.name}
+        </h1>
+
+        <!-- Short Description -->
+        <p class="text-xl text-warm-700 leading-relaxed">
+          {product.description}
+        </p>
+
+        <!-- Pricing -->
+        <div class="bg-primary-50 rounded-xl p-6 border-2 border-primary-200">
+          <div class="flex items-baseline gap-3 mb-2">
+            <span class="price text-5xl">${product.price}</span>
+            <span class="text-lg text-warm-700">per {product.unit}</span>
+          </div>
+          {product.inStock ? (
+            <p class="text-accent-600 font-semibold flex items-center gap-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              In Stock - Ready to Ship or Pickup
+            </p>
+          ) : (
+            <p class="text-warm-500 font-semibold">Currently Out of Stock</p>
+          )}
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button class="btn-primary text-lg px-8 py-4 flex-1" onclick="alert('Cart functionality coming soon!')">
+            Add to Cart
+          </button>
+          <a href="/contact-us" class="btn-outline text-lg px-8 py-4 flex-1 text-center">
+            Request Quote
+          </a>
+        </div>
+
+        <!-- Delivery Info -->
+        <div class="bg-secondary-100 rounded-lg p-4 border border-secondary-300">
+          <p class="text-sm text-warm-800">
+            <strong>🚚 Local Delivery Available:</strong> $40 base + $1.25/mile after 20 miles
+            <br/>
+            <strong>📍 Pickup:</strong> 189 Luke Road, Bogart, GA 30622
+            <br/>
+            <strong>📞 Questions?</strong> Call (706) 613-4415
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Details Tabs -->
+    <div class="mb-16">
+      <div class="border-b border-secondary-300 mb-8">
+        <nav class="flex gap-8">
+          <button class="tab-button active pb-4 border-b-2 border-primary-600 font-semibold text-primary-600" data-tab="description">
+            Description
+          </button>
+          <button class="tab-button pb-4 border-b-2 border-transparent hover:border-primary-300 font-semibold text-warm-700" data-tab="benefits">
+            Benefits
+          </button>
+          <button class="tab-button pb-4 border-b-2 border-transparent hover:border-primary-300 font-semibold text-warm-700" data-tab="applications">
+            Applications
+          </button>
+        </nav>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="tab-content" id="description-content">
+        <div class="prose prose-lg max-w-none">
+          <p class="text-warm-700 leading-relaxed text-lg">
+            {product.longDescription}
+          </p>
+        </div>
+      </div>
+
+      <div class="tab-content hidden" id="benefits-content">
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {product.benefits.map(benefit => (
+            <li class="flex items-start gap-3 p-4 bg-accent-50 rounded-lg border border-accent-200">
+              <span class="text-accent-600 text-xl mt-1">✓</span>
+              <span class="text-warm-800">{benefit}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="tab-content hidden" id="applications-content">
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {product.applications.map(application => (
+            <li class="flex items-start gap-3 p-4 bg-primary-50 rounded-lg border border-primary-200">
+              <span class="text-primary-600 text-xl">→</span>
+              <span class="text-warm-800">{application}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Material Calculator -->
+    <div class="mb-16">
+      <MaterialCalculator />
+    </div>
+
+    <!-- Related Products -->
+    {relatedProducts.length > 0 && (
+      <div>
+        <h2 class="text-3xl font-display font-bold text-warm-900 mb-8">
+          You May Also Like
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {relatedProducts.map(relatedProduct => (
+            <ProductCard product={relatedProduct} />
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+
+  <!-- Schema.org Product Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description: product.description,
+    image: `https://res.cloudinary.com/southland-organics/image/upload/${product.images.primary}`,
+    sku: product.sku,
+    offers: {
+      '@type': 'Offer',
+      price: product.price,
+      priceCurrency: 'USD',
+      availability: product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+      seller: {
+        '@type': 'Organization',
+        name: 'Soul Miner\'s Eden',
+      },
+    },
+  })} />
+</MainLayout>
+
+<script>
+  // Tab switching functionality
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tabName = button.getAttribute('data-tab');
+
+      // Remove active class from all buttons
+      tabButtons.forEach(btn => {
+        btn.classList.remove('active', 'border-primary-600', 'text-primary-600');
+        btn.classList.add('border-transparent', 'text-warm-700');
+      });
+
+      // Add active class to clicked button
+      button.classList.add('active', 'border-primary-600', 'text-primary-600');
+      button.classList.remove('border-transparent', 'text-warm-700');
+
+      // Hide all tab contents
+      tabContents.forEach(content => content.classList.add('hidden'));
+
+      // Show selected tab content
+      const selectedContent = document.getElementById(`${tabName}-content`);
+      selectedContent?.classList.remove('hidden');
+    });
+  });
+</script>
+
+<style>
+  .tab-button {
+    transition: all 0.2s ease-in-out;
+  }
+
+  .tab-content {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

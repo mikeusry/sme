@@ -1,0 +1,295 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import ProductCard from '../components/products/ProductCard.astro';
+import MaterialCalculator from '../components/products/MaterialCalculator.astro';
+import ProductImage from '../components/ProductImage.astro';
+import { getFeaturedProducts, getProductBySlug } from '../lib/products';
+
+// Soul Miner's Eden Homepage - Conversion-optimized dual-revenue stream design
+// Ogilvy principle: "The consumer is not a moron, she's your wife"
+// Apple principle: "Focus is saying no to 1,000 good ideas"
+
+// Get featured products for showcase
+const featuredProducts = getFeaturedProducts();
+
+// Get specific hero products
+const humusCompost = getProductBySlug('humus-compost');
+const brownMulch = getProductBySlug('brown-mulch');
+const topsoil = getProductBySlug('topsoil');
+---
+
+<MainLayout
+	title="Soul Miner's Eden | Certified Organic Compost & Land Management | Athens, GA"
+	description="Georgia's only certified organic compost delivered to your door. Premium landscape supply + eco-friendly land management services. Family-owned, Athens-based."
+>
+	<!-- Hero Section - Dual-purpose conversion funnel -->
+	<section class="relative bg-gradient-to-br from-primary-50 via-white to-secondary-50 py-20 md:py-28 overflow-hidden">
+		<!-- Decorative background element -->
+		<div class="absolute inset-0 opacity-5">
+			<svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+				<path d="M0,0 Q50,20 100,0 L100,100 L0,100 Z" fill="#B59289"/>
+			</svg>
+		</div>
+
+		<div class="container-custom relative">
+			<div class="max-w-4xl mx-auto text-center">
+				<!-- Trust badge - Immediate credibility -->
+				<div class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-md mb-6 border border-primary-200">
+					<svg class="w-5 h-5 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+						<path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+					</svg>
+					<span class="text-sm font-semibold text-warm-800">Certified Organic • Family-Owned • Athens, GA</span>
+				</div>
+
+				<!-- Main headline - Benefit-driven, not feature-driven -->
+				<h1 class="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 text-warm-900 leading-tight">
+					Cultivate Your Eden
+				</h1>
+
+				<!-- Subheadline - Addresses pain points -->
+				<p class="text-xl md:text-2xl mb-4 text-warm-700 max-w-3xl mx-auto leading-relaxed">
+					From <span class="font-semibold text-primary-600">Georgia's only certified organic compost</span> to innovative grazing services—premium landscape solutions delivered with care.
+				</p>
+
+				<!-- USP - Zero competition angle -->
+				<p class="text-lg mb-10 text-primary-700 font-medium">
+					<span class="inline-block bg-accent-50 px-4 py-2 rounded-lg border border-accent-200">
+						★ NO local competition for certified organic compost ★
+					</span>
+				</p>
+
+				<!-- Dual CTAs - Different visitor intents -->
+				<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+					<!-- Primary CTA - Main revenue stream -->
+					<a href="/products" class="btn-primary text-lg px-10 py-4 shadow-lg hover:shadow-xl">
+						Shop Landscape Supply
+					</a>
+
+					<!-- Secondary CTA - New revenue vertical -->
+					<a href="/land-management" class="btn-outline text-lg px-10 py-4">
+						Explore Grazing Services
+					</a>
+				</div>
+
+				<!-- Social proof - Instant credibility -->
+				<p class="mt-8 text-sm text-warm-600">
+					<span class="font-semibold text-warm-800">500+ cubic yards</span> delivered monthly • <span class="font-semibold text-warm-800">65-acre</span> family farm
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Value Props - Agricultural market needs tangible benefits -->
+	<section class="section bg-white">
+		<div class="container-custom">
+			<!-- Section header -->
+			<div class="text-center mb-12">
+				<h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-4">
+					Why Landscapers & Homeowners Choose Us
+				</h2>
+				<p class="text-lg text-warm-600 max-w-2xl mx-auto">
+					From our 65-acre Athens farm to your property—quality you can trust, service you can count on.
+				</p>
+			</div>
+
+			<!-- Value prop grid -->
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+				<!-- Certified Organic (Unique) -->
+				<div class="feature-box">
+					<div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+						<svg class="w-8 h-8 text-accent-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+					</div>
+					<h3 class="text-xl font-bold mb-2 text-warm-900">Certified Organic</h3>
+					<p class="text-warm-600">Georgia's only certified organic compost. Zero biosolids, pure quality. Made on-site with strict quality control.</p>
+					<span class="trust-badge mt-4">Certified Naturally Grown</span>
+				</div>
+
+				<!-- Local Delivery -->
+				<div class="feature-box">
+					<div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+						<svg class="w-8 h-8 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+						</svg>
+					</div>
+					<h3 class="text-xl font-bold mb-2 text-warm-900">Fast Local Delivery</h3>
+					<p class="text-warm-600">Order by 2 PM for next-day delivery throughout Athens area. Volume discounts available for contractors.</p>
+					<span class="text-sm text-primary-600 font-semibold mt-4 block">$40 + $1.25/mile after 20 mi</span>
+				</div>
+
+				<!-- Family Owned -->
+				<div class="feature-box">
+					<div class="w-16 h-16 bg-secondary-200 rounded-full flex items-center justify-center mx-auto mb-4">
+						<svg class="w-8 h-8 text-secondary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+						</svg>
+					</div>
+					<h3 class="text-xl font-bold mb-2 text-warm-900">Family-Owned Since Day One</h3>
+					<p class="text-warm-600">Built on land stewardship and faith-based values. A Southland Organics company serving the Athens community.</p>
+					<span class="text-sm text-warm-600 font-medium mt-4 block">65-acre working farm</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Featured Products - Showcase top sellers -->
+	<section class="section bg-warm-50">
+		<div class="container-custom">
+			<!-- Section header with category emphasis -->
+			<div class="text-center mb-12">
+				<h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-4">
+					Premium Landscape Supply
+				</h2>
+				<p class="text-lg text-warm-600 max-w-2xl mx-auto">
+					Bulk delivery of certified organic compost, premium mulch, and quality soil—everything you need for thriving landscapes.
+				</p>
+			</div>
+
+			<!-- Product showcase grid with REAL data -->
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+				{humusCompost && (
+					<div class="relative">
+						<div class="absolute top-4 right-4 z-10">
+							<span class="inline-block bg-accent-600 text-white px-3 py-1 rounded-full text-xs font-bold">
+								★ BEST SELLER
+							</span>
+						</div>
+						<ProductCard product={humusCompost} variant="featured" />
+					</div>
+				)}
+
+				{brownMulch && (
+					<ProductCard product={brownMulch} variant="default" />
+				)}
+
+				{topsoil && (
+					<ProductCard product={topsoil} variant="default" />
+				)}
+			</div>
+
+			<!-- View all CTA -->
+			<div class="text-center">
+				<a href="/products" class="btn-primary text-lg px-10 py-4">
+					View All Products
+				</a>
+				<p class="mt-4 text-sm text-warm-600">
+					<a href="/resources/contractor-program" class="font-semibold text-primary-600 hover:text-primary-700">
+						Contractor pricing available
+					</a> • Volume discounts • Account terms
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Land Management Services - NEW revenue vertical -->
+	<section class="section bg-gradient-to-br from-primary-500 to-primary-600 text-white">
+		<div class="container-custom">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+				<!-- Content column -->
+				<div>
+					<div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+						<span class="text-sm font-semibold">NEW SERVICE OFFERING</span>
+					</div>
+
+					<h2 class="text-3xl md:text-5xl font-display font-bold mb-6 leading-tight">
+						Eden Grazing Services
+					</h2>
+
+					<p class="text-xl mb-6 text-primary-50 leading-relaxed">
+						Sustainable land management through rotational grazing. Save money while improving soil health and biodiversity.
+					</p>
+
+					<!-- Benefits list -->
+					<ul class="space-y-4 mb-8">
+						<li class="flex items-start gap-3">
+							<svg class="w-6 h-6 text-accent-300 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+							</svg>
+							<span class="text-lg"><strong>30-50% cost savings</strong> vs. traditional mowing</span>
+						</li>
+						<li class="flex items-start gap-3">
+							<svg class="w-6 h-6 text-accent-300 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+							</svg>
+							<span class="text-lg">Perfect for <strong>retention ponds, solar farms, HOAs</strong></span>
+						</li>
+						<li class="flex items-start gap-3">
+							<svg class="w-6 h-6 text-accent-300 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+							</svg>
+							<span class="text-lg">Zero chemicals • Natural fertilization • Eco-friendly</span>
+						</li>
+					</ul>
+
+					<div class="flex flex-col sm:flex-row gap-4">
+						<a href="/land-management" class="btn bg-white text-primary-600 hover:bg-primary-50 text-lg px-8 py-4">
+							Learn More About Grazing
+						</a>
+						<a href="/land-management/request-service" class="btn-outline border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4">
+							Request Assessment
+						</a>
+					</div>
+
+					<!-- Pricing preview -->
+					<p class="mt-6 text-sm text-primary-100">
+						Packages from <span class="font-bold text-white">$300/month</span> (retention ponds) to <span class="font-bold text-white">$3,000/month</span> (solar farms)
+					</p>
+				</div>
+
+				<!-- Image/Visual column -->
+				<div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+					<div class="bg-primary-300 h-80 rounded-xl flex items-center justify-center">
+						<span class="text-primary-600 text-sm">Grazing Animals Image Placeholder</span>
+					</div>
+					<p class="mt-4 text-sm text-primary-100 text-center">
+						Partnership with Bo Carter, experienced grazing specialist
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Material Calculator - INTEGRATED for conversion -->
+	<section class="section bg-white">
+		<div class="container-custom">
+			<MaterialCalculator />
+		</div>
+	</section>
+
+	<!-- Trust & Social Proof -->
+	<section class="section bg-primary-50">
+		<div class="container-custom">
+			<div class="max-w-5xl mx-auto">
+				<!-- Stats -->
+				<div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+					<div class="text-center">
+						<div class="text-4xl font-bold text-primary-600 mb-2">500+</div>
+						<div class="text-sm text-warm-600">Cubic Yards Monthly</div>
+					</div>
+					<div class="text-center">
+						<div class="text-4xl font-bold text-primary-600 mb-2">65</div>
+						<div class="text-sm text-warm-600">Acre Working Farm</div>
+					</div>
+					<div class="text-center">
+						<div class="text-4xl font-bold text-primary-600 mb-2">100%</div>
+						<div class="text-sm text-warm-600">Organic Certified</div>
+					</div>
+					<div class="text-center">
+						<div class="text-4xl font-bold text-primary-600 mb-2">24hr</div>
+						<div class="text-sm text-warm-600">Delivery Turnaround</div>
+					</div>
+				</div>
+
+				<!-- Trust badges -->
+				<div class="flex flex-wrap justify-center gap-4">
+					<span class="trust-badge">Certified Organic</span>
+					<span class="trust-badge">Certified Naturally Grown</span>
+					<span class="trust-badge">Family-Owned</span>
+					<span class="trust-badge">Athens Local</span>
+					<span class="trust-badge">Southland Organics Company</span>
+				</div>
+			</div>
+		</div>
+	</section>
+</MainLayout>

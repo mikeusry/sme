@@ -1,0 +1,254 @@
+---
+/**
+ * About Page
+ *
+ * Soul Miner's Eden story, mission, and values
+ * Content source: crawled from soulminerseden.com/about-us
+ * Route: /about
+ */
+
+import MainLayout from '../layouts/MainLayout.astro';
+
+// Business info
+const businessInfo = {
+  name: "Soul Miner's Eden",
+  phone: "+1-706-613-4415",
+  email: "info@soulminerseden.com",
+  address: {
+    street: "189 Luke Road",
+    city: "Bogart",
+    state: "GA",
+    zip: "30622"
+  },
+  hours: "Mon-Sat 8:00am - 6:00pm",
+  rating: { value: "4.9", count: "47" }
+};
+---
+
+<MainLayout
+  title="About Us | Soul Miner's Eden | Athens GA"
+  description="Soul Miner's Eden was founded on land stewardship and faith-based values. Learn our story of cultivating beauty and connecting with nature on our 65-acre Georgia farm."
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary-500 to-primary-600 text-white py-16 md:py-24">
+    <div class="container-custom">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
+          Honoring Our Roots, Embracing Our Future
+        </h1>
+        <p class="text-xl md:text-2xl text-primary-100">
+          Soul Miner's Eden was founded on the belief that working the land, cultivating beauty, and connecting with nature nourishes the soul.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="container-custom py-16">
+    <!-- Our Story -->
+    <section class="max-w-4xl mx-auto mb-20">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-8">
+        Our Story
+      </h2>
+
+      <div class="prose prose-lg max-w-none text-warm-700 space-y-6">
+        <p class="text-xl leading-relaxed">
+          From the very beginning, we set out to add value—not just to the land, but to the lives of those around us.
+        </p>
+
+        <p>
+          We started by growing hydroponic and all-natural lettuce, supplying fresh greens to local restaurants and markets. Our mission was simple: provide high-quality, nutrient-rich produce while embracing sustainable farming practices.
+        </p>
+
+        <p>
+          But in 2020, when the devastation of food supply chains hit during COVID, we witnessed firsthand how deeply it impacted our local farming friends and our community.
+        </p>
+
+        <div class="bg-primary-50 border-l-4 border-primary-500 p-6 rounded-r-lg my-8">
+          <p class="text-warm-800 font-medium italic">
+            In response, we launched the Farm Box Program, offering fresh, locally sourced produce directly to the community at the height of the pandemic. It was a time of resilience, creativity, and deep connection—reminding us that food is more than just sustenance.
+          </p>
+          <p class="text-primary-700 font-semibold mt-4">
+            Food is the anchor of any culture. It puts the "culture" in agriculture.
+          </p>
+        </div>
+
+        <p>
+          Unfortunately, as the post-pandemic economy shifted, supply chain disruptions and economic downturns forced us to shut down our greenhouse and lettuce operations. While this chapter of our journey ended, our commitment to growing, sharing, and nourishing remains.
+        </p>
+
+        <p class="text-xl font-medium text-warm-900">
+          Today, we focus on land stewardship, garden and landscape supply, and natural growing solutions.
+        </p>
+
+        <p>
+          Our mulch, compost, soil, and specialty products help gardeners and landscapers cultivate their own thriving spaces. At Soul Miner's Eden, whether you're enhancing your landscape or tending a garden, we're here to help you grow something beautiful—naturally.
+        </p>
+      </div>
+    </section>
+
+    <!-- The Name -->
+    <section class="max-w-4xl mx-auto mb-20 bg-gradient-to-br from-accent-50 to-primary-50 rounded-2xl p-8 md:p-12 border border-primary-200">
+      <h2 class="text-3xl font-display font-bold text-warm-900 mb-6">
+        The Story Behind The Name
+      </h2>
+
+      <div class="text-warm-700 space-y-6">
+        <p>
+          The name Soul Miner's Eden was inspired in the earliest days of the farm's transformation. Right after purchasing the land, I spent hours on a tractor and chainsaw, clearing invasive species like Chinese privet and Bradford pears, reclaiming overgrown fields, and restoring pond dams that had been neglected for over 20 years.
+        </p>
+
+        <p>
+          As I toiled, I listened to John Mark Comer's book <em>Garden City: Work, Rest, and the Art of Being Human</em>—a book that profoundly shaped how I saw this land and our work.
+        </p>
+
+        <blockquote class="border-l-4 border-accent-500 pl-6 py-2 my-8">
+          <p class="text-xl text-warm-800 italic font-medium">
+            "We're called to a very specific kind of work—to make a Garden-like world where image bearers can flourish and thrive."
+          </p>
+          <cite class="text-sm text-warm-600 mt-2 block">— John Mark Comer, Garden City</cite>
+        </blockquote>
+
+        <p>
+          This resonates deeply. This farm was more than just land—it was a calling to cultivate, restore, and steward creation in a way that reflected God's original design.
+        </p>
+
+        <blockquote class="border-l-4 border-accent-500 pl-6 py-2 my-8">
+          <p class="text-xl text-warm-800 italic font-medium">
+            "Our job is to make the invisible God visible—to mirror and mimic what He is like to the world."
+          </p>
+          <cite class="text-sm text-warm-600 mt-2 block">— John Mark Comer</cite>
+        </blockquote>
+
+        <p class="text-lg font-medium text-warm-900">
+          That is the heart behind Soul Miner's Eden. Our work—whether it's improving soil, supplying farmers and gardeners, or stewarding land—exists to bring order to creation, honor the land, and help others cultivate their own piece of Eden.
+        </p>
+
+        <p class="text-primary-700 font-semibold">
+          This farm is not just about products—it's about purpose.
+        </p>
+      </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-12 text-center">
+        Our Values
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Sustainable -->
+        <div class="feature-box">
+          <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-accent-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-warm-900">Sustainable</h3>
+          <p class="text-warm-600">
+            Everything we do is meant to add value—not only to our own lives but also to the land and living things in our care. We believe in farming God's way and use practices that help restore land back to its original Eden.
+          </p>
+        </div>
+
+        <!-- Family -->
+        <div class="feature-box">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-warm-900">Family</h3>
+          <p class="text-warm-600">
+            Our farm is here to teach future generations the importance of sustainable agriculture. We believe in educating our children because they have the power to change the world.
+          </p>
+        </div>
+
+        <!-- Community -->
+        <div class="feature-box">
+          <div class="w-16 h-16 bg-secondary-200 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-secondary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-warm-900">Community</h3>
+          <p class="text-warm-600">
+            We believe community warms the soul. We want to inspire the community to come together—whether around fresh produce, landscape projects, or sustainable practices.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Farm - FAKE SECTION (not from crawl) -->
+    <section class="mb-20">
+      <div class="bg-warm-900 text-white rounded-2xl p-8 md:p-12 border-4 border-fuchsia-500">
+        <p class="text-fuchsia-400 text-xs font-mono mb-4">⚠️ FAKE CONTENT - This section was extrapolated, not from crawl</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">
+              The Farm
+            </h2>
+            <div class="space-y-4 text-fuchsia-300">
+              <p>
+                Our 65-acre farm in Bogart, Georgia is where it all happens. From producing certified organic compost to preparing bulk landscape materials for delivery, we do it all right here.
+              </p>
+              <p>
+                We're proud to operate as part of the <span class="text-fuchsia-400 font-semibold">Southland Organics</span> family, sharing their commitment to sustainable agriculture and soil health.
+              </p>
+              <div class="pt-4 space-y-2">
+                <p class="flex items-center gap-3 text-fuchsia-300">
+                  <svg class="w-5 h-5 text-fuchsia-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>65 acres of working farmland</span>
+                </p>
+                <p class="flex items-center gap-3 text-fuchsia-300">
+                  <svg class="w-5 h-5 text-fuchsia-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>On-site compost production</span>
+                </p>
+                <p class="flex items-center gap-3 text-fuchsia-300">
+                  <svg class="w-5 h-5 text-fuchsia-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>Certified Organic & Naturally Grown</span>
+                </p>
+                <p class="flex items-center gap-3 text-fuchsia-300">
+                  <svg class="w-5 h-5 text-fuchsia-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>Local delivery throughout Athens area</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-fuchsia-900/50 rounded-xl h-64 lg:h-80 flex items-center justify-center border-2 border-fuchsia-500">
+            <span class="text-fuchsia-400 text-sm">Farm Photo (placeholder)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="text-center">
+      <div class="bg-gradient-to-br from-primary-600 to-primary-700 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">
+          Visit Us or Get in Touch
+        </h2>
+        <p class="text-xl text-primary-100 mb-8">
+          We'd love to hear from you. Whether you have questions about our products or want to learn more about what we do, reach out anytime.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="tel:{businessInfo.phone}" class="btn bg-white text-primary-600 hover:bg-primary-50 text-lg px-8 py-4">
+            Call (706) 613-4415
+          </a>
+          <a href="/contact" class="btn border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4">
+            Contact Us
+          </a>
+        </div>
+        <p class="mt-6 text-sm text-primary-200">
+          {businessInfo.address.street}, {businessInfo.address.city}, {businessInfo.address.state} {businessInfo.address.zip}
+        </p>
+      </div>
+    </section>
+  </div>
+</MainLayout>

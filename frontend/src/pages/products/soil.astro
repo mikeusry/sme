@@ -1,0 +1,245 @@
+---
+/**
+ * Soil Category Page
+ *
+ * Quality topsoil and specialized soil blends
+ * Route: /products/soil
+ */
+
+import MainLayout from '../../layouts/MainLayout.astro';
+import ProductCard from '../../components/products/ProductCard.astro';
+import MaterialCalculator from '../../components/products/MaterialCalculator.astro';
+import { getProductsByCategory } from '../../lib/products';
+
+const products = getProductsByCategory('soil');
+---
+
+<MainLayout
+  title="Premium Topsoil & Specialty Soil Blends | Soul Miner's Eden"
+  description="High-quality screened topsoil and engineered soil blends for lawns, gardens, and stormwater management. Local delivery in Athens, GA."
+>
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-warm-700 to-warm-900 text-white py-20">
+    <div class="container-custom">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4">
+          Premium Soil Products
+        </h1>
+        <p class="text-xl md:text-2xl text-warm-200 mb-6">
+          From screened topsoil for lawns to engineered blends for stormwater systems. Quality soil is the foundation of every successful landscape.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <span class="badge bg-white/20 border-white/40 text-white">
+            Screened & Clean
+          </span>
+          <span class="badge bg-white/20 border-white/40 text-white">
+            Weed-Free
+          </span>
+          <span class="badge bg-white/20 border-white/40 text-white">
+            Custom Blends
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-custom py-16">
+    <!-- Introduction -->
+    <section class="mb-16">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-6">
+          The Foundation of Great Landscapes
+        </h2>
+        <p class="text-xl text-warm-700 leading-relaxed">
+          Quality soil is essential for healthy plant growth. Our carefully screened topsoil and specialized blends provide the perfect foundation for lawns, gardens, and landscape projects.
+        </p>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section class="mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {products.map(product => (
+          <ProductCard product={product} variant="featured" />
+        ))}
+      </div>
+    </section>
+
+    <!-- Material Calculator -->
+    <section class="mb-16">
+      <MaterialCalculator />
+    </section>
+
+    <!-- Product Comparison -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-display font-bold text-warm-900 mb-8 text-center">
+        Choose the Right Soil
+      </h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse bg-white shadow-lg rounded-xl overflow-hidden">
+          <thead>
+            <tr class="bg-primary-600 text-white">
+              <th class="text-left p-4 font-bold">Product</th>
+              <th class="text-left p-4 font-bold">Best For</th>
+              <th class="text-left p-4 font-bold">Key Features</th>
+              <th class="text-right p-4 font-bold">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-secondary-200 hover:bg-primary-50 transition-colors">
+              <td class="p-4">
+                <div class="font-bold text-warm-900">Premium Topsoil</div>
+                <div class="text-sm text-warm-600">Most Popular</div>
+              </td>
+              <td class="p-4 text-warm-700">
+                New lawns, garden beds, filling low spots, general landscaping
+              </td>
+              <td class="p-4 text-warm-700">
+                Screened, nutrient-rich, excellent drainage
+              </td>
+              <td class="p-4 text-right font-bold text-warm-900">
+                $30/cy
+              </td>
+            </tr>
+            <tr class="border-b border-secondary-200 hover:bg-primary-50 transition-colors">
+              <td class="p-4">
+                <div class="font-bold text-warm-900">Bioretention Soil</div>
+                <div class="text-sm text-warm-600">Engineered Mix</div>
+              </td>
+              <td class="p-4 text-warm-700">
+                Rain gardens, bioswales, stormwater retention ponds
+              </td>
+              <td class="p-4 text-warm-700">
+                Meets GA specs, excellent filtration, supports native plants
+              </td>
+              <td class="p-4 text-right font-bold text-warm-900">
+                $45/cy
+              </td>
+            </tr>
+            <tr class="hover:bg-primary-50 transition-colors">
+              <td class="p-4">
+                <div class="font-bold text-warm-900">Sod Soil Blend</div>
+                <div class="text-sm text-warm-600">Specialty Mix</div>
+              </td>
+              <td class="p-4 text-warm-700">
+                Sod installation, lawn renovation, athletic fields
+              </td>
+              <td class="p-4 text-warm-700">
+                Optimized for sod, promotes strong roots, level consistency
+              </td>
+              <td class="p-4 text-right font-bold text-warm-900">
+                $35/cy
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Applications -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-display font-bold text-warm-900 mb-8 text-center">
+        Common Applications
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-secondary-100 rounded-xl p-6 border border-secondary-300">
+          <h3 class="font-bold text-xl mb-4 text-warm-900">🏡 New Lawn Installation</h3>
+          <p class="text-warm-700 mb-4">
+            Spread 4-6 inches of premium topsoil or sod soil blend. Grade for proper drainage, then install sod or seed.
+          </p>
+          <p class="text-sm font-semibold text-primary-700">
+            Recommended: Sod Soil Blend or Premium Topsoil
+          </p>
+        </div>
+
+        <div class="bg-secondary-100 rounded-xl p-6 border border-secondary-300">
+          <h3 class="font-bold text-xl mb-4 text-warm-900">🌧️ Rain Garden Creation</h3>
+          <p class="text-warm-700 mb-4">
+            Use engineered bioretention soil to filter stormwater runoff while supporting native plants.
+          </p>
+          <p class="text-sm font-semibold text-primary-700">
+            Recommended: Bioretention Soil Mix
+          </p>
+        </div>
+
+        <div class="bg-secondary-100 rounded-xl p-6 border border-secondary-300">
+          <h3 class="font-bold text-xl mb-4 text-warm-900">🌱 Garden Bed Preparation</h3>
+          <p class="text-warm-700 mb-4">
+            Mix topsoil with compost (30-40% compost) for nutrient-rich growing medium ideal for vegetables and flowers.
+          </p>
+          <p class="text-sm font-semibold text-primary-700">
+            Recommended: Premium Topsoil + Humus Compost
+          </p>
+        </div>
+
+        <div class="bg-secondary-100 rounded-xl p-6 border border-secondary-300">
+          <h3 class="font-bold text-xl mb-4 text-warm-900">📐 Grade Correction</h3>
+          <p class="text-warm-700 mb-4">
+            Fill low spots and correct drainage issues with clean, screened topsoil. Ensures proper water flow away from structures.
+          </p>
+          <p class="text-sm font-semibold text-primary-700">
+            Recommended: Premium Topsoil
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Quality Matters -->
+    <section class="mb-16 bg-gradient-to-br from-primary-50 to-accent-50 rounded-2xl p-8 md:p-12 border border-primary-200">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl font-display font-bold text-warm-900 mb-6">
+          Why Quality Soil Matters
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+          <div>
+            <h3 class="font-bold text-lg mb-2 text-warm-900">✓ Screened & Clean</h3>
+            <p class="text-warm-700">
+              We screen our topsoil to remove rocks, debris, and weed seeds for a clean, workable product.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg mb-2 text-warm-900">✓ Consistent Quality</h3>
+            <p class="text-warm-700">
+              Every load meets our standards for texture, drainage, and organic matter content.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg mb-2 text-warm-900">✓ Proper Drainage</h3>
+            <p class="text-warm-700">
+              Balanced texture allows water to penetrate while preventing waterlogging.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg mb-2 text-warm-900">✓ Rich in Organic Matter</h3>
+            <p class="text-warm-700">
+              Natural organic content supports beneficial soil microbes and plant nutrition.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="text-center">
+      <div class="bg-gradient-to-br from-warm-800 to-warm-900 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">
+          Build Your Landscape on Quality Soil
+        </h2>
+        <p class="text-xl text-warm-200 mb-8">
+          Order premium topsoil and specialty blends today with local delivery throughout Athens and surrounding areas.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="tel:+17066134415" class="btn bg-white text-warm-900 hover:bg-warm-100 text-lg px-8 py-4">
+            📞 Call (706) 613-4415
+          </a>
+          <a href="/contact-us" class="btn border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4">
+            Request a Quote
+          </a>
+        </div>
+        <p class="mt-6 text-sm text-warm-200">
+          🚚 Delivery: $40 base + $1.25/mile after 20 miles | 📍 Pickup available in Bogart, GA
+        </p>
+      </div>
+    </section>
+  </div>
+</MainLayout>

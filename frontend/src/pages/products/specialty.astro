@@ -1,0 +1,279 @@
+---
+/**
+ * Specialty Products Category Page
+ *
+ * Unique products and custom blends
+ * Route: /products/specialty
+ */
+
+import MainLayout from '../../layouts/MainLayout.astro';
+import ProductCard from '../../components/products/ProductCard.astro';
+import { getProductsByCategory } from '../../lib/products';
+
+const products = getProductsByCategory('specialty');
+---
+
+<MainLayout
+  title="Specialty Landscape Products | Soul Miner's Eden"
+  description="Unique landscape solutions including used artificial turf, custom soil blends, and specialty products for specific projects."
+>
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-br from-primary-600 to-accent-700 text-white py-20">
+    <div class="container-custom">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4">
+          Specialty Products
+        </h1>
+        <p class="text-xl md:text-2xl text-white/90 mb-6">
+          Unique solutions for specific projects. From ready-to-plant soil blends to reclaimed artificial turf, we offer specialty products you won't find anywhere else.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <span class="badge bg-white/20 border-white/40 text-white">
+            Custom Blends
+          </span>
+          <span class="badge bg-white/20 border-white/40 text-white">
+            Sustainable Options
+          </span>
+          <span class="badge bg-white/20 border-white/40 text-white">
+            Unique Solutions
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-custom py-16">
+    <!-- Products -->
+    <section class="mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {products.map(product => (
+          <ProductCard product={product} variant="featured" />
+        ))}
+      </div>
+    </section>
+
+    <!-- Featured: Topsoil-Compost Blend -->
+    <section class="mb-16">
+      <div class="bg-gradient-to-br from-accent-50 to-primary-50 rounded-2xl p-8 md:p-12 border-2 border-primary-200">
+        <div class="max-w-4xl mx-auto">
+          <span class="inline-block bg-accent-600 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
+            ⭐ READY-TO-PLANT FORMULA
+          </span>
+          <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-6">
+            Topsoil-Compost Blend
+          </h2>
+          <p class="text-xl text-warm-700 mb-8">
+            Our most popular specialty product combines premium topsoil with certified organic compost in the perfect ratio for immediate planting. No need to mix your own—this blend is ready to use straight from delivery.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div>
+              <h3 class="font-bold text-lg mb-3 text-warm-900">Perfect For:</h3>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-warm-700">
+                  <span class="text-accent-600 mt-1">✓</span>
+                  <span>Raised bed gardens</span>
+                </li>
+                <li class="flex items-start gap-2 text-warm-700">
+                  <span class="text-accent-600 mt-1">✓</span>
+                  <span>Container gardens</span>
+                </li>
+                <li class="flex items-start gap-2 text-warm-700">
+                  <span class="text-accent-600 mt-1">✓</span>
+                  <span>Vegetable gardens</span>
+                </li>
+                <li class="flex items-start gap-2 text-warm-700">
+                  <span class="text-accent-600 mt-1">✓</span>
+                  <span>Flower beds</span>
+                </li>
+                <li class="flex items-start gap-2 text-warm-700">
+                  <span class="text-accent-600 mt-1">✓</span>
+                  <span>New garden installations</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="font-bold text-lg mb-3 text-warm-900">Why This Blend?</h3>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-warm-700">
+                  <span class="text-accent-600 mt-1">✓</span>
+                  <span>Balanced nutrition from organic compost</span>
+                </li>
+                <li class="flex items-start gap-2 text-warm-700">
+                  <span class="text-accent-600 mt-1">✓</span>
+                  <span>Good structure from quality topsoil</span>
+                </li>
+                <li class="flex items-start gap-2 text-warm-700">
+                  <span class="text-accent-600 mt-1">✓</span>
+                  <span>Excellent water retention</span>
+                </li>
+                <li class="flex items-start gap-2 text-warm-700">
+                  <span class="text-accent-600 mt-1">✓</span>
+                  <span>No additional amendments needed</span>
+                </li>
+                <li class="flex items-start gap-2 text-warm-700">
+                  <span class="text-accent-600 mt-1">✓</span>
+                  <span>Contains certified organic compost</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between p-6 bg-white rounded-xl border border-primary-300">
+            <div>
+              <p class="text-sm text-warm-600 mb-1">Price</p>
+              <p class="text-4xl font-bold text-accent-600">$40<span class="text-xl text-warm-700">/cy</span></p>
+            </div>
+            <a href="/products/compost-blend" class="btn-primary text-lg px-8 py-4">
+              View Product Details →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured: Used Artificial Turf -->
+    <section class="mb-16">
+      <div class="bg-gradient-to-br from-secondary-100 to-warm-100 rounded-2xl p-8 md:p-12 border border-secondary-300">
+        <div class="max-w-4xl mx-auto">
+          <span class="inline-block bg-secondary-700 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
+            ♻️ SUSTAINABLE REUSE
+          </span>
+          <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-6">
+            Used Artificial Turf
+          </h2>
+          <p class="text-xl text-warm-700 mb-8">
+            Reclaimed from professional sports facilities, our used artificial turf offers an economical and sustainable solution for outdoor projects. Heavy-duty construction withstands years of additional use.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="text-center p-6 bg-white rounded-xl border border-secondary-200">
+              <div class="text-4xl mb-2">📐</div>
+              <p class="text-sm text-warm-600 mb-1">Dimensions</p>
+              <p class="text-xl font-bold text-warm-900">57' × 7'</p>
+            </div>
+
+            <div class="text-center p-6 bg-white rounded-xl border border-secondary-200">
+              <div class="text-4xl mb-2">⚖️</div>
+              <p class="text-sm text-warm-600 mb-1">Weight</p>
+              <p class="text-xl font-bold text-warm-900">~1,300 lbs</p>
+            </div>
+
+            <div class="text-center p-6 bg-white rounded-xl border border-secondary-200">
+              <div class="text-4xl mb-2">💰</div>
+              <p class="text-sm text-warm-600 mb-1">Price per Roll</p>
+              <p class="text-xl font-bold text-warm-900">$100</p>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="font-bold text-lg mb-4 text-warm-900">Ideal Applications:</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="flex items-start gap-3 p-4 bg-white rounded-lg border border-secondary-200">
+                <span class="text-2xl">🐕</span>
+                <div>
+                  <h4 class="font-semibold text-warm-900 mb-1">Dog Runs & Kennels</h4>
+                  <p class="text-sm text-warm-700">Durable, easy-to-clean surface for pet areas</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 p-4 bg-white rounded-lg border border-secondary-200">
+                <span class="text-2xl">🚶</span>
+                <div>
+                  <h4 class="font-semibold text-warm-900 mb-1">Pathways & Walkways</h4>
+                  <p class="text-sm text-warm-700">Create all-weather walking surfaces</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 p-4 bg-white rounded-lg border border-secondary-200">
+                <span class="text-2xl">🎯</span>
+                <div>
+                  <h4 class="font-semibold text-warm-900 mb-1">Under Swing Sets</h4>
+                  <p class="text-sm text-warm-700">Soft landing surface for play areas</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 p-4 bg-white rounded-lg border border-secondary-200">
+                <span class="text-2xl">🎨</span>
+                <div>
+                  <h4 class="font-semibold text-warm-900 mb-1">Creative Projects</h4>
+                  <p class="text-sm text-warm-700">DIY landscaping and outdoor projects</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-warm-100 rounded-lg p-6 border border-warm-300">
+            <h4 class="font-bold mb-3 text-warm-900">Important Notes:</h4>
+            <ul class="space-y-2 text-sm text-warm-700">
+              <li>• Previously used - may show signs of wear</li>
+              <li>• Heavy rolls require appropriate equipment for handling and installation</li>
+              <li>• Weather-resistant and requires minimal maintenance</li>
+              <li>• Each roll provides 399 square feet of coverage</li>
+              <li>• Sustainable alternative to new turf at a fraction of the cost</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Custom Orders -->
+    <section class="mb-16">
+      <div class="bg-primary-600 text-white rounded-2xl p-8 md:p-12 text-center">
+        <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">
+          Need a Custom Blend?
+        </h2>
+        <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+          We can create custom soil blends for specific applications. Whether you need a specialized growing medium or a unique mix ratio, we're here to help.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="tel:+17066134415" class="btn bg-white text-primary-600 hover:bg-primary-50 text-lg px-8 py-4">
+            📞 Call (706) 613-4415
+          </a>
+          <a href="/contact-us" class="btn border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4">
+            Request Custom Quote
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Buy Specialty? -->
+    <section>
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-display font-bold text-warm-900 mb-8 text-center">
+          Why Choose Specialty Products?
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-3 text-warm-900">💪 Save Time & Effort</h3>
+            <p class="text-warm-700">
+              Pre-mixed blends eliminate the need to purchase and mix multiple products yourself. Ready to use straight from delivery.
+            </p>
+          </div>
+
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-3 text-warm-900">🎯 Purpose-Built</h3>
+            <p class="text-warm-700">
+              Each specialty product is formulated or selected for specific applications, ensuring optimal results for your project.
+            </p>
+          </div>
+
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-3 text-warm-900">💰 Better Value</h3>
+            <p class="text-warm-700">
+              Pre-mixed blends and reclaimed materials often provide better value than buying components separately or purchasing new.
+            </p>
+          </div>
+
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-3 text-warm-900">♻️ Sustainable Choice</h3>
+            <p class="text-warm-700">
+              Reclaimed products like used turf give materials a second life, reducing waste and environmental impact.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</MainLayout>

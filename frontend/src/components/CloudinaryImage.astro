@@ -1,0 +1,204 @@
+---
+/**
+ * CloudinaryImage Component
+ *
+ * Custom image component for Cloudinary integration in Astro.
+ * Provides optimized, responsive images with lazy loading and modern formats.
+ *
+ * Why not use Astro's built-in Image component?
+ * - Cloudinary handles transformations server-side, avoiding build-time processing
+ * - Dynamic image URLs from Cloudinary don't work well with Astro's static optimization
+ * - Cloudinary provides better control over format selection (WebP, AVIF) and quality
+ * - Allows runtime image transformations without rebuilding
+ *
+ * @example
+ * <CloudinaryImage
+ *   publicId="products/compost-pile.jpg"
+ *   alt="Organic compost"
+ *   width={800}
+ *   height={600}
+ *   class="rounded-lg"
+ * />
+ */
+
+import { buildCloudinaryUrl, getCloudinaryResponsiveSet, getPlaceholder, type CloudinaryTransformOptions } from '../lib/cloudinary';
+
+export interface Props {
+  /** Image path within Cloudinary folder (e.g., 'products/compost-pile.jpg') */
+  publicId: string;
+  /** Alt text for accessibility (required) */
+  alt: string;
+  /** Image width in pixels */
+  width?: number;
+  /** Image height in pixels */
+  height?: number;
+  /** Crop mode */
+  crop?: CloudinaryTransformOptions['crop'];
+  /** Focal point for cropping */
+  gravity?: CloudinaryTransformOptions['gravity'];
+  /** Image quality (1-100 or 'auto') */
+  quality?: CloudinaryTransformOptions['quality'];
+  /** Image format ('auto', 'webp', 'avif', 'jpg', 'png') */
+  format?: CloudinaryTransformOptions['format'];
+  /** Device pixel ratio multiplier */
+  dpr?: CloudinaryTransformOptions['dpr'];
+  /** Apply effects (e.g., 'blur', 'sepia', 'grayscale') */
+  effect?: string;
+  /** Blur amount (0-2000) */
+  blur?: number;
+  /** Brightness adjustment (-99 to 100) */
+  brightness?: number;
+  /** Contrast adjustment (-100 to 100) */
+  contrast?: number;
+  /** Saturation adjustment (-100 to 100) */
+  saturation?: number;
+  /** Enable responsive srcset generation */
+  responsive?: boolean;
+  /** Lazy loading (default: true) */
+  loading?: 'lazy' | 'eager';
+  /** Fetch priority for critical images */
+  fetchpriority?: 'high' | 'low' | 'auto';
+  /** Additional CSS classes */
+  class?: string;
+  /** Show loading placeholder */
+  placeholder?: boolean;
+  /** Custom placeholder text */
+  placeholderText?: string;
+  /** Additional HTML attributes */
+  [key: string]: any;
+}
+
+const {
+  publicId,
+  alt,
+  width = 800,
+  height,
+  crop = 'fill',
+  gravity = 'auto',
+  quality = 'auto',
+  format = 'auto',
+  dpr = 'auto',
+  effect,
+  blur,
+  brightness,
+  contrast,
+  saturation,
+  responsive = true,
+  loading = 'lazy',
+  fetchpriority = 'auto',
+  class: className = '',
+  placeholder = false,
+  placeholderText,
+  ...rest
+} = Astro.props;
+
+// Calculate aspect ratio if both dimensions provided
+const aspectRatio = height && width ? height / width : 1;
+
+// Build transformation options
+const transformOptions: CloudinaryTransformOptions = {
+  width,
+  height,
+  crop,
+  gravity,
+  quality,
+  format,
+  dpr,
+  effect,
+  blur,
+  brightness,
+  contrast,
+  saturation,
+};
+
+// Generate image URLs
+const imageUrl = buildCloudinaryUrl(publicId, transformOptions);
+
+// Generate responsive srcset if enabled
+let srcset = '';
+let sizes = '';
+if (responsive) {
+  const responsiveSet = getCloudinaryResponsiveSet(publicId, width, aspectRatio);
+  srcset = responsiveSet.srcset;
+  sizes = responsiveSet.sizes;
+}
+
+// Placeholder for loading state
+const placeholderUrl = placeholder
+  ? getPlaceholder(width, height || width, placeholderText || 'Loading...')
+  : undefined;
+
+// Error handling - fallback image
+const fallbackUrl = getPlaceholder(width, height || width, alt || 'Image');
+---
+
+<img
+  src={imageUrl}
+  alt={alt}
+  width={width}
+  height={height || width}
+  srcset={responsive ? srcset : undefined}
+  sizes={responsive ? sizes : undefined}
+  loading={loading}
+  fetchpriority={fetchpriority}
+  class={className}
+  data-placeholder={placeholderUrl}
+  onerror={`this.src='${fallbackUrl}'`}
+  {...rest}
+/>
+
+<style>
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  img[data-placeholder] {
+    background-image: var(--placeholder-url);
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* Loading animation */
+  img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  img[loading="lazy"].loaded {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  // Intersection Observer for better lazy loading
+  if ('IntersectionObserver' in window) {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target as HTMLImageElement;
+
+          // Add loaded class when image loads
+          img.addEventListener('load', () => {
+            img.classList.add('loaded');
+          });
+
+          // If already loaded (cached), add class immediately
+          if (img.complete) {
+            img.classList.add('loaded');
+          }
+
+          observer.unobserve(img);
+        }
+      });
+    }, {
+      rootMargin: '50px 0px', // Start loading 50px before entering viewport
+      threshold: 0.01
+    });
+
+    images.forEach(img => imageObserver.observe(img));
+  }
+</script>

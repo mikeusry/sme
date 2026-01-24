@@ -1,0 +1,207 @@
+---
+/**
+ * Compost Category Page
+ *
+ * Georgia's ONLY certified organic compost
+ * Route: /products/compost
+ */
+
+import MainLayout from '../../layouts/MainLayout.astro';
+import ProductCard from '../../components/products/ProductCard.astro';
+import MaterialCalculator from '../../components/products/MaterialCalculator.astro';
+import HeroImage from '../../components/HeroImage.astro';
+import { getProductsByCategory } from '../../lib/products';
+
+const products = getProductsByCategory('compost');
+---
+
+<MainLayout
+  title="Certified Organic Compost Athens GA | Soul Miner's Eden"
+  description="Georgia's ONLY certified organic compost. Transform your soil with nutrient-rich, microbially-active compost. Local delivery available in Athens, GA."
+>
+  <!-- Hero Section -->
+  <div class="relative">
+    <HeroImage
+      publicId="products/compost/compost-action.jpg"
+      alt="Certified Organic Compost - Soul Miner's Eden"
+      height={600}
+      overlay={true}
+    />
+
+    <!-- Hero Content Overlay -->
+    <div class="absolute inset-0 flex items-center">
+      <div class="container-custom">
+        <div class="max-w-2xl">
+          <div class="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-primary-200">
+            <span class="inline-block bg-accent-600 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
+              ★ NO LOCAL COMPETITION ★
+            </span>
+            <h1 class="text-4xl md:text-5xl font-display font-bold text-warm-900 mb-4">
+              Georgia's ONLY Certified Organic Compost
+            </h1>
+            <p class="text-xl text-warm-700 mb-6">
+              Transform your soil with nutrient-rich, microbially-active compost. Certified Organic and Certified Naturally Grown.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span class="trust-badge">Certified Organic</span>
+              <span class="trust-badge">Certified Naturally Grown</span>
+              <span class="trust-badge">Athens, GA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-custom py-16">
+    <!-- Introduction -->
+    <section class="mb-16">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-6">
+          Why Soul Miner's Eden Compost?
+        </h2>
+        <p class="text-xl text-warm-700 leading-relaxed mb-8">
+          We're the only source in Georgia for certified organic compost. Our carefully crafted compost is the result of sustainable farming practices on our 65-acre family farm, creating a soil amendment that transforms gardens and landscapes.
+        </p>
+      </div>
+
+      <!-- Key Benefits Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+        <div class="feature-box">
+          <div class="text-4xl mb-4">🌱</div>
+          <h3 class="font-bold text-xl mb-3 text-warm-900">Certified Organic</h3>
+          <p class="text-warm-700">
+            The ONLY certified organic compost in Georgia. Meet strict organic standards for vegetables, fruits, and organic farms.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <div class="text-4xl mb-4">🦠</div>
+          <h3 class="font-bold text-xl mb-3 text-warm-900">Living Soil</h3>
+          <p class="text-warm-700">
+            Packed with beneficial microorganisms that improve soil health, suppress diseases, and promote vigorous plant growth.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <div class="text-4xl mb-4">💧</div>
+          <h3 class="font-bold text-xl mb-3 text-warm-900">Water Smart</h3>
+          <p class="text-warm-700">
+            Improves soil structure and water retention, reducing irrigation needs while preventing nutrient runoff.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-display font-bold text-warm-900 mb-8 text-center">
+        Our Compost Products
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {products.map(product => (
+          <ProductCard product={product} variant="featured" />
+        ))}
+      </div>
+    </section>
+
+    <!-- Material Calculator -->
+    <section class="mb-16">
+      <MaterialCalculator />
+    </section>
+
+    <!-- Applications & Use Cases -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-display font-bold text-warm-900 mb-8 text-center">
+        Perfect For
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div class="bg-primary-50 rounded-xl p-6 border border-primary-200">
+          <h3 class="font-bold text-xl mb-3 text-warm-900">🥕 Vegetable Gardens</h3>
+          <p class="text-warm-700 mb-4">
+            Certified organic for edible crops. Adds nutrients naturally without synthetic chemicals.
+          </p>
+          <p class="text-sm text-primary-700 font-semibold">
+            Recommended depth: 3-4 inches mixed into soil
+          </p>
+        </div>
+
+        <div class="bg-primary-50 rounded-xl p-6 border border-primary-200">
+          <h3 class="font-bold text-xl mb-3 text-warm-900">🌸 Flower Beds</h3>
+          <p class="text-warm-700 mb-4">
+            Improves soil structure and provides slow-release nutrition for vibrant blooms.
+          </p>
+          <p class="text-sm text-primary-700 font-semibold">
+            Recommended depth: 2-3 inches as top dressing
+          </p>
+        </div>
+
+        <div class="bg-primary-50 rounded-xl p-6 border border-primary-200">
+          <h3 class="font-bold text-xl mb-3 text-warm-900">🌿 Lawn Care</h3>
+          <p class="text-warm-700 mb-4">
+            Top-dress lawns to improve soil health and reduce need for synthetic fertilizers.
+          </p>
+          <p class="text-sm text-primary-700 font-semibold">
+            Recommended: 1/4-1/2 inch spread evenly
+          </p>
+        </div>
+
+        <div class="bg-primary-50 rounded-xl p-6 border border-primary-200">
+          <h3 class="font-bold text-xl mb-3 text-warm-900">🌳 Trees & Shrubs</h3>
+          <p class="text-warm-700 mb-4">
+            Mix into planting holes for healthier root development and long-term nutrition.
+          </p>
+          <p class="text-sm text-primary-700 font-semibold">
+            Recommended: Mix 30% compost with native soil
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Organic Matters -->
+    <section class="mb-16 bg-gradient-to-br from-accent-50 to-primary-50 rounded-2xl p-8 md:p-12 border border-primary-200">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-display font-bold text-warm-900 mb-6 text-center">
+          Why Certified Organic Compost Matters
+        </h2>
+        <div class="space-y-4 text-warm-700">
+          <p class="text-lg">
+            <strong class="text-accent-700">Zero Synthetic Chemicals:</strong> No pesticides, herbicides, or synthetic fertilizers. Safe for growing food and protecting pollinators.
+          </p>
+          <p class="text-lg">
+            <strong class="text-accent-700">Verified Standards:</strong> Third-party certification ensures our compost meets strict organic standards year after year.
+          </p>
+          <p class="text-lg">
+            <strong class="text-accent-700">Support Local Organic Farming:</strong> Your purchase supports sustainable agriculture and local organic practices in Georgia.
+          </p>
+          <p class="text-lg">
+            <strong class="text-accent-700">Healthier Soil Ecosystem:</strong> Build living soil that sustains itself with beneficial microbes, not chemical inputs.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="text-center">
+      <div class="bg-gradient-to-br from-primary-600 to-primary-700 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">
+          Ready to Transform Your Soil?
+        </h2>
+        <p class="text-xl text-primary-100 mb-8">
+          Order Georgia's only certified organic compost today. Local delivery available throughout Athens and surrounding areas.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="tel:+17066134415" class="btn bg-white text-primary-600 hover:bg-primary-50 text-lg px-8 py-4">
+            📞 Call (706) 613-4415
+          </a>
+          <a href="/contact-us" class="btn border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4">
+            Request a Quote
+          </a>
+        </div>
+        <p class="mt-6 text-sm text-primary-100">
+          💚 Delivery: $40 base + $1.25/mile after 20 miles | 📍 Pickup available in Bogart, GA
+        </p>
+      </div>
+    </section>
+  </div>
+</MainLayout>

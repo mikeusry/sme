@@ -1,0 +1,407 @@
+---
+/**
+ * Admin Layout
+ *
+ * Based on @pointdog/admin-core AdminLayout template
+ * Customized for Soul Miner's Eden
+ */
+
+import { adminConfig, DEFAULT_NAV_ITEMS, ADMIN_ICONS } from '../admin.config';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = '' } = Astro.props;
+
+// Filter nav items based on enabled modules
+const navItems = DEFAULT_NAV_ITEMS.filter(item =>
+  !item.module || adminConfig.modules[item.module]
+);
+
+// Get current path for active state
+const currentPath = Astro.url.pathname;
+
+// Icon helper
+function getIcon(name: string): string {
+  return ADMIN_ICONS[name as keyof typeof ADMIN_ICONS] || ADMIN_ICONS.file;
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title} | {adminConfig.siteName} Admin</title>
+  <meta name="description" content={description}>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <style define:vars={{
+    primary: adminConfig.colors.primary,
+    primaryHover: adminConfig.colors.primaryHover,
+    primaryLight: adminConfig.colors.light,
+    primaryText: adminConfig.colors.primaryText,
+    dark: adminConfig.colors.dark,
+    headingFont: adminConfig.typography.headingFont,
+    bodyFont: adminConfig.typography.bodyFont,
+  }}>
+    /* Reset */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* CSS Variables */
+    :root {
+      /* Brand overrides */
+      --admin-primary: var(--primary);
+      --admin-primary-hover: var(--primaryHover);
+      --admin-primary-light: var(--primaryLight);
+      --admin-primary-text: var(--primaryText);
+      --admin-dark: var(--dark);
+
+      /* Layout */
+      --sidebar-width: 220px;
+
+      /* Base tokens */
+      --bg: #fafaf9;
+      --surface: #ffffff;
+      --surface-alt: #f5f5f4;
+      --text: #1c1917;
+      --text-muted: #78716c;
+      --border: #e7e5e4;
+      --radius: 8px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+      /* Semantic */
+      --success: #22c55e;
+      --success-light: #dcfce7;
+      --warning: #f59e0b;
+      --warning-light: #fef3c7;
+      --error: #ef4444;
+      --error-light: #fee2e2;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: var(--bodyFont);
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* Layout */
+    .admin-wrapper {
+      display: grid;
+      grid-template-columns: var(--sidebar-width) 1fr;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .admin-sidebar {
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .sidebar-header {
+      padding: 1.25rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-brand {
+      font-family: var(--headingFont);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--admin-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .sidebar-nav {
+      flex: 1;
+      padding: 1rem 0.75rem;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.625rem 0.875rem;
+      border-radius: var(--radius);
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.15s ease;
+      margin-bottom: 0.25rem;
+    }
+
+    .nav-item:hover {
+      background: var(--surface-alt);
+      color: var(--text);
+    }
+
+    .nav-item.active {
+      background: var(--admin-primary-light);
+      color: var(--admin-primary);
+    }
+
+    .nav-item :global(svg) {
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    .nav-item.active :global(svg) {
+      opacity: 1;
+    }
+
+    .sidebar-footer {
+      padding: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .back-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+
+    .back-link:hover {
+      color: var(--text);
+    }
+
+    /* Main content */
+    .admin-main {
+      padding: 2rem;
+      max-width: 1400px;
+    }
+
+    .page-header {
+      margin-bottom: 2rem;
+    }
+
+    .page-title {
+      font-family: var(--headingFont);
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .page-description {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    /* Cards */
+    .admin-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .admin-card-header {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .admin-card-title {
+      font-family: var(--headingFont);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .admin-card-body {
+      padding: 1.25rem;
+    }
+
+    /* Stats */
+    .admin-stat {
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .stat-value {
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.1;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* Badges */
+    .admin-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      border-radius: 9999px;
+      text-transform: uppercase;
+    }
+
+    .admin-badge-success {
+      background: var(--success-light);
+      color: #166534;
+    }
+
+    .admin-badge-warning {
+      background: var(--warning-light);
+      color: #92400e;
+    }
+
+    .admin-badge-error {
+      background: var(--error-light);
+      color: #991b1b;
+    }
+
+    /* Grid */
+    .admin-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .admin-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .admin-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+    @media (max-width: 1024px) {
+      .admin-grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .admin-grid-3 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .admin-grid-4, .admin-grid-3, .admin-grid-2 { grid-template-columns: 1fr; }
+    }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      .admin-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .admin-sidebar {
+        position: fixed;
+        left: -100%;
+        width: 280px;
+        z-index: 100;
+        transition: left 0.3s ease;
+      }
+
+      .admin-sidebar.open {
+        left: 0;
+      }
+
+      .mobile-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .menu-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+      }
+    }
+
+    @media (min-width: 901px) {
+      .mobile-header {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <button class="menu-toggle" id="menu-toggle">
+      <Fragment set:html={getIcon('menu')} />
+    </button>
+    <span class="sidebar-brand">{adminConfig.siteName} Admin</span>
+  </header>
+
+  <div class="admin-wrapper">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="/admin" class="sidebar-brand">
+          <Fragment set:html={getIcon('layers')} />
+          {adminConfig.siteName}
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        {navItems.map(item => (
+          <a
+            href={item.href}
+            class:list={['nav-item', { active: currentPath === item.href || (item.href !== '/admin' && currentPath.startsWith(item.href)) }]}
+          >
+            <Fragment set:html={getIcon(item.icon)} />
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="/" class="back-link">
+          <Fragment set:html={getIcon('arrow-left')} />
+          Back to Site
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <header class="page-header">
+        <h1 class="page-title">{title}</h1>
+        {description && <p class="page-description">{description}</p>}
+      </header>
+
+      <slot />
+    </main>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+
+    toggle?.addEventListener('click', () => {
+      sidebar?.classList.toggle('open');
+    });
+
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 900) {
+        const target = e.target as HTMLElement;
+        if (!sidebar?.contains(target) && !toggle?.contains(target)) {
+          sidebar?.classList.remove('open');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
