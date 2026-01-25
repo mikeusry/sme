@@ -1,5 +1,7 @@
 # Soul Miner's Eden - Next Session TODOs
 
+> See [ROADMAP.md](./ROADMAP.md) for full strategic vision
+
 ## Priority 1: Copy Updates
 - [ ] Remove ALL instances of "Certified Organic" across the site
 - [ ] Remove ALL instances of "Certified Naturally Grown"
