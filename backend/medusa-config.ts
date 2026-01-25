@@ -1,62 +1,47 @@
-const dotenv = require('dotenv')
+import { defineConfig, loadEnv } from "@medusajs/framework/utils";
 
-dotenv.config()
+loadEnv(process.env.NODE_ENV || "development", process.cwd());
 
-// CORS when consuming Medusa from admin
-const ADMIN_CORS = process.env.ADMIN_CORS || "http://localhost:7001,http://localhost:9000"
-
-// CORS to avoid issues when consuming Medusa from a client
-const STORE_CORS = process.env.STORE_CORS || "http://localhost:8000,http://localhost:4321"
-
-// Database URL
-const DATABASE_URL = process.env.DATABASE_URL || "postgres://localhost/medusa-store"
-
-// Redis URL
-const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379"
-
-module.exports = {
+export default defineConfig({
   projectConfig: {
-    redis_url: REDIS_URL,
-    database_url: DATABASE_URL,
-    database_type: "postgres",
-    store_cors: STORE_CORS,
-    admin_cors: ADMIN_CORS,
-    jwt_secret: process.env.JWT_SECRET || "supersecret",
-    cookie_secret: process.env.COOKIE_SECRET || "supersecret",
+    databaseUrl: process.env.DATABASE_URL,
+    redisUrl: process.env.REDIS_URL,
+    http: {
+      storeCors: process.env.STORE_CORS || "http://localhost:4321",
+      adminCors: process.env.ADMIN_CORS || "http://localhost:9000",
+      authCors: process.env.AUTH_CORS || "http://localhost:4321,http://localhost:9000",
+      jwtSecret: process.env.JWT_SECRET || "supersecret",
+      cookieSecret: process.env.COOKIE_SECRET || "supersecret",
+    },
   },
-  plugins: [
-    `medusa-fulfillment-manual`,
-    `medusa-payment-manual`,
+  admin: {
+    backendUrl: process.env.MEDUSA_BACKEND_URL || "http://localhost:9000",
+  },
+  modules: [
     {
-      resolve: `medusa-payment-stripe`,
+      resolve: "@medusajs/medusa/payment",
       options: {
-        api_key: process.env.STRIPE_API_KEY,
-        webhook_secret: process.env.STRIPE_WEBHOOK_SECRET,
+        providers: [
+          {
+            resolve: "@medusajs/medusa/payment-stripe",
+            id: "stripe",
+            options: {
+              apiKey: process.env.STRIPE_API_KEY,
+            },
+          },
+        ],
       },
     },
     {
-      resolve: "@medusajs/admin",
+      resolve: "@medusajs/medusa/fulfillment",
       options: {
-        autoRebuild: true,
-        develop: {
-          open: process.env.OPEN_BROWSER !== "false",
-        },
+        providers: [
+          {
+            resolve: "@medusajs/medusa/fulfillment-manual",
+            id: "manual",
+          },
+        ],
       },
     },
   ],
-  modules: {
-    eventBus: {
-      resolve: "@medusajs/event-bus-redis",
-      options: {
-        redisUrl: REDIS_URL
-      }
-    },
-    cacheService: {
-      resolve: "@medusajs/cache-redis",
-      options: {
-        redisUrl: REDIS_URL,
-        ttl: 30,
-      }
-    },
-  },
-}
+});
