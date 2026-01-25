@@ -1,0 +1,331 @@
+---
+/**
+ * How It Works Page
+ *
+ * Eden Grazing Services process overview
+ * Content source: sme-summary.md (lines 339-369)
+ * Route: /land-management/how-it-works
+ */
+
+import MainLayout from '../../layouts/MainLayout.astro';
+
+// Process steps
+const steps = [
+  {
+    number: 1,
+    title: "Site Assessment",
+    description: "We visit your property to evaluate the terrain, vegetation type, accessibility, and specific needs. This helps us create a customized plan that works for your situation.",
+    details: [
+      "Evaluate property size and terrain",
+      "Identify vegetation types and density",
+      "Assess fencing requirements",
+      "Discuss your goals and timeline"
+    ]
+  },
+  {
+    number: 2,
+    title: "Customized Grazing Plan",
+    description: "Based on the assessment, we design a grazing rotation plan tailored to your property. This includes the type and number of animals, rotation schedule, and expected outcomes.",
+    details: [
+      "Select appropriate animal type (goats, sheep, or both)",
+      "Determine herd size for your acreage",
+      "Create rotation schedule",
+      "Set clear expectations and milestones"
+    ]
+  },
+  {
+    number: 3,
+    title: "Site Preparation",
+    description: "We handle all the prep work—including temporary fencing installation and any necessary site modifications to ensure safe, effective grazing.",
+    details: [
+      "Install temporary electric fencing",
+      "Set up water access points",
+      "Prepare entry and staging areas",
+      "Coordinate logistics with your team"
+    ]
+  },
+  {
+    number: 4,
+    title: "Animal Deployment & Management",
+    description: "Our grazing specialist Bo Carter deploys the herd and manages them throughout the service period. You don't need to do anything—we handle it all.",
+    details: [
+      "Transport animals to your property",
+      "Daily monitoring and care",
+      "Rotate between grazing zones",
+      "Ensure animal health and welfare"
+    ]
+  },
+  {
+    number: 5,
+    title: "Ongoing Maintenance",
+    description: "Grazing isn't a one-time event. We provide ongoing service with regular rotations to keep your property maintained throughout the growing season.",
+    details: [
+      "Regular check-ins and progress reports",
+      "Adjust grazing plan as needed",
+      "Seasonal scheduling",
+      "Year-round service options available"
+    ]
+  }
+];
+
+// FAQs
+const faqs = [
+  {
+    question: "What types of animals do you use?",
+    answer: "We primarily use goats and sheep, depending on the vegetation and terrain. Goats are excellent for woody brush and invasive species, while sheep are better for grass and lighter vegetation. We'll recommend the best mix for your property."
+  },
+  {
+    question: "Is grazing safe for my property?",
+    answer: "Yes. We use temporary electric fencing to contain animals to specific areas. Our grazing specialist monitors the herd daily, and we carry full liability insurance. The animals won't damage structures, landscaping, or areas outside the grazing zone."
+  },
+  {
+    question: "How long does it take to see results?",
+    answer: "Initial results are typically visible within 1-2 weeks. Complete vegetation management usually takes 4-8 weeks depending on density and property size. We'll give you a realistic timeline during the assessment."
+  },
+  {
+    question: "What happens to the animal waste?",
+    answer: "That's actually a benefit! Animal waste naturally fertilizes the soil, improving its health over time. It breaks down quickly and doesn't create odor issues. It's one reason grazing is better than mowing—you get fertilization included."
+  },
+  {
+    question: "Do I need to provide anything?",
+    answer: "We handle everything—fencing, water, animal care, and management. The only requirement is property access. If you have existing water sources, we can use those, but we can also bring water as needed."
+  },
+  {
+    question: "What areas do you serve?",
+    answer: "We serve Athens, Clarke County, and surrounding areas in Northeast Georgia. If you're within about 40 miles of Bogart, we can likely help. Contact us to confirm service availability for your location."
+  },
+  {
+    question: "How much does it cost?",
+    answer: "Pricing depends on property size, vegetation density, and service frequency. Our packages start at $300/month for HOA common areas and go up to $3,000/month for large solar farms. Visit our Services page for detailed pricing."
+  },
+  {
+    question: "What if I'm not satisfied with the results?",
+    answer: "We work with you throughout the process to ensure you're happy with the results. If grazing isn't achieving your goals, we'll adjust the plan or discuss alternative approaches. Your satisfaction is our priority."
+  }
+];
+---
+
+<MainLayout
+  title="How It Works | Eden Grazing Services | Soul Miner's Eden"
+  description="Learn how our grazing services work—from site assessment to ongoing maintenance. A natural, effective approach to land management in Athens, Georgia."
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary-500 to-primary-600 text-white py-16 md:py-20">
+    <div class="container-custom">
+      <div class="max-w-3xl">
+        <nav class="text-primary-200 text-sm mb-4">
+          <a href="/land-management" class="hover:text-white">Land Management</a>
+          <span class="mx-2">/</span>
+          <span>How It Works</span>
+        </nav>
+        <h1 class="text-4xl md:text-5xl font-display font-bold mb-6">
+          How Eden Grazing Services Works
+        </h1>
+        <p class="text-xl text-primary-100">
+          A simple, hands-off process that delivers effective vegetation management for your property.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="container-custom py-16">
+    <!-- Process Overview -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-4 text-center">
+        Our 5-Step Process
+      </h2>
+      <p class="text-xl text-warm-600 text-center mb-12 max-w-2xl mx-auto">
+        From first contact to ongoing maintenance, here's what to expect when you work with us.
+      </p>
+
+      <div class="space-y-8 max-w-4xl mx-auto">
+        {steps.map((step, index) => (
+          <div class="relative">
+            {/* Connector line */}
+            {index < steps.length - 1 && (
+              <div class="absolute left-8 top-20 w-0.5 h-full bg-accent-200 hidden md:block"></div>
+            )}
+
+            <div class="flex gap-6 md:gap-8">
+              {/* Step number */}
+              <div class="w-16 h-16 bg-accent-500 rounded-full flex items-center justify-center flex-shrink-0 text-white text-2xl font-bold relative z-10">
+                {step.number}
+              </div>
+
+              {/* Step content */}
+              <div class="flex-1 bg-white border border-secondary-200 rounded-xl p-6 md:p-8 hover:shadow-lg transition-shadow">
+                <h3 class="text-2xl font-bold mb-3 text-warm-900">{step.title}</h3>
+                <p class="text-warm-700 mb-4">{step.description}</p>
+
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {step.details.map((detail) => (
+                    <li class="flex items-start gap-2 text-warm-600 text-sm">
+                      <svg class="w-4 h-4 text-accent-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                      </svg>
+                      <span>{detail}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="mb-20">
+      <div class="bg-accent-50 rounded-2xl p-8 md:p-12">
+        <h2 class="text-3xl font-display font-bold text-warm-900 mb-8 text-center">
+          What to Expect: Timeline
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div class="text-center">
+            <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+              <span class="text-accent-600 text-2xl font-bold">1-2</span>
+            </div>
+            <h3 class="font-bold text-warm-900 mb-2">Days</h3>
+            <p class="text-warm-600 text-sm">Assessment scheduled after initial contact</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+              <span class="text-accent-600 text-2xl font-bold">1-2</span>
+            </div>
+            <h3 class="font-bold text-warm-900 mb-2">Weeks</h3>
+            <p class="text-warm-600 text-sm">Service begins after plan approval</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+              <span class="text-accent-600 text-2xl font-bold">4-8</span>
+            </div>
+            <h3 class="font-bold text-warm-900 mb-2">Weeks</h3>
+            <p class="text-warm-600 text-sm">Full vegetation management complete</p>
+          </div>
+        </div>
+
+        <p class="text-center text-warm-600 mt-8 max-w-2xl mx-auto">
+          Timelines vary based on property size and vegetation density. We'll give you a specific estimate during the assessment.
+        </p>
+      </div>
+    </section>
+
+    <!-- What's Included -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-8 text-center">
+        What's Included in Every Service
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white border border-secondary-200 rounded-xl p-6 text-center">
+          <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-warm-900 mb-2">Site Assessment</h3>
+          <p class="text-warm-600 text-sm">Free initial evaluation of your property</p>
+        </div>
+
+        <div class="bg-white border border-secondary-200 rounded-xl p-6 text-center">
+          <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-warm-900 mb-2">Fencing</h3>
+          <p class="text-warm-600 text-sm">Temporary electric fencing installed and maintained</p>
+        </div>
+
+        <div class="bg-white border border-secondary-200 rounded-xl p-6 text-center">
+          <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-warm-900 mb-2">Daily Monitoring</h3>
+          <p class="text-warm-600 text-sm">Regular check-ins and animal care</p>
+        </div>
+
+        <div class="bg-white border border-secondary-200 rounded-xl p-6 text-center">
+          <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-warm-900 mb-2">Full Insurance</h3>
+          <p class="text-warm-600 text-sm">Liability coverage for your protection</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-4 text-center">
+        Frequently Asked Questions
+      </h2>
+      <p class="text-xl text-warm-600 text-center mb-12 max-w-2xl mx-auto">
+        Got questions? We've got answers.
+      </p>
+
+      <div class="max-w-3xl mx-auto space-y-4">
+        {faqs.map((faq, index) => (
+          <div class="border border-secondary-200 rounded-xl overflow-hidden">
+            <button
+              class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center hover:bg-warm-50 transition-colors"
+              data-index={index}
+            >
+              <span class="font-bold text-warm-900">{faq.question}</span>
+              <svg class="faq-icon w-5 h-5 text-warm-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="faq-content px-6 pb-4 hidden" data-index={index}>
+              <p class="text-warm-600">{faq.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="text-center">
+      <div class="bg-gradient-to-br from-accent-600 to-accent-700 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">
+          Ready to Get Started?
+        </h2>
+        <p class="text-xl text-accent-100 mb-8">
+          Request a free assessment and we'll show you exactly how grazing can work for your property.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/land-management/request" class="btn bg-white text-accent-700 hover:bg-accent-50 text-lg px-8 py-4">
+            Request Free Assessment
+          </a>
+          <a href="/land-management/services" class="btn border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4">
+            View Pricing
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</MainLayout>
+
+<script>
+  // FAQ accordion functionality
+  document.querySelectorAll('.faq-toggle').forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      const index = toggle.getAttribute('data-index');
+      const content = document.querySelector(`.faq-content[data-index="${index}"]`);
+      const icon = toggle.querySelector('.faq-icon');
+
+      if (content && icon) {
+        content.classList.toggle('hidden');
+        icon.classList.toggle('rotate-180');
+      }
+    });
+  });
+</script>

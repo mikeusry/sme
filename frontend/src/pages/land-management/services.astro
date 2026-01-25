@@ -1,0 +1,296 @@
+---
+/**
+ * Services & Pricing Page
+ *
+ * Eden Grazing Services packages and pricing
+ * Content source: sme-summary.md (lines 350-358)
+ * Route: /land-management/services
+ */
+
+import MainLayout from '../../layouts/MainLayout.astro';
+
+// Service packages
+const packages = [
+  {
+    name: "HOA Common Areas",
+    description: "Perfect for neighborhood common areas, walking trails, and community green spaces. Keep shared spaces beautiful without the noise and fumes of traditional lawn care.",
+    priceRange: "$300 - $500",
+    priceUnit: "per month",
+    features: [
+      "Up to 5 acres covered",
+      "Monthly service rotations",
+      "Temporary fencing included",
+      "Regular progress reports",
+      "Ideal for walking paths and green spaces"
+    ],
+    ideal: "Small to medium community areas"
+  },
+  {
+    name: "Retention Pond",
+    description: "Control vegetation around retention ponds and stormwater management areas. Grazing keeps banks clear while naturally preventing erosion.",
+    priceRange: "$400 - $600",
+    priceUnit: "per month",
+    features: [
+      "Pond perimeter and banks",
+      "Bi-weekly to monthly rotations",
+      "Erosion-friendly grazing patterns",
+      "Reduces algae-promoting vegetation",
+      "Compliant with stormwater requirements"
+    ],
+    ideal: "Stormwater retention areas",
+    popular: true
+  },
+  {
+    name: "Commercial Property",
+    description: "Large-scale vegetation management for corporate campuses, office parks, industrial sites, and other commercial properties.",
+    priceRange: "$800 - $1,500",
+    priceUnit: "per month",
+    features: [
+      "5-20 acres typical coverage",
+      "Customized rotation schedule",
+      "Professional appearance maintained",
+      "ESG and sustainability reporting support",
+      "Flexible scheduling around operations"
+    ],
+    ideal: "Corporate and industrial sites"
+  },
+  {
+    name: "Solar Farm",
+    description: "Specialized vegetation management for solar installations. Keep ground cover controlled without heavy equipment that can damage panels and infrastructure.",
+    priceRange: "$1,500 - $3,000",
+    priceUnit: "per month",
+    features: [
+      "20+ acres typical coverage",
+      "Panel-safe grazing protocols",
+      "No equipment damage risk",
+      "Year-round service available",
+      "Utility-grade reliability"
+    ],
+    ideal: "Solar installations and farms"
+  }
+];
+
+// Comparison items
+const comparisonItems = [
+  {
+    item: "Monthly cost (10 acres)",
+    traditional: "$1,200 - $2,000",
+    grazing: "$500 - $800"
+  },
+  {
+    item: "Chemical treatments",
+    traditional: "Required",
+    grazing: "None"
+  },
+  {
+    item: "Noise pollution",
+    traditional: "High",
+    grazing: "None"
+  },
+  {
+    item: "Carbon emissions",
+    traditional: "Significant",
+    grazing: "None"
+  },
+  {
+    item: "Soil health",
+    traditional: "Neutral/Degrading",
+    grazing: "Improving"
+  },
+  {
+    item: "Natural fertilization",
+    traditional: "Additional cost",
+    grazing: "Included"
+  }
+];
+---
+
+<MainLayout
+  title="Service Packages & Pricing | Eden Grazing Services | Soul Miner's Eden"
+  description="View our grazing service packages and pricing for HOAs, retention ponds, commercial properties, and solar farms. Sustainable land management in Athens, Georgia."
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary-500 to-primary-600 text-white py-16 md:py-20">
+    <div class="container-custom">
+      <div class="max-w-3xl">
+        <nav class="text-primary-200 text-sm mb-4">
+          <a href="/land-management" class="hover:text-white">Land Management</a>
+          <span class="mx-2">/</span>
+          <span>Services & Pricing</span>
+        </nav>
+        <h1 class="text-4xl md:text-5xl font-display font-bold mb-6">
+          Service Packages & Pricing
+        </h1>
+        <p class="text-xl text-primary-100">
+          Transparent pricing for every property type. All packages include site assessment, fencing, daily monitoring, and full insurance.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="container-custom py-16">
+    <!-- Packages Grid -->
+    <section class="mb-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {packages.map((pkg) => (
+          <div class={`bg-white border-2 rounded-2xl p-8 relative ${pkg.popular ? 'border-accent-500 shadow-lg' : 'border-secondary-200'}`}>
+            {pkg.popular && (
+              <div class="absolute -top-3 left-8 bg-accent-500 text-white text-xs font-bold px-4 py-1 rounded-full">
+                Most Popular
+              </div>
+            )}
+
+            <h3 class="text-2xl font-bold text-warm-900 mb-2">{pkg.name}</h3>
+            <p class="text-warm-600 mb-6">{pkg.description}</p>
+
+            <div class="mb-6">
+              <span class="text-4xl font-bold text-accent-600">{pkg.priceRange}</span>
+              <span class="text-warm-500 ml-2">{pkg.priceUnit}</span>
+            </div>
+
+            <ul class="space-y-3 mb-8">
+              {pkg.features.map((feature) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-accent-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span class="text-warm-700">{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="pt-4 border-t border-secondary-200">
+              <p class="text-sm text-warm-500">
+                <strong>Ideal for:</strong> {pkg.ideal}
+              </p>
+            </div>
+
+            <a
+              href="/land-management/request"
+              class={`mt-6 block text-center py-3 px-6 rounded-lg font-semibold transition-colors ${pkg.popular ? 'bg-accent-500 text-white hover:bg-accent-600' : 'bg-primary-100 text-primary-700 hover:bg-primary-200'}`}
+            >
+              Request Quote
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <p class="text-center text-warm-500 mt-8">
+        * Pricing varies based on property size, vegetation density, and specific requirements. Final pricing provided after site assessment.
+      </p>
+    </section>
+
+    <!-- Custom Solutions -->
+    <section class="mb-20">
+      <div class="bg-warm-100 rounded-2xl p-8 md:p-12 text-center">
+        <h2 class="text-3xl font-display font-bold text-warm-900 mb-4">
+          Need a Custom Solution?
+        </h2>
+        <p class="text-xl text-warm-600 mb-8 max-w-2xl mx-auto">
+          Don't see a package that fits your property? We create custom grazing plans for unique situations.
+          Contact us to discuss your specific needs.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/land-management/request" class="btn-primary text-lg px-8 py-4">
+            Request Custom Quote
+          </a>
+          <a href="tel:+1-706-613-4415" class="btn-secondary text-lg px-8 py-4">
+            Call (706) 613-4415
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cost Comparison -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-4 text-center">
+        Grazing vs. Traditional Maintenance
+      </h2>
+      <p class="text-xl text-warm-600 text-center mb-12 max-w-2xl mx-auto">
+        See how grazing stacks up against traditional mowing and chemical treatments.
+      </p>
+
+      <div class="max-w-3xl mx-auto overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b-2 border-secondary-200">
+              <th class="text-left py-4 px-4 font-bold text-warm-900"></th>
+              <th class="text-center py-4 px-4 font-bold text-warm-500">Traditional</th>
+              <th class="text-center py-4 px-4 font-bold text-accent-600">Grazing</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonItems.map((item, index) => (
+              <tr class={`border-b border-secondary-100 ${index % 2 === 0 ? 'bg-warm-50' : ''}`}>
+                <td class="py-4 px-4 font-medium text-warm-900">{item.item}</td>
+                <td class="py-4 px-4 text-center text-warm-600">{item.traditional}</td>
+                <td class="py-4 px-4 text-center text-accent-600 font-medium">{item.grazing}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- What's Included -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-8 text-center">
+        All Packages Include
+      </h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-warm-900">Free Assessment</h3>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-warm-900">Fencing Setup</h3>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-warm-900">Daily Monitoring</h3>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-warm-900">Full Insurance</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="text-center">
+      <div class="bg-gradient-to-br from-accent-600 to-accent-700 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">
+          Get Your Custom Quote
+        </h2>
+        <p class="text-xl text-accent-100 mb-8">
+          Every property is different. Request a free assessment and we'll provide a detailed quote tailored to your specific needs.
+        </p>
+        <a href="/land-management/request" class="btn bg-white text-accent-700 hover:bg-accent-50 text-lg px-8 py-4 inline-block">
+          Request Free Assessment
+        </a>
+      </div>
+    </section>
+  </div>
+</MainLayout>
