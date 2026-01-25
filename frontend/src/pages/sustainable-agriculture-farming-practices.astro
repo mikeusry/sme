@@ -1,0 +1,277 @@
+---
+/**
+ * Sustainable Agriculture Farming Practices
+ *
+ * Our approach to sustainable farming and land stewardship
+ * Content source: crawled from soulminerseden.com/sustainable-agriculture-farming-practices
+ * Route: /sustainable-agriculture-farming-practices
+ */
+
+import MainLayout from '../layouts/MainLayout.astro';
+
+const images = {
+  towers: "https://res.cloudinary.com/southland-organics/image/upload/f_auto,q_auto/v1599251749/Soul%20Miner's/Towers_fzzkzo.jpg",
+  seedlings: "https://res.cloudinary.com/southland-organics/image/upload/f_auto,q_auto/v1599251749/Soul%20Miner's/seedling_trays_rnpaej.png",
+  greenhouse: "https://res.cloudinary.com/southland-organics/image/upload/f_auto,q_auto/v1599251749/Soul%20Miner's/greenhouse_ztd1io.jpg",
+  nft: "https://res.cloudinary.com/southland-organics/image/upload/f_auto,q_auto/v1599251749/Soul%20Miner's/NFT_2_dxm1cn.jpg",
+  driplines: "https://res.cloudinary.com/southland-organics/image/upload/f_auto,q_auto/v1599251749/Soul%20Miner's/Sarah_Driplines_wckade.jpg"
+};
+---
+
+<MainLayout
+  title="Sustainable Agriculture Farming Practices | Soul Miner's Eden"
+  description="Learn about Soul Miner's Eden's sustainable agriculture practices including aeroponics, hydroponics, water conservation, and land management in Athens, GA."
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary-500 to-primary-600 text-white py-16 md:py-24">
+    <div class="container-custom">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-8">
+          Sustainable Agriculture Farming Practices
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three Pillars -->
+  <section class="py-16 bg-warm-50">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="text-center p-8 bg-white rounded-2xl shadow-sm">
+          <div class="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </div>
+          <h2 class="text-2xl font-display font-bold text-warm-900 mb-3">Honor</h2>
+          <p class="text-warm-600 text-lg italic">"Does it honor the creation?"</p>
+        </div>
+
+        <div class="text-center p-8 bg-white rounded-2xl shadow-sm">
+          <div class="w-20 h-20 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h2 class="text-2xl font-display font-bold text-warm-900 mb-3">Economics</h2>
+          <p class="text-warm-600 text-lg italic">"Is it economically feasible?"</p>
+        </div>
+
+        <div class="text-center p-8 bg-white rounded-2xl shadow-sm">
+          <div class="w-20 h-20 bg-secondary-200 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-secondary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h2 class="text-2xl font-display font-bold text-warm-900 mb-3">Efficiency</h2>
+          <p class="text-warm-600 text-lg italic">"Is it efficient?"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Opening Statement with Image -->
+  <section class="py-16">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        <div>
+          <p class="text-xl md:text-2xl text-warm-700 leading-relaxed">
+            Our specially designed aeroponics preserve land, save water and eliminate agricultural runoff. Our decision to build greenhouses allows us to offer efficient, locally grown, sustainable year-round food production.
+          </p>
+        </div>
+        <div>
+          <img
+            src={images.towers}
+            alt="Aeroponic towers at Soul Miner's Eden farm in Athens, GA"
+            class="rounded-2xl shadow-lg w-full"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hydroponics Section -->
+  <section class="py-16 bg-warm-50">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        <div class="order-2 lg:order-1">
+          <img
+            src={images.seedlings}
+            alt="Seedling trays in hydroponic system"
+            class="rounded-2xl shadow-lg w-full"
+            loading="lazy"
+          />
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-6">
+            Hydroponics
+          </h2>
+          <div class="prose prose-lg text-warm-700 space-y-4">
+            <p>
+              Our hydroponic systems recirculate water, dramatically reducing waste compared to traditional farming methods. By growing in soilless media, we eliminate soil-borne diseases and pests while maintaining precise control over plant nutrition.
+            </p>
+            <p>
+              We apply organic carbon and beneficial microbial applications to ensure our plants receive the nutrients they need naturally, without synthetic fertilizers.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Practical Approaches -->
+  <section class="py-16">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-6 text-center">
+          Practical Approaches
+        </h2>
+        <div class="prose prose-lg text-warm-700 max-w-none">
+          <p class="text-center">
+            We believe in practical solutions rather than going to unusual lengths to meet absurd requirements. Our philosophy is rooted in real-world sustainability—methods that work for farmers, for the land, and for the community.
+          </p>
+          <p class="text-center mt-4">
+            As part of the <a href="https://southlandorganics.com" class="text-primary-600 hover:text-primary-700 font-semibold">Southland Organics</a> family, we share a commitment to helping farmers and gardeners find effective natural solutions for natural problems.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Greenhouse Image -->
+  <section class="py-8">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <img
+          src={images.greenhouse}
+          alt="Soul Miner's Eden greenhouse in Athens, Georgia"
+          class="rounded-2xl shadow-lg w-full"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Food Miles -->
+  <section class="py-16 bg-primary-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-6">
+          Food Miles
+        </h2>
+        <p class="text-xl text-warm-700 leading-relaxed">
+          We focus on local production to reduce the environmental impact of transportation. By growing food close to where it's consumed, we minimize "food miles"—the distance food travels from farm to table. Local production means fresher food, lower carbon emissions, and stronger community connections.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Water Conservation -->
+  <section class="py-16">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-6">
+            Water Conservation
+          </h2>
+          <div class="prose prose-lg text-warm-700 space-y-4">
+            <p>
+              Our location is blessed with three ponds, stream access, and two wells with over 100 GPM capacity. But we don't take water for granted.
+            </p>
+            <div class="bg-accent-50 border-l-4 border-accent-500 p-6 rounded-r-lg my-6">
+              <p class="text-warm-800 font-semibold text-xl">
+                Our greenhouse system utilizes 10x less water than conventional agricultural practices.
+              </p>
+            </div>
+            <p>
+              In our field operations, we use drip irrigation, wobble stakes, and precision spray application from <a href="https://spraysquad.com" class="text-primary-600 hover:text-primary-700 font-semibold">SpraySquad.com</a> to ensure every drop counts.
+            </p>
+          </div>
+        </div>
+        <div>
+          <img
+            src={images.nft}
+            alt="NFT hydroponic system for water-efficient growing"
+            class="rounded-2xl shadow-lg w-full"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Land Management -->
+  <section class="py-16 bg-warm-50">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        <div class="order-2 lg:order-1">
+          <img
+            src={images.driplines}
+            alt="Drip irrigation lines in field production"
+            class="rounded-2xl shadow-lg w-full"
+            loading="lazy"
+          />
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-6">
+            Land Management
+          </h2>
+          <div class="prose prose-lg text-warm-700 space-y-4">
+            <p>
+              Our nearly 2-acre food plot operates without any synthetic materials. We follow NOP-approved practices that work with nature, not against it.
+            </p>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>Broadforks</strong> for soil aeration without disruption</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>Composting</strong> to build soil health naturally</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>Vermiculture</strong> for nutrient-rich castings</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>Bed solarization</strong> for natural pest control</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16">
+    <div class="container-custom">
+      <div class="bg-gradient-to-br from-primary-600 to-primary-700 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">
+          Learn More About Our Farm
+        </h2>
+        <p class="text-xl text-primary-100 mb-8">
+          We'd love to share more about our sustainable practices. Visit us in Bogart, Georgia or get in touch with any questions.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/about" class="btn bg-white text-primary-600 hover:bg-primary-50 text-lg px-8 py-4">
+            Our Story
+          </a>
+          <a href="/contact" class="btn border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

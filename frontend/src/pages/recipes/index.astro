@@ -1,0 +1,209 @@
+---
+/**
+ * Recipes Index Page
+ *
+ * Browse all Soul Miner's Eden recipes
+ * Route: /recipes
+ */
+
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getAllRecipes, getCategories, getCategoryCounts } from '../../lib/recipes';
+
+const recipes = getAllRecipes();
+const categories = getCategories();
+const categoryCounts = getCategoryCounts();
+---
+
+<MainLayout
+  title="Farm Fresh Recipes | Soul Miner's Eden"
+  description="Delicious farm-to-table recipes featuring fresh, seasonal ingredients. From hearty soups to fresh salads, find inspiration for your next meal."
+>
+  <!-- Page Header -->
+  <div class="bg-gradient-to-br from-accent-600 to-accent-700 text-white py-16">
+    <div class="container-custom">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4">
+          Farm Fresh Recipes
+        </h1>
+        <p class="text-xl md:text-2xl text-accent-100">
+          Simple, delicious recipes featuring fresh, seasonal ingredients straight from the farm.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-custom py-12">
+    <!-- Category Filters -->
+    <div class="mb-10">
+      <div class="flex flex-wrap gap-3">
+        <button
+          class="filter-btn px-5 py-2 rounded-full font-semibold transition-all bg-primary-600 text-white"
+          data-category="all"
+        >
+          All Recipes ({recipes.length})
+        </button>
+        {categories.map(category => (
+          <button
+            class="filter-btn px-5 py-2 rounded-full font-semibold transition-all bg-secondary-100 text-warm-700 hover:bg-secondary-200"
+            data-category={category}
+          >
+            {category} ({categoryCounts[category]})
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Recipes Grid -->
+    <div id="recipes-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {recipes.map(recipe => (
+        <article
+          class="recipe-card card group hover:shadow-xl transition-all duration-300 overflow-hidden"
+          data-category={recipe.category}
+        >
+          <div class="p-6">
+            <!-- Category Badge -->
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-3 py-1 bg-accent-100 text-accent-700 rounded-full text-sm font-medium">
+                {recipe.category}
+              </span>
+              <span class="text-sm text-warm-500 flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                {recipe.time}
+              </span>
+            </div>
+
+            <!-- Title -->
+            <h2 class="text-xl font-display font-bold text-warm-900 mb-3 group-hover:text-primary-600 transition-colors">
+              <a href={`/recipes/${recipe.slug}`} class="hover:underline">
+                {recipe.title}
+              </a>
+            </h2>
+
+            <!-- Description -->
+            <p class="text-warm-600 mb-4 line-clamp-2">
+              {recipe.description}
+            </p>
+
+            <!-- Footer -->
+            <div class="flex items-center justify-between pt-4 border-t border-secondary-200">
+              <span class="text-sm text-warm-500">
+                {Array.isArray(recipe.ingredients)
+                  ? recipe.ingredients.length
+                  : Object.values(recipe.ingredients).flat().length} ingredients
+              </span>
+              <a
+                href={`/recipes/${recipe.slug}`}
+                class="text-primary-600 font-semibold hover:text-primary-700 transition-colors inline-flex items-center gap-1"
+              >
+                View Recipe
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- No Results -->
+    <div id="no-results" class="hidden text-center py-16">
+      <h3 class="text-2xl font-bold text-warm-900 mb-2">No recipes found</h3>
+      <p class="text-warm-600 mb-6">Try selecting a different category</p>
+      <button
+        class="btn-outline"
+        onclick="document.querySelector('[data-category=all]').click();"
+      >
+        Show All Recipes
+      </button>
+    </div>
+
+    <!-- CTA -->
+    <section class="mt-16 bg-gradient-to-br from-primary-600 to-primary-700 text-white rounded-2xl p-8 md:p-12">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-3xl font-display font-bold mb-4">
+          Fresh Ingredients Make the Difference
+        </h2>
+        <p class="text-xl text-primary-100 mb-8">
+          Visit our farm for the freshest compost, soil, and garden supplies to grow your own ingredients.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/products" class="btn bg-white text-primary-600 hover:bg-primary-50 px-8 py-3">
+            Shop Products
+          </a>
+          <a href="/contact" class="btn border-2 border-white text-white hover:bg-white/10 px-8 py-3">
+            Visit the Farm
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</MainLayout>
+
+<script>
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const recipeCards = document.querySelectorAll('.recipe-card');
+  const recipesGrid = document.getElementById('recipes-grid');
+  const noResults = document.getElementById('no-results');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const category = button.getAttribute('data-category');
+
+      // Update active button
+      filterButtons.forEach(btn => {
+        btn.classList.remove('bg-primary-600', 'text-white');
+        btn.classList.add('bg-secondary-100', 'text-warm-700');
+      });
+      button.classList.remove('bg-secondary-100', 'text-warm-700');
+      button.classList.add('bg-primary-600', 'text-white');
+
+      // Filter recipes
+      let visibleCount = 0;
+      recipeCards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        if (category === 'all' || cardCategory === category) {
+          (card as HTMLElement).style.display = 'block';
+          visibleCount++;
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+
+      // Show/hide no results
+      if (visibleCount === 0) {
+        recipesGrid?.classList.add('hidden');
+        noResults?.classList.remove('hidden');
+      } else {
+        recipesGrid?.classList.remove('hidden');
+        noResults?.classList.add('hidden');
+      }
+    });
+  });
+</script>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .recipe-card {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
