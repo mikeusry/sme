@@ -1,0 +1,93 @@
+---
+/**
+ * ExperienceFarm Component
+ *
+ * Reusable "Experience the farm life" section component.
+ * Matches the design from soulminerseden.com section_experience.
+ *
+ * @example
+ * <ExperienceFarm />
+ *
+ * @example Custom content
+ * <ExperienceFarm
+ *   title="Visit Our Farm"
+ *   headline="When you slow down..."
+ *   subheadline="Come enjoy our little slice of Eden."
+ *   ctaText="BOOK A TOUR"
+ *   ctaLink="/contact"
+ *   imagePublicId="Southland_Office_hqmtez"
+ * />
+ */
+
+export interface Props {
+  /** Section title (default: "Experience the farm life") */
+  title?: string;
+  /** Main paragraph text */
+  headline?: string;
+  /** Secondary paragraph text */
+  subheadline?: string;
+  /** CTA button text */
+  ctaText?: string;
+  /** CTA button link */
+  ctaLink?: string;
+  /** Cloudinary image public ID (without folder prefix) */
+  imagePublicId?: string;
+  /** Image alt text */
+  imageAlt?: string;
+  /** Additional CSS classes for the section */
+  class?: string;
+}
+
+const {
+  title = "Experience the farm life",
+  headline = "When you slow down, feel the sun on your face and breathe in the fresh lavender wafting through the country air, you'll long for more moments like the ones you find at Soul Miner's Eden.",
+  subheadline = "Come enjoy our little slice of Eden with a farm tour.",
+  ctaText = "VISIT OUR FARM",
+  ctaLink = "/contact",
+  imagePublicId = "Southland_Office_hqmtez",
+  imageAlt = "Soul Miner's Eden Farm Building",
+  class: className = "",
+} = Astro.props;
+---
+
+<section class:list={["experience-farm pt-16 md:pt-24 bg-white", className]}>
+  <div class="container-custom">
+    <!-- Text Content -->
+    <div class="max-w-3xl mx-auto text-center mb-10 md:mb-14">
+      <!-- Title - Serif Italic -->
+      <h2 class="font-serif italic text-4xl md:text-5xl lg:text-6xl mb-8 text-primary-500 leading-tight">
+        {title}
+      </h2>
+
+      <!-- Main Paragraph -->
+      <p class="text-lg md:text-xl text-warm-700 leading-relaxed mb-6">
+        {headline}
+      </p>
+
+      <!-- Subheadline -->
+      {subheadline && (
+        <p class="text-lg md:text-xl text-warm-600 leading-relaxed mb-10">
+          {subheadline}
+        </p>
+      )}
+
+      <!-- CTA Button -->
+      <a
+        href={ctaLink}
+        class="inline-block bg-primary-400 hover:bg-primary-500 text-white font-semibold tracking-wider text-sm md:text-base px-10 py-4 rounded transition-colors duration-200 uppercase"
+      >
+        {ctaText}
+      </a>
+    </div>
+
+    <!-- Farm Image -->
+    <div class="text-center">
+      <img
+        src={`https://res.cloudinary.com/southland-organics/image/upload/q_auto,f_auto/Soul%20Miner's/${imagePublicId}`}
+        alt={imageAlt}
+        class="mx-auto"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>

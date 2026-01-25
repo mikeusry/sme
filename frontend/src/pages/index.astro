@@ -3,6 +3,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 import ProductCard from '../components/products/ProductCard.astro';
 import MaterialCalculator from '../components/products/MaterialCalculator.astro';
 import ProductImage from '../components/ProductImage.astro';
+import ExperienceFarm from '../components/ExperienceFarm.astro';
 import { getFeaturedProducts, getProductBySlug } from '../lib/products';
 
 // Soul Miner's Eden Homepage - Conversion-optimized dual-revenue stream design
@@ -16,70 +17,77 @@ const featuredProducts = getFeaturedProducts();
 const humusCompost = getProductBySlug('humus-compost');
 const brownMulch = getProductBySlug('brown-mulch');
 const topsoil = getProductBySlug('topsoil');
+
+// MUX video playback ID for hero background
+const muxPlaybackId = 'at00mmiQBibWz00AYKl2KvgHltoP7hzkRX02NtjzpMLX7w';
+const muxPosterUrl = `https://image.mux.com/${muxPlaybackId}/thumbnail.jpg?time=0`;
+const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 ---
 
 <MainLayout
-	title="Soul Miner's Eden | Certified Organic Compost & Land Management | Athens, GA"
-	description="Georgia's only certified organic compost delivered to your door. Premium landscape supply + eco-friendly land management services. Family-owned, Athens-based."
+	title="Soul Miner's Eden | Organic Compost & Land Management | Athens, GA"
+	description="All-Natural compost delivered to your door. Premium landscape supply + eco-friendly land management services. Family-owned, Athens-based."
 >
-	<!-- Hero Section - Dual-purpose conversion funnel -->
-	<section class="relative bg-gradient-to-br from-primary-50 via-white to-secondary-50 py-20 md:py-28 overflow-hidden">
-		<!-- Decorative background element -->
-		<div class="absolute inset-0 opacity-5">
-			<svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-				<path d="M0,0 Q50,20 100,0 L100,100 L0,100 Z" fill="#B59289"/>
-			</svg>
+	<!-- Hero Section -->
+	<section class="hero-section relative py-20 md:py-28 overflow-hidden">
+		<!-- Background Video -->
+		<div class="hero-video-wrapper">
+			<video
+				id="hero-video"
+				class="hero-video"
+				autoplay
+				muted
+				loop
+				playsinline
+				poster={muxPosterUrl}
+				data-stream-url={muxStreamUrl}
+			>
+			</video>
 		</div>
+		<!-- Dark overlay for text readability -->
+		<div class="hero-overlay"></div>
 
-		<div class="container-custom relative">
+		<div class="container-custom relative z-10">
 			<div class="max-w-4xl mx-auto text-center">
-				<!-- Trust badge - Immediate credibility -->
-				<div class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-md mb-6 border border-primary-200">
-					<svg class="w-5 h-5 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
-						<path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-					</svg>
-					<span class="text-sm font-semibold text-warm-800">Certified Organic • Family-Owned • Athens, GA</span>
+				<!-- Trust badge -->
+				<div class="inline-flex items-center gap-2 bg-white/50 px-4 py-2 rounded-full shadow-md mb-6">
+					<span class="text-sm font-semibold text-w">All-Natural • Family-Owned • Athens, GA</span>
 				</div>
 
-				<!-- Main headline - Benefit-driven, not feature-driven -->
-				<h1 class="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 text-warm-900 leading-tight">
-					Cultivate Your Eden
+				<!-- Main headline -->
+				<h1 class="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 text-white leading-tight">
+					Cultivate What the Land Was Meant to Be
 				</h1>
 
-				<!-- Subheadline - Addresses pain points -->
-				<p class="text-xl md:text-2xl mb-4 text-warm-700 max-w-3xl mx-auto leading-relaxed">
-					From <span class="font-semibold text-primary-600">Georgia's only certified organic compost</span> to innovative grazing services—premium landscape solutions delivered with care.
+				<!-- Subheadline -->
+				<p class="text-xl md:text-2xl mb-4 text-white max-w-3xl mx-auto leading-relaxed">
+					We offer time produced, natural compost and regenerative grazing services, we help homeowners and professionals restore their own piece of Eden.
 				</p>
 
-				<!-- USP - Zero competition angle -->
-				<p class="text-lg mb-10 text-primary-700 font-medium">
-					<span class="inline-block bg-accent-50 px-4 py-2 rounded-lg border border-accent-200">
-						★ NO local competition for certified organic compost ★
-					</span>
+				<!-- USP -->
+				<p class="text-lg mb-10 text-white font-medium">
+					All-Natural Compost. Locally Produced
 				</p>
 
-				<!-- Dual CTAs - Different visitor intents -->
+				<!-- Dual CTAs -->
 				<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-					<!-- Primary CTA - Main revenue stream -->
-					<a href="/products" class="btn-primary text-lg px-10 py-4 shadow-lg hover:shadow-xl">
+					<a href="/products" class="border-2 border-gray-400 text-gray-300 hover:bg-white/10 hover:text-white hover:border-white/70 text-lg px-10 py-4 rounded-lg font-semibold transition-colors">
 						Shop Landscape Supply
 					</a>
-
-					<!-- Secondary CTA - New revenue vertical -->
-					<a href="/land-management" class="btn-outline text-lg px-10 py-4">
+					<a href="/land-management" class="border-2 border-gray-400 text-gray-300 hover:bg-white/10 hover:text-white hover:border-white/70 text-lg px-10 py-4 rounded-lg font-semibold transition-colors">
 						Explore Grazing Services
 					</a>
 				</div>
 
-				<!-- Social proof - Instant credibility -->
-				<p class="mt-8 text-sm text-warm-600">
-					<span class="font-semibold text-warm-800">500+ cubic yards</span> delivered monthly • <span class="font-semibold text-warm-800">65-acre</span> family farm
+				<!-- Social proof -->
+				<p class="mt-8 text-sm text-white">
+					65-acre family farm • Serving North Georgia
 				</p>
 			</div>
 		</div>
 	</section>
 
-	<!-- Value Props - Agricultural market needs tangible benefits -->
+	<!-- Value Props -->
 	<section class="section bg-white">
 		<div class="container-custom">
 			<!-- Section header -->
@@ -88,47 +96,36 @@ const topsoil = getProductBySlug('topsoil');
 					Why Landscapers & Homeowners Choose Us
 				</h2>
 				<p class="text-lg text-warm-600 max-w-2xl mx-auto">
-					From our 65-acre Athens farm to your property—quality you can trust, service you can count on.
+					From our 65-acre Athens farm to your property—thoughtfully produced materials, delivered with care.
 				</p>
 			</div>
 
-			<!-- Value prop grid -->
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-				<!-- Certified Organic (Unique) -->
+			<!-- Value prop grid - 3 across -->
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+				<!-- All Natural Compost -->
 				<div class="feature-box">
-					<div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
-						<svg class="w-8 h-8 text-accent-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-						</svg>
-					</div>
-					<h3 class="text-xl font-bold mb-2 text-warm-900">Certified Organic</h3>
-					<p class="text-warm-600">Georgia's only certified organic compost. Zero biosolids, pure quality. Made on-site with strict quality control.</p>
-					<span class="trust-badge mt-4">Certified Naturally Grown</span>
+					<h3 class="text-xl font-bold mb-2 text-warm-900">All Natural Compost</h3>
+					<p class="text-warm-600">Zero biosolids. No fillers. Just clean, biologically active compost made on-site under strict quality control.</p>
+				</div>
+
+				<!-- Grown & Managed the Right Way -->
+				<div class="feature-box">
+					<h3 class="text-xl font-bold mb-2 text-warm-900">Grown & Managed the Right Way</h3>
+					<p class="text-warm-600">We work with the land, not against it—using natural processes that improve soil health, plant strength, and long-term performance. The way God intended.</p>
 				</div>
 
 				<!-- Local Delivery -->
 				<div class="feature-box">
-					<div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-						<svg class="w-8 h-8 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-						</svg>
-					</div>
-					<h3 class="text-xl font-bold mb-2 text-warm-900">Fast Local Delivery</h3>
-					<p class="text-warm-600">Order by 2 PM for next-day delivery throughout Athens area. Volume discounts available for contractors.</p>
-					<span class="text-sm text-primary-600 font-semibold mt-4 block">$40 + $1.25/mile after 20 mi</span>
+					<h3 class="text-xl font-bold mb-2 text-warm-900">Local Delivery</h3>
+					<p class="text-warm-600">We sell trailer loads and by supersacks throughout the Athens area. Volume pricing available for landscapers and contractors.</p>
+					<span class="text-sm text-primary-600 font-semibold mt-4 block">$40 base + $1.25 per mile after 20 miles</span>
 				</div>
+			</div>
 
-				<!-- Family Owned -->
-				<div class="feature-box">
-					<div class="w-16 h-16 bg-secondary-200 rounded-full flex items-center justify-center mx-auto mb-4">
-						<svg class="w-8 h-8 text-secondary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-						</svg>
-					</div>
-					<h3 class="text-xl font-bold mb-2 text-warm-900">Family-Owned Since Day One</h3>
-					<p class="text-warm-600">Built on land stewardship and faith-based values. A Southland Organics company serving the Athens community.</p>
-					<span class="text-sm text-warm-600 font-medium mt-4 block">65-acre working farm</span>
-				</div>
+			<!-- Family-Owned - Full width -->
+			<div class="feature-box text-center max-w-2xl mx-auto">
+				<h3 class="text-xl font-bold mb-2 text-warm-900">Family-Owned from Day One</h3>
+				<p class="text-warm-600">Built on faith-driven stewardship and a commitment to doing honest work well. Proudly serving the Athens community as a Southland Organics company.</p>
 			</div>
 		</div>
 	</section>
@@ -142,21 +139,14 @@ const topsoil = getProductBySlug('topsoil');
 					Premium Landscape Supply
 				</h2>
 				<p class="text-lg text-warm-600 max-w-2xl mx-auto">
-					Bulk delivery of certified organic compost, premium mulch, and quality soil—everything you need for thriving landscapes.
+					Bulk delivery of organic compost, premium mulch, and quality soil—everything you need for thriving landscapes.
 				</p>
 			</div>
 
 			<!-- Product showcase grid with REAL data -->
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
 				{humusCompost && (
-					<div class="relative">
-						<div class="absolute top-4 right-4 z-10">
-							<span class="inline-block bg-accent-600 text-white px-3 py-1 rounded-full text-xs font-bold">
-								★ BEST SELLER
-							</span>
-						</div>
-						<ProductCard product={humusCompost} variant="featured" />
-					</div>
+					<ProductCard product={humusCompost} variant="featured" />
 				)}
 
 				{brownMulch && (
@@ -182,14 +172,14 @@ const topsoil = getProductBySlug('topsoil');
 		</div>
 	</section>
 
-	<!-- Land Management Services - NEW revenue vertical -->
+	<!-- Land Management Services -->
 	<section class="section bg-gradient-to-br from-primary-500 to-primary-600 text-white">
 		<div class="container-custom">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 				<!-- Content column -->
 				<div>
 					<div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-						<span class="text-sm font-semibold">NEW SERVICE OFFERING</span>
+						<span class="text-sm font-semibold">New Service Offering</span>
 					</div>
 
 					<h2 class="text-3xl md:text-5xl font-display font-bold mb-6 leading-tight">
@@ -197,54 +187,30 @@ const topsoil = getProductBySlug('topsoil');
 					</h2>
 
 					<p class="text-xl mb-6 text-primary-50 leading-relaxed">
-						Sustainable land management through rotational grazing. Save money while improving soil health and biodiversity.
+						Sustainable land management through rotational grazing—lowering maintenance costs while restoring soil health and biodiversity.
 					</p>
 
-					<!-- Benefits list -->
-					<ul class="space-y-4 mb-8">
-						<li class="flex items-start gap-3">
-							<svg class="w-6 h-6 text-accent-300 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-								<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-							</svg>
-							<span class="text-lg"><strong>30-50% cost savings</strong> vs. traditional mowing</span>
-						</li>
-						<li class="flex items-start gap-3">
-							<svg class="w-6 h-6 text-accent-300 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-								<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-							</svg>
-							<span class="text-lg">Perfect for <strong>retention ponds, solar farms, HOAs</strong></span>
-						</li>
-						<li class="flex items-start gap-3">
-							<svg class="w-6 h-6 text-accent-300 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-								<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-							</svg>
-							<span class="text-lg">Zero chemicals • Natural fertilization • Eco-friendly</span>
-						</li>
-					</ul>
+					<p class="text-lg mb-6 font-semibold">
+						30–50% cost savings compared to traditional mowing
+					</p>
 
-					<div class="flex flex-col sm:flex-row gap-4">
-						<a href="/land-management" class="btn bg-white text-primary-600 hover:bg-primary-50 text-lg px-8 py-4">
-							Learn More About Grazing
-						</a>
-						<a href="/land-management/request-service" class="btn-outline border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4">
-							Request Assessment
-						</a>
+					<p class="text-lg mb-3 text-primary-100">Ideal for:</p>
+					<div class="flex flex-wrap gap-3 mb-6">
+						<span class="bg-white/20 px-4 py-2 rounded-full">Retention ponds</span>
+						<span class="bg-white/20 px-4 py-2 rounded-full">Solar farms</span>
+						<span class="bg-white/20 px-4 py-2 rounded-full">HOAs & large properties</span>
 					</div>
 
-					<!-- Pricing preview -->
-					<p class="mt-6 text-sm text-primary-100">
-						Packages from <span class="font-bold text-white">$300/month</span> (retention ponds) to <span class="font-bold text-white">$3,000/month</span> (solar farms)
+					<p class="text-lg text-primary-100">
+						Zero chemicals • Natural fertilization • Fully eco-friendly
 					</p>
 				</div>
 
-				<!-- Image/Visual column -->
+				<!-- Image column -->
 				<div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
 					<div class="bg-primary-300 h-80 rounded-xl flex items-center justify-center">
-						<span class="text-primary-600 text-sm">Grazing Animals Image Placeholder</span>
+						<span class="text-primary-600 text-sm">Grazing Animals Image</span>
 					</div>
-					<p class="mt-4 text-sm text-primary-100 text-center">
-						Partnership with Bo Carter, experienced grazing specialist
-					</p>
 				</div>
 			</div>
 		</div>
@@ -273,7 +239,7 @@ const topsoil = getProductBySlug('topsoil');
 					</div>
 					<div class="text-center">
 						<div class="text-4xl font-bold text-primary-600 mb-2">100%</div>
-						<div class="text-sm text-warm-600">Organic Certified</div>
+						<div class="text-sm text-warm-600">Organic</div>
 					</div>
 					<div class="text-center">
 						<div class="text-4xl font-bold text-primary-600 mb-2">24hr</div>
@@ -283,8 +249,8 @@ const topsoil = getProductBySlug('topsoil');
 
 				<!-- Trust badges -->
 				<div class="flex flex-wrap justify-center gap-4">
-					<span class="trust-badge">Certified Organic</span>
-					<span class="trust-badge">Certified Naturally Grown</span>
+					<span class="trust-badge">Organic</span>
+					<span class="trust-badge">Naturally Grown</span>
 					<span class="trust-badge">Family-Owned</span>
 					<span class="trust-badge">Athens Local</span>
 					<span class="trust-badge">Southland Organics Company</span>
@@ -292,4 +258,65 @@ const topsoil = getProductBySlug('topsoil');
 			</div>
 		</div>
 	</section>
+
+	<!-- Experience the Farm Life - Before Footer -->
+	<ExperienceFarm />
 </MainLayout>
+
+<style>
+	/* Hero section video background styles */
+	.hero-section {
+		position: relative;
+		isolation: isolate; /* Creates a new stacking context */
+	}
+
+	.hero-video-wrapper {
+		position: absolute;
+		inset: 0;
+		z-index: -2;
+		overflow: hidden;
+	}
+
+	.hero-video {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		min-width: 100%;
+		min-height: 100%;
+		width: auto;
+		height: auto;
+		transform: translate(-50%, -50%);
+		object-fit: cover;
+	}
+
+	.hero-overlay {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+</style>
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+<script is:inline>
+	document.addEventListener('DOMContentLoaded', function() {
+		var video = document.getElementById('hero-video');
+		if (!video) return;
+
+		var streamUrl = video.dataset.streamUrl;
+		if (!streamUrl) return;
+
+		if (video.canPlayType('application/vnd.apple.mpegurl')) {
+			video.src = streamUrl;
+			video.play().catch(function() {});
+		} else if (typeof Hls !== 'undefined' && Hls.isSupported()) {
+			var hls = new Hls();
+			hls.loadSource(streamUrl);
+			hls.attachMedia(video);
+			hls.on(Hls.Events.MANIFEST_PARSED, function() {
+				video.play().catch(function() {});
+			});
+		}
+	});
+</script>
+

@@ -65,7 +65,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 700;
-  color: var(--color-warm-900);
 }
 
 h1 {
@@ -120,17 +119,11 @@ h3 {
 }
 
 p {
-  color: var(--color-warm-700);
   line-height: 1.75;
 }
 
 a {
-  color: var(--color-primary-600);
   transition: color 0.2s;
-}
-
-a:hover {
-  color: var(--color-primary-700);
 }
 
 /* Component Styles - Tailwind v4 compatible */
