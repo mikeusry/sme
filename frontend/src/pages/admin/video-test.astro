@@ -1,0 +1,66 @@
+---
+/**
+ * Video Test Page - Debug MUX playback
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const videos = [
+  { name: 'Home Hero', id: 'at00mmiQBibWz00AYKl2KvgHltoP7hzkRX02NtjzpMLX7w' },
+  { name: 'Compost', id: 'eql45dBwcc3we00ywhZRoo2Vu2EETkDALwWUjRmEt6ZU' },
+];
+---
+
+<BaseLayout title="Video Test">
+  <script is:inline src="https://cdn.jsdelivr.net/npm/@mux/mux-player"></script>
+
+  <div class="p-8 max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-8">MUX Video Test</h1>
+
+    {videos.map((video) => (
+      <div class="mb-12 border rounded-lg p-6 bg-gray-50">
+        <h2 class="text-xl font-semibold mb-4">{video.name}</h2>
+        <p class="text-sm text-gray-600 mb-4">Playback ID: <code class="bg-gray-200 px-1">{video.id}</code></p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Thumbnail Test -->
+          <div>
+            <h3 class="font-medium mb-2">Thumbnail</h3>
+            <img
+              src={`https://image.mux.com/${video.id}/thumbnail.jpg?time=0`}
+              alt={video.name}
+              class="w-full rounded border"
+              onerror="this.style.border='2px solid red'; this.alt='FAILED TO LOAD'"
+            />
+          </div>
+
+          <!-- MUX Player Test -->
+          <div>
+            <h3 class="font-medium mb-2">MUX Player</h3>
+            <mux-player
+              playback-id={video.id}
+              stream-type="on-demand"
+              muted
+              autoplay
+              loop
+              style="width: 100%; aspect-ratio: 16/9;"
+            ></mux-player>
+          </div>
+        </div>
+
+        <div class="mt-4 text-xs text-gray-500 space-y-1">
+          <p>HLS: <a href={`https://stream.mux.com/${video.id}.m3u8`} target="_blank" class="text-blue-600 underline">https://stream.mux.com/{video.id}.m3u8</a></p>
+          <p>Thumbnail: <a href={`https://image.mux.com/${video.id}/thumbnail.jpg`} target="_blank" class="text-blue-600 underline">https://image.mux.com/{video.id}/thumbnail.jpg</a></p>
+        </div>
+      </div>
+    ))}
+
+    <div class="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded">
+      <h3 class="font-bold mb-2">Troubleshooting:</h3>
+      <ul class="text-sm space-y-1">
+        <li>- If thumbnails don't load, the playback ID may be invalid</li>
+        <li>- If player shows error, check browser console for details</li>
+        <li>- Click the HLS links above to test if the stream URL responds</li>
+      </ul>
+    </div>
+  </div>
+</BaseLayout>

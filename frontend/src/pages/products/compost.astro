@@ -2,56 +2,61 @@
 /**
  * Compost Category Page
  *
- * Georgia's ONLY certified organic compost
+ * Georgia's ONLY organic compost
  * Route: /products/compost
  */
 
 import MainLayout from '../../layouts/MainLayout.astro';
 import ProductCard from '../../components/products/ProductCard.astro';
 import MaterialCalculator from '../../components/products/MaterialCalculator.astro';
-import HeroImage from '../../components/HeroImage.astro';
 import { getProductsByCategory } from '../../lib/products';
 
 const products = getProductsByCategory('compost');
+
+// MUX video for compost hero
+const muxPlaybackId = 'eql45dBwcc3we00ywhZRoo2Vu2EETkDALwWUjRmEt6ZU';
+const muxPosterUrl = `https://image.mux.com/${muxPlaybackId}/thumbnail.jpg?time=0`;
+const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 ---
 
 <MainLayout
-  title="Certified Organic Compost Athens GA | Soul Miner's Eden"
-  description="Georgia's ONLY certified organic compost. Transform your soil with nutrient-rich, microbially-active compost. Local delivery available in Athens, GA."
+  title="Organic Compost Athens GA | Soul Miner's Eden"
+  description="Georgia's ONLY organic compost. Transform your soil with nutrient-rich, microbially-active compost. Local delivery available in Athens, GA."
 >
-  <!-- Hero Section -->
-  <div class="relative">
-    <HeroImage
-      publicId="products/compost/compost-action.jpg"
-      alt="Certified Organic Compost - Soul Miner's Eden"
-      height={600}
-      overlay={true}
-    />
+  <!-- Hero Section with Video Background -->
+  <section class="compost-hero relative py-20 md:py-28 overflow-hidden">
+    <!-- Background Video -->
+    <div class="compost-video-wrapper">
+      <video
+        id="compost-hero-video"
+        class="compost-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster={muxPosterUrl}
+        data-stream-url={muxStreamUrl}
+      >
+      </video>
+      <!-- 50% Black Overlay -->
+      <div class="compost-video-overlay"></div>
+    </div>
 
-    <!-- Hero Content Overlay -->
-    <div class="absolute inset-0 flex items-center">
-      <div class="container-custom">
-        <div class="max-w-2xl">
-          <div class="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-primary-200">
-            <span class="inline-block bg-accent-600 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
-              ★ NO LOCAL COMPETITION ★
-            </span>
-            <h1 class="text-4xl md:text-5xl font-display font-bold text-warm-900 mb-4">
-              Georgia's ONLY Certified Organic Compost
-            </h1>
-            <p class="text-xl text-warm-700 mb-6">
-              Transform your soil with nutrient-rich, microbially-active compost. Certified Organic and Certified Naturally Grown.
-            </p>
-            <div class="flex flex-wrap gap-3">
-              <span class="trust-badge">Certified Organic</span>
-              <span class="trust-badge">Certified Naturally Grown</span>
-              <span class="trust-badge">Athens, GA</span>
-            </div>
-          </div>
-        </div>
+    <!-- Hero Content -->
+    <div class="container-custom relative z-10">
+      <div class="max-w-4xl mx-auto text-center text-white">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-8 leading-tight">
+          What is Composting?
+        </h1>
+        <p class="text-lg md:text-xl mb-6 leading-relaxed text-white/90">
+          Composting is a natural process that transforms organic materials, such as food scraps, yard trimmings and other organic waste, into a nutrient-rich soil amendment. This process is driven by microorganisms and insects that break down the organic materials into a humus-like substance. By composting, we can significantly reduce food waste, promote sustainability and mitigate greenhouse gas emissions.
+        </p>
+        <p class="text-lg md:text-xl leading-relaxed text-white/90">
+          Composting can be done in various settings, from backyard composting to community gardens and large-scale composting facilities. The composting process involves mixing food scraps, leaves and grass clippings with soil, water and air. This mixture is then left to decompose, with regular turning and monitoring to ensure optimal conditions.
+        </p>
       </div>
     </div>
-  </div>
+  </section>
 
   <div class="container-custom py-16">
     <!-- Introduction -->
@@ -61,7 +66,7 @@ const products = getProductsByCategory('compost');
           Why Soul Miner's Eden Compost?
         </h2>
         <p class="text-xl text-warm-700 leading-relaxed mb-8">
-          We're the only source in Georgia for certified organic compost. Our carefully crafted compost is the result of sustainable farming practices on our 65-acre family farm, creating a soil amendment that transforms gardens and landscapes.
+          We're the only source in Georgia for organic compost. Our carefully crafted compost is the result of sustainable farming practices on our 65-acre family farm, creating a soil amendment that transforms gardens and landscapes.
         </p>
       </div>
 
@@ -69,9 +74,9 @@ const products = getProductsByCategory('compost');
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
         <div class="feature-box">
           <div class="text-4xl mb-4">🌱</div>
-          <h3 class="font-bold text-xl mb-3 text-warm-900">Certified Organic</h3>
+          <h3 class="font-bold text-xl mb-3 text-warm-900">100% All-Natural</h3>
           <p class="text-warm-700">
-            The ONLY certified organic compost in Georgia. Meet strict organic standards for vegetables, fruits, and organic farms.
+            We are committed to All-Natural and Organic standards. Our production is ideal for vegetables, fruits, and organic farms.
           </p>
         </div>
 
@@ -119,7 +124,7 @@ const products = getProductsByCategory('compost');
         <div class="bg-primary-50 rounded-xl p-6 border border-primary-200">
           <h3 class="font-bold text-xl mb-3 text-warm-900">🥕 Vegetable Gardens</h3>
           <p class="text-warm-700 mb-4">
-            Certified organic for edible crops. Adds nutrients naturally without synthetic chemicals.
+            100% organic for edible crops. Adds nutrients naturally without synthetic chemicals.
           </p>
           <p class="text-sm text-primary-700 font-semibold">
             Recommended depth: 3-4 inches mixed into soil
@@ -162,14 +167,14 @@ const products = getProductsByCategory('compost');
     <section class="mb-16 bg-gradient-to-br from-accent-50 to-primary-50 rounded-2xl p-8 md:p-12 border border-primary-200">
       <div class="max-w-3xl mx-auto">
         <h2 class="text-3xl font-display font-bold text-warm-900 mb-6 text-center">
-          Why Certified Organic Compost Matters
+          Why Organic Compost Matters
         </h2>
         <div class="space-y-4 text-warm-700">
           <p class="text-lg">
             <strong class="text-accent-700">Zero Synthetic Chemicals:</strong> No pesticides, herbicides, or synthetic fertilizers. Safe for growing food and protecting pollinators.
           </p>
           <p class="text-lg">
-            <strong class="text-accent-700">Verified Standards:</strong> Third-party certification ensures our compost meets strict organic standards year after year.
+            <strong class="text-accent-700">Natural Standards:</strong> Our compost meets strict organic standards year after year.
           </p>
           <p class="text-lg">
             <strong class="text-accent-700">Support Local Organic Farming:</strong> Your purchase supports sustainable agriculture and local organic practices in Georgia.
@@ -188,20 +193,76 @@ const products = getProductsByCategory('compost');
           Ready to Transform Your Soil?
         </h2>
         <p class="text-xl text-primary-100 mb-8">
-          Order Georgia's only certified organic compost today. Local delivery available throughout Athens and surrounding areas.
+          Order Georgia's only organic compost today. Local delivery available throughout Athens and surrounding areas.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="tel:+17066134415" class="btn bg-white text-primary-600 hover:bg-primary-50 text-lg px-8 py-4">
-            📞 Call (706) 613-4415
+            Call (706) 613-4415
           </a>
           <a href="/contact-us" class="btn border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4">
             Request a Quote
           </a>
         </div>
         <p class="mt-6 text-sm text-primary-100">
-          💚 Delivery: $40 base + $1.25/mile after 20 miles | 📍 Pickup available in Bogart, GA
+          Delivery: $40 base + $1.25/mile after 20 miles | Pickup available in Bogart, GA
         </p>
       </div>
     </section>
   </div>
 </MainLayout>
+
+<style>
+  /* Compost hero video background styles */
+  .compost-hero {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .compost-video-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+  }
+
+  .compost-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+  }
+
+  .compost-video-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+</style>
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    var video = document.getElementById('compost-hero-video');
+    if (!video) return;
+
+    var streamUrl = video.dataset.streamUrl;
+    if (!streamUrl) return;
+
+    if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = streamUrl;
+      video.play().catch(function() {});
+    } else if (typeof Hls !== 'undefined' && Hls.isSupported()) {
+      var hls = new Hls();
+      hls.loadSource(streamUrl);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED, function() {
+        video.play().catch(function() {});
+      });
+    }
+  });
+</script>
