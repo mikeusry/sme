@@ -1,42 +1,619 @@
 ---
+/**
+ * Checkout Page
+ *
+ * Multi-step checkout flow:
+ * 1. Customer Info (email, shipping address)
+ * 2. Shipping Method
+ * 3. Payment
+ * 4. Confirmation
+ */
 import MainLayout from '../layouts/MainLayout.astro';
 ---
 
-<MainLayout title="Checkout" description="Complete your purchase">
-	<div class="container-custom py-12">
-		<h1 class="text-4xl font-display font-bold mb-8">Checkout</h1>
+<MainLayout title="Checkout" description="Complete your order">
+  <div class="container-custom py-12">
+    <h1 class="text-4xl font-display font-bold mb-8">Checkout</h1>
 
-		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-			<div class="lg:col-span-2">
-				<div class="card mb-6">
-					<h2 class="text-2xl font-bold mb-4">Shipping Information</h2>
-					<form class="space-y-4">
-						<div class="grid grid-cols-2 gap-4">
-							<input type="text" placeholder="First Name" class="input" />
-							<input type="text" placeholder="Last Name" class="input" />
-						</div>
-						<input type="email" placeholder="Email" class="input" />
-						<input type="text" placeholder="Address" class="input" />
-						<div class="grid grid-cols-2 gap-4">
-							<input type="text" placeholder="City" class="input" />
-							<input type="text" placeholder="Postal Code" class="input" />
-						</div>
-					</form>
-				</div>
+    <!-- Loading State -->
+    <div id="checkout-loading" class="text-center py-12">
+      <div class="inline-flex items-center gap-3 text-warm-600">
+        <svg class="w-6 h-6 animate-spin" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span>Loading checkout...</span>
+      </div>
+    </div>
 
-				<div class="card">
-					<h2 class="text-2xl font-bold mb-4">Payment Method</h2>
-					<p class="text-gray-600">Stripe payment integration will be added here</p>
-				</div>
-			</div>
+    <!-- Empty Cart Redirect -->
+    <div id="checkout-empty" class="hidden">
+      <div class="card text-center py-12">
+        <svg class="w-16 h-16 mx-auto text-warm-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+        <h2 class="text-2xl font-display font-bold text-warm-900 mb-2">Your cart is empty</h2>
+        <p class="text-warm-600 mb-6">Add some products before checking out.</p>
+        <a href="/products" class="btn-primary inline-block">Browse Products</a>
+      </div>
+    </div>
 
-			<div class="lg:col-span-1">
-				<div class="card">
-					<h2 class="text-2xl font-bold mb-4">Order Summary</h2>
-					<p class="text-gray-600 mb-4">No items in cart</p>
-					<button class="btn-primary w-full" disabled>Place Order</button>
-				</div>
-			</div>
-		</div>
-	</div>
+    <!-- Checkout Content -->
+    <div id="checkout-content" class="hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Main Checkout Form -->
+        <div class="lg:col-span-2">
+          <!-- Progress Steps -->
+          <div class="flex items-center justify-between mb-8">
+            <div class="checkout-step active" data-step="1">
+              <div class="step-number">1</div>
+              <span class="step-label">Contact</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="checkout-step" data-step="2">
+              <div class="step-number">2</div>
+              <span class="step-label">Shipping</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="checkout-step" data-step="3">
+              <div class="step-number">3</div>
+              <span class="step-label">Payment</span>
+            </div>
+          </div>
+
+          <!-- Step 1: Contact & Address -->
+          <div id="step-1" class="checkout-step-content card">
+            <h2 class="text-2xl font-display font-bold mb-6">Contact Information</h2>
+
+            <form id="contact-form" class="space-y-4">
+              <div>
+                <label for="email" class="block text-sm font-medium text-warm-700 mb-1">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="input w-full"
+                  placeholder="you@example.com"
+                />
+              </div>
+
+              <h3 class="text-xl font-display font-bold mt-8 mb-4">Shipping Address</h3>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="first_name" class="block text-sm font-medium text-warm-700 mb-1">First Name</label>
+                  <input type="text" id="first_name" name="first_name" required class="input w-full" />
+                </div>
+                <div>
+                  <label for="last_name" class="block text-sm font-medium text-warm-700 mb-1">Last Name</label>
+                  <input type="text" id="last_name" name="last_name" required class="input w-full" />
+                </div>
+              </div>
+
+              <div>
+                <label for="address_1" class="block text-sm font-medium text-warm-700 mb-1">Address</label>
+                <input type="text" id="address_1" name="address_1" required class="input w-full" placeholder="Street address" />
+              </div>
+
+              <div>
+                <label for="address_2" class="block text-sm font-medium text-warm-700 mb-1">Apartment, suite, etc. (optional)</label>
+                <input type="text" id="address_2" name="address_2" class="input w-full" />
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="city" class="block text-sm font-medium text-warm-700 mb-1">City</label>
+                  <input type="text" id="city" name="city" required class="input w-full" />
+                </div>
+                <div>
+                  <label for="province" class="block text-sm font-medium text-warm-700 mb-1">State</label>
+                  <select id="province" name="province" required class="input w-full">
+                    <option value="">Select state</option>
+                    <option value="GA">Georgia</option>
+                    <option value="AL">Alabama</option>
+                    <option value="FL">Florida</option>
+                    <option value="NC">North Carolina</option>
+                    <option value="SC">South Carolina</option>
+                    <option value="TN">Tennessee</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="postal_code" class="block text-sm font-medium text-warm-700 mb-1">ZIP Code</label>
+                  <input type="text" id="postal_code" name="postal_code" required class="input w-full" pattern="[0-9]{5}" />
+                </div>
+                <div>
+                  <label for="phone" class="block text-sm font-medium text-warm-700 mb-1">Phone</label>
+                  <input type="tel" id="phone" name="phone" required class="input w-full" placeholder="(706) 555-0123" />
+                </div>
+              </div>
+
+              <div class="pt-4">
+                <button type="submit" class="btn-primary w-full text-lg py-4">
+                  Continue to Shipping
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Step 2: Shipping Method -->
+          <div id="step-2" class="checkout-step-content card hidden">
+            <h2 class="text-2xl font-display font-bold mb-6">Shipping Method</h2>
+
+            <div id="shipping-options" class="space-y-4">
+              <!-- Shipping options loaded dynamically -->
+              <p class="text-warm-600">Loading shipping options...</p>
+            </div>
+
+            <div class="pt-6 flex gap-4">
+              <button type="button" id="back-to-contact" class="btn-outline flex-1 py-3">
+                Back
+              </button>
+              <button type="button" id="continue-to-payment" class="btn-primary flex-1 py-3" disabled>
+                Continue to Payment
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3: Payment -->
+          <div id="step-3" class="checkout-step-content card hidden">
+            <h2 class="text-2xl font-display font-bold mb-6">Payment</h2>
+
+            <div class="bg-accent-50 border border-accent-200 rounded-lg p-4 mb-6">
+              <p class="text-accent-700 font-medium">
+                For bulk orders, we recommend calling us directly at <a href="tel:+17066134415" class="underline">(706) 613-4415</a> to discuss delivery logistics and arrange payment.
+              </p>
+            </div>
+
+            <div id="payment-element" class="min-h-[200px] flex items-center justify-center">
+              <p class="text-warm-600">Loading payment form...</p>
+            </div>
+
+            <div id="payment-message" class="hidden mt-4 p-4 bg-red-50 text-red-700 rounded-lg"></div>
+
+            <div class="pt-6 flex gap-4">
+              <button type="button" id="back-to-shipping" class="btn-outline flex-1 py-3">
+                Back
+              </button>
+              <button type="button" id="place-order" class="btn-primary flex-1 py-3" disabled>
+                Place Order
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Summary Sidebar -->
+        <div class="lg:col-span-1">
+          <div class="card sticky top-6">
+            <h2 class="text-xl font-display font-bold mb-4">Order Summary</h2>
+
+            <div id="checkout-items" class="divide-y divide-warm-200 mb-4 max-h-[300px] overflow-y-auto">
+              <!-- Items rendered via JS -->
+            </div>
+
+            <div class="space-y-2 pt-4 border-t border-warm-200">
+              <div class="flex justify-between text-warm-700">
+                <span>Subtotal</span>
+                <span id="checkout-subtotal">$0.00</span>
+              </div>
+              <div class="flex justify-between text-warm-700">
+                <span>Shipping</span>
+                <span id="checkout-shipping">-</span>
+              </div>
+              <div class="flex justify-between text-warm-700">
+                <span>Tax</span>
+                <span id="checkout-tax">$0.00</span>
+              </div>
+              <div class="flex justify-between font-bold text-xl pt-2 border-t border-warm-200">
+                <span>Total</span>
+                <span id="checkout-total">$0.00</span>
+              </div>
+            </div>
+
+            <a href="/cart" class="block text-center text-primary-600 text-sm mt-4 hover:underline">
+              Edit Cart
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error State -->
+    <div id="checkout-error" class="hidden">
+      <div class="card text-center py-12 bg-red-50 border-red-200">
+        <svg class="w-16 h-16 mx-auto text-red-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <h2 class="text-2xl font-display font-bold text-red-900 mb-2">Something went wrong</h2>
+        <p class="text-red-600 mb-6" id="error-message">Failed to load checkout</p>
+        <a href="/cart" class="btn-primary">Return to Cart</a>
+      </div>
+    </div>
+
+    <!-- Success State -->
+    <div id="checkout-success" class="hidden">
+      <div class="card text-center py-12">
+        <svg class="w-20 h-20 mx-auto text-accent-500 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <h2 class="text-3xl font-display font-bold text-warm-900 mb-4">Order Confirmed!</h2>
+        <p class="text-xl text-warm-600 mb-2">Thank you for your order.</p>
+        <p class="text-warm-600 mb-8">
+          Order #<span id="order-number" class="font-semibold">-</span>
+        </p>
+        <p class="text-warm-600 mb-8">
+          We'll send a confirmation email with delivery details shortly.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/products" class="btn-primary">Continue Shopping</a>
+          <a href="tel:+17066134415" class="btn-outline">Questions? Call Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </MainLayout>
+
+<style>
+  .checkout-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .step-number {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    background: #e5e7eb;
+    color: #6b7280;
+    transition: all 0.2s;
+  }
+
+  .checkout-step.active .step-number,
+  .checkout-step.completed .step-number {
+    background: var(--color-primary-600, #16a34a);
+    color: white;
+  }
+
+  .step-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b7280;
+  }
+
+  .checkout-step.active .step-label {
+    color: var(--color-primary-600, #16a34a);
+    font-weight: 600;
+  }
+
+  .step-line {
+    flex: 1;
+    height: 2px;
+    background: #e5e7eb;
+    margin: 0 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .shipping-option {
+    border: 2px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .shipping-option:hover {
+    border-color: var(--color-primary-300, #86efac);
+  }
+
+  .shipping-option.selected {
+    border-color: var(--color-primary-600, #16a34a);
+    background: var(--color-primary-50, #f0fdf4);
+  }
+
+  .shipping-option input {
+    margin-right: 0.75rem;
+  }
+</style>
+
+<script>
+  import { initializeCart, getCurrentCart, clearStoredCartId } from '../lib/cart-store';
+  import { updateCart, getShippingOptions, addShippingMethod, createPaymentSessions, completeCart, type Cart, type ShippingOption } from '../lib/medusa-v2';
+
+  // State
+  let cart: Cart | null = null;
+  let currentStep = 1;
+  let selectedShippingOption: string | null = null;
+
+  // Elements
+  const loadingEl = document.getElementById('checkout-loading');
+  const emptyEl = document.getElementById('checkout-empty');
+  const contentEl = document.getElementById('checkout-content');
+  const errorEl = document.getElementById('checkout-error');
+  const successEl = document.getElementById('checkout-success');
+  const errorMessageEl = document.getElementById('error-message');
+
+  const step1El = document.getElementById('step-1');
+  const step2El = document.getElementById('step-2');
+  const step3El = document.getElementById('step-3');
+
+  const contactForm = document.getElementById('contact-form') as HTMLFormElement;
+  const shippingOptionsEl = document.getElementById('shipping-options');
+  const continueToPaymentBtn = document.getElementById('continue-to-payment') as HTMLButtonElement;
+  const backToContactBtn = document.getElementById('back-to-contact');
+  const backToShippingBtn = document.getElementById('back-to-shipping');
+  const placeOrderBtn = document.getElementById('place-order') as HTMLButtonElement;
+
+  function formatPrice(amount: number, currencyCode: string = 'usd'): string {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: currencyCode.toUpperCase(),
+    }).format(amount / 100);
+  }
+
+  function showState(state: 'loading' | 'empty' | 'content' | 'error' | 'success') {
+    loadingEl?.classList.toggle('hidden', state !== 'loading');
+    emptyEl?.classList.toggle('hidden', state !== 'empty');
+    contentEl?.classList.toggle('hidden', state !== 'content');
+    errorEl?.classList.toggle('hidden', state !== 'error');
+    successEl?.classList.toggle('hidden', state !== 'success');
+  }
+
+  function showStep(step: number) {
+    currentStep = step;
+
+    // Update step indicators
+    document.querySelectorAll('.checkout-step').forEach(el => {
+      const stepNum = parseInt(el.getAttribute('data-step') || '0');
+      el.classList.toggle('active', stepNum === step);
+      el.classList.toggle('completed', stepNum < step);
+    });
+
+    // Show/hide step content
+    step1El?.classList.toggle('hidden', step !== 1);
+    step2El?.classList.toggle('hidden', step !== 2);
+    step3El?.classList.toggle('hidden', step !== 3);
+  }
+
+  function renderOrderSummary() {
+    if (!cart) return;
+
+    const itemsEl = document.getElementById('checkout-items');
+    if (itemsEl) {
+      itemsEl.innerHTML = cart.items.map(item => `
+        <div class="flex gap-3 py-3">
+          <div class="w-12 h-12 bg-warm-100 rounded flex-shrink-0"></div>
+          <div class="flex-grow min-w-0">
+            <p class="font-medium text-warm-900 text-sm truncate">${item.title}</p>
+            <p class="text-xs text-warm-500">Qty: ${item.quantity}</p>
+          </div>
+          <span class="text-sm font-medium text-warm-900">${formatPrice(item.total, cart.currency_code)}</span>
+        </div>
+      `).join('');
+    }
+
+    const subtotalEl = document.getElementById('checkout-subtotal');
+    const shippingEl = document.getElementById('checkout-shipping');
+    const taxEl = document.getElementById('checkout-tax');
+    const totalEl = document.getElementById('checkout-total');
+
+    if (subtotalEl) subtotalEl.textContent = formatPrice(cart.subtotal, cart.currency_code);
+    if (shippingEl) shippingEl.textContent = cart.shipping_total > 0 ? formatPrice(cart.shipping_total, cart.currency_code) : '-';
+    if (taxEl) taxEl.textContent = formatPrice(cart.tax_total, cart.currency_code);
+    if (totalEl) totalEl.textContent = formatPrice(cart.total, cart.currency_code);
+  }
+
+  async function handleContactSubmit(e: Event) {
+    e.preventDefault();
+
+    const formData = new FormData(contactForm);
+    const email = formData.get('email') as string;
+    const shippingAddress = {
+      first_name: formData.get('first_name') as string,
+      last_name: formData.get('last_name') as string,
+      address_1: formData.get('address_1') as string,
+      address_2: formData.get('address_2') as string || null,
+      city: formData.get('city') as string,
+      province: formData.get('province') as string,
+      postal_code: formData.get('postal_code') as string,
+      country_code: 'us',
+      phone: formData.get('phone') as string,
+    };
+
+    try {
+      // Update cart with contact info
+      cart = await updateCart(cart!.id, {
+        email,
+        shipping_address: shippingAddress,
+        billing_address: shippingAddress,
+      });
+
+      // Load shipping options
+      await loadShippingOptions();
+
+      showStep(2);
+    } catch (error: any) {
+      console.error('Failed to update contact info:', error);
+      alert('Failed to save contact information. Please try again.');
+    }
+  }
+
+  async function loadShippingOptions() {
+    if (!cart || !shippingOptionsEl) return;
+
+    shippingOptionsEl.innerHTML = '<p class="text-warm-600">Loading shipping options...</p>';
+
+    try {
+      const options = await getShippingOptions(cart.id);
+
+      if (options.length === 0) {
+        // Show manual delivery option
+        shippingOptionsEl.innerHTML = `
+          <div class="bg-accent-50 border border-accent-200 rounded-lg p-4">
+            <h3 class="font-semibold text-warm-900 mb-2">Delivery Coordination Required</h3>
+            <p class="text-warm-700 mb-4">
+              Due to the bulk nature of our products, delivery is coordinated directly with our team.
+              After placing your order, we'll contact you to schedule delivery.
+            </p>
+            <p class="text-sm text-warm-600">
+              <strong>Delivery:</strong> $40 base + $1.25/mile after 20 miles from Bogart, GA<br/>
+              <strong>Pickup:</strong> Available at 189 Luke Road, Bogart, GA 30622
+            </p>
+          </div>
+        `;
+        continueToPaymentBtn.disabled = false;
+      } else {
+        shippingOptionsEl.innerHTML = options.map(option => `
+          <label class="shipping-option flex items-start cursor-pointer">
+            <input
+              type="radio"
+              name="shipping"
+              value="${option.id}"
+              class="mt-1"
+            />
+            <div>
+              <span class="font-semibold text-warm-900">${option.name}</span>
+              <span class="text-warm-700 ml-2">${formatPrice(option.amount, cart!.currency_code)}</span>
+            </div>
+          </label>
+        `).join('');
+
+        // Attach event listeners
+        shippingOptionsEl.querySelectorAll('input[name="shipping"]').forEach(input => {
+          input.addEventListener('change', (e) => {
+            selectedShippingOption = (e.target as HTMLInputElement).value;
+
+            // Update selected styling
+            shippingOptionsEl?.querySelectorAll('.shipping-option').forEach(opt => {
+              opt.classList.remove('selected');
+            });
+            (e.target as HTMLInputElement).closest('.shipping-option')?.classList.add('selected');
+
+            continueToPaymentBtn.disabled = false;
+          });
+        });
+      }
+    } catch (error) {
+      console.error('Failed to load shipping options:', error);
+      shippingOptionsEl.innerHTML = `
+        <div class="bg-accent-50 border border-accent-200 rounded-lg p-4">
+          <p class="text-warm-700">
+            Delivery will be coordinated after your order is placed. Our standard rates are:
+          </p>
+          <ul class="mt-2 text-sm text-warm-600">
+            <li><strong>Local Delivery:</strong> $40 base + $1.25/mile after 20 miles</li>
+            <li><strong>Pickup:</strong> Free at 189 Luke Road, Bogart, GA</li>
+          </ul>
+        </div>
+      `;
+      continueToPaymentBtn.disabled = false;
+    }
+  }
+
+  async function handleContinueToPayment() {
+    try {
+      if (selectedShippingOption && cart) {
+        cart = await addShippingMethod(cart.id, selectedShippingOption);
+        renderOrderSummary();
+      }
+
+      // For now, show a simplified payment step since Stripe integration requires setup
+      showStep(3);
+      setupPaymentStep();
+    } catch (error: any) {
+      console.error('Failed to set shipping method:', error);
+      alert('Failed to set shipping method. Please try again.');
+    }
+  }
+
+  function setupPaymentStep() {
+    const paymentEl = document.getElementById('payment-element');
+    if (!paymentEl) return;
+
+    // For now, show a call-to-action since full Stripe integration requires backend setup
+    paymentEl.innerHTML = `
+      <div class="text-center space-y-4">
+        <p class="text-warm-700">
+          To complete your order, please call us at:
+        </p>
+        <a href="tel:+17066134415" class="text-3xl font-bold text-primary-600 hover:text-primary-700">
+          (706) 613-4415
+        </a>
+        <p class="text-sm text-warm-500">
+          We'll finalize your order and arrange payment over the phone.
+        </p>
+      </div>
+    `;
+
+    placeOrderBtn.textContent = 'Complete Order';
+    placeOrderBtn.disabled = false;
+  }
+
+  async function handlePlaceOrder() {
+    try {
+      placeOrderBtn.disabled = true;
+      placeOrderBtn.textContent = 'Processing...';
+
+      // Complete the cart
+      const result = await completeCart(cart!.id);
+
+      // Clear cart
+      clearStoredCartId();
+
+      // Show success
+      const orderNumberEl = document.getElementById('order-number');
+      if (orderNumberEl && result.data?.id) {
+        orderNumberEl.textContent = result.data.id;
+      }
+
+      showState('success');
+    } catch (error: any) {
+      console.error('Failed to complete order:', error);
+      const paymentMessageEl = document.getElementById('payment-message');
+      if (paymentMessageEl) {
+        paymentMessageEl.textContent = error.message || 'Failed to complete order. Please try again or call us.';
+        paymentMessageEl.classList.remove('hidden');
+      }
+      placeOrderBtn.disabled = false;
+      placeOrderBtn.textContent = 'Complete Order';
+    }
+  }
+
+  // Event Listeners
+  contactForm?.addEventListener('submit', handleContactSubmit);
+  backToContactBtn?.addEventListener('click', () => showStep(1));
+  continueToPaymentBtn?.addEventListener('click', handleContinueToPayment);
+  backToShippingBtn?.addEventListener('click', () => showStep(2));
+  placeOrderBtn?.addEventListener('click', handlePlaceOrder);
+
+  // Initialize
+  async function init() {
+    try {
+      showState('loading');
+      cart = await initializeCart();
+
+      if (!cart || cart.items.length === 0) {
+        showState('empty');
+        return;
+      }
+
+      renderOrderSummary();
+      showState('content');
+      showStep(1);
+    } catch (error: any) {
+      console.error('Failed to load checkout:', error);
+      if (errorMessageEl) errorMessageEl.textContent = error.message || 'Failed to load checkout';
+      showState('error');
+    }
+  }
+
+  init();
+</script>

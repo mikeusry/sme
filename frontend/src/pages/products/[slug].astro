@@ -10,6 +10,7 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import ProductImage from '../../components/ProductImage.astro';
 import ProductCard from '../../components/products/ProductCard.astro';
 import MaterialCalculator from '../../components/products/MaterialCalculator.astro';
+import AddToCartButton from '../../components/cart/AddToCartButton.astro';
 import { getAllProducts, getProductBySlug, getRelatedProducts, formatPrice } from '../../lib/products';
 
 // Get the product slug from the URL
@@ -138,9 +139,9 @@ const breadcrumbs = [
 
         <!-- CTAs -->
         <div class="flex flex-col sm:flex-row gap-4">
-          <button class="btn-primary text-lg px-8 py-4 flex-1" onclick="alert('Cart functionality coming soon!')">
-            Add to Cart
-          </button>
+          <div class="flex-1">
+            <AddToCartButton productSlug={product.slug} productName={product.name} />
+          </div>
           <a href="/contact-us" class="btn-outline text-lg px-8 py-4 flex-1 text-center">
             Request Quote
           </a>

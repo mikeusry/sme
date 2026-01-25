@@ -1,0 +1,138 @@
+---
+/**
+ * Add to Cart Button Component
+ *
+ * Client-side interactive button for adding products to cart.
+ * Looks up product in Medusa by handle and adds first variant.
+ */
+
+interface Props {
+  productSlug: string;
+  productName: string;
+  class?: string;
+}
+
+const { productSlug, productName, class: className = "" } = Astro.props;
+---
+
+<div
+  class={`add-to-cart-wrapper ${className}`}
+  data-product-slug={productSlug}
+  data-product-name={productName}
+>
+  <button
+    type="button"
+    class="add-to-cart-btn btn-primary text-lg px-8 py-4 w-full flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+  >
+    <svg class="cart-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+    </svg>
+    <span class="btn-text">Add to Cart</span>
+    <!-- Loading spinner (hidden by default) -->
+    <svg class="loading-spinner hidden w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+    </svg>
+  </button>
+
+  <!-- Success message (hidden by default) -->
+  <div class="success-message hidden mt-3 p-3 bg-accent-100 text-accent-700 rounded-lg text-sm font-medium flex items-center gap-2">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+    </svg>
+    <span>Added to cart!</span>
+    <a href="/cart" class="ml-auto text-accent-800 underline hover:no-underline">View Cart</a>
+  </div>
+
+  <!-- Error message (hidden by default) -->
+  <div class="error-message hidden mt-3 p-3 bg-red-100 text-red-700 rounded-lg text-sm font-medium flex items-center gap-2">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+      <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+    </svg>
+    <span class="error-text">Failed to add to cart</span>
+  </div>
+</div>
+
+<script>
+  import { getProductByHandle } from "../../lib/medusa-v2";
+  import { addItemToCart, initializeCart } from "../../lib/cart-store";
+
+  // Initialize all add to cart buttons on page
+  document.querySelectorAll('.add-to-cart-wrapper').forEach(wrapper => {
+    const btn = wrapper.querySelector('.add-to-cart-btn') as HTMLButtonElement;
+    const btnText = wrapper.querySelector('.btn-text') as HTMLElement;
+    const cartIcon = wrapper.querySelector('.cart-icon') as HTMLElement;
+    const loadingSpinner = wrapper.querySelector('.loading-spinner') as HTMLElement;
+    const successMessage = wrapper.querySelector('.success-message') as HTMLElement;
+    const errorMessage = wrapper.querySelector('.error-message') as HTMLElement;
+    const errorText = wrapper.querySelector('.error-text') as HTMLElement;
+
+    const productSlug = wrapper.getAttribute('data-product-slug');
+    const productName = wrapper.getAttribute('data-product-name');
+
+    if (!btn || !productSlug) return;
+
+    btn.addEventListener('click', async () => {
+      // Reset messages
+      successMessage?.classList.add('hidden');
+      errorMessage?.classList.add('hidden');
+
+      // Show loading state
+      btn.disabled = true;
+      btnText.textContent = 'Adding...';
+      cartIcon?.classList.add('hidden');
+      loadingSpinner?.classList.remove('hidden');
+
+      try {
+        // Initialize cart if needed
+        await initializeCart();
+
+        // Look up product in Medusa by handle (slug)
+        const product = await getProductByHandle(productSlug);
+
+        if (!product) {
+          throw new Error('Product not found');
+        }
+
+        if (!product.variants || product.variants.length === 0) {
+          throw new Error('No variants available');
+        }
+
+        // Get first variant ID
+        const variantId = product.variants[0].id;
+
+        // Add to cart
+        await addItemToCart(variantId, 1);
+
+        // Show success
+        btnText.textContent = 'Added!';
+        successMessage?.classList.remove('hidden');
+
+        // Reset button after delay
+        setTimeout(() => {
+          btnText.textContent = 'Add to Cart';
+          btn.disabled = false;
+          cartIcon?.classList.remove('hidden');
+          loadingSpinner?.classList.add('hidden');
+        }, 2000);
+
+      } catch (error: any) {
+        console.error('Add to cart error:', error);
+
+        // Show error
+        btn.disabled = false;
+        btnText.textContent = 'Add to Cart';
+        cartIcon?.classList.remove('hidden');
+        loadingSpinner?.classList.add('hidden');
+
+        errorText.textContent = error.message || 'Failed to add to cart';
+        errorMessage?.classList.remove('hidden');
+
+        // Hide error after delay
+        setTimeout(() => {
+          errorMessage?.classList.add('hidden');
+        }, 5000);
+      }
+    });
+  });
+</script>
