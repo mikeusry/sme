@@ -42,23 +42,13 @@ const isCompact = variant === 'compact';
     />
 
     <!-- Badges -->
-    <div class="absolute top-3 right-3 flex flex-col gap-2">
-      {isFeatured && (
-        <span class="badge-success shadow-md">
-          ⭐ Featured
-        </span>
-      )}
-      {product.certifications && product.certifications.includes('Certified Organic') && (
-        <span class="badge bg-accent-600 text-white shadow-md">
-          Certified Organic
-        </span>
-      )}
-      {!product.inStock && (
+    {!product.inStock && (
+      <div class="absolute top-3 right-3">
         <span class="badge bg-warm-400 text-warm-900">
           Out of Stock
         </span>
-      )}
-    </div>
+      </div>
+    )}
   </div>
 
   <!-- Product Info -->
