@@ -142,6 +142,7 @@ let authToken = null;
 async function login(email, password) {
   console.log('Authenticating...');
 
+  // Medusa v2 admin auth endpoint
   const response = await fetch(`${BACKEND_URL}/auth/user/emailpass`, {
     method: 'POST',
     headers: {
@@ -151,8 +152,25 @@ async function login(email, password) {
   });
 
   if (!response.ok) {
-    const error = await response.text();
-    throw new Error(`Login failed: ${response.status} - ${error}`);
+    // Try admin-specific endpoint if user endpoint fails
+    console.log('Trying admin auth endpoint...');
+    const adminResponse = await fetch(`${BACKEND_URL}/admin/auth/token`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (!adminResponse.ok) {
+      const error = await adminResponse.text();
+      throw new Error(`Login failed: ${adminResponse.status} - ${error}`);
+    }
+
+    const adminData = await adminResponse.json();
+    authToken = adminData.access_token || adminData.token;
+    console.log('Authenticated via admin endpoint');
+    return authToken;
   }
 
   const data = await response.json();
