@@ -1,0 +1,193 @@
+---
+/**
+ * Pickup Scheduling Demo Page
+ *
+ * Standalone demo of the fulfillment choice and pickup time slot components.
+ * Visit: /demo/pickup-scheduling
+ */
+import MainLayout from '../../layouts/MainLayout.astro';
+import FulfillmentChoice from '../../components/checkout/FulfillmentChoice.astro';
+import PickupTimeSlot from '../../components/checkout/PickupTimeSlot.astro';
+---
+
+<MainLayout title="Pickup Scheduling Demo" description="Demo of honor stand pickup scheduling components">
+  <div class="container-custom py-12">
+    <div class="max-w-4xl mx-auto">
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-4xl font-display font-bold mb-2">Pickup Scheduling Demo</h1>
+        <p class="text-warm-600">
+          This page demonstrates the honor stand pickup scheduling system for Soul Miner's Eden farm store.
+        </p>
+      </div>
+
+      <!-- Demo Container -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Left: Components -->
+        <div class="lg:col-span-2 space-y-6">
+          <!-- Component 1: Fulfillment Choice -->
+          <div class="card">
+            <div class="mb-4 pb-4 border-b border-warm-200">
+              <h2 class="text-xl font-display font-bold">Component 1: Fulfillment Choice</h2>
+              <p class="text-sm text-warm-600 mt-1">Radio button selection between pickup and delivery</p>
+            </div>
+            <FulfillmentChoice />
+          </div>
+
+          <!-- Component 2: Pickup Time Slot -->
+          <div class="card">
+            <div class="mb-4 pb-4 border-b border-warm-200">
+              <h2 class="text-xl font-display font-bold">Component 2: Pickup Time Slot</h2>
+              <p class="text-sm text-warm-600 mt-1">Date and time window selector (shows when pickup is selected)</p>
+            </div>
+            <PickupTimeSlot />
+          </div>
+
+          <!-- Test Actions -->
+          <div class="card bg-accent-50 border-accent-200">
+            <h3 class="font-semibold text-warm-900 mb-4">Test Actions</h3>
+            <div class="space-y-3">
+              <button id="get-selection" class="btn-primary w-full">
+                Get Current Selection
+              </button>
+              <button id="reset-form" class="btn-outline w-full">
+                Reset Form
+              </button>
+            </div>
+            <div id="selection-output" class="mt-4 p-4 bg-white rounded border border-warm-200 font-mono text-xs hidden">
+              <!-- Output shown here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Info Panel -->
+        <div class="lg:col-span-1">
+          <div class="card sticky top-6">
+            <h3 class="text-lg font-display font-bold mb-4">Implementation Notes</h3>
+
+            <div class="space-y-4 text-sm">
+              <div>
+                <h4 class="font-semibold text-warm-900 mb-1">Honor Stand Model</h4>
+                <p class="text-warm-600">
+                  24/7 self-serve farm stand at 189 Luke Road, Bogart, GA. Customers pick up pre-ordered products using honor system payment.
+                </p>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-warm-900 mb-1">Pickup Windows</h4>
+                <ul class="text-warm-600 space-y-1 pl-4 list-disc">
+                  <li><strong>Anytime:</strong> 24/7 access</li>
+                  <li><strong>Morning:</strong> 8 AM - 12 PM</li>
+                  <li><strong>Afternoon:</strong> 12 PM - 5 PM</li>
+                  <li><strong>Evening:</strong> 5 PM - 7 PM</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-warm-900 mb-1">Data Storage</h4>
+                <p class="text-warm-600">
+                  Pickup schedule stored in Medusa cart metadata as <code class="bg-warm-100 px-1 rounded">fulfillment</code> object:
+                </p>
+                <pre class="bg-warm-900 text-white p-2 rounded mt-2 text-xs overflow-x-auto">{'{\n  method: "pickup",\n  pickupDate: "2026-02-15",\n  timeSlot: "morning",\n  notes: "..."\n}'}</pre>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-warm-900 mb-1">Delivery Option</h4>
+                <p class="text-warm-600">
+                  $40 base + $1.25/mile after 20 miles from Bogart, GA. Calculated and coordinated after order placement.
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-warm-200">
+                <h4 class="font-semibold text-warm-900 mb-2">Related Pages</h4>
+                <div class="space-y-1">
+                  <a href="/checkout-new" class="text-accent-600 hover:underline block">→ Full Checkout Flow</a>
+                  <a href="/admin/orders" class="text-accent-600 hover:underline block">→ Admin Order Management</a>
+                  <a href="/cart" class="text-accent-600 hover:underline block">→ Shopping Cart</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>
+
+<style>
+  code {
+    font-family: 'Courier New', monospace;
+  }
+</style>
+
+<script>
+  import type { FulfillmentMethod, TimeSlot } from '../../lib/pickup-scheduling';
+
+  // Get selection button
+  document.getElementById('get-selection')?.addEventListener('click', () => {
+    const fulfillmentMethod = (document.querySelector('input[name="fulfillment-method"]:checked') as HTMLInputElement)?.value as FulfillmentMethod;
+    const pickupDate = (document.getElementById('pickup-date') as HTMLSelectElement)?.value;
+    const timeSlot = (document.querySelector('input[name="time-slot"]:checked') as HTMLInputElement)?.value as TimeSlot;
+    const notes = (document.getElementById('pickup-notes') as HTMLTextAreaElement)?.value;
+
+    const selection = {
+      method: fulfillmentMethod,
+      pickupDate: pickupDate || null,
+      timeSlot: timeSlot || null,
+      notes: notes || null,
+    };
+
+    const output = document.getElementById('selection-output');
+    if (output) {
+      output.classList.remove('hidden');
+      output.innerHTML = `<pre>${JSON.stringify(selection, null, 2)}</pre>`;
+    }
+  });
+
+  // Reset form button
+  document.getElementById('reset-form')?.addEventListener('click', () => {
+    // Reset to pickup
+    const pickupRadio = document.querySelector('input[name="fulfillment-method"][value="pickup"]') as HTMLInputElement;
+    if (pickupRadio) pickupRadio.checked = true;
+
+    // Clear date
+    const dateSelect = document.getElementById('pickup-date') as HTMLSelectElement;
+    if (dateSelect) dateSelect.value = '';
+
+    // Reset to anytime
+    const anytimeRadio = document.querySelector('input[name="time-slot"][value="anytime"]') as HTMLInputElement;
+    if (anytimeRadio) anytimeRadio.checked = true;
+
+    // Clear notes
+    const notesInput = document.getElementById('pickup-notes') as HTMLTextAreaElement;
+    if (notesInput) notesInput.value = '';
+
+    // Hide pickup time slot
+    const pickupTimeSlot = document.getElementById('pickup-time-slot');
+    if (pickupTimeSlot) pickupTimeSlot.classList.add('hidden');
+
+    // Hide output
+    const output = document.getElementById('selection-output');
+    if (output) output.classList.add('hidden');
+  });
+
+  // Show pickup time slot when pickup is selected
+  document.addEventListener('DOMContentLoaded', () => {
+    const fulfillmentRadios = document.querySelectorAll('input[name="fulfillment-method"]');
+    const pickupTimeSlot = document.getElementById('pickup-time-slot');
+
+    fulfillmentRadios.forEach(radio => {
+      radio.addEventListener('change', (e) => {
+        const target = e.target as HTMLInputElement;
+        if (target.value === 'pickup') {
+          pickupTimeSlot?.classList.remove('hidden');
+        } else {
+          pickupTimeSlot?.classList.add('hidden');
+        }
+      });
+    });
+
+    // Initialize - show pickup time slot by default since pickup is checked
+    pickupTimeSlot?.classList.remove('hidden');
+  });
+</script>

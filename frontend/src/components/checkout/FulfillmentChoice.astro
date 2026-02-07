@@ -1,0 +1,189 @@
+---
+/**
+ * Fulfillment Method Choice Component
+ *
+ * Radio button selection: Pickup at honor stand vs Local delivery
+ */
+---
+
+<div class="fulfillment-choice">
+  <h3 class="text-xl font-display font-bold mb-4">How would you like to receive your order?</h3>
+
+  <div class="space-y-4">
+    <!-- Pickup Option -->
+    <label class="fulfillment-option cursor-pointer">
+      <input
+        type="radio"
+        name="fulfillment-method"
+        value="pickup"
+        class="fulfillment-radio"
+        checked
+      />
+      <div class="option-content">
+        <div class="option-header">
+          <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          <div>
+            <span class="option-title">Pickup at Honor Stand</span>
+            <span class="option-badge">FREE</span>
+          </div>
+        </div>
+        <p class="option-description">
+          <strong>189 Luke Road, Bogart, GA 30622</strong><br/>
+          Self-serve honor stand accessible 24/7. Choose your pickup time below.
+        </p>
+        <ul class="option-features">
+          <li>✓ Open 24 hours, 7 days a week</li>
+          <li>✓ No delivery fee</li>
+          <li>✓ Products fresh from the farm</li>
+          <li>✓ Cash or digital payment accepted</li>
+        </ul>
+      </div>
+    </label>
+
+    <!-- Delivery Option -->
+    <label class="fulfillment-option cursor-pointer">
+      <input
+        type="radio"
+        name="fulfillment-method"
+        value="delivery"
+        class="fulfillment-radio"
+      />
+      <div class="option-content">
+        <div class="option-header">
+          <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+          </svg>
+          <div>
+            <span class="option-title">Local Delivery</span>
+            <span class="option-badge delivery">Calculated</span>
+          </div>
+        </div>
+        <p class="option-description">
+          We'll deliver your order directly to your door.
+        </p>
+        <ul class="option-features">
+          <li>✓ $40 base delivery fee</li>
+          <li>✓ $1.25/mile after 20 miles from Bogart, GA</li>
+          <li>✓ Scheduled delivery within 2-3 business days</li>
+          <li>✓ Bulk orders welcome (compost, mulch, supersacks)</li>
+        </ul>
+      </div>
+    </label>
+  </div>
+</div>
+
+<style>
+  .fulfillment-option {
+    display: block;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .fulfillment-option:hover {
+    border-color: var(--color-accent-300, #86efac);
+    background: var(--color-accent-50, #f0fdf4);
+  }
+
+  .fulfillment-option:has(.fulfillment-radio:checked) {
+    border-color: var(--color-accent-600, #16a34a);
+    background: var(--color-accent-50, #f0fdf4);
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+  }
+
+  .fulfillment-radio {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+  }
+
+  .option-content {
+    padding-right: 2rem;
+  }
+
+  .option-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .option-header > div {
+    flex: 1;
+  }
+
+  .option-title {
+    display: block;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-warm-900, #292524);
+    margin-bottom: 0.25rem;
+  }
+
+  .option-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    background: var(--color-accent-100, #dcfce7);
+    color: var(--color-accent-700, #15803d);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .option-badge.delivery {
+    background: var(--color-primary-100, #f3e8ff);
+    color: var(--color-primary-700, #7e22ce);
+  }
+
+  .option-description {
+    font-size: 0.875rem;
+    color: var(--color-warm-600, #57534e);
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .option-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-warm-700, #44403c);
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .option-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  @media (max-width: 640px) {
+    .fulfillment-option {
+      padding: 1rem;
+    }
+
+    .option-content {
+      padding-right: 1.5rem;
+    }
+
+    .option-title {
+      font-size: 1rem;
+    }
+
+    .option-features {
+      font-size: 0.8125rem;
+    }
+  }
+</style>

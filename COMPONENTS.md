@@ -10,14 +10,18 @@ Design system following Tremor.so aesthetic: clean layouts, generous whitespace,
 |-----------|----------|---------|
 | `MainLayout` | `layouts/MainLayout.astro` | Full page wrapper with Header/Footer |
 | `BaseLayout` | `layouts/BaseLayout.astro` | HTML skeleton (head, meta, fonts) |
+| `AdminLayout` | `layouts/AdminLayout.astro` | Admin page wrapper with sidebar |
 | `Header` | `components/Header.astro` | Site navigation, mobile menu, cart |
 | `Footer` | `components/Footer.astro` | Site footer, links, trust signals |
+| `ExperienceFarm` | `components/ExperienceFarm.astro` | Farm visit CTA section |
 | `CloudinaryImage` | `components/CloudinaryImage.astro` | Base image component with Cloudinary |
 | `ProductImage` | `components/ProductImage.astro` | Product-specific image variants |
 | `HeroImage` | `components/HeroImage.astro` | Full-width banner images |
 | `Avatar` | `components/Avatar.astro` | Circular profile images |
 | `ProductCard` | `components/products/ProductCard.astro` | Product grid card |
 | `MaterialCalculator` | `components/products/MaterialCalculator.astro` | Volume calculator widget |
+| `AddToCartButton` | `components/cart/AddToCartButton.astro` | Interactive add-to-cart button |
+| `CartIcon` | `components/cart/CartIcon.astro` | Cart icon with badge count |
 
 ---
 
@@ -48,6 +52,31 @@ import MainLayout from '../layouts/MainLayout.astro';
 
 HTML skeleton without Header/Footer. Use for custom layouts.
 
+### AdminLayout
+**Location:** `frontend/src/layouts/AdminLayout.astro`
+
+Admin page wrapper with sidebar navigation.
+
+```astro
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+---
+<AdminLayout title="Dashboard" description="Admin overview">
+  <!-- Admin content -->
+</AdminLayout>
+```
+
+**Props:**
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `title` | string | Yes | Page title |
+| `description` | string | No | Meta description |
+
+**Features:**
+- Sidebar with admin navigation links
+- No public Header/Footer
+- Dashboard, Brand Guide, AI Detection links
+
 ---
 
 ## Core Components
@@ -75,6 +104,82 @@ Site footer with:
 - Trust signals
 
 **No props** - Self-contained component.
+
+### ExperienceFarm
+**Location:** `frontend/src/components/ExperienceFarm.astro`
+
+Reusable "Experience the farm life" CTA section with Cloudinary image.
+
+```astro
+<ExperienceFarm />
+
+<!-- Or with custom content -->
+<ExperienceFarm
+  title="Visit Our Farm"
+  headline="When you slow down..."
+  ctaText="BOOK A TOUR"
+  ctaLink="/contact"
+/>
+```
+
+**Props:**
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | string | "Experience the farm life" | Section title (serif italic) |
+| `headline` | string | (long default) | Main paragraph |
+| `subheadline` | string | "Come enjoy our little slice..." | Secondary text |
+| `ctaText` | string | "VISIT OUR FARM" | Button text |
+| `ctaLink` | string | "/contact" | Button link |
+| `imagePublicId` | string | "Southland_Office_hqmtez" | Cloudinary image ID |
+| `imageAlt` | string | "Soul Miner's Eden Farm Building" | Image alt text |
+| `class` | string | "" | Additional CSS classes |
+
+---
+
+## Cart Components
+
+### AddToCartButton
+**Location:** `frontend/src/components/cart/AddToCartButton.astro`
+
+Interactive button that adds products to cart via Medusa API.
+
+```astro
+<AddToCartButton
+  productSlug="humus-compost"
+  productName="Humus Compost"
+/>
+```
+
+**Props:**
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `productSlug` | string | Yes | Medusa product handle |
+| `productName` | string | Yes | Display name for messages |
+| `class` | string | No | Additional CSS classes |
+
+**Features:**
+- Loading state with spinner
+- Success message with "View Cart" link
+- Error handling with message display
+- Looks up product in Medusa by handle
+- Adds first variant to cart
+
+### CartIcon
+**Location:** `frontend/src/components/cart/CartIcon.astro`
+
+Cart icon with reactive item count badge.
+
+```astro
+<CartIcon />
+```
+
+**No props** - Self-contained component.
+
+**Features:**
+- Displays cart icon (SVG)
+- Badge shows item count (hidden when 0)
+- Updates reactively via cart-store subscription
+- Initializes cart on page load
 
 ---
 
@@ -407,6 +512,12 @@ These repeated patterns should become components:
 ---
 
 ## Changelog
+
+### 2026-01-25 - Component Update
+- Added AdminLayout documentation
+- Added ExperienceFarm component documentation
+- Added Cart components (AddToCartButton, CartIcon)
+- Updated Quick Reference table
 
 ### 2026-01-24 - Initial Audit
 - Documented all existing components

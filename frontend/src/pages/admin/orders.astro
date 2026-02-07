@@ -1,0 +1,520 @@
+---
+/**
+ * Admin Order Management Page
+ *
+ * View and manage farm orders with pickup scheduling.
+ * Grouped by pickup date for easy fulfillment tracking.
+ */
+import AdminLayout from '../../layouts/AdminLayout.astro';
+---
+
+<AdminLayout title="Order Management" description="Manage farm orders and pickups">
+  <div class="py-8">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h1 class="text-3xl font-display font-bold text-warm-900">Order Management</h1>
+        <p class="text-warm-600 mt-1">Track pickups, deliveries, and order fulfillment</p>
+      </div>
+      <button id="refresh-orders" class="btn-outline">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        </svg>
+        Refresh
+      </button>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+      <div class="card">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm text-warm-600">Today's Pickups</p>
+            <p class="text-2xl font-bold text-warm-900" id="stat-today">-</p>
+          </div>
+          <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm text-warm-600">This Week</p>
+            <p class="text-2xl font-bold text-warm-900" id="stat-week">-</p>
+          </div>
+          <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm text-warm-600">Pending Delivery</p>
+            <p class="text-2xl font-bold text-warm-900" id="stat-delivery">-</p>
+          </div>
+          <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm text-warm-600">Total Revenue</p>
+            <p class="text-2xl font-bold text-warm-900" id="stat-revenue">$0</p>
+          </div>
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="card mb-6">
+      <div class="flex flex-wrap gap-3">
+        <button class="filter-btn active" data-filter="all">
+          All Orders
+        </button>
+        <button class="filter-btn" data-filter="today">
+          Today
+        </button>
+        <button class="filter-btn" data-filter="pickup">
+          Pickup
+        </button>
+        <button class="filter-btn" data-filter="delivery">
+          Delivery
+        </button>
+        <button class="filter-btn" data-filter="ready">
+          Ready
+        </button>
+        <button class="filter-btn" data-filter="collected">
+          Collected
+        </button>
+      </div>
+    </div>
+
+    <!-- Orders List -->
+    <div id="orders-loading" class="text-center py-12">
+      <div class="inline-flex items-center gap-3 text-warm-600">
+        <svg class="w-6 h-6 animate-spin" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span>Loading orders...</span>
+      </div>
+    </div>
+
+    <div id="orders-content" class="hidden space-y-6">
+      <!-- Orders grouped by date -->
+      <div id="orders-list">
+        <!-- Populated via JavaScript -->
+      </div>
+    </div>
+
+    <div id="orders-empty" class="hidden">
+      <div class="card text-center py-12">
+        <svg class="w-16 h-16 mx-auto text-warm-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+        </svg>
+        <h2 class="text-2xl font-display font-bold text-warm-900 mb-2">No orders found</h2>
+        <p class="text-warm-600">Orders will appear here once customers place them.</p>
+      </div>
+    </div>
+  </div>
+</AdminLayout>
+
+<style>
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-warm-700, #44403c);
+    background: var(--color-warm-100, #fafaf9);
+    border: 1px solid var(--color-warm-200, #e7e5e4);
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover {
+    background: var(--color-warm-200, #e7e5e4);
+  }
+
+  .filter-btn.active {
+    background: var(--color-accent-600, #16a34a);
+    color: white;
+    border-color: var(--color-accent-600, #16a34a);
+  }
+
+  .order-card {
+    border: 1px solid #e7e5e4;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    background: white;
+    transition: all 0.2s;
+  }
+
+  .order-card:hover {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .status-badge.awaiting {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  .status-badge.ready {
+    background: #d1fae5;
+    color: #065f46;
+  }
+
+  .status-badge.collected {
+    background: #e0e7ff;
+    color: #3730a3;
+  }
+
+  .status-badge.delivery {
+    background: #fce7f3;
+    color: #831843;
+  }
+</style>
+
+<script>
+  // Mock order data - In production, this would fetch from Medusa or your backend
+  interface Order {
+    id: string;
+    orderNumber: string;
+    customerName: string;
+    email: string;
+    phone?: string;
+    total: number;
+    itemCount: number;
+    status: 'awaiting_pickup' | 'ready' | 'collected' | 'awaiting_delivery';
+    fulfillmentMethod: 'pickup' | 'delivery';
+    pickupDate?: string;
+    pickupTime?: string;
+    notes?: string;
+    createdAt: string;
+  }
+
+  // Sample orders for demo
+  const mockOrders: Order[] = [
+    {
+      id: '1',
+      orderNumber: 'SME-001',
+      customerName: 'Sarah Johnson',
+      email: 'sarah@example.com',
+      phone: '(706) 555-0123',
+      total: 8500, // $85.00 in cents
+      itemCount: 3,
+      status: 'awaiting_pickup',
+      fulfillmentMethod: 'pickup',
+      pickupDate: new Date().toISOString().split('T')[0],
+      pickupTime: 'morning',
+      notes: 'Please have eggs ready',
+      createdAt: new Date().toISOString(),
+    },
+    {
+      id: '2',
+      orderNumber: 'SME-002',
+      customerName: 'Mike Peterson',
+      email: 'mike@example.com',
+      total: 12000,
+      itemCount: 5,
+      status: 'ready',
+      fulfillmentMethod: 'pickup',
+      pickupDate: new Date().toISOString().split('T')[0],
+      pickupTime: 'afternoon',
+      createdAt: new Date().toISOString(),
+    },
+    {
+      id: '3',
+      orderNumber: 'SME-003',
+      customerName: 'Emily Davis',
+      email: 'emily@example.com',
+      total: 15500,
+      itemCount: 2,
+      status: 'awaiting_delivery',
+      fulfillmentMethod: 'delivery',
+      createdAt: new Date().toISOString(),
+    },
+  ];
+
+  let orders: Order[] = mockOrders;
+  let activeFilter = 'all';
+
+  function formatPrice(cents: number): string {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(cents / 100);
+  }
+
+  function formatDate(dateStr: string): string {
+    const date = new Date(dateStr);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const orderDate = new Date(date);
+    orderDate.setHours(0, 0, 0, 0);
+
+    if (orderDate.getTime() === today.getTime()) {
+      return 'Today';
+    }
+
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+
+    if (orderDate.getTime() === tomorrow.getTime()) {
+      return 'Tomorrow';
+    }
+
+    return date.toLocaleDateString('en-US', {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+    });
+  }
+
+  function getTimeSlotLabel(slot: string): string {
+    const slots: Record<string, string> = {
+      morning: '8 AM - 12 PM',
+      afternoon: '12 PM - 5 PM',
+      evening: '5 PM - 7 PM',
+      anytime: '24/7 Access',
+    };
+    return slots[slot] || slot;
+  }
+
+  function updateStats() {
+    const today = new Date().toISOString().split('T')[0];
+
+    const todayPickups = orders.filter(o => o.pickupDate === today).length;
+    const weekPickups = orders.filter(o => o.fulfillmentMethod === 'pickup').length;
+    const pendingDelivery = orders.filter(o => o.status === 'awaiting_delivery').length;
+    const revenue = orders.reduce((sum, o) => sum + o.total, 0);
+
+    document.getElementById('stat-today')!.textContent = todayPickups.toString();
+    document.getElementById('stat-week')!.textContent = weekPickups.toString();
+    document.getElementById('stat-delivery')!.textContent = pendingDelivery.toString();
+    document.getElementById('stat-revenue')!.textContent = formatPrice(revenue);
+  }
+
+  function filterOrders(filter: string): Order[] {
+    const today = new Date().toISOString().split('T')[0];
+
+    switch (filter) {
+      case 'today':
+        return orders.filter(o => o.pickupDate === today);
+      case 'pickup':
+        return orders.filter(o => o.fulfillmentMethod === 'pickup');
+      case 'delivery':
+        return orders.filter(o => o.fulfillmentMethod === 'delivery');
+      case 'ready':
+        return orders.filter(o => o.status === 'ready');
+      case 'collected':
+        return orders.filter(o => o.status === 'collected');
+      default:
+        return orders;
+    }
+  }
+
+  function groupOrdersByDate(orders: Order[]): Map<string, Order[]> {
+    const grouped = new Map<string, Order[]>();
+
+    orders.forEach(order => {
+      if (order.fulfillmentMethod === 'pickup' && order.pickupDate) {
+        const key = order.pickupDate;
+        if (!grouped.has(key)) {
+          grouped.set(key, []);
+        }
+        grouped.get(key)!.push(order);
+      } else {
+        // Delivery orders go in "Pending Delivery" group
+        const key = 'delivery';
+        if (!grouped.has(key)) {
+          grouped.set(key, []);
+        }
+        grouped.get(key)!.push(order);
+      }
+    });
+
+    return grouped;
+  }
+
+  function renderOrders() {
+    const filteredOrders = filterOrders(activeFilter);
+    const grouped = groupOrdersByDate(filteredOrders);
+
+    const ordersListEl = document.getElementById('orders-list');
+    if (!ordersListEl) return;
+
+    if (grouped.size === 0) {
+      document.getElementById('orders-content')?.classList.add('hidden');
+      document.getElementById('orders-empty')?.classList.remove('hidden');
+      return;
+    }
+
+    document.getElementById('orders-content')?.classList.remove('hidden');
+    document.getElementById('orders-empty')?.classList.add('hidden');
+
+    // Sort dates
+    const sortedDates = Array.from(grouped.keys()).sort((a, b) => {
+      if (a === 'delivery') return 1;
+      if (b === 'delivery') return -1;
+      return new Date(a).getTime() - new Date(b).getTime();
+    });
+
+    ordersListEl.innerHTML = sortedDates.map(date => {
+      const dateOrders = grouped.get(date)!;
+      const isDelivery = date === 'delivery';
+
+      return `
+        <div class="mb-6">
+          <h2 class="text-xl font-display font-bold text-warm-900 mb-4">
+            ${isDelivery ? 'Pending Delivery' : formatDate(date)}
+            <span class="text-sm font-normal text-warm-500 ml-2">(${dateOrders.length} ${dateOrders.length === 1 ? 'order' : 'orders'})</span>
+          </h2>
+
+          <div class="space-y-3">
+            ${dateOrders.map(order => `
+              <div class="order-card">
+                <div class="flex items-start justify-between mb-3">
+                  <div>
+                    <h3 class="font-semibold text-warm-900 text-lg">${order.orderNumber}</h3>
+                    <p class="text-sm text-warm-600">${order.customerName}</p>
+                  </div>
+                  <span class="status-badge ${order.status.replace('_', '-')}">${order.status.replace('_', ' ')}</span>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                  <div>
+                    <p class="text-xs text-warm-500 uppercase">Items</p>
+                    <p class="font-semibold text-warm-900">${order.itemCount}</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-warm-500 uppercase">Total</p>
+                    <p class="font-semibold text-warm-900">${formatPrice(order.total)}</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-warm-500 uppercase">Method</p>
+                    <p class="font-semibold text-warm-900">${order.fulfillmentMethod === 'pickup' ? 'Pickup' : 'Delivery'}</p>
+                  </div>
+                  ${order.pickupTime ? `
+                    <div>
+                      <p class="text-xs text-warm-500 uppercase">Time Window</p>
+                      <p class="font-semibold text-warm-900">${getTimeSlotLabel(order.pickupTime)}</p>
+                    </div>
+                  ` : ''}
+                </div>
+
+                <div class="flex items-center gap-2 text-sm text-warm-600 mb-4">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <span>${order.email}</span>
+                  ${order.phone ? `
+                    <svg class="w-4 h-4 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    <span>${order.phone}</span>
+                  ` : ''}
+                </div>
+
+                ${order.notes ? `
+                  <div class="bg-yellow-50 border border-yellow-200 rounded p-3 mb-4">
+                    <p class="text-sm text-yellow-800"><strong>Note:</strong> ${order.notes}</p>
+                  </div>
+                ` : ''}
+
+                <div class="flex gap-2">
+                  ${order.status === 'awaiting_pickup' ? `
+                    <button class="btn-primary btn-sm" onclick="markReady('${order.id}')">Mark Ready</button>
+                  ` : ''}
+                  ${order.status === 'ready' ? `
+                    <button class="btn-primary btn-sm" onclick="markCollected('${order.id}')">Mark Collected</button>
+                  ` : ''}
+                  <button class="btn-outline btn-sm" onclick="viewOrder('${order.id}')">View Details</button>
+                  <a href="tel:${order.phone || order.email}" class="btn-outline btn-sm">Contact</a>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Event listeners
+  document.getElementById('refresh-orders')?.addEventListener('click', () => {
+    location.reload();
+  });
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      (e.target as HTMLElement).classList.add('active');
+      activeFilter = (e.target as HTMLElement).dataset.filter || 'all';
+      renderOrders();
+    });
+  });
+
+  // Actions (window functions for demo)
+  (window as any).markReady = (orderId: string) => {
+    const order = orders.find(o => o.id === orderId);
+    if (order) {
+      order.status = 'ready';
+      renderOrders();
+      updateStats();
+      alert(`Order ${order.orderNumber} marked as ready for pickup!`);
+    }
+  };
+
+  (window as any).markCollected = (orderId: string) => {
+    const order = orders.find(o => o.id === orderId);
+    if (order) {
+      order.status = 'collected';
+      renderOrders();
+      updateStats();
+      alert(`Order ${order.orderNumber} marked as collected!`);
+    }
+  };
+
+  (window as any).viewOrder = (orderId: string) => {
+    const order = orders.find(o => o.id === orderId);
+    if (order) {
+      alert(`View Order ${order.orderNumber}\n\nThis would open order details page.`);
+    }
+  };
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('orders-loading')?.classList.add('hidden');
+    updateStats();
+    renderOrders();
+  });
+</script>

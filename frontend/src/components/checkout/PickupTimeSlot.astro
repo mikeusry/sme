@@ -1,0 +1,224 @@
+---
+/**
+ * Pickup Time Slot Selector
+ *
+ * Date picker + time slot selection for honor stand pickup scheduling.
+ * Only shows when "Pickup" fulfillment method is selected.
+ */
+---
+
+<div id="pickup-time-slot" class="pickup-time-slot hidden">
+  <h3 class="text-xl font-display font-bold mb-4">When would you like to pick up?</h3>
+
+  <div class="space-y-6">
+    <!-- Date Selection -->
+    <div>
+      <label for="pickup-date" class="block text-sm font-medium text-warm-700 mb-2">
+        Pickup Date
+      </label>
+      <select
+        id="pickup-date"
+        name="pickup-date"
+        required
+        class="input w-full"
+      >
+        <option value="">Select a date...</option>
+        <!-- Options populated via JavaScript -->
+      </select>
+      <p class="text-xs text-warm-500 mt-1">
+        Honor stand is open 24/7, but we recommend scheduling for product availability
+      </p>
+    </div>
+
+    <!-- Time Slot Selection -->
+    <div id="time-slot-section" class="hidden">
+      <label class="block text-sm font-medium text-warm-700 mb-3">
+        Preferred Time Window
+      </label>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <!-- Anytime (24/7) -->
+        <label class="time-slot-option cursor-pointer">
+          <input
+            type="radio"
+            name="time-slot"
+            value="anytime"
+            class="time-slot-radio"
+            checked
+          />
+          <div class="time-slot-content">
+            <span class="time-slot-label">Anytime (24/7)</span>
+            <span class="time-slot-hours">Honor stand always accessible</span>
+            <p class="time-slot-description">Pick up whenever convenient</p>
+          </div>
+        </label>
+
+        <!-- Morning -->
+        <label class="time-slot-option cursor-pointer">
+          <input
+            type="radio"
+            name="time-slot"
+            value="morning"
+            class="time-slot-radio"
+          />
+          <div class="time-slot-content">
+            <span class="time-slot-label">Morning</span>
+            <span class="time-slot-hours">8:00 AM - 12:00 PM</span>
+            <p class="time-slot-description">Best for fresh eggs & dairy</p>
+          </div>
+        </label>
+
+        <!-- Afternoon -->
+        <label class="time-slot-option cursor-pointer">
+          <input
+            type="radio"
+            name="time-slot"
+            value="afternoon"
+            class="time-slot-radio"
+          />
+          <div class="time-slot-content">
+            <span class="time-slot-label">Afternoon</span>
+            <span class="time-slot-hours">12:00 PM - 5:00 PM</span>
+            <p class="time-slot-description">Typically less crowded</p>
+          </div>
+        </label>
+
+        <!-- Evening -->
+        <label class="time-slot-option cursor-pointer">
+          <input
+            type="radio"
+            name="time-slot"
+            value="evening"
+            class="time-slot-radio"
+          />
+          <div class="time-slot-content">
+            <span class="time-slot-label">Evening</span>
+            <span class="time-slot-hours">5:00 PM - 7:00 PM</span>
+            <p class="time-slot-description">After-work pickup</p>
+          </div>
+        </label>
+      </div>
+
+      <p class="text-sm text-warm-600 mt-4 flex items-start gap-2">
+        <svg class="w-5 h-5 flex-shrink-0 mt-0.5 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>
+          <strong>Note:</strong> The honor stand is open 24/7 with self-serve access. Time windows help us ensure product availability. If you need to pick up outside these times, select "Anytime" and add a note below.
+        </span>
+      </p>
+    </div>
+
+    <!-- Optional Notes -->
+    <div id="pickup-notes-section" class="hidden">
+      <label for="pickup-notes" class="block text-sm font-medium text-warm-700 mb-2">
+        Pickup Notes (Optional)
+      </label>
+      <textarea
+        id="pickup-notes"
+        name="pickup-notes"
+        rows="3"
+        class="input w-full"
+        placeholder="Any special instructions or requests? (e.g., 'Need help loading', 'Looking for specific products')"
+      ></textarea>
+    </div>
+  </div>
+</div>
+
+<style>
+  .time-slot-option {
+    display: block;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .time-slot-option:hover {
+    border-color: var(--color-accent-300, #86efac);
+    background: var(--color-accent-50, #f0fdf4);
+  }
+
+  .time-slot-option:has(.time-slot-radio:checked) {
+    border-color: var(--color-accent-600, #16a34a);
+    background: var(--color-accent-50, #f0fdf4);
+    box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.1);
+  }
+
+  .time-slot-radio {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+  }
+
+  .time-slot-content {
+    padding-right: 2rem;
+  }
+
+  .time-slot-label {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-warm-900, #292524);
+    margin-bottom: 0.25rem;
+  }
+
+  .time-slot-hours {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-accent-600, #16a34a);
+    margin-bottom: 0.375rem;
+  }
+
+  .time-slot-description {
+    font-size: 0.8125rem;
+    color: var(--color-warm-600, #57534e);
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .time-slot-option {
+      padding: 0.875rem;
+    }
+
+    .time-slot-content {
+      padding-right: 1.75rem;
+    }
+  }
+</style>
+
+<script>
+  import { getAvailablePickupDates, formatPickupDate, formatDateForInput } from '../../lib/pickup-scheduling';
+
+  const pickupDateSelect = document.getElementById('pickup-date') as HTMLSelectElement | null;
+  const timeSlotSection = document.getElementById('time-slot-section');
+  const pickupNotesSection = document.getElementById('pickup-notes-section');
+
+  // Populate pickup dates (next 14 days starting tomorrow)
+  if (pickupDateSelect) {
+    const dates = getAvailablePickupDates();
+
+    dates.forEach(date => {
+      const option = document.createElement('option');
+      option.value = formatDateForInput(date);
+      option.textContent = formatPickupDate(formatDateForInput(date));
+      pickupDateSelect.appendChild(option);
+    });
+
+    // Show time slot section when date is selected
+    pickupDateSelect.addEventListener('change', () => {
+      if (pickupDateSelect.value) {
+        timeSlotSection?.classList.remove('hidden');
+        pickupNotesSection?.classList.remove('hidden');
+      } else {
+        timeSlotSection?.classList.add('hidden');
+        pickupNotesSection?.classList.add('hidden');
+      }
+    });
+  }
+</script>
