@@ -2,12 +2,12 @@
 
 > See [ROADMAP.md](./ROADMAP.md) for full strategic vision
 
-## Priority 1: Copy Updates
-- [ ] Remove ALL instances of "Certified Organic" across the site
-- [ ] Remove ALL instances of "Certified Naturally Grown"
-- [ ] Replace with "All-Natural" or "Organic" (without "Certified")
+## ~~Priority 1: Copy Updates~~ DONE
+- [x] Remove ALL instances of "Certified Organic" across the site
+- [x] Remove ALL instances of "Certified Naturally Grown"
+- [x] Replaced with "Regenerative" language throughout
 
-**Reason:** Certification claims require documentation. Use "All-Natural" and "Organic" language without certification claims.
+**Completed:** February 2026. All "Certified" language replaced with "Regenerative".
 
 ---
 

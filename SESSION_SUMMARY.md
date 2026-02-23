@@ -4,7 +4,7 @@
 
 ### 1. Complete Product Catalog System ✅
 - **13 Products Created** across 4 categories:
-  - 1 Compost product (Georgia's ONLY certified organic)
+  - 1 Compost product (Georgia's ONLY regenerative organic)
   - 7 Mulch products (natural and dyed options)
   - 3 Soil products (topsoil and specialty blends)
   - 2 Specialty products (blend and artificial turf)

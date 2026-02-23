@@ -1,6 +1,8 @@
 # Soul Miner's Eden Voice & Messaging Guide
 
-> Writing that feels like a warm invitation to the farm
+> Writing that sounds like a calm, confident invitation to the farm
+
+**Last Updated:** February 2026
 
 ---
 
@@ -8,20 +10,53 @@
 
 Soul Miner's Eden speaks with a voice that is:
 
-- **Warm** but not saccharine
-- **Hopeful** but not naive
-- **Faith-rooted** but not preachy
-- **Expert** but not condescending
-- **Local** but not provincial
-- **Invitational** always
+- **Calm & confident** — we know who we are and what we're doing
+- **Slightly poetic but plainspoken** — never preachy, never jargony
+- **Faith-rooted but gentle** — stewardship, calling, purpose — woven in, not forced
+- **Premium but honest** — high prices backed by radical transparency
+- **Invitational always** — every touchpoint feels like "come see for yourself"
 
-We're not a landscape supply company that happens to have a nice story. We're a family with a calling who happens to sell compost.
+We're not a landscape supply company that happens to have a nice story. We're a family with a calling who built a beautiful farm — and the products, events, and experiences flow from that.
+
+### Point of View
+
+First person plural: "we steward," "we graze," "our farm." Occasionally first person singular for more personal notes from Mike.
 
 ---
 
 ## Voice Attributes in Action
 
-### 1. Faith-Rooted (Gentle, Not Preachy)
+### 1. Beautiful & Camera-Ready
+
+**Do:**
+> "Every corner of this property is meant to be photo-worthy. That's not vanity — it's the standard. If it doesn't make the farm more beautiful, we don't do it."
+
+> "Walk through the muscadine arbor, past the cows at the fence, to the farm stand. That walk is the experience."
+
+**Don't:**
+> "We have a nice property with some animals."
+
+> "Our facilities are well-maintained."
+
+---
+
+### 2. Calm & Confident
+
+**Do:**
+> "We sit on 5,000 tons of compost with zero competitors within 60 miles. We set the price."
+
+> "Healthy soil grows healthy plants. It's that simple."
+
+> "The farm pays for itself. The land gets better every year. And the kids grow up watching it happen."
+
+**Don't:**
+> "We're trying to build something special!"
+
+> "Hopefully this will work out."
+
+---
+
+### 3. Faith-Rooted (Gentle, Not Preachy)
 
 **Do:**
 > "Built on faith-driven stewardship and a commitment to doing honest work well."
@@ -37,51 +72,78 @@ We're not a landscape supply company that happens to have a nice story. We're a 
 
 ---
 
-### 2. Warm & Invitational
+### 4. Premium & Honest
 
 **Do:**
-> "Come enjoy our little slice of Eden."
+> "Athens families will pay $12 a dozen for pasture-raised eggs because they're buying the story, not the commodity. They want to know where their food comes from."
 
-> "We'd love to show you around the farm."
-
-> "Whether you're a weekend gardener or a professional landscaper, you're welcome here."
+> "Fewer products, premium prices, total transparency. We don't compete on price — we compete on trust."
 
 **Don't:**
-> "Contact us for pricing information."
+> "Affordable options for every budget!"
 
-> "Inquire about our product offerings."
+> "Check out our great deals."
 
 ---
 
-### 3. Family & Neighborly
+### 5. Easeful & Honor-Based
 
 **Do:**
-> "We're the family behind Soul Miner's Eden, and we're glad you found us."
+> "Drive in, park, walk through the arbor, browse the stand, pay what you owe, drive out. Simple."
 
-> "When you buy from us, you're supporting a local family farm—not a faceless corporation."
-
-> "Give us a call. We answer our own phones."
+> "No fussy rules. No clutter. Just good food from a good farm."
 
 **Don't:**
-> "Our company provides quality landscape materials."
+> "Please follow all posted signage and payment procedures."
 
-> "Soul Miner's Eden LLC is a leading provider of..."
+> "Terms and conditions apply."
 
 ---
 
-### 4. Regenerative & Purpose-Driven
+## Core Phrases to Reuse
 
-**Do:**
-> "We work with the land, not against it."
+Thread these throughout website, signage, social, captions, and labels:
 
-> "Every yard of compost is part of a bigger story—restoring what the land was meant to be."
+- "Beautiful first, easy second, marketing third, profitable fourth"
+- "A working demonstration of Southland biology"
+- "Honor-system farm stand on a regenerative farm outside Athens"
+- "Camera-ready proof that biology works"
+- "Your own piece of Eden"
+- "The way creation was designed to work"
+- "Soil, story, and supper in Bogart"
+- "From our farm to your property"
+- "Built on faith-driven stewardship"
 
-> "Healthy soil grows healthy plants. It's that simple."
+---
 
-**Don't:**
-> "Our products are environmentally friendly."
+## Key Descriptions
 
-> "Sustainable options available."
+### One-Sentence (Use Everywhere)
+
+> "Soul Miner's Eden is a 65-acre regenerative demonstration farm in Bogart, Georgia, turning compost, silvopasture, and livestock into a camera-ready destination for Athens families and Southland Organics customers."
+
+### Tagline (Pick One, Use Everywhere)
+
+> "A regenerative farm in Bogart, Georgia."
+
+### Social Media Bio
+
+```text
+65-acre regenerative farm in Bogart, GA
+Honor stand | Compost | Pasture-raised | Eden Dinners
+A Southland Organics company
+```
+
+### Email Signature
+
+```text
+[Name]
+Soul Miner's Eden
+(706) 613-4415
+soulminerseden.com
+
+A regenerative farm in Bogart, Georgia.
+```
 
 ---
 
@@ -93,201 +155,315 @@ We're not a landscape supply company that happens to have a nice story. We're a 
 > "Cultivate What the Land Was Meant to Be"
 
 **Subhead:**
-> "We offer time-produced, natural compost and regenerative grazing services, helping homeowners and professionals restore their own piece of Eden."
+> "A 65-acre regenerative demonstration farm in Bogart, Georgia — turning compost, silvopasture, and livestock into a destination worth the drive from Athens."
 
 **USP Line:**
-> "All-Natural Compost. Locally Produced."
+> "Regenerative Compost. Pasture-Raised. Honor System."
 
 ---
 
-### Value Props Section
+### Visit the Farm
 
-**Section Header:**
-> "Why Landscapers & Homeowners Choose Us"
+**Header:**
+> "Visit the Farm"
 
-**Intro:**
-> "From our 65-acre Athens farm to your property—thoughtfully produced materials, delivered with care."
-
-**Value Props:**
-
-1. **All Natural Compost**
-   > "Zero biosolids. No fillers. Just clean, biologically active compost made on-site under strict quality control."
-
-2. **Grown & Managed the Right Way**
-   > "We work with the land, not against it—using natural processes that improve soil health, plant strength, and long-term performance. The way God intended."
-
-3. **Local Delivery**
-   > "We deliver trailer loads and supersacks throughout the Athens area. Volume pricing available for landscapers and contractors."
-
-4. **Family-Owned from Day One**
-   > "Built on faith-driven stewardship and a commitment to doing honest work well. Proudly serving the Athens community as a Southland Organics company."
+**Subhead:**
+> "Honor stand open daily. Drive in, walk the arbor, take home something good."
 
 ---
 
-### Products Section
+### Eden Blend Compost
 
-**Section Header:**
-> "Premium Landscape Supply"
+**Header:**
+> "Eden Blend — Premium Regenerative Compost"
 
-**Intro:**
-> "Bulk delivery of organic compost, premium mulch, and quality soil—everything you need for thriving landscapes."
+**Description:**
+> "A Soul Miner's Eden compost enriched with Southland Genesis biology. The only organic compost in Georgia, and the camera-ready proof that biology works."
 
 ---
 
-### Land Management Section
+### Milk & Meat
+
+**Header:**
+> "From Pasture to Stand"
+
+**Description:**
+> "Raw milk from our Jersey cow. Pasture-raised eggs, chicken, lamb, and pork — all soy/corn-free, all honor system. We don't hide anything. Come see for yourself."
+
+---
+
+### Eden Dinners
+
+**Header:**
+> "Eden Dinners"
+
+**Description:**
+> "Farm-to-table suppers for 20-30 guests, sourced from the property. Athens families, long tables, and food with a story behind every bite."
+
+---
+
+### Our Story
+
+**Header:**
+> "Honoring Our Roots, Embracing Our Future"
+
+**Opening:**
+> "Soul Miner's Eden started with 65 acres of Georgia clay and a question: what if we worked with the land instead of against it?"
+
+**Mission:**
+> "We believe the best things take time. Time to grow. Time to decompose. Time to restore. That's why we don't rush our compost or cut corners on quality. Every product we sell is the result of patient, intentional stewardship."
+
+**Name Origin:**
+> "The name comes from a vision in the book Garden City — the idea that our work can be worship, and that caring for the land is one way we make the invisible God visible."
+
+---
+
+### Compost Category
+
+**Hero Header:**
+> "Regenerative Compost — Made On-Site, Sold Direct"
+
+**Hero Description:**
+> "We're the only source in Georgia for organic compost. Zero competitors within 60 miles. Carefully crafted on our 65-acre farm, our compost is the foundation of every thriving garden and the proof that Southland biology works."
+
+---
+
+### Land Management
 
 **Header:**
 > "Eden Grazing Services"
 
-**Badge:**
-> "New Service Offering"
-
 **Description:**
-> "Sustainable land management through rotational grazing—lowering maintenance costs while restoring soil health and biodiversity."
+> "Sustainable land management through rotational grazing — lowering maintenance costs while restoring soil health and biodiversity."
 
 **Key Stat:**
-> "30–50% cost savings compared to traditional mowing"
-
-**Ideal For:**
-- Retention ponds
-- Solar farms
-- HOAs & large properties
-
-**Benefits Line:**
-> "Zero chemicals • Natural fertilization • Fully eco-friendly"
-
----
-
-### Experience the Farm Section
-
-**Title (Serif Italic):**
-> "Experience the farm life"
-
-**Headline:**
-> "When you slow down, you can hear the land breathing."
-
-**Subheadline:**
-> "Come enjoy our little slice of Eden."
-
-**CTA:**
-> "Visit Our Farm"
-
----
-
-### About Page
-
-**Section Header:**
-> "Honoring Our Roots, Embracing Our Future"
-
-**Story Opening:**
-> "Soul Miner's Eden started with a simple question: What if we worked with the land instead of against it?"
-
-**Mission Statement:**
-> "We believe the best things take time. Time to grow. Time to decompose. Time to restore. That's why we don't rush our compost or cut corners on quality. Every product we sell is the result of patient, intentional stewardship."
-
-**Name Origin:**
-> "The name comes from a vision in the book Garden City—the idea that our work can be worship, and that caring for the land is one way we make the invisible God visible."
-
----
-
-### Compost Category Page
-
-**Hero Header:**
-> "What is Composting?"
-
-**Hero Description:**
-> "Composting is a natural process that transforms organic materials—food scraps, yard trimmings, and other organic waste—into nutrient-rich soil amendment. By composting, we reduce waste, promote sustainability, and build living soil that nourishes everything it touches."
-
-**Why Us:**
-> "We're the only source in Georgia for organic compost. Our carefully crafted compost is the result of sustainable farming practices on our 65-acre family farm, creating a soil amendment that transforms gardens and landscapes."
-
----
-
-## Call-to-Action Copy
-
-### Primary CTAs
-| Context | CTA Text |
-|---------|----------|
-| Homepage hero | "Shop Landscape Supply" |
-| Homepage hero (secondary) | "Explore Grazing Services" |
-| Product page | "Request Delivery" |
-| Contact | "Get in Touch" |
-| Farm visit | "Visit Our Farm" |
-| Farm visit | "Book a Tour" |
-| Newsletter | "Stay Connected" |
-| Quote request | "Request a Quote" |
-
-### Secondary CTAs
-| Context | CTA Text |
-|---------|----------|
-| Learn more | "Learn More" |
-| Story tease | "Read Our Story" |
-| Products | "View All Products" |
-| Recipes | "See All Recipes" |
-| Blog | "Read the Blog" |
-
-### Tertiary/Link CTAs
-| Context | CTA Text |
-|---------|----------|
-| Contractor info | "Contractor pricing available" |
-| Phone | "Call (706) 613-4415" |
-| Directions | "Get Directions" |
-
----
-
-## Trust Badges & Social Proof
-
-### Badge Text Options
-- "All-Natural"
-- "Organic"
-- "Family-Owned"
-- "Athens Local"
-- "65-Acre Farm"
-- "Naturally Grown"
-- "A Southland Organics Company"
-
-### Stats to Feature
-- "500+ Cubic Yards Monthly"
-- "65-Acre Working Farm"
-- "100% Organic"
-- "24hr Delivery Turnaround"
-
-### Social Proof Lines
-> "Serving North Georgia landscapers and homeowners since [year]"
-
-> "Trusted by professional landscapers throughout Athens and beyond"
+> "30-50% cost savings compared to traditional mowing"
 
 ---
 
 ## Product Description Framework
 
 ### Structure
-1. **Opening Hook** (benefit-focused, 1 sentence)
-2. **What It Is** (straightforward description)
-3. **Key Benefits** (3-5 bullet points)
-4. **Application Ideas** (where/how to use)
-5. **Ordering Info** (pricing structure, delivery)
 
-### Example: Humus Compost
+1. **Opening hook** (benefit-focused, 1 sentence)
+2. **What it is** (straightforward, no fluff)
+3. **Key benefits** (3-5 bullets)
+4. **How to buy** (pricing, delivery, honor stand)
+
+### Example: Eden Blend
 
 **Hook:**
 > "The foundation of every thriving garden starts with living soil."
 
 **Description:**
-> "Our premium humus compost is carefully aged on-site, resulting in a dark, crumbly amendment teeming with beneficial microorganisms. It's the only organic compost produced in Georgia."
+> "Eden Blend is our premium compost enriched with Southland Genesis biology — teeming with beneficial microorganisms that transform tired soil into productive ground. Made on-site, screened clean, delivered direct."
 
 **Benefits:**
-- 100% organic—safe for vegetables, fruits, and organic farms
-- Rich in beneficial microorganisms that suppress disease
-- Improves soil structure and water retention
-- Reduces need for synthetic fertilizers
-- Made on-site under strict quality control
 
-**Applications:**
-> Perfect for vegetable gardens, flower beds, lawn top-dressing, and tree/shrub planting. Mix into soil or apply as a 2-4" top dressing.
+- Regenerative — restores soil biology, not just nutrients
+- Zero biosolids, no fillers, no shortcuts
+- Enriched with Genesis microbial biology
+- Improves structure, drainage, and water retention
+- The only organic compost produced in Georgia
 
-**Ordering:**
-> Available by the cubic yard for delivery or pickup. Volume pricing for landscapers and contractors. Delivery: $40 base + $1.25/mile after 20 miles.
+**How to buy:**
+> "Available by the cubic yard — pickup or delivery. Supersacks for contractors. Volume pricing available. Call (706) 613-4415."
+
+### Example: Pasture-Raised Eggs
+
+**Hook:**
+> "Eggs from hens that actually live on pasture."
+
+**Description:**
+> "Our layers roam 65 acres of regenerative pasture, eating bugs and grass — no soy, no corn, no cages. Rich orange yolks that taste like eggs are supposed to taste."
+
+**Benefits:**
+
+- Soy/corn-free diet
+- True pasture-raised on rotational grazing
+- Protected by geese (no chemical pest control)
+- Available at the honor stand daily
+
+**Price:**
+> "$8-12/dozen at the honor stand. CSA subscriptions available."
+
+---
+
+## Call-to-Action Copy
+
+### Primary CTAs
+
+| Context | CTA Text |
+|---------|----------|
+| Homepage hero | "Visit the Farm" |
+| Homepage hero (secondary) | "Shop Landscape Supply" |
+| Product page | "Request Delivery" |
+| Contact | "Get in Touch" |
+| Farm visit | "Plan Your Visit" |
+| Newsletter | "Stay Connected" |
+| Eden Dinners | "Join the Waitlist" |
+| CSA / Herdshare | "Subscribe" |
+
+### Secondary CTAs
+
+| Context | CTA Text |
+|---------|----------|
+| Learn more | "Learn More" |
+| Story tease | "Read Our Story" |
+| Products | "View All Products" |
+| Recipes | "See All Recipes" |
+| Podcast | "Listen to the Podcast" |
+
+### Tertiary/Link CTAs
+
+| Context | CTA Text |
+|---------|----------|
+| Contractor info | "Contractor pricing available" |
+| Phone | "Call (706) 613-4415" |
+| Directions | "Get Directions" |
+| Honor stand | "Honor stand open daily" |
+
+---
+
+## Trust Badges & Social Proof
+
+### Badge Text Options
+
+- "Regenerative"
+- "Pasture-Raised"
+- "Soy/Corn-Free"
+- "Honor System"
+- "Family-Owned"
+- "65-Acre Farm"
+- "Athens Local"
+- "A Southland Organics Company"
+
+### Stats to Feature
+
+- "65-Acre Working Farm"
+- "Zero Competitors Within 60 Miles"
+- "100% Grass-Fed"
+- "Soy/Corn-Free"
+
+### Social Proof Lines
+
+> "Serving Athens families from our honor stand in Bogart"
+
+> "The only organic compost in Georgia"
+
+> "A working demonstration of Southland Organics biology"
+
+---
+
+## Tone by Context
+
+### Professional / B2B (Contractors, Landscapers)
+
+Direct, emphasize reliability, volume, and zero competition.
+
+> "We're the only compost source within 60 miles. Volume pricing, supersack delivery, and a dedicated contractor lane — separate from visitor traffic. Call for an account."
+
+### Consumer / Homeowner
+
+Story-driven, emphasize transformation and trust.
+
+> "Whether you're starting your first garden or feeding a tired lawn, our compost will give your soil the biology it needs to thrive. Made right here on the farm."
+
+### Farm Experience / Visitors
+
+Most invitational and poetic. Emphasize slowing down and beauty.
+
+> "Step away from the noise. Walk the fields. Pick muscadines off the vine. Watch the cows. This is what the land was meant to feel like."
+
+### Social Media (Ayn Parker Usry)
+
+Casual, real, daily. Same template for "Honor Stand Today" posts:
+
+> "[Photo of stand display]
+> Honor Stand Today: fresh eggs, raw milk, bone broth, and muscadines.
+> Open until dark. 189 Luke Road, Bogart.
+> #soulminerseden #honorsystem #bogart"
+
+---
+
+## Words & Phrases Library
+
+### Power Words
+
+- Cultivate
+- Restore
+- Transform
+- Thrive
+- Nourish
+- Regenerative
+- Stewardship
+- Living (soil)
+- Beautiful
+- Camera-ready
+- Honor
+
+### Connecting Phrases
+
+- "your own piece of Eden"
+- "worth the drive from Athens"
+- "the way creation was designed to work"
+- "from our farm to your table"
+- "built on faith-driven stewardship"
+- "beautiful first, profitable fourth"
+- "come see for yourself"
+- "making the invisible God visible"
+
+### Avoid
+
+- "Cheap" or "discount"
+- "Quick and easy" (unless genuinely applicable)
+- Corporate jargon ("solutions," "leverage," "synergy")
+- Environmental buzzwords without substance
+- "Certified" (we are regenerative, not certified)
+- Anything that sounds like a generic landscape supply yard
+- Fear-based urgency tactics
+- Preachy or judgmental religious language
+
+---
+
+## Honor Stand Signage Copy
+
+### Exterior Sign
+
+```text
+SOUL MINER'S EDEN
+Honor Farm Stand
+
+Open Daily — Self-Serve
+Pick up. Pay. Enjoy.
+```
+
+### Interior Product Board
+
+```text
+TODAY'S OFFERINGS
+
+Pasture-Raised Eggs .......... $10/dozen
+Raw Milk (Grade A) ........... $12/gallon
+Whole Chicken ................ $30 each
+Bone Broth ................... $18/quart
+Seasonal Fruit ............... priced as marked
+
+Payment: Cash box or scan QR
+```
+
+### "How It Works" Panel
+
+```text
+HOW THE HONOR STAND WORKS
+
+1. Browse what's available
+2. Take what you need
+3. Pay via cash box or QR code
+4. Enjoy — and come back soon
+
+We trust you. That's the whole idea.
+```
 
 ---
 
@@ -299,24 +475,15 @@ We're not a landscape supply company that happens to have a nice story. We're a 
 > "Stay Connected to the Farm"
 
 **Subhead:**
-> "Get updates on seasonal flowers, new products, farm events, and recipes straight from Eden."
+> "Honor stand updates, seasonal products, Eden Dinner invitations, and farm stories — straight from Bogart."
 
 **Button:**
 > "Join the List"
 
----
-
 ### Contact Form
 
 **Intro:**
-> "Whether you have a question about our products, need a delivery quote, or just want to chat about soil, we'd love to hear from you."
-
-**Labels:**
-- Name
-- Email
-- Phone (optional)
-- What can we help you with?
-- Message
+> "Whether you need a delivery quote, want to book an Eden Dinner, or just have a question about soil — we'd love to hear from you."
 
 **Button:**
 > "Send Message"
@@ -326,89 +493,17 @@ We're not a landscape supply company that happens to have a nice story. We're a 
 
 ---
 
-### Quote Request Form
-
-**Intro:**
-> "Tell us about your project and we'll put together a custom quote for delivery."
-
-**Labels:**
-- Name
-- Email
-- Phone
-- Delivery Address
-- Product(s) Needed
-- Estimated Quantity
-- Project Details (optional)
-
-**Button:**
-> "Request Quote"
-
----
-
-## Tone Adjustments by Context
-
-### Professional/B2B (Contractors, Landscapers)
-Slightly more direct, emphasize reliability, volume pricing, and efficiency.
-
-> "We supply professional landscapers throughout Athens with consistent, quality materials. Volume pricing and account terms available."
-
-### Consumer/Homeowner
-Warmer, more story-driven, emphasize transformation and ease.
-
-> "Whether you're starting your first garden or reviving a tired lawn, our compost will give your soil the life it needs to thrive."
-
-### Farm Experience/Visit
-Most invitational and romantic, emphasize slowing down and connection.
-
-> "Step away from the noise. Walk the fields. Pick your own flowers. This is what the land was meant to feel like."
-
----
-
-## Words & Phrases Library
-
-### Power Words
-- Cultivate
-- Restore
-- Transform
-- Thrive
-- Nourish
-- Living (soil)
-- Natural
-- Regenerative
-- Stewardship
-
-### Connecting Phrases
-- "your own piece of Eden"
-- "the way God intended"
-- "come enjoy our slice of Eden"
-- "from our farm to your property"
-- "built on faith-driven stewardship"
-- "work as calling"
-- "making the invisible God visible"
-
-### Avoid
-- "Cheap" or "discount"
-- "Quick and easy" (unless genuinely applicable)
-- Corporate jargon ("solutions," "leverage," "synergy")
-- Environmental buzzwords without substance
-- Anything that sounds like a generic landscape supply yard
-
----
-
 ## Footer Copy
 
 **Tagline:**
-> "Cultivate What the Land Was Meant to Be"
+> "A regenerative farm in Bogart, Georgia."
 
 **Location:**
-> Soul Miner's Eden | Bogart, GA (Athens Area)
+> Soul Miner's Eden | 189 Luke Road, Bogart, GA 30622
 
-**Parent Company Note:**
+**Parent Company:**
 > "A Southland Organics Company"
-
-**Hours:** (when applicable)
-> "Farm hours and delivery times vary seasonally. Give us a call to schedule."
 
 ---
 
-*This guide should evolve as the brand grows. When in doubt, ask: "Does this sound like an invitation from a family farm, or a pitch from a company?"*
+*This guide evolves as the farm grows. When in doubt, ask: "Does this sound like an invitation from a family farm, or a pitch from a company?"*

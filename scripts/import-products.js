@@ -21,7 +21,7 @@ const products = [
   {
     title: "Humus Compost",
     handle: "humus-compost",
-    description: "Crafted on-site from green waste and food scraps under strict quality controls. Free of biosolids and meets Organic Standards and Certified Naturally Grown criteria. Rich, dark brown with a fine, crumbly texture.",
+    description: "Crafted on-site from green waste and food scraps under strict quality controls. Free of biosolids, produced using regenerative farming practices. Rich, dark brown with a fine, crumbly texture.",
     status: "published",
     category: "Compost",
     price: 4500, // $45.00 per yard in cents

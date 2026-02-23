@@ -21,11 +21,12 @@
   "email": "info@soulminerseden.com",
   "openingHours": "Mo-Sa 08:00-18:00",
   "priceRange": "$$",
-  "socialLinks": [
-    "https://www.youtube.com/playlist?list=PLzhFffk45jBfnuHfFbLlaR2GajzI_vMZR",
-    "https://www.instagram.com/soulminerseden/",
-    "https://www.facebook.com/soulminerseden"
-  ],
+  "socialLinks": {
+    "facebook": "https://www.facebook.com/soulminerseden",
+    "instagram": "https://www.instagram.com/soulminerseden/",
+    "youtube": "https://www.youtube.com/playlist?list=PLzhFffk45jBfnuHfFbLlaR2GajzI_vMZR",
+    "tiktok": "https://www.tiktok.com/@soulminerseden"
+  },
   "rating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",

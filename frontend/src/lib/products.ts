@@ -157,7 +157,7 @@ export function getCategoryDisplayName(category: Product['category']): string {
  */
 export function getCategoryDescription(category: Product['category']): string {
   const descriptions: Record<Product['category'], string> = {
-    compost: 'Georgia\'s ONLY certified organic compost. Transform your soil with nutrient-rich, microbially-active compost.',
+    compost: 'Georgia\'s ONLY regenerative organic compost. Transform your soil with nutrient-rich, microbially-active compost.',
     mulch: 'Premium mulch products for beautiful, low-maintenance landscapes. Natural and dyed options available.',
     soil: 'High-quality topsoil and specialized soil blends for every landscaping need.',
     specialty: 'Unique products and custom blends for specific projects and applications.',

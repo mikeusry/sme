@@ -6,12 +6,15 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article' | 'product';
+  twitterCard?: 'summary' | 'summary_large_image';
 }
 
-const { title, description } = Astro.props;
+const { title, description, ogImage, ogType, twitterCard } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} ogImage={ogImage} ogType={ogType} twitterCard={twitterCard}>
   <div class="flex flex-col min-h-screen">
     <Header />
     <main class="flex-grow">

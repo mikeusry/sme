@@ -72,7 +72,7 @@ Preset configurations for product display.
 ```astro
 <ProductImage
   publicId="products/compost/certified-organic.jpg"
-  alt="Certified Organic Compost"
+  alt="Regenerative Organic Compost"
   variant="hero"
 />
 ```
@@ -129,7 +129,7 @@ Organize images in the following structure within "Soul Miner's" folder:
 Soul Miner's/
 ├── products/
 │   ├── compost/
-│   │   ├── certified-organic-compost.jpg
+│   │   ├── regenerative-organic-compost.jpg
 │   │   └── compost-pile.jpg
 │   ├── mulch/
 │   │   ├── hardwood-mulch.jpg
@@ -190,7 +190,7 @@ import ProductImage from '../components/ProductImage.astro';
   <!-- Main product image -->
   <ProductImage
     publicId="products/compost/certified-organic.jpg"
-    alt="Certified Organic Compost - 1 Cubic Yard"
+    alt="Regenerative Organic Compost - 1 Cubic Yard"
     variant="hero"
     loading="eager"
     fetchpriority="high"

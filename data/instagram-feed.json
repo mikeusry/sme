@@ -1,0 +1,35 @@
+{
+  "_instructions": "Add Instagram post shortcodes here. Get them from the URL: instagram.com/p/SHORTCODE/ — copy the code between /p/ and the final /. Keep to 6 posts for the 3x2 grid. Rebuild the site after changes.",
+  "posts": [
+    {
+      "shortcode": "REPLACE_WITH_REAL_SHORTCODE_1",
+      "caption": "Honor stand fresh eggs — pastured, soy-free, always available",
+      "pillar": "today-at-the-stand"
+    },
+    {
+      "shortcode": "REPLACE_WITH_REAL_SHORTCODE_2",
+      "caption": "Morning light on the pavilion and pond",
+      "pillar": "around-the-pavilion"
+    },
+    {
+      "shortcode": "REPLACE_WITH_REAL_SHORTCODE_3",
+      "caption": "Cows rotating to fresh pasture on the back 15",
+      "pillar": "animals-and-rotations"
+    },
+    {
+      "shortcode": "REPLACE_WITH_REAL_SHORTCODE_4",
+      "caption": "Soil test before and after — organic matter up 1.8 points",
+      "pillar": "soil-and-story"
+    },
+    {
+      "shortcode": "REPLACE_WITH_REAL_SHORTCODE_5",
+      "caption": "Golden hour at the creek corridor",
+      "pillar": "around-the-pavilion"
+    },
+    {
+      "shortcode": "REPLACE_WITH_REAL_SHORTCODE_6",
+      "caption": "New compost batch screened and ready",
+      "pillar": "today-at-the-stand"
+    }
+  ]
+}

@@ -7,6 +7,7 @@
  */
 
 import MainLayout from '../../layouts/MainLayout.astro';
+import SocialShare from '../../components/SocialShare.astro';
 import { getAllPosts, getPostBySlug, parseContent, getReadingTime } from '../../lib/blog';
 
 // Get static paths for all blog posts
@@ -47,6 +48,7 @@ const breadcrumbs = [
 <MainLayout
   title={`${post.title} | Soul Miner's Eden Blog`}
   description={post.description || bodyParagraphs[0]?.substring(0, 160)}
+  ogType="article"
 >
   <!-- Breadcrumbs -->
   <div class="bg-warm-50 border-b border-secondary-200 py-3">
@@ -110,8 +112,18 @@ const breadcrumbs = [
         })}
       </div>
 
-      <!-- Share & Contact -->
-      <div class="mt-12 pt-8 border-t border-secondary-200">
+      <!-- Share -->
+      <div class="mt-12 pt-8 border-t border-secondary-200 mb-8">
+        <SocialShare
+          title={post.title}
+          description={post.description || bodyParagraphs[0]?.substring(0, 160)}
+          variant="article"
+          label="Share this post"
+        />
+      </div>
+
+      <!-- Contact -->
+      <div class="pt-8 border-t border-secondary-200">
         <div class="bg-primary-50 rounded-xl p-6 border border-primary-200">
           <h3 class="text-xl font-display font-bold text-warm-900 mb-3">
             Questions about this article?

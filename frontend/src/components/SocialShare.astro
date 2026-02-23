@@ -1,0 +1,162 @@
+---
+/**
+ * SocialShare Component
+ *
+ * Native Web Share API where supported, graceful fallback to manual share URLs.
+ * Platforms: Facebook, X/Twitter, Pinterest (image-required), Copy Link.
+ */
+
+import { buildFacebookShareUrl, buildTwitterShareUrl, buildPinterestShareUrl } from '../lib/social';
+
+export interface Props {
+  title: string;
+  description?: string;
+  imageUrl?: string;
+  variant?: 'product' | 'article' | 'recipe';
+  shareTitle?: string;
+  shareText?: string;
+  label?: string;
+}
+
+const {
+  title,
+  description = '',
+  imageUrl = '',
+  variant = 'article',
+  shareTitle,
+  shareText,
+  label = 'Share this',
+} = Astro.props;
+
+const pageUrl = Astro.url.href;
+const displayTitle = shareTitle || title;
+const displayText = shareText || description;
+
+const facebookUrl = buildFacebookShareUrl(pageUrl);
+const twitterUrl = buildTwitterShareUrl(pageUrl, `${displayTitle} — Soul Miner's Eden`);
+const showPinterest = !!imageUrl && (variant === 'product' || variant === 'recipe');
+const pinterestUrl = showPinterest
+  ? buildPinterestShareUrl(pageUrl, imageUrl, `${displayTitle} — ${displayText}`)
+  : null;
+---
+
+<div
+  class="social-share-wrapper"
+  data-share-title={displayTitle}
+  data-share-text={displayText}
+  data-share-url={pageUrl}
+>
+  <p class="text-sm font-semibold text-warm-600 mb-3 uppercase tracking-wide">{label}</p>
+
+  <div class="flex flex-wrap items-center gap-3">
+    <!-- Native Web Share — shown by JS when API is available -->
+    <button
+      class="social-share-native hidden items-center gap-2 px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg text-sm font-semibold transition-colors cursor-pointer"
+      aria-label="Share this page"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+      </svg>
+      Share
+    </button>
+
+    <!-- Fallback links -->
+    <div class="social-share-fallbacks flex flex-wrap gap-3">
+      <!-- Facebook -->
+      <a
+        href={facebookUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-4 py-2 bg-[#1877F2] hover:bg-[#166FE5] text-white rounded-lg text-sm font-semibold transition-colors"
+        aria-label="Share on Facebook"
+      >
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+        Facebook
+      </a>
+
+      <!-- X / Twitter -->
+      <a
+        href={twitterUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-4 py-2 bg-black hover:bg-warm-900 text-white rounded-lg text-sm font-semibold transition-colors"
+        aria-label="Share on X"
+      >
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+        Share
+      </a>
+
+      <!-- Pinterest — only on product/recipe pages with image -->
+      {showPinterest && pinterestUrl && (
+        <a
+          href={pinterestUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-[#E60023] hover:bg-[#CC0000] text-white rounded-lg text-sm font-semibold transition-colors"
+          aria-label="Pin on Pinterest"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.623 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+          </svg>
+          Pin
+        </a>
+      )}
+
+      <!-- Copy Link -->
+      <button
+        class="copy-link-btn inline-flex items-center gap-2 px-4 py-2 bg-warm-200 hover:bg-warm-300 text-warm-800 rounded-lg text-sm font-semibold transition-colors cursor-pointer"
+        data-copy-url={pageUrl}
+        aria-label="Copy page link to clipboard"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+        </svg>
+        <span class="copy-link-label">Copy Link</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    var wrappers = document.querySelectorAll('.social-share-wrapper');
+
+    wrappers.forEach(function(wrapper) {
+      var nativeBtn = wrapper.querySelector('.social-share-native');
+      // Show native share button if Web Share API is available
+      if (navigator.share && nativeBtn) {
+        nativeBtn.classList.remove('hidden');
+        nativeBtn.classList.add('flex');
+
+        nativeBtn.addEventListener('click', function() {
+          navigator.share({
+            title: wrapper.dataset.shareTitle,
+            text: wrapper.dataset.shareText,
+            url: wrapper.dataset.shareUrl,
+          }).catch(function() {});
+        });
+      }
+
+      // Copy link button
+      var copyBtn = wrapper.querySelector('.copy-link-btn');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', function() {
+          var url = copyBtn.dataset.copyUrl;
+          var label = copyBtn.querySelector('.copy-link-label');
+          if (navigator.clipboard && url) {
+            navigator.clipboard.writeText(url).then(function() {
+              if (label) {
+                label.textContent = 'Copied!';
+                setTimeout(function() { label.textContent = 'Copy Link'; }, 2000);
+              }
+            });
+          }
+        });
+      }
+    });
+  });
+</script>

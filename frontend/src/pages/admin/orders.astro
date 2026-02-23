@@ -222,51 +222,44 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
     createdAt: string;
   }
 
-  // Sample orders for demo
-  const mockOrders: Order[] = [
-    {
-      id: '1',
-      orderNumber: 'SME-001',
-      customerName: 'Sarah Johnson',
-      email: 'sarah@example.com',
-      phone: '(706) 555-0123',
-      total: 8500, // $85.00 in cents
-      itemCount: 3,
-      status: 'awaiting_pickup',
-      fulfillmentMethod: 'pickup',
-      pickupDate: new Date().toISOString().split('T')[0],
-      pickupTime: 'morning',
-      notes: 'Please have eggs ready',
-      createdAt: new Date().toISOString(),
-    },
-    {
-      id: '2',
-      orderNumber: 'SME-002',
-      customerName: 'Mike Peterson',
-      email: 'mike@example.com',
-      total: 12000,
-      itemCount: 5,
-      status: 'ready',
-      fulfillmentMethod: 'pickup',
-      pickupDate: new Date().toISOString().split('T')[0],
-      pickupTime: 'afternoon',
-      createdAt: new Date().toISOString(),
-    },
-    {
-      id: '3',
-      orderNumber: 'SME-003',
-      customerName: 'Emily Davis',
-      email: 'emily@example.com',
-      total: 15500,
-      itemCount: 2,
-      status: 'awaiting_delivery',
-      fulfillmentMethod: 'delivery',
-      createdAt: new Date().toISOString(),
-    },
-  ];
-
-  let orders: Order[] = mockOrders;
+  let orders: Order[] = [];
   let activeFilter = 'all';
+  let isLoading = true;
+
+  /**
+   * Fetch orders from API
+   */
+  async function fetchOrders() {
+    try {
+      isLoading = true;
+      document.getElementById('orders-loading')?.classList.remove('hidden');
+      document.getElementById('orders-content')?.classList.add('hidden');
+      document.getElementById('orders-empty')?.classList.add('hidden');
+
+      const response = await fetch('/api/admin/orders');
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch orders');
+      }
+
+      const data = await response.json();
+      orders = data.orders || [];
+
+      updateStats();
+      renderOrders();
+    } catch (error: any) {
+      console.error('Error fetching orders:', error);
+      // Show empty state with error message
+      document.getElementById('orders-empty')?.classList.remove('hidden');
+      const emptyTitle = document.querySelector('#orders-empty h2');
+      if (emptyTitle) emptyTitle.textContent = 'Failed to Load Orders';
+      const emptyDesc = document.querySelector('#orders-empty p');
+      if (emptyDesc) emptyDesc.textContent = error.message || 'Please try refreshing the page.';
+    } finally {
+      isLoading = false;
+      document.getElementById('orders-loading')?.classList.add('hidden');
+    }
+  }
 
   function formatPrice(cents: number): string {
     return new Intl.NumberFormat('en-US', {
@@ -471,7 +464,7 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
 
   // Event listeners
   document.getElementById('refresh-orders')?.addEventListener('click', () => {
-    location.reload();
+    fetchOrders();
   });
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -483,38 +476,70 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
     });
   });
 
-  // Actions (window functions for demo)
-  (window as any).markReady = (orderId: string) => {
+  // Actions (call API endpoints)
+  (window as any).markReady = async (orderId: string) => {
     const order = orders.find(o => o.id === orderId);
-    if (order) {
+    if (!order) return;
+
+    if (!confirm(`Mark order ${order.orderNumber} as ready for pickup?`)) return;
+
+    try {
+      const response = await fetch(`/api/admin/orders/${orderId}/mark-ready`, {
+        method: 'POST',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to mark order ready');
+      }
+
+      // Update local state
       order.status = 'ready';
       renderOrders();
       updateStats();
-      alert(`Order ${order.orderNumber} marked as ready for pickup!`);
+
+      alert(`✓ Order ${order.orderNumber} is ready for pickup!\n\nCustomer notification sent.`);
+    } catch (error: any) {
+      console.error('Error marking order ready:', error);
+      alert(`Failed to mark order ready: ${error.message}`);
     }
   };
 
-  (window as any).markCollected = (orderId: string) => {
+  (window as any).markCollected = async (orderId: string) => {
     const order = orders.find(o => o.id === orderId);
-    if (order) {
+    if (!order) return;
+
+    if (!confirm(`Mark order ${order.orderNumber} as collected?`)) return;
+
+    try {
+      const response = await fetch(`/api/admin/orders/${orderId}/mark-collected`, {
+        method: 'POST',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to mark order collected');
+      }
+
+      // Update local state
       order.status = 'collected';
       renderOrders();
       updateStats();
-      alert(`Order ${order.orderNumber} marked as collected!`);
+
+      alert(`✓ Order ${order.orderNumber} marked as collected!`);
+    } catch (error: any) {
+      console.error('Error marking order collected:', error);
+      alert(`Failed to mark order collected: ${error.message}`);
     }
   };
 
   (window as any).viewOrder = (orderId: string) => {
     const order = orders.find(o => o.id === orderId);
     if (order) {
-      alert(`View Order ${order.orderNumber}\n\nThis would open order details page.`);
+      alert(`View Order ${order.orderNumber}\n\nThis would open a detailed order view page.\n\n(Coming soon)`);
     }
   };
 
-  // Initialize
+  // Initialize - Fetch orders on page load
   document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('orders-loading')?.classList.add('hidden');
-    updateStats();
-    renderOrders();
+    fetchOrders();
   });
 </script>

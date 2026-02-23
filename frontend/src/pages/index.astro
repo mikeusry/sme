@@ -4,6 +4,7 @@ import ProductCard from '../components/products/ProductCard.astro';
 import MaterialCalculator from '../components/products/MaterialCalculator.astro';
 import ProductImage from '../components/ProductImage.astro';
 import ExperienceFarm from '../components/ExperienceFarm.astro';
+import InstagramFeed from '../components/InstagramFeed.astro';
 import { getFeaturedProducts, getProductBySlug } from '../lib/products';
 
 // Soul Miner's Eden Homepage - Conversion-optimized dual-revenue stream design
@@ -261,6 +262,9 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 
 	<!-- Experience the Farm Life - Before Footer -->
 	<ExperienceFarm />
+
+	<!-- Instagram Feed - Living window into the farm -->
+	<InstagramFeed />
 </MainLayout>
 
 <style>

@@ -1,0 +1,255 @@
+---
+/**
+ * Social Best Practices — Admin Page
+ *
+ * Quick-reference guide for Ayn Parker Usry and the team.
+ * Two sections: What to post + when, How to caption + hashtag.
+ */
+
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import { socialPlatforms, instagramHandle } from '../../lib/social';
+
+const pillars = [
+  {
+    name: 'Today at the Stand',
+    color: '#22c55e',
+    desc: "Here's what's here today. Prices, eggs, what's fresh. Drive foot traffic.",
+    examples: [
+      'Fresh eggs back in the cooler — soy-free, pastured, picked up this morning.',
+      'Compost is screened and ready. Stop by this week.',
+    ],
+    day: 'Monday',
+  },
+  {
+    name: 'Around the Pavilion',
+    color: '#b59289',
+    desc: 'Golden hour, pavilion, pond, creek — the iconic shot people recognize. No hard sell.',
+    examples: [
+      'Morning fog on the creek at golden hour.',
+      'A perfectly still pond with the pavilion reflected.',
+    ],
+    day: 'Friday',
+  },
+  {
+    name: 'Animals & Rotations',
+    color: '#f59e0b',
+    desc: 'Cows on fence line, broilers moving, pigs in woods. Movement and life.',
+    examples: [
+      'Cows rotating to fresh pasture on the back 15.',
+      'Broilers out on new ground this morning.',
+    ],
+    day: 'Wednesday (Reel)',
+  },
+  {
+    name: 'Soil & Story',
+    color: '#8b5cf6',
+    desc: 'Compost, swales, Brix readings, "why we farm like this." The bigger picture.',
+    examples: [
+      'Soil test from February vs. last October — organic matter up 1.8 points.',
+      'Before/after on the food forest clearing.',
+    ],
+    day: 'Sunday (Swipe)',
+  },
+];
+
+const hashtagGroups = {
+  always: ['#soulminerseden', '#bogartga', '#athensga', '#georgiafarm'],
+  rotate: ['#honorstand', '#regenerativeagriculture', '#silvopasture', '#pastureraised', '#compost', '#organiccompost', '#georgiafarmer', '#farmlife'],
+};
+---
+
+<AdminLayout title="Social Guide" description="Social media best practices for Ayn Parker and the team">
+
+  <!-- Quick Reference -->
+  <div class="admin-grid-3" style="margin-bottom: 2rem;">
+    <div class="admin-card">
+      <div class="admin-stat">
+        <div class="stat-value" style="font-size: 1.5rem;">3+/week</div>
+        <div class="stat-label">Minimum Posts</div>
+      </div>
+    </div>
+    <div class="admin-card">
+      <div class="admin-stat">
+        <div class="stat-value" style="font-size: 1.5rem;">{instagramHandle}</div>
+        <div class="stat-label">Primary Platform</div>
+      </div>
+    </div>
+    <div class="admin-card">
+      <div class="admin-stat">
+        <div class="stat-value" style="font-size: 1.5rem;">40-60 words</div>
+        <div class="stat-label">Caption Length</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 1: What to Post + When -->
+  <div class="admin-card" style="margin-bottom: 2rem;">
+    <div class="admin-card-header">
+      <h2 class="admin-card-title">What to Post + When</h2>
+    </div>
+    <div class="admin-card-body">
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+        Every post belongs to one of four pillars. Balance them across the week.
+        <strong>Non-negotiable minimum: 3 posts/week + 3-5 stories on days you're at the farm.</strong>
+      </p>
+
+      <!-- Pillars Grid -->
+      <div class="admin-grid-2" style="margin-bottom: 2rem;">
+        {pillars.map(pillar => (
+          <div style={`border-left: 4px solid ${pillar.color}; padding: 1rem 1.25rem; background: var(--surface-alt); border-radius: 0 var(--radius) var(--radius) 0;`}>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <strong style="font-size: 1rem;">{pillar.name}</strong>
+              <span class="admin-badge" style={`background: ${pillar.color}20; color: ${pillar.color};`}>{pillar.day}</span>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 0.75rem;">{pillar.desc}</p>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">
+              {pillar.examples.map(ex => (
+                <p style="margin-bottom: 0.25rem; padding-left: 0.75rem; border-left: 2px solid var(--border); font-style: italic;">"{ex}"</p>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Weekly Schedule -->
+      <h3 style="font-family: var(--headingFont); font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;">Weekly Schedule</h3>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin-bottom: 1.5rem;">
+        <div style="background: var(--surface-alt); padding: 0.75rem; border-radius: var(--radius); text-align: center;">
+          <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem;">Mon</strong>
+          <span style="font-size: 0.875rem;">Stand Update</span>
+        </div>
+        <div style="background: var(--surface-alt); padding: 0.75rem; border-radius: var(--radius); text-align: center;">
+          <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem;">Wed</strong>
+          <span style="font-size: 0.875rem;">Reel (movement)</span>
+        </div>
+        <div style="background: var(--surface-alt); padding: 0.75rem; border-radius: var(--radius); text-align: center;">
+          <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem;">Fri</strong>
+          <span style="font-size: 0.875rem;">Pavilion Beauty</span>
+        </div>
+        <div style="background: var(--surface-alt); padding: 0.75rem; border-radius: var(--radius); text-align: center;">
+          <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem;">Sun</strong>
+          <span style="font-size: 0.875rem;">Soil & Story Swipe</span>
+        </div>
+      </div>
+
+      <!-- Monthly + Emergency -->
+      <div class="admin-grid-2">
+        <div style="background: var(--success-light); padding: 1rem; border-radius: var(--radius);">
+          <strong style="font-size: 0.875rem; display: block; margin-bottom: 0.25rem;">Once a Month</strong>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">Post a true before/after (pasture, compost pile, food forest) to show long-term transformation. This is what makes people follow.</p>
+        </div>
+        <div style="background: var(--warning-light); padding: 1rem; border-radius: var(--radius);">
+          <strong style="font-size: 0.875rem; display: block; margin-bottom: 0.25rem;">Emergency Broadcast</strong>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">Sell-outs, weather closures, special drops — same 3-line format, just faster. Example: "RAW MILK SOLD OUT TODAY." / "We'll post when the cooler is full again."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: How to Caption + Hashtag -->
+  <div class="admin-card" style="margin-bottom: 2rem;">
+    <div class="admin-card-header">
+      <h2 class="admin-card-title">How to Write a Caption + Hashtags</h2>
+    </div>
+    <div class="admin-card-body">
+
+      <!-- Three-Line Pattern -->
+      <h3 style="font-family: var(--headingFont); font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;">The Three-Line Pattern</h3>
+      <div style="background: var(--surface-alt); padding: 1.25rem; border-radius: var(--radius); margin-bottom: 1.5rem;">
+        <div style="margin-bottom: 1rem;">
+          <strong style="color: var(--admin-primary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">1. Hook</strong>
+          <p style="font-size: 0.9rem;">1 short line that makes you stop scrolling.</p>
+          <p style="font-style: italic; color: var(--text-muted); font-size: 0.85rem;">"This is what $12 eggs look like."</p>
+        </div>
+        <div style="margin-bottom: 1rem;">
+          <strong style="color: var(--admin-primary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">2. Tiny Context</strong>
+          <p style="font-size: 0.9rem;">1-2 sentences of what's happening or why it matters.</p>
+          <p style="font-style: italic; color: var(--text-muted); font-size: 0.85rem;">"Pastured, soy-free, collected this morning from the back pasture."</p>
+        </div>
+        <div>
+          <strong style="color: var(--admin-primary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">3. Soft CTA</strong>
+          <p style="font-size: 0.9rem;">One clear ask — visit, comment, tap the link, share.</p>
+          <p style="font-style: italic; color: var(--text-muted); font-size: 0.85rem;">"Honor stand's stocked till dark."</p>
+        </div>
+      </div>
+
+      <!-- Good vs Bad Hooks -->
+      <div class="admin-grid-2" style="margin-bottom: 1.5rem;">
+        <div style="background: var(--success-light); padding: 1rem; border-radius: var(--radius);">
+          <strong style="font-size: 0.875rem; display: block; margin-bottom: 0.5rem; color: #166534;">Good Hooks</strong>
+          <ul style="font-size: 0.8rem; list-style: none; padding: 0;">
+            <li style="margin-bottom: 0.25rem;">"The creek looks like this every February morning."</li>
+            <li style="margin-bottom: 0.25rem;">"Three inches of compost. Six weeks later — this."</li>
+            <li>"Ayn Parker found this in the nest box today."</li>
+          </ul>
+        </div>
+        <div style="background: var(--error-light); padding: 1rem; border-radius: var(--radius);">
+          <strong style="font-size: 0.875rem; display: block; margin-bottom: 0.5rem; color: #991b1b;">Weak Hooks (avoid)</strong>
+          <ul style="font-size: 0.8rem; list-style: none; padding: 0;">
+            <li style="margin-bottom: 0.25rem;">"Hey guys! Check out what we've been up to!"</li>
+            <li style="margin-bottom: 0.25rem;">"It's a beautiful day here at Soul Miner's Eden!"</li>
+            <li>"We are so excited to share..."</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Hashtags -->
+      <h3 style="font-family: var(--headingFont); font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem;">Hashtags to Copy-Paste</h3>
+      <div style="margin-bottom: 1.5rem;">
+        <div style="margin-bottom: 0.75rem;">
+          <strong style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em;">Always use (every post):</strong>
+          <p style="font-family: monospace; font-size: 0.85rem; background: var(--surface-alt); padding: 0.5rem 0.75rem; border-radius: var(--radius); margin-top: 0.25rem; user-select: all;">
+            {hashtagGroups.always.join(' ')}
+          </p>
+        </div>
+        <div>
+          <strong style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em;">Rotate 3-6 per post:</strong>
+          <p style="font-family: monospace; font-size: 0.85rem; background: var(--surface-alt); padding: 0.5rem 0.75rem; border-radius: var(--radius); margin-top: 0.25rem; user-select: all;">
+            {hashtagGroups.rotate.join(' ')}
+          </p>
+        </div>
+      </div>
+      <p style="font-size: 0.8rem; color: var(--text-muted);">
+        Always tag location: <strong>Soul Miner's Eden</strong> or <strong>Bogart, Georgia</strong>.
+      </p>
+
+      <!-- Permissions -->
+      <div style="background: var(--warning-light); padding: 1rem; border-radius: var(--radius); margin-top: 1.5rem;">
+        <strong style="font-size: 0.875rem; display: block; margin-bottom: 0.25rem;">Permissions</strong>
+        <p style="font-size: 0.8rem; color: var(--text-muted);">Get verbal OK before posting recognizable guests or kids. Default to wide shots if unsure.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: Website Feed Instructions -->
+  <div class="admin-card">
+    <div class="admin-card-header">
+      <h2 class="admin-card-title">Adding Posts to the Website</h2>
+    </div>
+    <div class="admin-card-body">
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">
+        The homepage Instagram feed is manually curated. Here's how to update it:
+      </p>
+      <ol style="font-size: 0.875rem; line-height: 1.8; padding-left: 1.25rem;">
+        <li>Open the Instagram post you want to feature</li>
+        <li>Look at the URL: <code style="background: var(--surface-alt); padding: 0.125rem 0.375rem; border-radius: 4px; font-size: 0.8rem;">instagram.com/p/<strong>ABC123XYZ</strong>/</code></li>
+        <li>Copy the code between <code style="background: var(--surface-alt); padding: 0.125rem 0.375rem; border-radius: 4px; font-size: 0.8rem;">/p/</code> and the final <code style="background: var(--surface-alt); padding: 0.125rem 0.375rem; border-radius: 4px; font-size: 0.8rem;">/</code></li>
+        <li>Open <code style="background: var(--surface-alt); padding: 0.125rem 0.375rem; border-radius: 4px; font-size: 0.8rem;">data/instagram-feed.json</code> and add an entry</li>
+        <li>Tell Mike — the site needs to be rebuilt to show the new post</li>
+      </ol>
+
+      <div style="background: var(--admin-primary-light); padding: 1rem; border-radius: var(--radius); margin-top: 1.5rem; border-left: 4px solid var(--admin-primary);">
+        <strong style="font-size: 0.875rem; display: block; margin-bottom: 0.25rem;">Non-Negotiable</strong>
+        <p style="font-size: 0.85rem;">Every "Today at the Stand" post gets mirrored on the homepage feed within 24 hours. What you see online is what you see when you pull in.</p>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        <strong style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted);">Pillar options for the JSON file:</strong>
+        <p style="font-family: monospace; font-size: 0.8rem; background: var(--surface-alt); padding: 0.5rem; border-radius: var(--radius); margin-top: 0.25rem;">
+          today-at-the-stand | around-the-pavilion | animals-and-rotations | soil-and-story
+        </p>
+      </div>
+    </div>
+  </div>
+
+</AdminLayout>

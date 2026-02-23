@@ -47,7 +47,7 @@
 - [x] Basic pages (home, products, about, contact)
 
 ### In Progress
-- [ ] Remove "Certified" language (legal compliance)
+- [x] Remove "Certified" language — replaced with "Regenerative"
 - [ ] Recipe/blog content system
 
 ---

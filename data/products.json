@@ -17,15 +17,15 @@
       "slug": "humus-compost",
       "category": "compost",
       "description": "Premium humus compost, rich in nutrients and beneficial microbes, perfect for improving soil health and plant growth.",
-      "longDescription": "Georgia's ONLY certified organic compost. Our humus compost is the result of careful decomposition of organic matter, creating a nutrient-rich soil amendment that transforms gardens and landscapes. Packed with beneficial microbes, this compost improves soil structure, water retention, and provides slow-release nutrition for plants.",
+      "longDescription": "Georgia's ONLY regenerative organic compost. Our humus compost is the result of careful decomposition of organic matter, creating a nutrient-rich soil amendment that transforms gardens and landscapes. Packed with beneficial microbes, this compost improves soil structure, water retention, and provides slow-release nutrition for plants.",
       "price": 25,
       "unit": "cubic yard",
       "sku": "SME-COMP-001",
       "inStock": true,
       "featured": true,
       "certifications": [
-        "Certified Organic",
-        "Certified Naturally Grown"
+        "Regenerative",
+        "Naturally Grown"
       ],
       "benefits": [
         "Improves soil structure and drainage",
@@ -50,11 +50,11 @@
         ]
       },
       "seo": {
-        "title": "Certified Organic Compost Athens GA | Soul Miner's Eden",
-        "description": "Georgia's only certified organic compost. Premium humus compost for healthier soil and thriving plants. Local delivery available.",
+        "title": "Regenerative Organic Compost Athens GA | Soul Miner's Eden",
+        "description": "Georgia's only regenerative organic compost. Premium humus compost for healthier soil and thriving plants. Local delivery available.",
         "keywords": [
           "organic compost",
-          "certified compost Athens GA",
+          "regenerative compost Athens GA",
           "humus compost",
           "soil amendment",
           "garden compost Georgia"
@@ -520,7 +520,7 @@
       "slug": "compost-blend",
       "category": "specialty",
       "description": "Premium blend of topsoil and compost, ideal for raised beds and garden installations.",
-      "longDescription": "Our custom topsoil-compost blend combines the structure of quality topsoil with the nutrition of certified organic compost. This ready-to-plant mix is perfect for raised beds, container gardens, and new garden installations.",
+      "longDescription": "Our custom topsoil-compost blend combines the structure of quality topsoil with the nutrition of regenerative organic compost. This ready-to-plant mix is perfect for raised beds, container gardens, and new garden installations.",
       "price": 40,
       "unit": "cubic yard",
       "sku": "SME-SPEC-002",
@@ -531,7 +531,7 @@
         "Perfect nutrient balance",
         "Excellent water retention",
         "No additional amendments needed",
-        "Contains certified organic compost"
+        "Contains regenerative organic compost"
       ],
       "applications": [
         "Raised bed gardens",
@@ -548,7 +548,7 @@
       },
       "seo": {
         "title": "Topsoil-Compost Blend | Premium Garden Soil Mix",
-        "description": "Ready-to-plant blend of topsoil and certified organic compost. Perfect for raised beds and vegetable gardens.",
+        "description": "Ready-to-plant blend of topsoil and regenerative organic compost. Perfect for raised beds and vegetable gardens.",
         "keywords": [
           "compost blend",
           "garden soil mix",

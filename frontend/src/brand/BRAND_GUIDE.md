@@ -1,61 +1,85 @@
 # Soul Miner's Eden Brand Guide
 
-> "Cultivate What the Land Was Meant to Be"
+> "A regenerative farm in Bogart, Georgia."
+
+**Last Updated:** February 2026
 
 ---
 
-## Brand Essence
+## Brand Position
 
-Soul Miner's Eden is a 65-acre North Georgia family farm focused on **restoration**, **faith-rooted purpose**, and **sustainable land care**. We're not a generic landscape yard—we're a calling-driven farm and landscape partner helping homeowners and professionals restore their own piece of Eden.
+Soul Miner's Eden is a **regenerative demonstration farm and content studio** that sells beauty, trust, and story first — and products (compost, milk, meat, events, lodging) second. We are the camera-ready proof that Southland Organics biology works, not just another local farm or landscape supply yard.
 
-### Core Promise
-We help people cultivate beauty and restore land through time-produced natural compost, premium landscape materials, and regenerative grazing services.
+### One-Sentence Description
 
-### Tagline Options
-- "Cultivate What the Land Was Meant to Be"
-- "Your Own Piece of Eden"
-- "Grow Something Beautiful—Naturally"
+> "Soul Miner's Eden is a 65-acre regenerative demonstration farm in Bogart, Georgia, turning compost, silvopasture, and livestock into a camera-ready destination for Athens families and Southland Organics customers."
+
+### Priority Stack (Non-Negotiable)
+
+1. **Beautiful** — If it doesn't make the property more beautiful, we don't do it
+2. **Easy** — Systems are simple, self-serve, and honor-based
+3. **Marketing stage** — Everything we build is filmable content
+4. **Profitable** — The farm sustains itself
 
 ---
 
-## Brand Personality
+## Core Brand Pillars
 
-### Voice Attributes
+### Beautiful
+Every visible area must be photo-worthy. Think "weekend destination" not "production farm." The muscadine arbor, Ramsgate entrance, silvopasture with cows at the fence, the honor stand — all camera-ready, year-round.
 
-| Attribute | Description | Do | Don't |
-|-----------|-------------|-----|-------|
-| **Faith-Rooted** | References to calling, stewardship, and God's original design stay central but gentle | "Built on faith-driven stewardship" | Preachy or judgmental language |
-| **Warm & Invitational** | Every touchpoint should feel like an invitation to the farm | "Come enjoy our slice of Eden" | Cold, transactional copy |
-| **Family & Local** | Personal, human, neighborly—never corporate | "We're the Usrys, and this is our family farm" | Generic business-speak |
-| **Regenerative** | Emphasize restoration over extraction | "Restoring soil health" | "Land clearing services" |
-| **Hopeful** | Encouraging, calm, and optimistic | "Transform your landscape" | Fear-based urgency tactics |
+### Easeful
+Simple, self-serve, honor-based. No fussy rules or clutter. The visitor experience should feel unhurried and intuitive — drive in, park, walk through the arbor, browse the stand, pay, drive out.
 
-### Tone Guidelines
+### Regenerative
+Compost, silvopasture, food forest, and animals all tell one soil-health story. This is the through-line that connects everything we do. We work with the land, not against it.
 
-**Use calm, encouraging language with:**
-- Short paragraphs
-- Active voice
-- Concrete, sensory details
-- Personal pronouns (we, you, our)
+### Premium & Honest
+Fewer SKUs, premium prices, ultra-transparent practices, and lots of signage and storytelling. We don't compete on price — we compete on story, quality, and trust.
 
-**Key Phrases to Thread Throughout:**
-- "Cultivate beauty"
-- "Restore land"
+---
+
+## Name, Tagline & Lockup
+
+### Primary Lockup
+```
+SOUL MINER'S EDEN
+Bogart, Georgia  —  Est. 2017
+```
+
+### Tagline
+> "A regenerative farm in Bogart, Georgia."
+
+Use this one line everywhere. Consistency over cleverness.
+
+### Alternate Short Lines (use sparingly)
 - "Your own piece of Eden"
-- "The way God intended"
-- "Work as calling"
-- "Making the invisible God visible through stewardship"
+- "Cultivate what the land was meant to be"
+- "Soil, story, and supper in Bogart"
+
+### Parent Company
+> "A Southland Organics Company"
+
+Referenced subtly in footer, labels, and "about" content. Never lead with it — Soul Miner's Eden is the customer-facing identity.
 
 ---
 
 ## Visual Identity
 
+### Logo
+- **Primary**: Clean, high-contrast black-on-white wordmark for most applications
+- **Alternate**: Softer cream background version for print, labels, and website hero
+- **Simplified**: "Eden Farm — Bogart, GA" or "SME" initials in serif for hats/merch
+
+Logo appears on: farm entrance sign, honor stand, milk cooler, compost yard sign, event menus, all packaging.
+
 ### Color Palette
 
-#### Primary Earth Tones
+Keep it tight. Three core colors plus warm neutrals.
+
+#### Foundation — Warm Neutrals
 ```css
-/* Warm Neutrals - Foundation */
---warm-50: #fafaf9;
+--warm-50: #fafaf9;    /* Cream backgrounds */
 --warm-100: #f5f5f4;
 --warm-200: #e7e5e4;
 --warm-300: #d6d3d1;
@@ -64,87 +88,77 @@ We help people cultivate beauty and restore land through time-produced natural c
 --warm-600: #57534e;
 --warm-700: #44403c;
 --warm-800: #292524;
---warm-900: #1c1917;
+--warm-900: #1c1917;   /* Deep charcoal — primary text */
+```
 
-/* Primary - Terracotta/Clay */
---primary-50: #f9f5f4;
---primary-100: #f3ebe9;
---primary-200: #e4d5d3;
---primary-300: #d4b5af;
---primary-400: #c5a49c;
+#### Primary — Terracotta/Clay
+Warmth, earth, invitation. Used for accents, secondary buttons, pull quotes.
+```css
 --primary-500: #b59289;
 --primary-600: #a17e75;
 --primary-700: #826658;
---primary-800: #624d42;
---primary-900: #43352d;
 ```
 
-#### Accent Colors
+#### Accent — Muted Green
+Growth, life, CTAs. Used sparingly for primary buttons and key actions.
 ```css
-/* Accent - Natural Green */
---accent-50: #f0fdf4;
---accent-100: #dcfce7;
---accent-200: #bbf7d0;
---accent-300: #86efac;
---accent-400: #4ade80;
---accent-500: #22c55e;
 --accent-600: #16a34a;
 --accent-700: #15803d;
---accent-800: #166534;
---accent-900: #14532d;
-
-/* Floral Accents (use sparingly) */
---lavender: #c4b5d4;
---sunflower: #f5d680;
---blush: #f0d4d4;
 ```
+
+#### Usage Rule
+Deep charcoal for text and line art. Warm cream for backgrounds. One accent color per context (green for CTAs, terracotta for warmth). Avoid using both accent colors in the same section.
 
 ### Typography
 
 #### Font Stack
 ```css
-/* Display - Soulful, Story-Driven */
+/* Display — Elegant, story-driven (headlines, hero text) */
 --font-display: 'Poppins', system-ui, sans-serif;
 
-/* Serif - Elegant, Invitational */
+/* Serif — Poetic, invitational (pull quotes, testimonials, "Experience the Farm") */
 --font-serif: 'Playfair Display', Georgia, serif;
 
-/* Body - Clean, Readable */
+/* Body — Clean, readable (all body text, forms, nav) */
 --font-sans: 'Inter', system-ui, sans-serif;
 ```
 
 #### Usage
-- **H1 Headlines**: Poppins Bold (display) or Playfair Display Italic (editorial feel)
-- **H2-H3 Section Headers**: Poppins Semibold
-- **Body Text**: Inter Regular
-- **Pull Quotes & Testimonials**: Playfair Display Italic
-- **CTAs & Labels**: Poppins Semibold, uppercase tracking
+| Element | Font | Weight | Notes |
+|---------|------|--------|-------|
+| H1 Headlines | Poppins or Playfair Italic | Bold | Display for impact, Serif for editorial feel |
+| H2-H3 Sections | Poppins | Semibold | |
+| Body Text | Inter | Regular | |
+| Pull Quotes | Playfair Display | Italic | For Garden City quotes, mission statements |
+| CTAs & Labels | Poppins | Semibold, uppercase tracking | |
+| Product names | Poppins | Bold | |
+| Signage (on-farm) | Same serif as display | | Consistency between digital and physical |
 
-### Imagery Guidelines
+### Imagery
 
-#### Hero & Background Images
-- Aerial and wide farm shots as key heroes
-- Full-bleed video or images that place users on the land
-- Drone footage of the 65-acre property
-- Golden hour/sunrise lighting preferred
+#### Hero & Background
+- Aerial and wide farm shots — drone footage of the 65-acre property
+- Golden hour and sunrise lighting preferred
+- Soft natural light, minimal editing
+- Before/after and process shots (swales, silvopasture, compost screening)
 
 #### Product Photography
 - Close-ups of soil, compost, mulch textures
 - Natural lighting, outdoor settings
-- Show scale with hands or tools when helpful
+- Show scale with hands or tools
 - Rich, earthy color grading
 
-#### Lifestyle & Story Images
-- People on the farm (picking flowers, walking fields)
-- Interaction with animals and equipment
+#### Lifestyle & Farm
+- Animals on lush pasture — cows at the fence, sheep in silvopasture
 - Family moments that feel genuine, not posed
-- Visitors experiencing the farm
+- Honor stand in use — customers, baskets, natural light
+- Muscadine arbor, Ramsgate entrance, food forest
 
-#### Recipe & Food Images
-- Table scenes with natural light
-- Fresh produce from the farm
-- Prepared dishes in rustic settings
-- Seasonal, abundant styling
+#### Photo Spots (Keep Camera-Ready Year-Round)
+1. Muscadine arbor walkway
+2. Cows at the wood fence line
+3. Compost yard before/after
+4. Honor stand with seasonal display
 
 ---
 
@@ -152,142 +166,88 @@ We help people cultivate beauty and restore land through time-produced natural c
 
 ### Layout Philosophy
 
-> "Spacious, soft, and grounded—like the farm itself"
+> "Spacious, soft, and grounded — like the farm itself"
 
-1. **Generous White Space**: Let content breathe
-2. **Soft Shadows**: Subtle depth, not harsh contrasts
-3. **Rounded Corners**: Nothing industrial or harsh
-4. **Section-Driven Pages**: Clear visual separation between content areas
-5. **Full-Bleed Heroes**: Immersive entry points to each page
+The website should feel like a **clean field guide**, not a busy e-commerce store.
 
-### Component Styling
+1. **Generous white space** — let content breathe
+2. **Soft shadows** — subtle depth, not harsh contrasts
+3. **Rounded corners** — nothing industrial or harsh
+4. **Section-driven pages** — clear visual separation, each section with 1-2 photos and fewer than 60 words
+5. **Full-bleed heroes** — immersive entry points
 
-#### Buttons
-```css
-/* Primary - Solid earth tone */
-.btn-primary {
-  background: var(--accent-600);
-  color: white;
-  border-radius: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  font-weight: 600;
-  transition: all 0.2s;
-}
-
-.btn-primary:hover {
-  background: var(--accent-700);
-  transform: scale(1.02);
-}
-
-/* Secondary - Outlined */
-.btn-secondary {
-  background: transparent;
-  border: 2px solid var(--primary-500);
-  color: var(--primary-600);
-  border-radius: 0.5rem;
-}
-
-/* Ghost - For dark backgrounds */
-.btn-ghost {
-  background: transparent;
-  border: 2px solid white/50;
-  color: white;
-}
-```
-
-#### Cards
-- Image on top, text below
-- Subtle border (1px) with warm neutral
-- Soft shadow on hover
-- 0.75rem border-radius
-- Smooth scale transition on hover
-
-#### Pull Quotes
-- Background wash (primary-50 or accent-50)
-- Left border accent (4px primary-500)
-- Playfair Display Italic
-- Used for Garden City quotes and mission statements
-
-### Animation Guidelines
-
-**Keep it subtle:**
+### Animation
 - Fade-in on scroll (0.3s ease)
 - Slow parallax on hero imagery (0.05 rate)
 - Gentle hover states (scale 1.02, 0.2s)
-- No flashy animations that distract from content
+- No flashy animations
 
 ---
 
-## Page Templates
+## Product Categories & Naming
 
-### 1. Homepage / Landing
+### Landscape Supply
+| Product | Brand Name | Notes |
+|---------|-----------|-------|
+| Premium compost | Soul Miner's Humus Compost | Hero product |
+| Compost + Genesis biology | **Eden Blend** | Premium tier, branded Southland product |
+| Natural mulch | Natural Mulch | Screened overs from compost |
+| Colored mulch | Colored Mulch | Buy wholesale, mark up |
+| Topsoil-compost blend | Topsoil-Compost Blend | Ready-to-plant |
 
-**Sections in Order:**
-1. **Hero**: Full-bleed video, centered headline, dual CTAs
-2. **Three-Pillar Intro**: Flowers, Landscape Supply, Land & Care
-3. **Story Teaser**: 2-3 lines + "Read Our Story" button
-4. **UPICK & Farm Visits**: Photo + short copy + "Visit Our Farm"
-5. **Featured Products**: 3 product cards
-6. **Recipes Teaser**: 3-4 recipe cards
-7. **Email Signup Band**: Single-line description + form
-8. **Experience the Farm**: Final CTA section
+Eden Blend label copy: *"A Soul Miner's Eden compost, enriched with Southland Genesis biology."*
 
-### 2. About / Story Page
+### Farm Store (Honor Stand)
+| Product | Price Point | Packaging Notes |
+|---------|-----------|-----------------|
+| Pasture-raised eggs | $8-12/dozen | Branded cartons, serif heading + logo |
+| Raw milk (Grade A) | $10-12/gallon | Vintage/nostalgic bottles, required GA language |
+| Whole chicken | $25-35 each | Branded freezer labels |
+| Bone broth | $15-20/quart | Glass jars, simple label |
+| Lamb cuts | $12-18/lb | USDA processor label + SME brand sticker |
+| Sheepskin hides | $75-150 | Hang tag with logo |
+| Seasonal fruit | $5-12/lb | U-pick or baskets at stand |
+| Elderberry syrup | $15-20/bottle | Kitchen-produced, branded label |
+| Honey | $12-18/lb | Simple jar, branded label |
+| Bagged compost | $8-12/bag | White bag, logo, story paragraph, bullet benefits |
 
-**Layout:**
-- Two-column lead: text + farm transformation imagery
-- Timeline/chapters format for history
-- "Story Behind the Name" highlighted card
-- Three value cards: Sustainable, Family, Community
-- Meet the Team portraits
+### Events & Experiences
+| Offering | Brand Name |
+|----------|-----------|
+| Farm-to-table dinners | **Eden Dinners** |
+| Educational workshops | **Eden Workshops** |
+| Farm tours | Farm Tour |
+| CSA/farm box | Eden Farm Box |
+| Herdshare | Eden Herdshare |
 
-### 3. Landscape Supply (Category)
+All event materials (menus, tickets) use the same layout: date at top, logo centered, simple type.
 
-**Structure:**
-- Intro block about local, natural materials
-- Product grid with cards
-- Material calculator integration
-- Contractor/volume pricing callout
+---
 
-### 4. Product Detail Page
+## On-Farm Branding
 
-**Elements:**
-- Hero image of material
-- Benefits list (3-5 bullet points)
-- Application ideas
-- Coverage estimator widget
-- Clear inquiry/order form
+### Ramsgate Entrance
+Telephone-pole gate with rough-cut lumber (Bo's sawmill). 16 feet tall. Accent lighting. Flanked by columnar arborvitae with Soul Miner's Eden wordmark and tagline on metal or wood sign. Logo colors match the sign.
 
-### 5. Land Management / Grazing
+### Honor Stand
+- **Exterior**: Logo on front, tagline, short "How it works" panel (pick up, pay, enjoy)
+- **Interior**: Minimal chalkboards or printed boards listing products and prices. Avoid homemade clutter.
 
-**Layout:**
-- Pastoral hero with grazing imagery
-- Problem/solution grid
-- Process strip (3 steps)
-- Testimonials (when available)
-- Assessment request form
+### Wayfinding Signs
+Small, consistent signs in the same typeface throughout the property:
+- "Food Forest"
+- "Silvopasture"
+- "Compost Yard"
+- "Muscadine Walk"
+- "Agritourism Lodging (coming soon)"
 
-### 6. Recipes
-
-**Index Page:**
-- Card grid with filters
-- Image, title, time, category tag
-- Category filtering
-
-**Detail Page:**
-- Hero image
-- Story intro paragraph
-- Two-column: ingredients + instructions
-- Sharing buttons
-
-### 7. Visit Us / Farm Experience
-
-**Sections:**
-- Hero: "Experience the Farm Life"
-- Farm Tours info
-- UPICK Flowers info
-- Seasonal Events
-- Practical info: address, map, hours, what to bring
+### Packaging
+All packaging follows the same template:
+- White bag/label
+- Logo at top
+- Short story paragraph
+- Simple bullet benefits
+- Same serif heading across all products
 
 ---
 
@@ -295,133 +255,144 @@ We help people cultivate beauty and restore land through time-produced natural c
 
 ### Primary Nav
 ```
-Logo | Landscape Supply (dropdown) | Land Management (dropdown) | Our Story (dropdown) | Visit Us | [Phone Icon] (706) 613-4415
+Logo | Visit the Farm | Landscape Supply (dropdown) | Land Management (dropdown) | Our Story (dropdown) | [Phone] (706) 613-4415
 ```
 
-### Landscape Supply Dropdown
+### Visit the Farm
+- Honor Stand
+- Farm Tours
+- Eden Dinners
+- Events Calendar
+
+### Landscape Supply
 - All Products
 - Compost
-- Topsoil
-- Mulch varieties
-- Specialty soils
+- Eden Blend
+- Mulch
+- Soil & Blends
 
-### Land Management Dropdown
+### Land Management
 - Eden Grazing Services
 - How It Works
 - Service Packages
 - Request Assessment
 
-### Our Story Dropdown
+### Our Story
 - About Us
 - Blog
 - Recipes
-- Sustainable Farming
+- The Ag & Culture Podcast
 
 ### Behavior
-- Sticky on scroll
-- Slight shrink effect for lighter feel
-- Mobile: hamburger menu with accordion dropdowns
+- Sticky on scroll with slight shrink
+- Mobile: hamburger with accordion dropdowns
 
 ---
 
-## Content Guidelines
+## Homepage Sections
 
-### Headline Formulas
+Each section: 1-2 photos, fewer than 60 words of copy.
 
-**Invitational:**
-- "Cultivate [Benefit]"
-- "Restore Your [Space]"
-- "Experience [Something Beautiful]"
-
-**Benefit-Focused:**
-- "[Adjective] [Product] for [Outcome]"
-- "Transform Your [Space] with [Product]"
-
-**Story-Driven:**
-- "The Story Behind [Topic]"
-- "How We [Action]"
-
-### CTA Button Text
-
-**Primary Actions:**
-- "Shop Landscape Supply"
-- "Explore Grazing Services"
-- "Visit Our Farm"
-- "Request a Quote"
-
-**Secondary Actions:**
-- "Learn More"
-- "Read Our Story"
-- "View All Products"
-- "See Recipes"
-
-### Body Copy Guidelines
-
-1. **Keep paragraphs short** (2-3 sentences max)
-2. **Lead with benefits**, not features
-3. **Use sensory language** when describing products
-4. **Connect practical offerings back to purpose**
-5. **Include specific details** (65 acres, Athens GA, family-owned)
-
-### Words to Use
-- Cultivate, Restore, Transform
-- Natural, Organic, Living
-- Stewardship, Care, Calling
-- Family, Local, Community
-- Eden, Beauty, Purpose
-
-### Words to Avoid
-- Industrial, Commercial, Corporate
-- Cheap, Discount, Deal
-- Quick, Fast, Easy (when misleading)
-- Generic landscape yard language
+1. **Hero** — Full-bleed video/image, tagline, dual CTAs
+2. **Visit the Farm** — Honor stand hours, map, what visitors see first
+3. **Eden Blend Compost** — Pricing, delivery radius
+4. **Milk & Meat** — What's available, how the honor system works
+5. **Dinners & Events** — Email capture / waitlist
+6. **Our Story** — The restoration narrative, Southland connection
+7. **Email Signup Band** — "Stay Connected to the Farm"
 
 ---
 
-## Brand Applications
+## Page Templates
 
-### Email Signatures
-```
-[Name]
-Soul Miner's Eden
-(706) 613-4415
-soulminerseden.com
+### Product Detail
+- Hero image of material
+- Benefits list (3-5 bullets)
+- Application ideas
+- Coverage estimator widget
+- Clear inquiry/order form
 
-"Cultivate What the Land Was Meant to Be"
-```
+### Category (Landscape Supply)
+- Intro block about local, regenerative materials
+- Product grid with cards
+- Material calculator
+- Contractor/volume pricing callout
 
-### Social Media Bio
-```
-65-acre family farm in Athens, GA
-Natural compost | Premium mulch | Regenerative grazing
-Come visit our slice of Eden
-```
+### Farm Experience / Visit Us
+- Hero: farm beauty shot
+- Honor stand info + hours
+- Farm tour info
+- Seasonal events
+- Practical: address, map, directions, what to bring
 
-### Delivery Truck/Signage
-- Logo prominently displayed
-- Phone number
-- "All-Natural Compost | Family-Owned | Athens, GA"
+### About / Story
+- Two-column lead: text + farm imagery
+- Timeline/chapters for history
+- "Story Behind the Name" highlighted card
+- Three value cards: Regenerative, Family, Community
+- Bo Carter partnership story
+
+### Recipes & Blog
+- Card grid with filters
+- Image, title, time, category tag
+- Detail: hero image, story intro, two-column ingredients + instructions
+
+---
+
+## Content & Marketing Integration
+
+### Content Pillars
+
+| Pillar | Format | Platform |
+|--------|--------|----------|
+| Silvopasture Journey | Long-form video | YouTube, Ag & Culture Podcast |
+| Honor Stand Today | Short-form social | Instagram (Ayn Parker Usry manages) |
+| Product Proof | Brix readings, before/after | YouTube, website, sales collateral |
+| Farm Beautiful | Drone footage, seasonal | All channels |
+| Bo Carter Partnership | Working livestock | Ag & Culture Podcast |
+| Food & Farming Philosophy | Long-form | Podcast, blog |
+
+### Social Media
+- **Instagram** (Ayn Parker Usry): Daily/weekly "Honor Stand Today" posts — always same template (photo + short caption + hours)
+- **Recurring series**: "Soil to Supper" — show compost > pasture > animals > dinner
+- **Quarterly**: Drone documentation of property transformation
+
+### Photography Schedule
+- Trail cameras at key zones for time-lapse content
+- Quarterly drone flyovers
+- Every infrastructure build is filmable content (Ramsgate, swales, food forest planting)
+
+---
+
+## Agritourism Lodging (Year 3-5)
+
+Zone K across the creek. Each unit echoes the main brand: cream walls, wood, simple signage, and a small welcome card with logo and a short story.
+
+- **Welcome basket**: Eden eggs, raw milk, seasonal fruit, bone broth, Southland product samples
+- **Self-guided farm tour**: QR code trail markers, each station tells the story
+- **Structures must be photogenic** — every guest photographs and posts
 
 ---
 
 ## Quick Reference
 
-### Contact Information
+### Contact
 - **Phone**: (706) 613-4415
-- **Location**: Bogart, GA (Athens area)
+- **Location**: 189 Luke Road, Bogart, GA 30622 (Athens area)
 - **Farm Size**: 65 acres
 - **Delivery**: $40 base + $1.25/mile after 20 miles
 
 ### Key Differentiators
-1. Georgia's ONLY organic compost
-2. 65-acre working family farm
+1. Georgia's ONLY regenerative organic compost — zero competitors within 60 miles
+2. 65-acre working demonstration farm
 3. Faith-driven stewardship
-4. Dual revenue: products + grazing services
-5. Not just a supplier—a landscape partner
+4. Honor-system farm stand
+5. Camera-ready proof that Southland biology works
+6. Not just a supplier — a destination
 
-### Parent Company
-Southland Organics (referenced subtly as "A Southland Organics Company")
+### Bo Carter Partnership
+Bo brings animals, time, expertise, and a sawmill. We bring land, equipment, and staff. Together we're building a diversified regenerative farm.
 
 ---
 
-*Last Updated: January 2026*
+*This guide evolves as the farm grows. When in doubt, ask: "Is this beautiful? Is it easy? Does it tell the story?"*

@@ -148,6 +148,41 @@ export interface ShippingOption {
   is_tax_inclusive: boolean
 }
 
+export interface Order {
+  id: string
+  display_id: number
+  status: string
+  fulfillment_status: string
+  payment_status: string
+  email: string
+  subtotal: number
+  shipping_total: number
+  tax_total: number
+  total: number
+  currency_code: string
+  items: OrderLineItem[]
+  shipping_address: Address | null
+  billing_address: Address | null
+  metadata: Record<string, any> | null
+  created_at: string
+  updated_at: string
+}
+
+export interface OrderLineItem {
+  id: string
+  order_id: string
+  variant_id: string
+  product_id: string
+  title: string
+  description: string | null
+  thumbnail: string | null
+  quantity: number
+  unit_price: number
+  subtotal: number
+  total: number
+  variant: ProductVariant
+}
+
 // =============================================================================
 // PRODUCTS
 // =============================================================================
@@ -353,6 +388,48 @@ export async function completeCart(cartId: string) {
     method: "POST",
   })
   return data
+}
+
+// =============================================================================
+// ORDERS
+// =============================================================================
+
+/**
+ * Get orders (requires authentication - admin only)
+ * For customer-facing orders, use /store/customers/me/orders
+ */
+export async function getOrders(params?: Record<string, any>) {
+  const searchParams = new URLSearchParams()
+  if (params) {
+    Object.entries(params).forEach(([key, value]) => {
+      if (value !== undefined) {
+        searchParams.append(key, String(value))
+      }
+    })
+  }
+
+  const query = searchParams.toString() ? `?${searchParams.toString()}` : ""
+  const data = await medusaFetch<{ orders: Order[]; count: number }>(`/admin/orders${query}`)
+  return data
+}
+
+/**
+ * Get a single order by ID
+ */
+export async function getOrder(orderId: string) {
+  const data = await medusaFetch<{ order: Order }>(`/admin/orders/${orderId}`)
+  return data.order
+}
+
+/**
+ * Update order metadata
+ */
+export async function updateOrderMetadata(orderId: string, metadata: Record<string, any>) {
+  const data = await medusaFetch<{ order: Order }>(`/admin/orders/${orderId}`, {
+    method: "POST",
+    body: { metadata },
+  })
+  return data.order
 }
 
 // =============================================================================

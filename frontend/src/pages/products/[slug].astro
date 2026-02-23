@@ -11,7 +11,9 @@ import ProductImage from '../../components/ProductImage.astro';
 import ProductCard from '../../components/products/ProductCard.astro';
 import MaterialCalculator from '../../components/products/MaterialCalculator.astro';
 import AddToCartButton from '../../components/cart/AddToCartButton.astro';
+import SocialShare from '../../components/SocialShare.astro';
 import { getAllProducts, getProductBySlug, getRelatedProducts, formatPrice } from '../../lib/products';
+import { imagePresets } from '../../lib/cloudinary';
 
 // Get the product slug from the URL
 export async function getStaticPaths() {
@@ -34,6 +36,11 @@ if (!product) {
 // Get related products
 const relatedProducts = getRelatedProducts(product.slug, 4);
 
+// OG image for social sharing (1200x630)
+const productOgImage = product.images?.primary
+  ? imagePresets.blogFeatured(product.images.primary)
+  : undefined;
+
 // Breadcrumbs
 const breadcrumbs = [
   { label: 'Home', href: '/' },
@@ -42,7 +49,7 @@ const breadcrumbs = [
 ];
 ---
 
-<MainLayout title={product.seo.title} description={product.seo.description}>
+<MainLayout title={product.seo.title} description={product.seo.description} ogImage={productOgImage} ogType="product">
   <!-- Breadcrumbs -->
   <div class="bg-warm-50 border-b border-secondary-200 py-3">
     <div class="container-custom">
@@ -206,6 +213,17 @@ const breadcrumbs = [
           ))}
         </ul>
       </div>
+    </div>
+
+    <!-- Share -->
+    <div class="mb-16 pt-8 border-t border-warm-200">
+      <SocialShare
+        title={product.name}
+        description={product.description}
+        imageUrl={productOgImage}
+        variant="product"
+        label="Share this product"
+      />
     </div>
 
     <!-- Material Calculator -->

@@ -1,70 +1,38 @@
 /**
  * Soul Miner's Eden Design Tokens
  *
- * These tokens define the visual language of the brand.
- * Import this file or reference these values in Tailwind config.
+ * Estate palette derived from property photos (2026-02-22).
+ * Every color points at something real on the 65 acres.
+ * See DESIGN_LOG.md for rationale and rejected alternatives.
  */
 
 :root {
   /* ========================================
-     COLOR TOKENS
+     COLOR TOKENS — Estate Palette
      ======================================== */
 
-  /* Warm Neutrals - Foundation */
-  --sme-warm-50: #fafaf9;
-  --sme-warm-100: #f5f5f4;
-  --sme-warm-200: #e7e5e4;
-  --sme-warm-300: #d6d3d1;
-  --sme-warm-400: #a8a29e;
-  --sme-warm-500: #78716c;
-  --sme-warm-600: #57534e;
-  --sme-warm-700: #44403c;
-  --sme-warm-800: #292524;
-  --sme-warm-900: #1c1917;
+  /* Eden Cream — concrete pad, sandy soil, warm light */
+  --eden-cream: #FAF8F5;
+  --eden-cream-dark: #F0EDE8;
 
-  /* Primary - Terracotta/Clay (warm, earthy, inviting) */
-  --sme-primary-50: #f9f5f4;
-  --sme-primary-100: #f3ebe9;
-  --sme-primary-200: #e4d5d3;
-  --sme-primary-300: #d4b5af;
-  --sme-primary-400: #c5a49c;
-  --sme-primary-500: #b59289;
-  --sme-primary-600: #a17e75;
-  --sme-primary-700: #826658;
-  --sme-primary-800: #624d42;
-  --sme-primary-900: #43352d;
+  /* Eden Charcoal — dark compost, deep shadow */
+  --eden-charcoal: #2D2926;
 
-  /* Secondary - Sage/Stone (grounding, natural) */
-  --sme-secondary-50: #fafaf9;
-  --sme-secondary-100: #f5f5f4;
-  --sme-secondary-200: #e9e9e7;
-  --sme-secondary-300: #d9d9d6;
-  --sme-secondary-400: #c7c8c3;
-  --sme-secondary-500: #babbb1;
-  --sme-secondary-600: #9fa097;
-  --sme-secondary-700: #7e7f74;
-  --sme-secondary-800: #5f5f56;
-  --sme-secondary-900: #42423a;
+  /* Eden Steel — pavilion galvanized metal */
+  --eden-steel: #6E6E68;
+  --eden-steel-light: #B0B0AA;
 
-  /* Accent - Natural Green (growth, life, vitality) */
-  --sme-accent-50: #f0fdf4;
-  --sme-accent-100: #dcfce7;
-  --sme-accent-200: #bbf7d0;
-  --sme-accent-300: #86efac;
-  --sme-accent-400: #4ade80;
-  --sme-accent-500: #22c55e;
-  --sme-accent-600: #16a34a;
-  --sme-accent-700: #15803d;
-  --sme-accent-800: #166534;
-  --sme-accent-900: #14532d;
+  /* Eden Clay — Georgia red clay, exposed earth */
+  --eden-clay: #A8643F;
+  --eden-clay-light: #DBBFA8;
 
-  /* Floral Accents (use sparingly for seasonal/special content) */
-  --sme-lavender: #c4b5d4;
-  --sme-lavender-light: #e8e0f0;
-  --sme-sunflower: #f5d680;
-  --sme-sunflower-light: #fdf4d8;
-  --sme-blush: #f0d4d4;
-  --sme-blush-light: #faf0f0;
+  /* Eden Sage — pasture grass, woodland understory */
+  --eden-sage: #4D6B42;
+  --eden-sage-light: #E8EDDE;
+
+  /* Functional (keep separate from brand) */
+  --eden-error: #B91C1C;
+  --eden-error-light: #FEE2E2;
 
   /* ========================================
      TYPOGRAPHY TOKENS
@@ -219,7 +187,7 @@
 :root {
   --sme-card-padding: 1.5rem;
   --sme-card-radius: var(--sme-radius-lg);
-  --sme-card-border: 1px solid var(--sme-secondary-200);
+  --sme-card-border: 1px solid var(--eden-steel-light);
   --sme-card-bg: white;
 }
 
@@ -228,8 +196,8 @@
   --sme-input-padding-x: 1rem;
   --sme-input-padding-y: 0.625rem;
   --sme-input-radius: var(--sme-radius-md);
-  --sme-input-border: 1px solid var(--sme-secondary-300);
-  --sme-input-focus-ring: 2px solid var(--sme-accent-500);
+  --sme-input-border: 1px solid var(--eden-steel-light);
+  --sme-input-focus-ring: 2px solid var(--eden-sage);
 }
 
 /* Trust badge tokens */
@@ -237,9 +205,9 @@
   --sme-badge-padding-x: 1rem;
   --sme-badge-padding-y: 0.5rem;
   --sme-badge-radius: var(--sme-radius-full);
-  --sme-badge-bg: var(--sme-primary-50);
-  --sme-badge-border: 1px solid var(--sme-primary-200);
-  --sme-badge-color: var(--sme-primary-700);
+  --sme-badge-bg: var(--eden-cream-dark);
+  --sme-badge-border: 1px solid var(--eden-clay-light);
+  --sme-badge-color: var(--eden-clay);
 }
 
 /* Feature box tokens */
@@ -247,6 +215,6 @@
   --sme-feature-padding: 1.5rem;
   --sme-feature-radius: var(--sme-radius-md);
   --sme-feature-bg: white;
-  --sme-feature-border: 1px solid var(--sme-secondary-200);
-  --sme-feature-border-hover: var(--sme-primary-300);
+  --sme-feature-border: 1px solid var(--eden-steel-light);
+  --sme-feature-border-hover: var(--eden-clay);
 }

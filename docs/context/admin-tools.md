@@ -72,6 +72,44 @@ Internal tools for managing Soul Miner's Eden website.
 
 ---
 
+### Orders Dashboard (`/admin/orders`)
+**Purpose:** Manage pickup and delivery orders from the honor stand.
+
+**Features:**
+- Stats cards: Today's pickups, this week, pending delivery, revenue
+- Filter pills: All/Today/Pickup/Delivery/Ready/Collected
+- Orders grouped by pickup date
+- Quick actions: Mark Ready, Mark Collected, View Details, Contact Customer
+- Real-time data from Medusa API
+
+**API Endpoints:**
+- `GET /api/admin/orders` — Fetch all orders with pickup metadata
+- `POST /api/admin/orders/[id]/mark-ready` — Mark order ready + send notification
+- `POST /api/admin/orders/[id]/mark-collected` — Mark order collected
+
+**Use When:** Checking incoming orders and managing fulfillment.
+
+---
+
+### Social Guide (`/admin/social`)
+**Purpose:** Social media best practices for Ayn Parker Usry and the team.
+
+**Features:**
+- Quick reference stats (3+/week minimum, caption length, primary platform)
+- 4 content pillars with color-coded cards: Today at the Stand, Around the Pavilion, Animals & Rotations, Soil & Story
+- Weekly posting schedule (Mon/Wed/Fri/Sun)
+- Three-line caption pattern (Hook → Context → Soft CTA)
+- Good/bad hook examples
+- Copy-paste hashtag blocks (always-use + rotate)
+- Monthly before/after requirement
+- Emergency broadcast pattern
+- Instructions for adding posts to homepage Instagram feed
+- Permissions guidance (guests/kids)
+
+**Use When:** Planning social content or onboarding someone to manage the Instagram account.
+
+---
+
 ## Planned Admin Pages
 
 ### Voice Checker (TODO)
