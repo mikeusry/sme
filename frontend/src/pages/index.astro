@@ -8,10 +8,6 @@ import ExperienceFarm from '../components/ExperienceFarm.astro';
 import InstagramFeed from '../components/InstagramFeed.astro';
 import { getFeaturedProducts, getProductBySlug } from '../lib/products';
 
-// Soul Miner's Eden Homepage - Conversion-optimized dual-revenue stream design
-// Ogilvy principle: "The consumer is not a moron, she's your wife"
-// Apple principle: "Focus is saying no to 1,000 good ideas"
-
 // Get featured products for showcase
 const featuredProducts = getFeaturedProducts();
 
@@ -27,8 +23,8 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 ---
 
 <MainLayout
-	title="Soul Miner's Eden | Organic Compost & Land Management | Athens, GA"
-	description="All-Natural compost delivered to your door. Premium landscape supply + eco-friendly land management services. Family-owned, Athens-based."
+	title="Soul Miner's Eden | Organic Compost & Land Management | Bogart, GA"
+	description="Regenerative compost, mulch, and grazing services from our 65-acre farm in Bogart, Georgia. Family-owned, biology-driven."
 >
 	<!-- Hero Section -->
 	<section class="hero-section relative py-20 md:py-28 overflow-hidden">
@@ -51,9 +47,9 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 
 		<div class="container-custom relative z-10">
 			<div class="max-w-4xl mx-auto text-center">
-				<!-- Trust badge -->
-				<div class="inline-flex items-center gap-2 bg-white/50 px-4 py-2 rounded-full shadow-md mb-6">
-					<span class="text-sm font-semibold text-w">All-Natural • Family-Owned • Athens, GA</span>
+				<!-- Badge — clay pill -->
+				<div class="inline-flex items-center gap-2 bg-primary-500/80 backdrop-blur-sm px-5 py-2 rounded-full mb-6">
+					<span class="text-sm font-semibold text-white">A regenerative farm in Bogart, Georgia</span>
 				</div>
 
 				<!-- Main headline -->
@@ -61,30 +57,23 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 					Cultivate What the Land Was Meant to Be
 				</h1>
 
-				<!-- Subheadline -->
-				<p class="text-xl md:text-2xl mb-4 text-white max-w-3xl mx-auto leading-relaxed">
-					We offer time produced, natural compost and regenerative grazing services, we help homeowners and professionals restore their own piece of Eden.
+				<!-- Subheadline — one tight sentence -->
+				<p class="text-xl md:text-2xl mb-10 text-white/90 max-w-3xl mx-auto leading-relaxed">
+					From our 65&#8209;acre regenerative farm in Bogart, we deliver compost, mulch, and grazing that prove biology works.
 				</p>
 
-				<!-- USP -->
-				<p class="text-lg mb-10 text-white font-medium">
-					All-Natural Compost. Locally Produced
-				</p>
-
-				<!-- Dual CTAs -->
+				<!-- Dual CTAs — primary sage (larger) + outline clay -->
 				<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-					<a href="/products" class="border-2 border-gray-400 text-gray-300 hover:bg-white/10 hover:text-white hover:border-white/70 text-lg px-10 py-4 rounded-lg font-semibold transition-colors">
-						Shop Landscape Supply
+					<a href="/products" class="bg-accent-600 hover:bg-accent-700 text-white text-lg md:text-xl px-12 py-5 rounded-lg font-semibold transition-colors shadow-lg">
+						Shop Compost & Mulch
 					</a>
-					<a href="/land-management" class="border-2 border-gray-400 text-gray-300 hover:bg-white/10 hover:text-white hover:border-white/70 text-lg px-10 py-4 rounded-lg font-semibold transition-colors">
+					<a href="/land-management" class="border-2 border-primary-300 text-primary-200 hover:bg-white/10 hover:text-white hover:border-white/70 text-base px-8 py-3 rounded-lg font-semibold transition-colors sm:inline-block hidden">
 						Explore Grazing Services
 					</a>
+					<a href="/land-management" class="text-primary-200 hover:text-white font-semibold transition-colors underline underline-offset-4 sm:hidden">
+						Explore Grazing Services →
+					</a>
 				</div>
-
-				<!-- Social proof -->
-				<p class="mt-8 text-sm text-white">
-					65-acre family farm • Serving North Georgia
-				</p>
 			</div>
 		</div>
 	</section>
@@ -93,59 +82,87 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 	<section class="section bg-white">
 		<div class="container-custom">
 			<!-- Section header -->
-			<div class="text-center mb-12">
+			<div class="text-center mb-14">
 				<h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-4">
 					Why Landscapers & Homeowners Choose Us
 				</h2>
 				<p class="text-lg text-warm-600 max-w-2xl mx-auto">
-					From our 65-acre Athens farm to your property—thoughtfully produced materials, delivered with care.
+					From our farm to your property — thoughtfully produced, delivered with care.
 				</p>
 			</div>
 
-			<!-- Value prop grid - 3 across -->
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-				<!-- All Natural Compost -->
-				<div class="feature-box">
-					<h3 class="text-xl font-bold mb-2 text-warm-900">All Natural Compost</h3>
-					<p class="text-warm-600">Zero biosolids. No fillers. Just clean, biologically active compost made on-site under strict quality control.</p>
+			<!-- Value prop grid - 4 across -->
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+				<!-- Real Compost -->
+				<div class="feature-box py-8 px-6 rounded-xl text-center">
+					<div class="text-primary-500 mb-5">
+						<!-- Compost heap icon -->
+						<svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M6 19c0-1.5 1.5-3 6-3s6 1.5 6 3" />
+							<path stroke-linecap="round" stroke-linejoin="round" d="M5 16c0-1.5 2-3 7-3s7 1.5 7 3" />
+							<path stroke-linecap="round" stroke-linejoin="round" d="M4 13c0-1.5 2.5-3 8-3s8 1.5 8 3" />
+							<path stroke-linecap="round" stroke-linejoin="round" d="M12 5v2m0 0c-.5.5-1.5 1-1.5 2M12 7c.5.5 1.5 1 1.5 2" />
+						</svg>
+					</div>
+					<h3 class="text-xl font-bold mb-3 text-warm-900">Real Compost, Zero Shortcuts</h3>
+					<p class="text-warm-600">No biosolids. No fillers. Biologically active compost made on our farm with Southland biology.</p>
 				</div>
 
-				<!-- Grown & Managed the Right Way -->
-				<div class="feature-box">
-					<h3 class="text-xl font-bold mb-2 text-warm-900">Grown & Managed the Right Way</h3>
-					<p class="text-warm-600">We work with the land, not against it—using natural processes that improve soil health, plant strength, and long-term performance. The way God intended.</p>
+				<!-- Grown Right -->
+				<div class="feature-box py-8 px-6 rounded-xl text-center">
+					<div class="text-primary-500 mb-5">
+						<!-- Sprout icon -->
+						<svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M12 21V12m0 0c-2-4-6-5-9-4 3-1 7 0 9 4zm0 0c2-4 6-5 9-4-3-1-7 0-9 4z" />
+							<path stroke-linecap="round" stroke-linejoin="round" d="M12 12V8m-2 1c0-2 1-4 2-5 1 1 2 3 2 5" />
+						</svg>
+					</div>
+					<h3 class="text-xl font-bold mb-3 text-warm-900">Grown the Right Way</h3>
+					<p class="text-warm-600">We work with the land, not against it — natural processes that build soil health and long-term performance.</p>
 				</div>
 
 				<!-- Local Delivery -->
-				<div class="feature-box">
-					<h3 class="text-xl font-bold mb-2 text-warm-900">Local Delivery</h3>
-					<p class="text-warm-600">We sell trailer loads and by supersacks throughout the Athens area. Volume pricing available for landscapers and contractors.</p>
-					<span class="text-sm text-primary-600 font-semibold mt-4 block">$40 base + $1.25 per mile after 20 miles</span>
+				<div class="feature-box py-8 px-6 rounded-xl text-center">
+					<div class="text-primary-500 mb-5">
+						<!-- Truck icon -->
+						<svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+						</svg>
+					</div>
+					<h3 class="text-xl font-bold mb-3 text-warm-900">Local Delivery</h3>
+					<p class="text-warm-600">Trailer loads and supersacks throughout the Athens area. Volume pricing for landscapers and contractors.</p>
+					<span class="text-sm text-primary-600 font-semibold mt-3 block">$40 base + $1.25/mile after 20 mi</span>
 				</div>
-			</div>
 
-			<!-- Family-Owned - Full width -->
-			<div class="feature-box text-center max-w-2xl mx-auto">
-				<h3 class="text-xl font-bold mb-2 text-warm-900">Family-Owned from Day One</h3>
-				<p class="text-warm-600">Built on faith-driven stewardship and a commitment to doing honest work well. Proudly serving the Athens community as a Southland Organics company.</p>
+				<!-- Family-Owned -->
+				<div class="feature-box py-8 px-6 rounded-xl text-center">
+					<div class="text-primary-500 mb-5">
+						<!-- Farmhouse icon -->
+						<svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+						</svg>
+					</div>
+					<h3 class="text-xl font-bold mb-3 text-warm-900">Family Farm, Faith-Driven Work</h3>
+					<p class="text-warm-600">Built on stewardship and honest work. Serving the Athens community as a Southland Organics company.</p>
+				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- Featured Products - Showcase top sellers -->
-	<section class="section bg-warm-50">
+	<!-- Featured Products -->
+	<section class="section bg-white">
 		<div class="container-custom">
-			<!-- Section header with category emphasis -->
+			<!-- Section header -->
 			<div class="text-center mb-12">
 				<h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-4">
 					Premium Landscape Supply
 				</h2>
 				<p class="text-lg text-warm-600 max-w-2xl mx-auto">
-					Bulk delivery of organic compost, premium mulch, and quality soil—everything you need for thriving landscapes.
+					Compost, mulch, and soil — made on our farm, delivered to your project.
 				</p>
 			</div>
 
-			<!-- Product showcase grid with REAL data -->
+			<!-- Product showcase grid -->
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
 				{humusCompost && (
 					<ProductCard product={humusCompost} variant="featured" />
@@ -168,109 +185,118 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 				<p class="mt-4 text-sm text-warm-600">
 					<a href="/resources/contractor-program" class="font-semibold text-primary-600 hover:text-primary-700">
 						Contractor pricing available
-					</a> • Volume discounts • Account terms
+					</a> — volume discounts and account terms
 				</p>
 			</div>
 		</div>
 	</section>
 
 	<!-- Land Management Services -->
-	<section class="section bg-gradient-to-br from-primary-500 to-primary-600 text-white">
+	<section class="section bg-gradient-to-br from-primary-500 to-primary-600 text-white mt-4 md:mt-6">
 		<div class="container-custom">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 				<!-- Content column -->
 				<div>
-					<div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-						<span class="text-sm font-semibold">New Service Offering</span>
-					</div>
-
 					<h2 class="text-3xl md:text-5xl font-display font-bold mb-6 leading-tight">
 						Eden Grazing Services
 					</h2>
 
 					<p class="text-xl mb-6 text-primary-50 leading-relaxed">
-						Sustainable land management through rotational grazing—lowering maintenance costs while restoring soil health and biodiversity.
+						Goats doing what goats do. They eat the stuff you don't want, save you money, and leave the land better than they found it.
 					</p>
 
 					<p class="text-lg mb-6 font-semibold">
-						30–50% cost savings compared to traditional mowing
+						30-50% cost savings vs. traditional mowing
 					</p>
 
-					<p class="text-lg mb-3 text-primary-100">Ideal for:</p>
-					<div class="flex flex-wrap gap-3 mb-6">
-						<span class="bg-white/20 px-4 py-2 rounded-full">Retention ponds</span>
-						<span class="bg-white/20 px-4 py-2 rounded-full">Solar farms</span>
-						<span class="bg-white/20 px-4 py-2 rounded-full">HOAs & large properties</span>
+					<div class="flex flex-wrap gap-3 mb-8">
+						<span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">Retention ponds</span>
+						<span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">Solar farms</span>
+						<span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">HOAs & large properties</span>
 					</div>
 
-					<p class="text-lg text-primary-100">
-						Zero chemicals • Natural fertilization • Fully eco-friendly
-					</p>
+					<a href="/land-management" class="inline-block bg-accent-600 hover:bg-accent-700 text-white text-lg px-8 py-4 rounded-lg font-semibold transition-colors shadow-lg">
+						Talk About Grazing Your Land
+					</a>
 				</div>
 
 				<!-- Image column -->
-				<div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
+				<div class="rounded-2xl overflow-hidden shadow-xl hidden lg:block">
 					<CloudinaryImage
 						publicId="Animals/IMG_2679_z9f17v"
-						alt="Grazing animals at Soul Miner's Eden"
+						alt="Goats grazing at Soul Miner's Eden"
 						width={800}
 						height={600}
 						crop="fill"
 						gravity="auto"
-						class="w-full h-80 object-cover rounded-xl"
+						loading="lazy"
+						class="w-full h-full min-h-[400px] object-cover"
+					/>
+				</div>
+				<!-- Mobile image — below content -->
+				<div class="rounded-xl overflow-hidden shadow-lg lg:hidden">
+					<CloudinaryImage
+						publicId="Animals/IMG_2679_z9f17v"
+						alt="Goats grazing at Soul Miner's Eden"
+						width={600}
+						height={400}
+						crop="fill"
+						gravity="auto"
+						loading="lazy"
+						class="w-full h-64 object-cover"
 					/>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- Material Calculator - INTEGRATED for conversion -->
-	<section class="section bg-white">
+	<!-- Material Calculator -->
+	<section class="section bg-warm-50">
 		<div class="container-custom">
 			<MaterialCalculator />
 		</div>
 	</section>
 
 	<!-- Trust & Social Proof -->
-	<section class="section bg-primary-50">
-		<div class="container-custom">
+	<section class="bg-white border-t border-secondary-200">
+		<div class="container-custom py-12 md:py-16">
 			<div class="max-w-5xl mx-auto">
 				<!-- Stats -->
-				<div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+				<div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
 					<div class="text-center">
-						<div class="text-4xl font-bold text-primary-600 mb-2">500+</div>
-						<div class="text-sm text-warm-600">Cubic Yards Monthly</div>
+						<div class="text-4xl font-bold text-primary-500 mb-1">500+</div>
+						<div class="text-sm text-warm-600 font-medium">Cubic Yards Monthly</div>
 					</div>
 					<div class="text-center">
-						<div class="text-4xl font-bold text-primary-600 mb-2">65</div>
-						<div class="text-sm text-warm-600">Acre Working Farm</div>
+						<div class="text-4xl font-bold text-primary-500 mb-1">65</div>
+						<div class="text-sm text-warm-600 font-medium">Acre Working Farm</div>
 					</div>
 					<div class="text-center">
-						<div class="text-4xl font-bold text-primary-600 mb-2">100%</div>
-						<div class="text-sm text-warm-600">Organic</div>
+						<div class="text-4xl font-bold text-primary-500 mb-1">100%</div>
+						<div class="text-sm text-warm-600 font-medium">Regenerative</div>
 					</div>
 					<div class="text-center">
-						<div class="text-4xl font-bold text-primary-600 mb-2">24hr</div>
-						<div class="text-sm text-warm-600">Delivery Turnaround</div>
+						<div class="text-4xl font-bold text-primary-500 mb-1">24hr</div>
+						<div class="text-sm text-warm-600 font-medium">Delivery Turnaround</div>
 					</div>
 				</div>
 
 				<!-- Trust badges -->
 				<div class="flex flex-wrap justify-center gap-4">
-					<span class="trust-badge">Organic</span>
+					<span class="trust-badge">Regenerative</span>
 					<span class="trust-badge">Naturally Grown</span>
 					<span class="trust-badge">Family-Owned</span>
-					<span class="trust-badge">Athens Local</span>
-					<span class="trust-badge">Southland Organics Company</span>
+					<span class="trust-badge">Bogart, Georgia</span>
+					<span class="trust-badge">A Southland Organics Company</span>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- Experience the Farm Life - Before Footer -->
+	<!-- Experience the Farm Life -->
 	<ExperienceFarm />
 
-	<!-- Instagram Feed - Living window into the farm -->
+	<!-- Instagram Feed — Living window into the farm -->
 	<InstagramFeed />
 </MainLayout>
 
@@ -278,7 +304,7 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 	/* Hero section video background styles */
 	.hero-section {
 		position: relative;
-		isolation: isolate; /* Creates a new stacking context */
+		isolation: isolate;
 	}
 
 	.hero-video-wrapper {
@@ -330,4 +356,3 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 		}
 	});
 </script>
-

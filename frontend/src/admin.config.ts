@@ -74,11 +74,11 @@ export const adminConfig: AdminConfig = {
     socialGuide: true,    // Social best practices for Ayn Parker
   },
   colors: {
-    primary: '#b59289',     // SME terracotta
-    primaryHover: '#a17e75', // Darker terracotta
-    accent: '#22c55e',      // Green CTA
-    dark: '#43352d',        // Dark earth
-    light: '#f9f5f4',       // Light terracotta tint
+    primary: '#A8643F',     // Eden clay
+    primaryHover: '#8B5233', // Darker clay
+    accent: '#4D6B42',      // Eden sage
+    dark: '#2D2926',        // Eden charcoal
+    light: '#FAF8F5',       // Eden cream
     primaryText: '#ffffff',
   },
   typography: {

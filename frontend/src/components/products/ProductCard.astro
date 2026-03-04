@@ -28,7 +28,7 @@ const isCompact = variant === 'compact';
 
 <a
   href={`/products/${product.slug}`}
-  class={`product-card group block ${className}`}
+  class={`product-card group block bg-warm-50 rounded-xl p-4 ${className}`}
   data-product-slug={product.slug}
 >
   <!-- Image Container -->
@@ -68,6 +68,11 @@ const isCompact = variant === 'compact';
       <p class="text-sm text-warm-700 line-clamp-2">
         {product.description}
       </p>
+    )}
+
+    <!-- Brand line -->
+    {!isCompact && (
+      <p class="text-xs text-primary-500 font-medium italic">Made on our Bogart farm with Southland biology</p>
     )}
 
     <!-- Key Benefits (Featured only) -->

@@ -9,7 +9,7 @@ import CartIcon from './cart/CartIcon.astro';
 
 const navItems = [
   {
-    label: "Landscape Supply",
+    label: "Compost & Mulch",
     href: "/products",
     dropdown: [
       { label: "All Products", href: "/products" },
@@ -23,7 +23,6 @@ const navItems = [
       { label: "Wood Chips", href: "/products/wood-chips" },
       { label: "Sod Soil", href: "/products/sod-soil" },
       { label: "Bioretention Soil", href: "/products/bioretention-soil" },
-      { label: "Used Artificial Turf", href: "/products/used-artificial-turf" },
     ]
   },
   {
@@ -37,7 +36,7 @@ const navItems = [
     ]
   },
   {
-    label: "Our Story",
+    label: "Our Farm",
     href: "/about",
     dropdown: [
       { label: "About Us", href: "/about" },
@@ -62,12 +61,13 @@ const businessInfo = {
   <nav class="container-custom">
     <div class="flex items-center justify-between py-4">
       <!-- Logo -->
-      <a href="/" class="flex items-center">
+      <a href="/" class="flex items-center gap-3">
         <img
-          src="https://cdn.prod.website-files.com/5f402c152dc0917b4df7ee70/677ffdc1b10cad976577364a_Soul%20Miner_s%20Eden%20Primary%20Logo%20Vector%20CMYK.svg"
+          src="/brand/logo-primary.svg"
           alt="Soul Miner's Eden"
           class="h-14 w-auto"
         />
+        <span class="hidden xl:block text-xs text-secondary-500 leading-tight max-w-[120px]">A regenerative farm in Bogart, Georgia</span>
       </a>
 
       <!-- Desktop Navigation -->

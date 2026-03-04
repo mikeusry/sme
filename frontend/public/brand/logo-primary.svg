@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Soul Miner's Eden — Primary Logo (Color)
+  Font: EB Garamond (Regular, 400)
+  Structure: eden-sage #4D6B42 (pasture green)
+  Detail paths: transparent (knockout to background)
+  Text: eden-clay #A8643F (Georgia red clay)
+
+  Variants:
+    logo-primary.svg      — sage structure + clay text on transparent
+    logo-reversed.svg     — white on transparent (for dark backgrounds)
+
+  Usage: gate sign, website header, packaging, print
+  Minimum size: 2 inches wide (use simplified mark below 2 inches)
+-->
+<svg id="Bin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1190.75 626.89">
+  <defs>
+    <style>
+      .logo-text-display {
+        font-size: 92px;
+        letter-spacing: .2em;
+        fill: #A8643F;
+      }
+
+      .logo-text-display, .logo-text-sub {
+        font-family: 'EB Garamond', Georgia, serif;
+        font-variation-settings: 'wght' 400;
+      }
+
+      .logo-text-sub {
+        font-size: 36px;
+        fill: #A8643F;
+      }
+
+      .logo-mark {
+        fill: #4D6B42;
+      }
+
+      .logo-detail {
+        fill: #FAF8F5;
+      }
+
+      .ls-normal {
+        letter-spacing: .19em;
+      }
+
+      .ls-wide {
+        letter-spacing: .2em;
+      }
+    </style>
+  </defs>
+  <path id="Black" class="logo-mark" d="M181.06,395.99c212.89-37.53,454.65,41.06,594.04,59.71,3.02.35,3.87-.2,2.56-1.65-87-23.88-175.18-42.8-264.66-57.73-1.14-1.81.57-3.37,2.37-3.6,17.72-2.25,86.5,5.49,120.17,3.73l99.86-5.22c9.9-.52,18.95-1.19,28.08-1.16,5.25-1.08,9.98-1.06,14.19.06-2.32,2.5-6.28,2.15-10.14,2.82l-120.46,21.18c-2.48.24,177.33-18.48,179.44-17.94,143.95-21.48,184.17,1.49,182.02-.19-14.25-12.62-38.06-17.55-38.06-17.55l-.54-126.97c5.38-1.11,10-1.67,13.77-4.86,2.65-4.24,1.51-9.68,2.05-14.82,5.84-.85,11.17,2.35,17.16-.05,6.14-2.46,9.88-16,3.42-19.92-8.76-5.32-18.58-7.02-27.96-11.1l-107.82-46.88-104.45-49.17c-36.19-17.04-70.8-34.83-105.26-55.01l-.08-33.42c0-4.26-2.92-6.96-6.81-8.26-32.83-11.01-85.14-9.81-118.75-1.39-4.45,1.12-10.09,3.6-10.57,8.42-1.15,11.69.04,22.49-.49,34.61l-32.98,18.21-219.99,103.62-86.2,36.88c-4.55,1.95-4.26,9.13-3.4,12.6,1.02,4.14,3.37,9.02,8.54,10.22,4.24.99,8.36-.98,12.53-.99,1.6,4.48-.61,9.64,1.51,13.86,2.99,5.96,10.02,6.65,16.88,7.02l.16,126.96"/>
+  <g id="White">
+    <path class="logo-detail" d="M690.45,209.5l-183.76-.4c-56.27-.12-228.4,6.94-280.38,14.53-2.37.35-4.89-1.65-5.08-3.24-.26-2.24,1.37-3.8,4.23-4.06,65.89-5.98,131.5-11.18,198.16-13.31,172.62-5.54,372.43-3.99,543.36,14.44,2.66.29,4.07,2.64,4.23,4.17.18,1.67-2.44,4.69-5.19,4.33-39.19-5.2-77.51-8.72-117.4-10.28l-158.16-6.19Z"/>
+    <path class="logo-detail" d="M497.76,389.38c-7.79-.23-14.69-1.39-22.2-3.21l-.09-142.81c7.31-2.14,14.92-1.6,22.27.68l.02,145.34Z"/>
+    <path class="logo-detail" d="M833.82,379.11c-7.48,1.63-14.49,2.31-21.97,2.94l-.02-137.69c7.39-2.35,14.77-2.12,21.82.51l.17,134.23Z"/>
+    <path class="logo-detail" d="M647.58,13.52c-.84,1.84-3.43,2.71-7.79,2.61-13.73,1.22-27.63,3.69-42.16,2.92-20.39-1.08-39.75-2.22-60.59-4.54,36.35-7.74,74.68-9.17,110.53-1Z"/>
+  </g>
+  <text class="logo-text-sub" transform="translate(436.78 615.23)"><tspan class="ls-wide" x="0" y="0">Bogart, G</tspan><tspan class="ls-normal" x="198.83" y="0">e</tspan><tspan class="ls-wide" x="219.71" y="0">orgia</tspan></text>
+  <text class="logo-text-display" transform="translate(0 543.29)"><tspan x="0" y="0">SOUL MINER&#x2019;S EDEN</tspan></text>
+  <g id="Ribs">
+    <polyline class="logo-detail" points="633.86 54.92 825.7 199.51 802.52 199.51 625.83 55.3"/>
+    <polyline class="logo-detail" points="604.59 57.3 595.43 57.3 688.54 191.61 706.96 192.56"/>
+    <polyline class="logo-detail" points="579.55 57.3 573.19 57.3 538.49 191.61 551.78 190.38"/>
+    <polygon class="logo-detail" points="563.08 57.3 557.35 54.97 418.61 192.54 433.65 192.54 563.08 57.3"/>
+    <polyline class="logo-detail" points="543.11 54.92 536.44 53.48 274.07 200.15 293.27 200.15"/>
+    <polyline class="logo-detail" points="954.98 205.36 718.54 93.87 932.31 205.36"/>
+  </g>
+</svg>

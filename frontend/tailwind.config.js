@@ -4,59 +4,71 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Soul Miner's Eden Brand Colors
+        // Soul Miner's Eden — Estate Palette (locked 2026-02-22)
+        // Every color points at something real on the 65 acres.
+        // See frontend/src/brand/DESIGN_LOG.md for rationale.
+
+        // Primary = Eden Clay (#A8643F) — Georgia red clay, exposed earth
+        // Role: warm accent, links, highlights
         primary: {
-          50: '#f9f5f4',   // Lightest terracotta tint
-          100: '#f3ebe9',  // Very light terracotta
-          200: '#e4d5d3',  // Pantone 7604 C - Light blush
-          300: '#d4b5af',  // Medium light terracotta
-          400: '#c5a49c',  // Medium terracotta
-          500: '#b59289',  // Pantone 2440 C - Main brand terracotta
-          600: '#a17e75',  // Deeper terracotta
-          700: '#826658',  // Dark terracotta
-          800: '#624d42',  // Darker earth
-          900: '#43352d',  // Darkest earth
-          950: '#2a211b',  // Almost black earth
+          50: '#FBF6F2',
+          100: '#F5EBE2',
+          200: '#DBBFA8',   // eden-clay-light
+          300: '#C9A07A',
+          400: '#B8825C',
+          500: '#A8643F',   // eden-clay (anchor)
+          600: '#8B5233',
+          700: '#6E4028',
+          800: '#52301E',
+          900: '#362014',
+          950: '#1B100A',
         },
-        secondary: {
-          50: '#fafaf9',   // Almost white
-          100: '#f5f5f4',  // Very light warm gray
-          200: '#e9e9e7',  // Light warm gray
-          300: '#d9d9d6',  // Pantone Cool Gray 1C
-          400: '#c7c8c3',  // Medium light gray
-          500: '#babbb1',  // Pantone 413 C - Medium gray
-          600: '#9fa097',  // Medium gray
-          700: '#7e7f74',  // Pantone 416 C - Sage gray
-          800: '#5f5f56',  // Dark sage
-          900: '#42423a',  // Darker gray
-          950: '#2a2a25',  // Almost black gray
-        },
-        // Accent color for CTAs and highlights
+
+        // Accent = Eden Sage (#4D6B42) — pasture grass, woodland understory
+        // Role: primary CTA buttons
         accent: {
-          50: '#f0fdf4',   // Very light green
-          100: '#dcfce7',  // Light green
-          200: '#bbf7d0',  // Soft green
-          300: '#86efac',  // Medium green
-          400: '#4ade80',  // Bright green
-          500: '#22c55e',  // Strong green (main CTA color)
-          600: '#16a34a',  // Deep green
-          700: '#15803d',  // Darker green
-          800: '#166534',  // Forest green
-          900: '#14532d',  // Very dark green
-          950: '#052e16',  // Almost black green
+          50: '#F4F7F2',
+          100: '#E8EDDE',   // eden-sage-light
+          200: '#C8D5B8',
+          300: '#A3BA8E',
+          400: '#789E65',
+          500: '#5A7E4C',
+          600: '#4D6B42',   // eden-sage (anchor)
+          700: '#3D5535',
+          800: '#2E4028',
+          900: '#1F2B1B',
+          950: '#10160E',
         },
-        // Warm neutrals for backgrounds
+
+        // Secondary = Eden Steel (#6E6E68) — pavilion galvanized metal
+        // Role: secondary text, borders, nav
+        secondary: {
+          50: '#F7F7F6',
+          100: '#EFEEEE',
+          200: '#DEDDDB',
+          300: '#C4C3C0',
+          400: '#B0B0AA',   // eden-steel-light
+          500: '#8E8E87',
+          600: '#6E6E68',   // eden-steel (anchor)
+          700: '#585853',
+          800: '#42423E',
+          900: '#2D2D2A',
+          950: '#171715',
+        },
+
+        // Warm = Eden Cream → Charcoal scale
+        // Role: backgrounds (50) through text (900)
         warm: {
-          50: '#fafaf9',
-          100: '#f5f5f4',
-          200: '#e7e5e4',
-          300: '#d6d3d1',
-          400: '#a8a29e',
-          500: '#78716c',
-          600: '#57534e',
-          700: '#44403c',
-          800: '#292524',
-          900: '#1c1917',
+          50: '#FAF8F5',    // eden-cream
+          100: '#F0EDE8',   // eden-cream-dark
+          200: '#E2DED8',
+          300: '#C8C3BB',
+          400: '#9E9890',
+          500: '#787068',
+          600: '#5C554E',
+          700: '#454039',
+          800: '#383330',
+          900: '#2D2926',   // eden-charcoal
         },
       },
       fontFamily: {

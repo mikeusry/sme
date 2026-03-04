@@ -24,54 +24,58 @@ const businessInfo = {
 };
 
 const footerLinks = {
-  landscapeSupplies: [
+  compostAndMulch: [
+    { label: "All Products", href: "/products" },
     { label: "Compost", href: "/products/compost" },
     { label: "Topsoil", href: "/products/topsoil" },
     { label: "Natural Mulch", href: "/products/double-ground-hardwood-mulch" },
-    { label: "Pine Bark Mulch", href: "/products/pine-bark-mulch" },
     { label: "Brown Mulch", href: "/products/brown-mulch" },
     { label: "Black Mulch", href: "/products/black-mulch" },
-    { label: "Red Mulch", href: "/products/red-mulch" },
     { label: "Wood Chips", href: "/products/wood-chips" },
     { label: "Sod Soil", href: "/products/sod-soil" },
-    { label: "Bioretention Soil", href: "/products/bioretention-soil" },
-    { label: "Used Artificial Turf", href: "/products/used-artificial-turf" },
   ],
   landManagement: [
     { label: "Grazing Services", href: "/land-management" },
     { label: "Solar Grazing", href: "/land-management/solar-grazing" },
+    { label: "How It Works", href: "/land-management/how-it-works" },
     { label: "Services & Pricing", href: "/land-management/services" },
     { label: "Request Assessment", href: "/land-management/request" },
   ],
-  resources: [
+  aboutTheFarm: [
+    { label: "Our Story", href: "/about" },
+    { label: "Blog", href: "/blog" },
+    { label: "Recipes", href: "/recipes" },
+    { label: "Sustainable Farming", href: "/sustainable-agriculture-farming-practices" },
     { label: "FAQs", href: "/resources/faq" },
-    { label: "Plant Care Guides", href: "/blog" },
-    { label: "Sustainability", href: "/about" },
   ],
   support: [
     { label: "Contact Us", href: "/contact" },
     { label: "Delivery Info", href: "/resources/delivery" },
+    { label: "Visit the Farm", href: "/contact" },
   ],
-  company: [
-    { label: "Our Story", href: "/about" },
-    { label: "Sustainable Farming", href: "/about" },
-    { label: "Visit Us", href: "/contact" },
-  ]
 };
 ---
 
 <footer class="bg-warm-900 text-warm-300">
   <div class="container-custom py-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
-      <!-- Logo & Contact Info -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
+      <!-- Logo, Wheelbarrow Mark & Contact Info -->
       <div class="lg:col-span-1">
-        <a href="/" class="inline-block mb-6">
+        <a href="/" class="inline-block mb-4">
           <img
-            src="https://cdn.prod.website-files.com/5f402c152dc0917b4df7ee70/677ffdc1b10cad976577364a_Soul%20Miner_s%20Eden%20Primary%20Logo%20Vector%20CMYK.svg"
+            src="/brand/logo-reversed.svg"
             alt="Soul Miner's Eden"
-            class="h-12 w-auto brightness-0 invert"
+            class="h-12 w-auto"
           />
         </a>
+
+        <!-- Wheelbarrow mark -->
+        <img
+          src="/brand/mark-wheelbarrow-reversed.svg"
+          alt=""
+          class="h-8 w-auto mb-5 opacity-40"
+          aria-hidden="true"
+        />
 
         <div class="space-y-3 text-sm">
           <p class="flex items-start gap-2">
@@ -120,11 +124,11 @@ const footerLinks = {
         </div>
       </div>
 
-      <!-- Landscape Supplies -->
+      <!-- Compost & Mulch -->
       <div>
-        <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Landscape Supplies</h4>
+        <h4 class="text-secondary-400 font-semibold mb-4 text-xs uppercase tracking-widest">Compost & Mulch</h4>
         <ul class="space-y-2 text-sm">
-          {footerLinks.landscapeSupplies.map(link => (
+          {footerLinks.compostAndMulch.map(link => (
             <li>
               <a href={link.href} class="hover:text-primary-400 transition-colors">{link.label}</a>
             </li>
@@ -134,7 +138,7 @@ const footerLinks = {
 
       <!-- Land Management -->
       <div>
-        <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Land Management</h4>
+        <h4 class="text-secondary-400 font-semibold mb-4 text-xs uppercase tracking-widest">Land Management</h4>
         <ul class="space-y-2 text-sm">
           {footerLinks.landManagement.map(link => (
             <li>
@@ -144,11 +148,11 @@ const footerLinks = {
         </ul>
       </div>
 
-      <!-- Resources -->
+      <!-- About the Farm -->
       <div>
-        <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Resources</h4>
+        <h4 class="text-secondary-400 font-semibold mb-4 text-xs uppercase tracking-widest">About the Farm</h4>
         <ul class="space-y-2 text-sm">
-          {footerLinks.resources.map(link => (
+          {footerLinks.aboutTheFarm.map(link => (
             <li>
               <a href={link.href} class="hover:text-primary-400 transition-colors">{link.label}</a>
             </li>
@@ -158,21 +162,9 @@ const footerLinks = {
 
       <!-- Support -->
       <div>
-        <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Support</h4>
+        <h4 class="text-secondary-400 font-semibold mb-4 text-xs uppercase tracking-widest">Support</h4>
         <ul class="space-y-2 text-sm">
           {footerLinks.support.map(link => (
-            <li>
-              <a href={link.href} class="hover:text-primary-400 transition-colors">{link.label}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Company -->
-      <div>
-        <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Company</h4>
-        <ul class="space-y-2 text-sm">
-          {footerLinks.company.map(link => (
             <li>
               <a href={link.href} class="hover:text-primary-400 transition-colors">{link.label}</a>
             </li>
@@ -205,15 +197,15 @@ const footerLinks = {
 
   <!-- Bottom Bar -->
   <div class="border-t border-warm-800">
-    <div class="container-custom py-6">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-        <p class="text-warm-500">
+    <div class="container-custom py-8">
+      <div class="flex flex-col items-center gap-3 text-sm text-warm-500">
+        <p class="text-warm-400 text-xs tracking-wide">A Southland Organics Company</p>
+        <p>
           &copy; {currentYear} Soul Miner's Eden. All rights reserved.
         </p>
-        <div class="flex flex-wrap justify-center gap-6 text-warm-500">
+        <div class="flex flex-wrap justify-center gap-6">
           <a href="/privacy" class="hover:text-primary-400 transition-colors">Privacy Policy</a>
           <a href="/terms" class="hover:text-primary-400 transition-colors">Terms of Service</a>
-          <a href="/cookies" class="hover:text-primary-400 transition-colors">Cookies Settings</a>
         </div>
       </div>
     </div>
