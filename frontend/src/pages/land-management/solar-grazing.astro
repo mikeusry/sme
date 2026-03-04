@@ -1,0 +1,493 @@
+---
+/**
+ * Solar Grazing Service Page
+ *
+ * Dedicated page for solar farm vegetation management via targeted grazing.
+ * SME is a member of the American Solar Grazing Association (ASGA).
+ * SEO targets: "solar grazing Georgia", "solar farm vegetation management",
+ *              "solar grazing services", "agrivoltaics grazing"
+ * Route: /land-management/solar-grazing
+ */
+
+import MainLayout from '../../layouts/MainLayout.astro';
+import CloudinaryImage from '../../components/CloudinaryImage.astro';
+import { buildCloudinaryUrl } from '../../lib/cloudinary';
+
+// Grazing service images from Cloudinary (tagged: grazing_services)
+const grazingImages = {
+  hero: 'Animals/IMG_2679_z9f17v',          // landscape (1179x880)
+  section: 'Animals/IMG_2672_yd4bjz',        // landscape (1179x849)
+  sidebar: 'Animals/IMG_5882_btfte7',        // portrait, high-res (3024x4032)
+  detail: 'Animals/IMG_2674_2_wssltq',       // landscape (1179x853)
+  portrait1: 'Animals/IMG_2675_2_wqlqrj',    // portrait (1179x1528)
+  portrait2: 'Animals/IMG_2681_2_dfflwx',    // portrait (1179x1554)
+  closeup: 'Animals/79331493737__CC445A2E-EE0C-40DE-88D8-C34D8D36AFD6_tzuqv3', // portrait (600x800)
+};
+
+// OG image for social sharing
+const ogImage = buildCloudinaryUrl(grazingImages.hero, {
+  width: 1200,
+  height: 630,
+  crop: 'fill',
+  gravity: 'auto',
+  quality: 'auto',
+  format: 'jpg',
+});
+
+const businessInfo = {
+  name: "Soul Miner's Eden",
+  phone: "+1-706-613-4415",
+  email: "info@soulminerseden.com",
+};
+
+const benefits = [
+  {
+    title: "No Panel Damage",
+    description: "Heavy mowing equipment cracks panels and tears up wiring. Sheep walk right under them. Zero equipment risk.",
+    icon: "shield"
+  },
+  {
+    title: "Cost Savings Up to 75%",
+    description: "Industry data shows solar grazing can cut vegetation management costs dramatically compared to mechanical mowing.",
+    icon: "dollar"
+  },
+  {
+    title: "Better Soil, Better Site",
+    description: "Natural fertilization and rotational grazing improve soil health over time. Your site gets better, not worse.",
+    icon: "leaf"
+  },
+  {
+    title: "Fire Risk Reduction",
+    description: "Consistent grazing keeps vegetation height controlled year-round. Less dry fuel load means lower fire risk for your panels.",
+    icon: "fire"
+  },
+  {
+    title: "Zero Emissions",
+    description: "No diesel mowers, no herbicide applications, no chemical runoff. Clean energy deserves clean land management.",
+    icon: "wind"
+  },
+  {
+    title: "Community Goodwill",
+    description: "Neighbors see sheep, not industrial equipment. Keeps farmland in production. Supports the local agricultural economy.",
+    icon: "heart"
+  }
+];
+
+const process = [
+  {
+    step: 1,
+    title: "Site Assessment",
+    description: "We walk your solar installation, evaluate vegetation types, fencing needs, and panel layout. No cost for this visit."
+  },
+  {
+    step: 2,
+    title: "Custom Grazing Plan",
+    description: "We design a rotational grazing schedule specific to your site. Accounts for panel spacing, seasonal growth, and any problem species like kudzu or johnsongrass."
+  },
+  {
+    step: 3,
+    title: "Flock Deployment",
+    description: "Sheep arrive with portable fencing and water systems. Bo manages the animals daily — you don't have to think about it."
+  },
+  {
+    step: 4,
+    title: "Ongoing Management",
+    description: "Regular rotations, daily animal checks, and progress updates. We adjust the plan as the land responds and improves."
+  }
+];
+
+const faqs = [
+  {
+    question: "How much does solar grazing cost per acre?",
+    answer: "Industry contract rates typically range from $250 to $750 per acre per year, depending on site size and vegetation density. That's competitive with — or cheaper than — mechanical mowing, and the land actually improves instead of just getting cut."
+  },
+  {
+    question: "Won't sheep damage the solar panels?",
+    answer: "No. Sheep are low-profile animals — they walk under panels, not over them. Unlike mowing equipment, there's zero risk of thrown rocks, cracked glass, or severed wiring. That's one of the main reasons the industry uses sheep specifically."
+  },
+  {
+    question: "How many sheep per acre?",
+    answer: "A typical solar grazing operation runs about 5 to 8 sheep per acre in rotation. We adjust based on vegetation density and seasonal growth rates. The animals rotate through sections so the land has time to recover."
+  },
+  {
+    question: "What about winter?",
+    answer: "Georgia's growing season is one of the longest in the country. We can graze nearly year-round here, which is a real advantage over operations up north. During slower growth periods, we adjust rotation schedules accordingly."
+  },
+  {
+    question: "Is solar grazing better than mowing?",
+    answer: "For most sites, yes. No equipment damage risk, no fuel costs, no emissions, natural fertilization, and the soil health actually improves over time. The economics work too — industry studies show savings up to 75% compared to traditional mowing."
+  },
+  {
+    question: "What makes your approach different?",
+    answer: "We're a regenerative farm first. We understand soil biology, compost science, and rotational grazing at a level most vegetation management companies don't. We're not just cutting grass — we're improving your land. And we're ASGA members, so we follow industry best practices."
+  },
+  {
+    question: "What about invasive species?",
+    answer: "Sheep are excellent at managing common Southeast invasives like kudzu, johnsongrass, and pigweed. Targeted grazing can reduce invasive species pressure while encouraging native ground cover to establish."
+  }
+];
+---
+
+<MainLayout
+  title="Solar Grazing Services | Vegetation Management for Solar Farms | Soul Miner's Eden"
+  description="Regenerative solar grazing services in Georgia. Sheep-based vegetation management for solar farms — no equipment damage, lower costs, healthier soil. ASGA member."
+  ogImage={ogImage}
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-accent-600 to-accent-700 text-white py-16 md:py-24">
+    <div class="container-custom">
+      <div class="max-w-3xl">
+        <nav class="text-accent-200 text-sm mb-4">
+          <a href="/land-management" class="hover:text-white">Land Management</a>
+          <span class="mx-2">/</span>
+          <span>Solar Grazing</span>
+        </nav>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
+          Solar Grazing
+        </h1>
+        <p class="text-xl md:text-2xl text-accent-100 mb-4">
+          Regenerative vegetation management for solar farms. Sheep do the work. The land gets better. Your panels stay safe.
+        </p>
+        <div class="flex items-center gap-3 text-accent-200 text-sm mb-8">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span>Member, <a href="https://solargrazing.org" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">American Solar Grazing Association</a></span>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/land-management/request" class="btn bg-white text-accent-700 hover:bg-accent-50 text-lg px-8 py-4">
+            Request Site Assessment
+          </a>
+          <a href="/land-management/services" class="btn border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4">
+            View Pricing
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container-custom py-16">
+    <!-- What Is Solar Grazing -->
+    <section class="max-w-4xl mx-auto mb-20">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-8">
+        What Is Solar Grazing?
+      </h2>
+
+      <div class="prose prose-lg max-w-none text-warm-700 space-y-6">
+        <p class="text-xl leading-relaxed">
+          Solar grazing is simple. You've got a solar farm with vegetation growing underneath and between the panels. Instead of sending mowers and herbicide crews out there — risking panel damage every single time — you send sheep.
+        </p>
+
+        <p>
+          The sheep eat the vegetation, fertilize the soil as they go, and move on to the next section. Rotational grazing, same way grasslands have worked for thousands of years. The panels keep producing. The land gets healthier. Everybody wins.
+        </p>
+
+        <div class="bg-accent-50 border-l-4 border-accent-500 p-6 rounded-r-lg my-8">
+          <p class="text-warm-800 font-medium">
+            Nationally, over <strong>113,000 sheep</strong> graze <strong>129,000 acres</strong> across <strong>500+ solar sites</strong>. Georgia is one of the fastest-growing solar states in the Southeast, and the demand for professional grazing services is growing right alongside it.
+          </p>
+        </div>
+
+        <p>
+          We're members of the <a href="https://solargrazing.org" target="_blank" rel="noopener noreferrer" class="text-accent-600 hover:text-accent-700 underline">American Solar Grazing Association</a> — the leading industry organization with over 1,100 members across 45 states. We follow their best practices and stay current with the latest research in agrivoltaics.
+        </p>
+      </div>
+
+      <!-- Image strip -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12">
+        <CloudinaryImage
+          publicId={grazingImages.hero}
+          alt="Livestock grazing at Soul Miner's Eden"
+          width={600}
+          height={400}
+          crop="fill"
+          gravity="auto"
+          class="rounded-xl w-full h-48 object-cover"
+        />
+        <CloudinaryImage
+          publicId={grazingImages.detail}
+          alt="Animals on pasture at the farm"
+          width={600}
+          height={400}
+          crop="fill"
+          gravity="auto"
+          class="rounded-xl w-full h-48 object-cover"
+        />
+        <CloudinaryImage
+          publicId={grazingImages.section}
+          alt="Grazing services in action"
+          width={600}
+          height={400}
+          crop="fill"
+          gravity="auto"
+          class="rounded-xl w-full h-48 object-cover"
+        />
+      </div>
+    </section>
+
+    <!-- Why Solar Grazing (Benefits) -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-4 text-center">
+        Why Solar Operators Choose Grazing
+      </h2>
+      <p class="text-xl text-warm-600 text-center mb-12 max-w-2xl mx-auto">
+        Clean energy deserves clean land management. Here's why grazing beats mowing.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit) => (
+          <div class="bg-white border border-secondary-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+            <div class="w-10 h-10 bg-accent-100 rounded-full flex items-center justify-center mb-4">
+              {benefit.icon === "shield" && (
+                <svg class="w-5 h-5 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              )}
+              {benefit.icon === "dollar" && (
+                <svg class="w-5 h-5 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              )}
+              {benefit.icon === "leaf" && (
+                <svg class="w-5 h-5 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M4.382 11.05A5.999 5.999 0 0110 6c2.21 0 4.152 1.197 5.19 2.978a.75.75 0 01-.168 1.022C13.51 11.18 11.83 12 10 12c-1.83 0-3.51-.82-5.022-2a.75.75 0 01-.168-1.022 5.977 5.977 0 01-.428.072z" clip-rule="evenodd" />
+                </svg>
+              )}
+              {benefit.icon === "fire" && (
+                <svg class="w-5 h-5 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" />
+                </svg>
+              )}
+              {benefit.icon === "wind" && (
+                <svg class="w-5 h-5 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                </svg>
+              )}
+              {benefit.icon === "heart" && (
+                <svg class="w-5 h-5 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                </svg>
+              )}
+            </div>
+            <h3 class="text-lg font-bold mb-2 text-warm-900">{benefit.title}</h3>
+            <p class="text-warm-600 text-sm">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Grazing vs Mowing Comparison -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-4 text-center">
+        Solar Grazing vs. Mechanical Mowing
+      </h2>
+      <p class="text-xl text-warm-600 text-center mb-12 max-w-2xl mx-auto">
+        The numbers speak for themselves.
+      </p>
+
+      <div class="max-w-3xl mx-auto overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b-2 border-secondary-200">
+              <th class="text-left py-4 px-4 font-bold text-warm-900"></th>
+              <th class="text-center py-4 px-4 font-bold text-warm-500">Mowing</th>
+              <th class="text-center py-4 px-4 font-bold text-accent-600">Solar Grazing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-secondary-100 bg-warm-50">
+              <td class="py-4 px-4 font-medium text-warm-900">Cost per acre/year</td>
+              <td class="py-4 px-4 text-center text-warm-600">$265+</td>
+              <td class="py-4 px-4 text-center text-accent-600 font-medium">$250 - $750</td>
+            </tr>
+            <tr class="border-b border-secondary-100">
+              <td class="py-4 px-4 font-medium text-warm-900">Panel damage risk</td>
+              <td class="py-4 px-4 text-center text-warm-600">High</td>
+              <td class="py-4 px-4 text-center text-accent-600 font-medium">None</td>
+            </tr>
+            <tr class="border-b border-secondary-100 bg-warm-50">
+              <td class="py-4 px-4 font-medium text-warm-900">Herbicides needed</td>
+              <td class="py-4 px-4 text-center text-warm-600">Yes</td>
+              <td class="py-4 px-4 text-center text-accent-600 font-medium">None</td>
+            </tr>
+            <tr class="border-b border-secondary-100">
+              <td class="py-4 px-4 font-medium text-warm-900">Carbon emissions</td>
+              <td class="py-4 px-4 text-center text-warm-600">Significant</td>
+              <td class="py-4 px-4 text-center text-accent-600 font-medium">None</td>
+            </tr>
+            <tr class="border-b border-secondary-100 bg-warm-50">
+              <td class="py-4 px-4 font-medium text-warm-900">Soil health over time</td>
+              <td class="py-4 px-4 text-center text-warm-600">Degrades</td>
+              <td class="py-4 px-4 text-center text-accent-600 font-medium">Improves</td>
+            </tr>
+            <tr class="border-b border-secondary-100">
+              <td class="py-4 px-4 font-medium text-warm-900">Fire risk reduction</td>
+              <td class="py-4 px-4 text-center text-warm-600">Temporary</td>
+              <td class="py-4 px-4 text-center text-accent-600 font-medium">Consistent</td>
+            </tr>
+            <tr class="border-b border-secondary-100 bg-warm-50">
+              <td class="py-4 px-4 font-medium text-warm-900">Invasive species control</td>
+              <td class="py-4 px-4 text-center text-warm-600">Poor</td>
+              <td class="py-4 px-4 text-center text-accent-600 font-medium">Excellent</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-4 font-medium text-warm-900">ESG / sustainability story</td>
+              <td class="py-4 px-4 text-center text-warm-600">None</td>
+              <td class="py-4 px-4 text-center text-accent-600 font-medium">Strong</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-4 text-center">
+        How It Works
+      </h2>
+      <p class="text-xl text-warm-600 text-center mb-12 max-w-2xl mx-auto">
+        Four steps. We handle all of them.
+      </p>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="space-y-8">
+          {process.map((item) => (
+            <div class="flex gap-6 items-start">
+              <div class="w-12 h-12 bg-accent-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold text-lg">
+                {item.step}
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-warm-900 mb-2">{item.title}</h3>
+                <p class="text-warm-600">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Regenerative Difference -->
+    <section class="mb-20">
+      <div class="bg-warm-100 rounded-2xl p-8 md:p-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl font-display font-bold text-warm-900 mb-6">
+              Why a Regenerative Farm?
+            </h2>
+            <div class="text-warm-700 space-y-4">
+              <p>
+                Most vegetation management companies just cut things down. We understand what's happening in the soil. That's the difference.
+              </p>
+              <p>
+                We run a 65-acre regenerative demonstration farm. We make compost. We manage silvopasture. We know soil biology the way most people know their commute. When our sheep graze your solar site, we're not just controlling vegetation — we're building soil health, establishing native ground cover, and managing invasive species like kudzu and johnsongrass.
+              </p>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-accent-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span><strong>Compost expertise</strong> — We understand soil biology and natural fertilization at a level most grazing services don't</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-accent-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span><strong>Silvopasture experience</strong> — Managed grazing in mixed environments is what we do every day</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-accent-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span><strong>ASGA member</strong> — Following industry best practices for professional solar grazing</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-accent-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span><strong>Southeast specialists</strong> — We know Georgia's growing season, invasive species, and warm-season forage</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="rounded-xl overflow-hidden h-64 lg:h-80">
+            <CloudinaryImage
+              publicId={grazingImages.sidebar}
+              alt="Grazing animals at Soul Miner's Eden"
+              width={800}
+              height={600}
+              crop="fill"
+              gravity="auto"
+              class="w-full h-full object-cover rounded-xl"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Georgia Context -->
+    <section class="mb-20 max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-8">
+        Solar Grazing in Georgia
+      </h2>
+
+      <div class="prose prose-lg max-w-none text-warm-700 space-y-6">
+        <p>
+          Georgia is one of the top solar-producing states in the country, and that capacity is growing fast. Every one of those installations needs vegetation management. Right now, most of them are paying for mowing crews and herbicide applications that damage soil and risk panel breakage.
+        </p>
+        <p>
+          The Southeast advantage for solar grazing is significant. Our growing season is nearly year-round, which means consistent grazing without the long winter breaks that operations up north deal with. Warm-season grasses thrive here. And we've got plenty of the problem species — kudzu, johnsongrass, pigweed — that sheep handle better than any mower.
+        </p>
+        <p>
+          Based in Bogart, Georgia, we serve solar installations across Northeast Georgia and the greater Athens area. For larger sites, we'll travel.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-8 text-center">
+        Frequently Asked Questions
+      </h2>
+
+      <div class="max-w-3xl mx-auto space-y-6">
+        {faqs.map((faq) => (
+          <details class="group bg-white border border-secondary-200 rounded-xl overflow-hidden">
+            <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-warm-50 transition-colors">
+              <h3 class="text-lg font-bold text-warm-900 pr-4">{faq.question}</h3>
+              <svg class="w-5 h-5 text-warm-400 flex-shrink-0 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-warm-600">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="text-center">
+      <div class="bg-gradient-to-br from-accent-600 to-accent-700 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">
+          Let's Talk About Your Solar Site
+        </h2>
+        <p class="text-xl text-accent-100 mb-8">
+          Free site assessment. Honest evaluation. If grazing makes sense for your installation, we'll show you the numbers. If it doesn't, we'll tell you that too.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/land-management/request" class="btn bg-white text-accent-700 hover:bg-accent-50 text-lg px-8 py-4">
+            Request Site Assessment
+          </a>
+          <a href="/land-management/services" class="btn border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4">
+            View All Services
+          </a>
+        </div>
+        <p class="mt-6 text-sm text-accent-200">
+          Or call us at <a href="tel:+1-706-613-4415" class="underline hover:text-white">(706) 613-4415</a>
+        </p>
+      </div>
+    </section>
+  </div>
+</MainLayout>

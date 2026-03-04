@@ -8,6 +8,7 @@
  */
 
 import MainLayout from '../../layouts/MainLayout.astro';
+import CloudinaryImage from '../../components/CloudinaryImage.astro';
 
 // Business info
 const businessInfo = {
@@ -225,14 +226,40 @@ const benefits = [
               </p>
             </div>
           </div>
-          <!-- Placeholder for partnership image -->
-          <div class="bg-fuchsia-100 border-4 border-fuchsia-500 rounded-xl h-64 lg:h-80 flex items-center justify-center">
-            <div class="text-center">
-              <p class="text-fuchsia-600 text-xs font-mono mb-2">PLACEHOLDER IMAGE</p>
-              <p class="text-fuchsia-700 font-medium">Grazing animals photo</p>
-              <p class="text-fuchsia-500 text-sm">(Add after pilot projects)</p>
-            </div>
+          <div class="rounded-xl overflow-hidden h-64 lg:h-80">
+            <CloudinaryImage
+              publicId="Animals/IMG_2674_2_wssltq"
+              alt="Grazing animals at Soul Miner's Eden"
+              width={800}
+              height={600}
+              crop="fill"
+              gravity="auto"
+              class="w-full h-full object-cover rounded-xl"
+            />
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solar Grazing Spotlight -->
+    <section class="mb-20">
+      <div class="bg-gradient-to-br from-warm-800 to-warm-900 text-white rounded-2xl p-8 md:p-12">
+        <div class="max-w-4xl mx-auto">
+          <div class="flex items-center gap-3 text-warm-400 text-sm mb-4">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>ASGA Member</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">
+            Solar Grazing Services
+          </h2>
+          <p class="text-xl text-warm-300 mb-6">
+            We're members of the American Solar Grazing Association. Sheep-based vegetation management for solar farms — no panel damage, lower costs, healthier soil. Georgia's growing season means we can graze nearly year-round.
+          </p>
+          <a href="/land-management/solar-grazing" class="btn bg-accent-500 text-white hover:bg-accent-600 text-lg px-8 py-4 inline-block">
+            Learn About Solar Grazing
+          </a>
         </div>
       </div>
     </section>

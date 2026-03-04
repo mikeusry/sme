@@ -3,6 +3,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 import ProductCard from '../components/products/ProductCard.astro';
 import MaterialCalculator from '../components/products/MaterialCalculator.astro';
 import ProductImage from '../components/ProductImage.astro';
+import CloudinaryImage from '../components/CloudinaryImage.astro';
 import ExperienceFarm from '../components/ExperienceFarm.astro';
 import InstagramFeed from '../components/InstagramFeed.astro';
 import { getFeaturedProducts, getProductBySlug } from '../lib/products';
@@ -208,10 +209,16 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 				</div>
 
 				<!-- Image column -->
-				<div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-					<div class="bg-primary-300 h-80 rounded-xl flex items-center justify-center">
-						<span class="text-primary-600 text-sm">Grazing Animals Image</span>
-					</div>
+				<div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
+					<CloudinaryImage
+						publicId="Animals/IMG_2679_z9f17v"
+						alt="Grazing animals at Soul Miner's Eden"
+						width={800}
+						height={600}
+						crop="fill"
+						gravity="auto"
+						class="w-full h-80 object-cover rounded-xl"
+					/>
 				</div>
 			</div>
 		</div>
