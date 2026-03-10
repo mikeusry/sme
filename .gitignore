@@ -53,3 +53,4 @@ Thumbs.db
 *.pid
 *.seed
 *.pid.lock
+frontend/src/brand/photos/
