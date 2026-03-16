@@ -8,35 +8,36 @@
  */
 
 import MainLayout from '../../layouts/MainLayout.astro';
+import CloudinaryImage from '../../components/CloudinaryImage.astro';
 
 // Process steps
 const steps = [
   {
     number: 1,
     title: "Site Assessment",
-    description: "We visit your property to evaluate the terrain, vegetation type, accessibility, and specific needs. This helps us create a customized plan that works for your situation.",
+    description: "We walk your property to evaluate terrain, vegetation, access, and specific needs. For solar sites, we review array layout, access roads, and electrical equipment so grazing stays panel-safe and compliant.",
     details: [
       "Evaluate property size and terrain",
       "Identify vegetation types and density",
       "Assess fencing requirements",
-      "Discuss your goals and timeline"
+      "Review panel layout and infrastructure (solar sites)"
     ]
   },
   {
     number: 2,
     title: "Customized Grazing Plan",
-    description: "Based on the assessment, we design a grazing rotation plan tailored to your property. This includes the type and number of animals, rotation schedule, and expected outcomes.",
+    description: "We design a rotation plan tailored to your property — animal type, herd size, schedule, and expected outcomes. We set stocking rates and schedule around your O&M windows, so we're never in the way of maintenance crews.",
     details: [
       "Select appropriate animal type (goats, sheep, or both)",
       "Determine herd size for your acreage",
-      "Create rotation schedule",
+      "Create rotation schedule around your operations",
       "Set clear expectations and milestones"
     ]
   },
   {
     number: 3,
     title: "Site Preparation",
-    description: "We handle all the prep work—including temporary fencing installation and any necessary site modifications to ensure safe, effective grazing.",
+    description: "We handle all prep — temporary fencing, water access, and any site modifications for safe, effective grazing.",
     details: [
       "Install temporary electric fencing",
       "Set up water access points",
@@ -47,7 +48,7 @@ const steps = [
   {
     number: 4,
     title: "Animal Deployment & Management",
-    description: "Our grazing specialist Bo Carter deploys the herd and manages them throughout the service period. You don't need to do anything—we handle it all.",
+    description: "Bo Carter leads the deployment and manages the grazing operation on-site. You don't need to do anything — we handle it all.",
     details: [
       "Transport animals to your property",
       "Daily monitoring and care",
@@ -58,7 +59,7 @@ const steps = [
   {
     number: 5,
     title: "Ongoing Maintenance",
-    description: "Grazing isn't a one-time event. We provide ongoing service with regular rotations to keep your property maintained throughout the growing season.",
+    description: "Regular rotations keep your property maintained throughout the growing season. We adjust the plan as the land responds.",
     details: [
       "Regular check-ins and progress reports",
       "Adjust grazing plan as needed",
@@ -76,7 +77,11 @@ const faqs = [
   },
   {
     question: "Is grazing safe for my property?",
-    answer: "Yes. We use temporary electric fencing to contain animals to specific areas. Our grazing specialist monitors the herd daily, and we carry full liability insurance. The animals won't damage structures, landscaping, or areas outside the grazing zone."
+    answer: "Yes. We use temporary electric fencing to contain animals to specific areas. Our grazing specialist monitors the herd daily, and we carry full liability insurance. For solar sites, fence placement respects panel clearance and wiring — animals stay where they belong. The animals won't damage structures, landscaping, or areas outside the grazing zone."
+  },
+  {
+    question: "How do you work around our maintenance crews?",
+    answer: "We coordinate schedules with your O&M team, respect lock-out/tag-out procedures and site access rules, and can pause grazing for major maintenance work. Our goal is to be invisible to your operations — vegetation stays in spec without extra coordination on your side."
   },
   {
     question: "How long does it take to see results?",
@@ -92,7 +97,7 @@ const faqs = [
   },
   {
     question: "What areas do you serve?",
-    answer: "We serve Athens, Clarke County, and surrounding areas in Northeast Georgia. If you're within about 40 miles of Bogart, we can likely help. Contact us to confirm service availability for your location."
+    answer: "We serve Athens, Clarke County, and surrounding areas in Northeast Georgia — within about 40 miles of Bogart for local grazing. For solar sites, we serve statewide. Contact us to confirm service availability for your location."
   },
   {
     question: "How much does it cost?",
@@ -110,10 +115,24 @@ const faqs = [
   description="Learn how our grazing services work—from site assessment to ongoing maintenance. A natural, effective approach to land management in Athens, Georgia."
 >
   <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-primary-500 to-primary-600 text-white py-16 md:py-20">
-    <div class="container-custom">
+  <section class="relative bg-warm-900 text-white py-16 md:py-20 overflow-hidden">
+    <div class="absolute inset-0">
+      <CloudinaryImage
+        publicId="Animals/IMG_2672_yd4bjz"
+        alt="Eden Grazing Services — how it works"
+        width={1600}
+        height={900}
+        crop="fill"
+        gravity="auto"
+        loading="eager"
+        fetchpriority="high"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-warm-900/85 via-warm-900/60 to-warm-900/30"></div>
+    </div>
+    <div class="container-custom relative z-10">
       <div class="max-w-3xl">
-        <nav class="text-primary-200 text-sm mb-4">
+        <nav class="text-warm-300 text-sm mb-4">
           <a href="/land-management" class="hover:text-white">Land Management</a>
           <span class="mx-2">/</span>
           <span>How It Works</span>
@@ -121,7 +140,7 @@ const faqs = [
         <h1 class="text-4xl md:text-5xl font-display font-bold mb-6">
           How Eden Grazing Services Works
         </h1>
-        <p class="text-xl text-primary-100">
+        <p class="text-xl text-warm-200">
           A simple, hands-off process that delivers effective vegetation management for your property.
         </p>
       </div>
@@ -208,7 +227,7 @@ const faqs = [
         </div>
 
         <p class="text-center text-warm-600 mt-8 max-w-2xl mx-auto">
-          Timelines vary based on property size and vegetation density. We'll give you a specific estimate during the assessment.
+          Timelines vary based on property size and vegetation density. Solar and commercial sites often move faster once we've seen your layout — most start within the same season.
         </p>
       </div>
     </section>
@@ -258,7 +277,7 @@ const faqs = [
             </svg>
           </div>
           <h3 class="font-bold text-warm-900 mb-2">Full Insurance</h3>
-          <p class="text-warm-600 text-sm">Liability coverage for your protection</p>
+          <p class="text-warm-600 text-sm">Full liability coverage including commercial and solar sites</p>
         </div>
       </div>
     </section>
@@ -298,12 +317,15 @@ const faqs = [
         <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">
           Ready to Get Started?
         </h2>
+        <p class="text-accent-200 text-sm mb-4">
+          If you manage a solar or commercial site, we'll walk it with you and map a grazing plan that keeps vegetation in spec without extra work on your side.
+        </p>
         <p class="text-xl text-accent-100 mb-8">
           Request a free assessment and we'll show you exactly how grazing can work for your property.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/land-management/request" class="btn bg-white text-accent-700 hover:bg-accent-50 text-lg px-8 py-4">
-            Request Free Assessment
+          <a href="/land-management/request" class="btn bg-white text-accent-700 hover:bg-accent-50 text-lg px-8 py-4 font-semibold">
+            Get Your Free Site Assessment
           </a>
           <a href="/land-management/services" class="btn border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4">
             View Pricing

@@ -8,6 +8,7 @@
  */
 
 import MainLayout from '../../layouts/MainLayout.astro';
+import CloudinaryImage from '../../components/CloudinaryImage.astro';
 
 // Service packages
 const packages = [
@@ -56,17 +57,18 @@ const packages = [
   },
   {
     name: "Solar Farm",
-    description: "Specialized vegetation management for solar installations. Keep ground cover controlled without heavy equipment that can damage panels and infrastructure.",
+    description: "Agrivoltaic vegetation management for utility-scale and community solar sites. Sheep-based grazing that keeps vegetation in spec without equipment near your modules.",
     priceRange: "$1,500 - $3,000",
     priceUnit: "per month",
     features: [
       "20+ acres typical coverage",
-      "Panel-safe grazing protocols",
-      "No equipment damage risk",
-      "Year-round service available",
-      "Utility-grade reliability"
+      "Panel-safe grazing protocols (no equipment near modules or wiring)",
+      "Zero equipment damage risk",
+      "Year-round service available for long growing seasons",
+      "Utility-grade reliability and reporting"
     ],
-    ideal: "Solar installations and farms"
+    ideal: "Utility-scale and community solar sites",
+    note: "Final pricing depends on acreage, vegetation density, and site access. Confirmed after free site assessment."
   }
 ];
 
@@ -101,6 +103,11 @@ const comparisonItems = [
     item: "Natural fertilization",
     traditional: "Additional cost",
     grazing: "Included"
+  },
+  {
+    item: "Panel / equipment risk",
+    traditional: "Moderate-High (mowers, trimmers, vehicles)",
+    grazing: "None (no heavy equipment near modules)"
   }
 ];
 ---
@@ -110,10 +117,24 @@ const comparisonItems = [
   description="View our grazing service packages and pricing for HOAs, retention ponds, commercial properties, and solar farms. Sustainable land management in Athens, Georgia."
 >
   <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-primary-500 to-primary-600 text-white py-16 md:py-20">
-    <div class="container-custom">
+  <section class="relative bg-warm-900 text-white py-16 md:py-20 overflow-hidden">
+    <div class="absolute inset-0">
+      <CloudinaryImage
+        publicId="Animals/IMG_2674_2_wssltq"
+        alt="Eden Grazing Services — pricing and packages"
+        width={1600}
+        height={900}
+        crop="fill"
+        gravity="auto"
+        loading="eager"
+        fetchpriority="high"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-warm-900/85 via-warm-900/60 to-warm-900/30"></div>
+    </div>
+    <div class="container-custom relative z-10">
       <div class="max-w-3xl">
-        <nav class="text-primary-200 text-sm mb-4">
+        <nav class="text-warm-300 text-sm mb-4">
           <a href="/land-management" class="hover:text-white">Land Management</a>
           <span class="mx-2">/</span>
           <span>Services & Pricing</span>
@@ -121,8 +142,8 @@ const comparisonItems = [
         <h1 class="text-4xl md:text-5xl font-display font-bold mb-6">
           Service Packages & Pricing
         </h1>
-        <p class="text-xl text-primary-100">
-          Transparent pricing for every property type. All packages include site assessment, fencing, daily monitoring, and full insurance.
+        <p class="text-xl text-warm-200">
+          Transparent pricing for every property type. All packages include site assessment, fencing, daily monitoring, and full insurance. For solar farms, we also coordinate with your O&M schedules and site access requirements.
         </p>
       </div>
     </div>
@@ -159,10 +180,13 @@ const comparisonItems = [
               ))}
             </ul>
 
-            <div class="pt-4 border-t border-secondary-200">
+            <div class="pt-4 border-t border-secondary-200 space-y-2">
               <p class="text-sm text-warm-500">
                 <strong>Ideal for:</strong> {pkg.ideal}
               </p>
+              {pkg.note && (
+                <p class="text-xs text-warm-400 italic">{pkg.note}</p>
+              )}
             </div>
 
             <a
@@ -285,10 +309,10 @@ const comparisonItems = [
           Get Your Custom Quote
         </h2>
         <p class="text-xl text-accent-100 mb-8">
-          Every property is different. Request a free assessment and we'll provide a detailed quote tailored to your specific needs.
+          Every property is different — from small HOAs to 150-acre solar installations. Request a free assessment and we'll build a quote tailored to your site.
         </p>
-        <a href="/land-management/request" class="btn bg-white text-accent-700 hover:bg-accent-50 text-lg px-8 py-4 inline-block">
-          Request Free Assessment
+        <a href="/land-management/request" class="btn bg-white text-accent-700 hover:bg-accent-50 text-lg px-8 py-4 inline-block font-semibold">
+          Get Your Free Site Assessment
         </a>
       </div>
     </section>

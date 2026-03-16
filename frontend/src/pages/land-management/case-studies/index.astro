@@ -1,0 +1,131 @@
+---
+/**
+ * Case Studies Hub
+ *
+ * Lists all solar grazing / land management case studies.
+ * Route: /land-management/case-studies
+ */
+
+import MainLayout from '../../../layouts/MainLayout.astro';
+import CloudinaryImage from '../../../components/CloudinaryImage.astro';
+
+const caseStudies = [
+  {
+    title: "150-Acre Agrivoltaic Solar Site in Northeast Georgia",
+    location: "Lavonia, GA area",
+    acreage: "150+ acre solar site",
+    serviceType: "Agrivoltaic Vegetation Management",
+    status: "Active",
+    description: "Sheep-based vegetation management for a utility-scale solar installation. Zero panel incidents, local operator, soil improving — a true dual-use agrivoltaic system.",
+    image: "Animals/solar-grazing/IMG_3679_dkimqi",
+    href: "/land-management/case-studies/lavonia"
+  }
+];
+
+const pipeline = [
+  {
+    title: "New utility-scale solar site",
+    status: "Coming Soon",
+    description: "Details coming soon as we onboard our next solar grazing contract in Georgia."
+  }
+];
+---
+
+<MainLayout
+  title="Solar Grazing Case Studies | Soul Miner's Eden"
+  description="Real results from our solar grazing and agrivoltaic operations across Georgia. See how regenerative grazing transforms solar site management."
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-warm-800 to-warm-900 text-white py-12 md:py-16">
+    <div class="container-custom">
+      <nav class="text-warm-400 text-sm mb-6">
+        <a href="/land-management" class="hover:text-white">Land Management</a>
+        <span class="mx-2">/</span>
+        <a href="/land-management/solar-grazing" class="hover:text-white">Solar Grazing</a>
+        <span class="mx-2">/</span>
+        <span class="text-warm-200">Case Studies</span>
+      </nav>
+
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4">
+        Case Studies
+      </h1>
+      <p class="text-xl text-warm-300 max-w-2xl">
+        Real solar sites. Real results. See how agrivoltaic grazing is working across Georgia's utility-scale and community solar projects.
+      </p>
+    </div>
+  </section>
+
+  <!-- Case Study Cards -->
+  <div class="container-custom py-12 md:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {caseStudies.map((study) => (
+        <a href={study.href} class="group block bg-white border border-secondary-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+          <div class="h-48 overflow-hidden">
+            <CloudinaryImage
+              publicId={study.image}
+              alt={study.title}
+              width={600}
+              height={400}
+              crop="fill"
+              gravity="auto"
+              loading="lazy"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div class="p-6">
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="inline-flex items-center gap-1 bg-accent-100 text-accent-700 text-xs font-medium px-2.5 py-1 rounded-full">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                {study.status}
+              </span>
+              <span class="text-warm-500 text-xs">{study.acreage}</span>
+              <span class="bg-warm-100 text-warm-600 text-xs font-medium px-2.5 py-1 rounded-full">{study.serviceType}</span>
+            </div>
+            <h2 class="text-lg font-bold text-warm-900 mb-2 group-hover:text-accent-600 transition-colors">
+              {study.title}
+            </h2>
+            <p class="text-warm-600 text-sm mb-3">{study.description}</p>
+            <p class="text-warm-500 text-xs">{study.location}</p>
+          </div>
+        </a>
+      ))}
+
+      <!-- Pipeline / Coming Soon ghost card -->
+      {pipeline.map((item) => (
+        <div class="block bg-warm-50 border border-dashed border-secondary-300 rounded-xl overflow-hidden">
+          <div class="h-48 bg-warm-100 flex items-center justify-center">
+            <svg class="w-12 h-12 text-warm-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="inline-flex items-center gap-1 bg-warm-200 text-warm-600 text-xs font-medium px-2.5 py-1 rounded-full">
+                {item.status}
+              </span>
+            </div>
+            <h2 class="text-lg font-bold text-warm-500 mb-2">
+              {item.title}
+            </h2>
+            <p class="text-warm-400 text-sm">{item.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- More Coming + CTA -->
+    <div class="text-center mt-12">
+      <p class="text-warm-500">
+        More solar and land-management case studies coming as we expand across Georgia.
+      </p>
+      <p class="text-warm-600 font-medium mt-4 mb-6">
+        If this looks like the kind of result you want from your site, let's talk.
+      </p>
+      <a href="/land-management/request" class="inline-block bg-accent-600 hover:bg-accent-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors">
+        Get Your Free Site Assessment
+      </a>
+    </div>
+  </div>
+</MainLayout>

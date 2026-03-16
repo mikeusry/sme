@@ -8,6 +8,7 @@
  */
 
 import MainLayout from '../../layouts/MainLayout.astro';
+import CloudinaryImage from '../../components/CloudinaryImage.astro';
 
 // Business info
 const businessInfo = {
@@ -48,10 +49,24 @@ const timelines = [
   description="Request a free grazing service assessment for your property. We'll evaluate your site and provide a customized vegetation management plan."
 >
   <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-accent-600 to-accent-700 text-white py-16 md:py-20">
-    <div class="container-custom">
+  <section class="relative bg-warm-900 text-white py-16 md:py-20 overflow-hidden">
+    <div class="absolute inset-0">
+      <CloudinaryImage
+        publicId="Animals/IMG_5983_obu5wt"
+        alt="Request a free grazing assessment from Soul Miner's Eden"
+        width={1600}
+        height={900}
+        crop="fill"
+        gravity="auto"
+        loading="eager"
+        fetchpriority="high"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-warm-900/85 via-warm-900/60 to-warm-900/30"></div>
+    </div>
+    <div class="container-custom relative z-10">
       <div class="max-w-3xl">
-        <nav class="text-accent-200 text-sm mb-4">
+        <nav class="text-warm-300 text-sm mb-4">
           <a href="/land-management" class="hover:text-white">Land Management</a>
           <span class="mx-2">/</span>
           <span>Request Assessment</span>
@@ -59,7 +74,7 @@ const timelines = [
         <h1 class="text-4xl md:text-5xl font-display font-bold mb-6">
           Request a Free Assessment
         </h1>
-        <p class="text-xl text-accent-100">
+        <p class="text-xl text-warm-200">
           Tell us about your property and we'll schedule a site visit. No obligation—just a conversation about what's possible.
         </p>
       </div>
@@ -308,7 +323,7 @@ const timelines = [
         <div class="bg-white border border-secondary-200 rounded-2xl p-6">
           <h3 class="text-lg font-bold text-warm-900 mb-4">Service Areas</h3>
           <p class="text-warm-600 mb-4 text-sm">
-            We serve properties within approximately 40 miles of Bogart, GA, including:
+            Local grazing within approximately 40 miles of Bogart, GA. For solar sites, we serve statewide.
           </p>
           <ul class="text-sm text-warm-600 space-y-1">
             <li>Athens-Clarke County</li>
@@ -317,9 +332,11 @@ const timelines = [
             <li>Jackson County</li>
             <li>Barrow County</li>
             <li>Walton County</li>
+            <li>Franklin County</li>
+            <li>Hart County</li>
           </ul>
           <p class="text-sm text-warm-500 mt-4">
-            Not sure if you're in our area? Just ask!
+            Serving solar installations statewide. Not sure if you're in our area? Just ask!
           </p>
         </div>
       </div>
@@ -328,24 +345,34 @@ const timelines = [
 </MainLayout>
 
 <script>
-  // Form submission handling
-  const form = document.getElementById('service-request-form');
+  const form = document.getElementById('service-request-form') as HTMLFormElement;
 
-  form?.addEventListener('submit', (e) => {
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const originalText = btn.textContent;
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
 
-    // Get form data
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+    try {
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
 
-    // For now, just show a success message
-    // TODO: Connect to backend API or email service
-    alert('Thank you for your request! We\'ll contact you within 24 hours to schedule your free assessment.');
+      const res = await fetch('/api/service-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
 
-    // Reset form
-    form.reset();
-
-    // Log for debugging (remove in production)
-    console.log('Service request submitted:', data);
+      if (res.ok) {
+        form.innerHTML = '<div class="text-center py-12"><h3 class="text-2xl font-bold text-warm-900 mb-4">Request received!</h3><p class="text-warm-600">We\'ll contact you within 24 hours to schedule your free assessment. Or call us anytime at <a href="tel:+1-706-613-4415" class="text-accent-600 font-semibold">(706) 613-4415</a>.</p></div>';
+      } else {
+        throw new Error('Submit failed');
+      }
+    } catch (err) {
+      btn.textContent = originalText;
+      btn.disabled = false;
+      alert('Something went wrong. Please call us at (706) 613-4415.');
+    }
   });
 </script>

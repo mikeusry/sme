@@ -26,7 +26,7 @@ const targetProperties = [
   },
   {
     name: "Solar Farms",
-    description: "Had a guy out near Lexington tell me his mower cracked two panels last summer. Goats? They just eat and walk away. No damage.",
+    description: "Mowing equipment cracks panels and tears up wiring. Our sheep walk right under them — zero equipment damage, less soil compaction, and 150+ acres already under active management in Northeast Georgia.",
     icon: "sun"
   },
   {
@@ -45,7 +45,7 @@ const targetProperties = [
 const benefits = [
   {
     title: "Saves Money",
-    description: "We've seen 30, sometimes 40 percent savings compared to mowing contracts. Depends on your property, but the math usually works out."
+    description: "We've seen 30-40% savings compared to mowing contracts. Fewer passes, no herbicide program, predictable costs. The math usually works out."
   },
   {
     title: "Zero Chemicals",
@@ -65,7 +65,7 @@ const benefits = [
   },
   {
     title: "Not Your Problem",
-    description: "Bo handles the goats. We handle the logistics. You get results without having to learn animal husbandry."
+    description: "Bo leads the grazing. We handle the logistics. You get results without having to learn animal husbandry."
   }
 ];
 ---
@@ -75,22 +75,36 @@ const benefits = [
   description="Sustainable land management through rotational grazing. Natural vegetation control for retention ponds, solar farms, HOAs, and commercial properties in Athens, Georgia."
 >
   <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-accent-600 to-accent-700 text-white py-16 md:py-24">
-    <div class="container-custom">
+  <section class="relative bg-warm-900 text-white py-16 md:py-24 overflow-hidden">
+    <div class="absolute inset-0">
+      <CloudinaryImage
+        publicId="Animals/IMG_2679_z9f17v"
+        alt="Grazing animals at Soul Miner's Eden"
+        width={1600}
+        height={900}
+        crop="fill"
+        gravity="auto"
+        loading="eager"
+        fetchpriority="high"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-warm-900/85 via-warm-900/60 to-warm-900/30"></div>
+    </div>
+    <div class="container-custom relative z-10">
       <div class="max-w-3xl">
-        <p class="text-accent-200 font-medium mb-4 uppercase tracking-wide">Eden Grazing Services</p>
+        <p class="text-warm-300 font-medium mb-4 uppercase tracking-wide">Eden Grazing Services</p>
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
-          Goats. Doing What Goats Do.
+          Animals Doing What Animals Do.
         </h1>
-        <p class="text-xl md:text-2xl text-accent-100 mb-8">
-          We bring goats to your property. They eat the stuff you don't want. You save money. Pretty straightforward, honestly.
+        <p class="text-xl md:text-2xl text-warm-200 mb-8">
+          Goats for your property. Sheep for solar farms. From HOA common areas to 150-acre agrivoltaic solar sites, we handle vegetation so you don't have to.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="/land-management/how-it-works" class="btn bg-white text-accent-700 hover:bg-accent-50 text-lg px-8 py-4">
             See How It Works
           </a>
           <a href="/land-management/request" class="btn border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4">
-            Request Assessment
+            Get Your Free Site Assessment
           </a>
         </div>
       </div>
@@ -134,7 +148,7 @@ const benefits = [
         Where Goats Work Best
       </h2>
       <p class="text-xl text-warm-600 text-center mb-12 max-w-2xl mx-auto">
-        We serve properties around Athens and Northeast Georgia. If you've got vegetation that needs managing, we can probably help.
+        We serve properties around Athens and across Northeast Georgia — and for solar sites, statewide.
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -205,24 +219,24 @@ const benefits = [
             </h2>
             <div class="text-warm-700 space-y-4">
               <p>
-                We teamed up with Bo Carter a while back. He's the goat guy. Been doing this out of Oglethorpe County for years now. Knows his stuff.
+                Bo Carter leads our grazing operations. He's been raising and managing livestock out of Oconee County for years — goats, sheep, rotational grazing, the whole picture. He's the expert.
               </p>
               <ul class="space-y-3">
                 <li class="flex items-start gap-3">
                   <svg class="w-5 h-5 text-accent-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                   </svg>
-                  <span><strong>Bo</strong> brings the animals and checks on them. Every single day. Rain or shine. That's his thing.</span>
+                  <span><strong>Bo</strong> manages the animals, designs grazing plans, and works directly with property managers and solar operators to keep your site within spec.</span>
                 </li>
                 <li class="flex items-start gap-3">
                   <svg class="w-5 h-5 text-accent-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                   </svg>
-                  <span><strong>We</strong> deal with the paperwork. Pricing, contracts, that kind of stuff. Call us if you need anything.</span>
+                  <span><strong>We</strong> handle the business side — pricing, contracts, logistics, and coordination. Together, we run a tight operation.</span>
                 </li>
               </ul>
               <p class="font-medium text-warm-900">
-                Basically: you've got one number to call, and we figure out the rest.
+                One number to call. Bo leads the work. We figure out the rest.
               </p>
             </div>
           </div>
@@ -252,13 +266,13 @@ const benefits = [
             <span>ASGA Member</span>
           </div>
           <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">
-            Solar Grazing Services
+            Solar Grazing &amp; Agrivoltaics
           </h2>
           <p class="text-xl text-warm-300 mb-6">
-            We're members of the American Solar Grazing Association. Sheep-based vegetation management for solar farms — no panel damage, lower costs, healthier soil. Georgia's growing season means we can graze nearly year-round.
+            150+ acres under active management in Northeast Georgia. Sheep-based vegetation management for utility-scale and community solar sites — no panel damage, lower O&M costs, healthier soil. ASGA member. Taking on new sites for 2026.
           </p>
           <a href="/land-management/solar-grazing" class="btn bg-accent-500 text-white hover:bg-accent-600 text-lg px-8 py-4 inline-block">
-            Learn About Solar Grazing
+            Solar Grazing &amp; Agrivoltaics
           </a>
         </div>
       </div>

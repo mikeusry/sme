@@ -1,0 +1,107 @@
+---
+/**
+ * CaseStudy Component
+ *
+ * Reusable case study card for embedding in pages.
+ * Used on case study pages and as teasers on the solar-grazing page.
+ */
+
+import CloudinaryImage from './CloudinaryImage.astro';
+
+interface Props {
+  title: string;
+  location: string;
+  acreage: string;
+  serviceType: string;
+  status: string;
+  challenge: string;
+  solution: string;
+  results: string[];
+  images: { publicId: string; alt: string; caption?: string }[];
+  testimonial?: { quote: string; attribution: string };
+}
+
+const { title, location, acreage, serviceType, status, challenge, solution, results, images, testimonial } = Astro.props;
+---
+
+<div class="bg-warm-100 rounded-2xl p-8 md:p-12">
+  <!-- At a Glance -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+    <div>
+      <div class="text-sm text-warm-500 uppercase tracking-wider font-medium">Location</div>
+      <div class="text-warm-900 font-bold mt-1">{location}</div>
+    </div>
+    <div>
+      <div class="text-sm text-warm-500 uppercase tracking-wider font-medium">Acreage</div>
+      <div class="text-warm-900 font-bold mt-1">{acreage}</div>
+    </div>
+    <div>
+      <div class="text-sm text-warm-500 uppercase tracking-wider font-medium">Service</div>
+      <div class="text-warm-900 font-bold mt-1">{serviceType}</div>
+    </div>
+    <div>
+      <div class="text-sm text-warm-500 uppercase tracking-wider font-medium">Status</div>
+      <div class="text-accent-600 font-bold mt-1">{status}</div>
+    </div>
+  </div>
+
+  <!-- Challenge & Solution -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-10">
+    <div>
+      <h3 class="text-xl font-bold text-warm-900 mb-4">The Challenge</h3>
+      <p class="text-warm-700">{challenge}</p>
+    </div>
+    <div>
+      <h3 class="text-xl font-bold text-warm-900 mb-4">Our Approach</h3>
+      <p class="text-warm-700">{solution}</p>
+    </div>
+  </div>
+
+  <!-- Photo Gallery -->
+  {images.length > 0 && (
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+      {images.map((img) => (
+        <div>
+          <CloudinaryImage
+            publicId={img.publicId}
+            alt={img.alt}
+            width={600}
+            height={400}
+            crop="fill"
+            gravity="auto"
+            loading="lazy"
+            class="w-full h-48 object-cover rounded-xl"
+          />
+          {img.caption && (
+            <p class="text-sm text-warm-500 mt-2">{img.caption}</p>
+          )}
+        </div>
+      ))}
+    </div>
+  )}
+
+  <!-- Results -->
+  <div>
+    <h3 class="text-xl font-bold text-warm-900 mb-4">Results</h3>
+    <ul class="space-y-3">
+      {results.map((result) => (
+        <li class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-accent-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-warm-700">{result}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <!-- Testimonial -->
+  {testimonial && (
+    <div class="mt-10 border-t border-warm-200 pt-8">
+      <blockquote class="text-lg italic text-warm-700">
+        "{testimonial.quote}"
+      </blockquote>
+      <p class="text-sm text-warm-500 mt-3 font-medium">— {testimonial.attribution}</p>
+    </div>
+  )}
+</div>
