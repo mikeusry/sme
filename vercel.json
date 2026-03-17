@@ -3,7 +3,7 @@
   "framework": "astro",
   "buildCommand": "cd frontend && npm run build",
   "outputDirectory": "frontend/.vercel/output",
-  "installCommand": "cd frontend && npm install",
+  "installCommand": "npm install --prefix frontend",
   "regions": ["iad1"],
   "headers": [
     {
