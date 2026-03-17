@@ -43,10 +43,10 @@
         "Erosion control"
       ],
       "images": {
-        "primary": "Soul Miner's/products/compost/TOPO_compost.jpg",
+        "primary": "Soul Miner's/products/compost/TOPO_compost.jpg.jpg",
         "gallery": [
-          "Soul Miner's/products/compost/compost-action.jpg",
-          "Soul Miner's/products/compost/compost-blend.jpg"
+          "Soul Miner's/products/compost/compost-action.jpg.jpg",
+          "Soul Miner's/products/compost/compost-blend.jpg.jpg"
         ]
       },
       "seo": {
@@ -86,9 +86,9 @@
         "Large landscape projects"
       ],
       "images": {
-        "primary": "Soul Miner's/products/mulch/TOPO_natural.jpg",
+        "primary": "Soul Miner's/products/mulch/TOPO_natural.jpg.jpg",
         "gallery": [
-          "Soul Miner's/products/mulch/natural-mulch-action.jpg"
+          "Soul Miner's/products/mulch/natural-mulch-action.jpg.jpg"
         ]
       },
       "seo": {
@@ -126,10 +126,10 @@
         "Tree rings"
       ],
       "images": {
-        "primary": "Soul Miner's/products/mulch/TOPO_brown.jpg",
+        "primary": "Soul Miner's/products/mulch/TOPO_brown.jpg.jpg",
         "gallery": [
-          "Soul Miner's/products/mulch/brown-mulch.jpg",
-          "Soul Miner's/products/mulch/brown-mulch-action.jpg"
+          "Soul Miner's/products/mulch/brown-mulch.jpg.jpg",
+          "Soul Miner's/products/mulch/brown-mulch-action.jpg.jpg"
         ]
       },
       "seo": {
@@ -168,7 +168,7 @@
         "Foundation plantings"
       ],
       "images": {
-        "primary": "Soul Miner's/products/mulch/TOPO_pinebark.jpg",
+        "primary": "Soul Miner's/products/mulch/TOPO_pinebark.jpg.jpg",
         "gallery": []
       },
       "seo": {
@@ -206,10 +206,10 @@
         "High-visibility areas"
       ],
       "images": {
-        "primary": "Soul Miner's/products/mulch/TOPO_black.jpg",
+        "primary": "Soul Miner's/products/mulch/TOPO_black.jpg.jpg",
         "gallery": [
-          "Soul Miner's/products/mulch/black-mulch.jpg",
-          "Soul Miner's/products/mulch/black-mulch-application.jpg"
+          "Soul Miner's/products/mulch/black-mulch.jpg.jpg",
+          "Soul Miner's/products/mulch/black-mulch-application.jpg.jpg"
         ]
       },
       "seo": {
@@ -247,9 +247,9 @@
         "Tree rings"
       ],
       "images": {
-        "primary": "Soul Miner's/products/mulch/red-mulch.jpg",
+        "primary": "Soul Miner's/products/mulch/red-mulch.jpg.jpg",
         "gallery": [
-          "Soul Miner's/products/mulch/red-mulch-application.jpg"
+          "Soul Miner's/products/mulch/red-mulch-application.jpg.jpg"
         ]
       },
       "seo": {
@@ -289,7 +289,7 @@
         "Slope stabilization"
       ],
       "images": {
-        "primary": "Soul Miner's/products/mulch/TOPO_single.jpg",
+        "primary": "Soul Miner's/products/mulch/TOPO_single.jpg.jpg",
         "gallery": []
       },
       "seo": {
@@ -329,7 +329,7 @@
         "Slope erosion control"
       ],
       "images": {
-        "primary": "Soul Miner's/products/mulch/TOPO_woodchips.jpg",
+        "primary": "Soul Miner's/products/mulch/TOPO_woodchips.jpg.jpg",
         "gallery": []
       },
       "seo": {
@@ -369,9 +369,9 @@
         "General landscaping"
       ],
       "images": {
-        "primary": "Soul Miner's/products/soil/TOPO_topsoil.jpg",
+        "primary": "Soul Miner's/products/soil/TOPO_topsoil.jpg.jpg",
         "gallery": [
-          "Soul Miner's/products/soil/top-soil-action.jpg"
+          "Soul Miner's/products/soil/top-soil-action.jpg.jpg"
         ]
       },
       "seo": {
@@ -414,10 +414,10 @@
         "Commercial developments"
       ],
       "images": {
-        "primary": "Soul Miner's/products/soil/bioretention-soil-0.jpg",
+        "primary": "Soul Miner's/products/soil/bioretention-soil-0.jpg.jpg",
         "gallery": [
-          "Soul Miner's/products/soil/bioretention-soil-1.jpg",
-          "Soul Miner's/products/soil/bioretention-soil-10.jpg"
+          "Soul Miner's/products/soil/bioretention-soil-1.jpg.jpg",
+          "Soul Miner's/products/soil/bioretention-soil-10.jpg.jpg"
         ]
       },
       "seo": {
@@ -457,7 +457,7 @@
         "Residential lawns"
       ],
       "images": {
-        "primary": "Soul Miner's/products/soil/sod-soil.jpg",
+        "primary": "Soul Miner's/products/soil/sod-soil.jpg.jpg",
         "gallery": []
       },
       "seo": {
@@ -499,7 +499,7 @@
         "Creative landscape projects"
       ],
       "images": {
-        "primary": "Soul Miner's/products/specialty/used_turf-for-sale-3.jpg",
+        "primary": "Soul Miner's/products/specialty/used_turf-for-sale-3.jpg.jpg",
         "gallery": [
           "Soul Miner's/products/specialty/Used_Artificial_Turff.jpeg"
         ]
@@ -541,9 +541,9 @@
         "New garden installations"
       ],
       "images": {
-        "primary": "Soul Miner's/products/specialty/compost-blend.jpg",
+        "primary": "Soul Miner's/products/specialty/compost-blend.jpg.jpg",
         "gallery": [
-          "Soul Miner's/products/specialty/topsoil-compost.jpg"
+          "Soul Miner's/products/specialty/topsoil-compost.jpg.jpg"
         ]
       },
       "seo": {
