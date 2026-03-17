@@ -250,7 +250,7 @@ export async function sendContactNotification(data: {
 
   return sendEmail({
     to: 'mike@southlandorganics.com',
-    subject: `New inquiry from ${data.name || data.email} — soulminerseden.com`,
-    html: brandWrap('Website Inquiry', body),
+    subject: `New contact from ${data.name || data.email} — soulminerseden.com`,
+    html: brandWrap('Website Contact', body),
   });
 }
