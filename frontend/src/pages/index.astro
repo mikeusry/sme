@@ -1,15 +1,13 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import ProductCard from '../components/products/ProductCard.astro';
-import MaterialCalculator from '../components/products/MaterialCalculator.astro';
-import ProductImage from '../components/ProductImage.astro';
 import CloudinaryImage from '../components/CloudinaryImage.astro';
 import ExperienceFarm from '../components/ExperienceFarm.astro';
 import InstagramFeed from '../components/InstagramFeed.astro';
-import { getFeaturedProducts, getProductBySlug } from '../lib/products';
-
-// Get featured products for showcase
-const featuredProducts = getFeaturedProducts();
+import FarmFresh from '../components/FarmFresh.astro';
+import OriginStory from '../components/OriginStory.astro';
+import EventsTeaser from '../components/EventsTeaser.astro';
+import { getProductBySlug } from '../lib/products';
 
 // Get specific hero products
 const humusCompost = getProductBySlug('humus-compost');
@@ -57,21 +55,21 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 					Cultivate What the Land Was Meant to Be
 				</h1>
 
-				<!-- Subheadline — one tight sentence -->
+				<!-- Subheadline — consumer-first, warm -->
 				<p class="text-xl md:text-2xl mb-10 text-white/90 max-w-3xl mx-auto leading-relaxed">
-					From our 65&#8209;acre regenerative farm in Bogart, we deliver compost, mulch, and grazing that prove biology works.
+					65 acres of regenerative pasture, farm&#8209;fresh food, and honest work — 20 minutes from Athens.
 				</p>
 
-				<!-- Dual CTAs — primary sage (larger) + outline clay -->
+				<!-- Dual CTAs — "Visit" primary + "Shop" secondary -->
 				<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-					<a href="/products" class="bg-accent-600 hover:bg-accent-700 text-white text-lg md:text-xl px-12 py-5 rounded-lg font-semibold transition-colors shadow-lg">
-						Shop Compost & Mulch
+					<a href="/contact" class="bg-accent-600 hover:bg-accent-700 text-white text-lg md:text-xl px-12 py-5 rounded-lg font-semibold transition-colors shadow-lg">
+						Visit the Farm
 					</a>
-					<a href="/land-management" class="border-2 border-primary-300 text-primary-200 hover:bg-white/10 hover:text-white hover:border-white/70 text-base px-8 py-3 rounded-lg font-semibold transition-colors sm:inline-block hidden">
-						Explore Grazing Services
+					<a href="/products" class="border-2 border-primary-300 text-primary-200 hover:bg-white/10 hover:text-white hover:border-white/70 text-base px-8 py-3 rounded-lg font-semibold transition-colors sm:inline-block hidden">
+						Shop Landscape Supply
 					</a>
-					<a href="/land-management" class="text-primary-200 hover:text-white font-semibold transition-colors underline underline-offset-4 sm:hidden">
-						Explore Grazing Services →
+					<a href="/products" class="text-primary-200 hover:text-white font-semibold transition-colors underline underline-offset-4 sm:hidden">
+						Shop Landscape Supply →
 					</a>
 				</div>
 			</div>
@@ -149,16 +147,22 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 		</div>
 	</section>
 
+	<!-- Coming to the Stand — honor stand teaser -->
+	<FarmFresh />
+
+	<!-- Origin Story -->
+	<OriginStory />
+
 	<!-- Featured Products -->
 	<section class="section bg-white">
 		<div class="container-custom">
 			<!-- Section header -->
 			<div class="text-center mb-12">
 				<h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-4">
-					Premium Landscape Supply
+					Landscape &amp; Garden Supply
 				</h2>
 				<p class="text-lg text-warm-600 max-w-2xl mx-auto">
-					Compost, mulch, and soil — made on our farm, delivered to your project.
+					Regenerative compost, mulch, and soil — made on our farm, delivered to your project.
 				</p>
 			</div>
 
@@ -204,11 +208,11 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 					</h2>
 
 					<p class="text-xl mb-6 text-primary-50 leading-relaxed">
-						From HOA common areas to 150-acre solar installations — our animals are on the ground, doing the work. They eat the stuff you don't want, save you money, and leave the land better than they found it.
+						From HOA common areas to 50-acre solar installations — our animals are on the ground, doing the work. They eat the stuff you don't want, save you money, and leave the land better than they found it.
 					</p>
 
 					<p class="text-lg mb-6 font-semibold">
-						150+ acres under active management. Up to 50% savings vs. mowing.
+						50+ acres under active management. Up to 50% savings vs. mowing.
 					</p>
 
 					<div class="flex flex-wrap gap-3 mb-8">
@@ -225,7 +229,7 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 				<!-- Image column -->
 				<div class="rounded-2xl overflow-hidden shadow-xl hidden lg:block">
 					<CloudinaryImage
-						publicId="Animals/solar-grazing/IMG_3679_dkimqi"
+						publicId="Soul Miner's/Animals/solar-grazing/IMG_3679_dkimqi"
 						alt="Sheep grazing under solar panels at Soul Miner's Eden"
 						width={800}
 						height={600}
@@ -238,7 +242,7 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 				<!-- Mobile image — below content -->
 				<div class="rounded-xl overflow-hidden shadow-lg lg:hidden">
 					<CloudinaryImage
-						publicId="Animals/solar-grazing/IMG_3679_dkimqi"
+						publicId="Soul Miner's/Animals/solar-grazing/IMG_3679_dkimqi"
 						alt="Sheep grazing under solar panels at Soul Miner's Eden"
 						width={600}
 						height={400}
@@ -252,12 +256,8 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 		</div>
 	</section>
 
-	<!-- Material Calculator -->
-	<section class="section bg-warm-50">
-		<div class="container-custom">
-			<MaterialCalculator />
-		</div>
-	</section>
+	<!-- Events & Experiences -->
+	<EventsTeaser />
 
 	<!-- Trust & Social Proof -->
 	<section class="bg-white border-t border-secondary-200">
@@ -295,11 +295,11 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 		</div>
 	</section>
 
+	<!-- Follow the Farm — Instagram / Photo Grid -->
+	<InstagramFeed />
+
 	<!-- Experience the Farm Life -->
 	<ExperienceFarm />
-
-	<!-- Instagram Feed — Living window into the farm -->
-	<InstagramFeed />
 </MainLayout>
 
 <style>

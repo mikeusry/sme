@@ -11,8 +11,8 @@ interface Props {
 }
 
 const siteName = "Soul Miner's Eden";
-const defaultDescription = "Premium organic compost, natural landscape supply, and regenerative land management. Family farm in Athens, GA.";
-const defaultOgImage = "https://res.cloudinary.com/southland-organics/image/upload/c_fill,w_1200,h_630,g_auto,q_auto,f_auto/Soul%20Miner's/Southland_Office_hqmtez";
+const defaultDescription = "Premium organic compost, natural landscape supply, and regenerative land management. A regenerative farm in Bogart, Georgia.";
+const defaultOgImage = "https://res.cloudinary.com/southland-organics/image/upload/c_fill,w_1200,h_630,g_auto,q_auto,f_auto/Soul%20Miner's/bin_1";
 
 const {
   title,
@@ -32,9 +32,11 @@ const canonicalUrl = Astro.url.href;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO -->
+    <link rel="canonical" href={canonicalUrl} />
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
 
@@ -61,7 +63,9 @@ const canonicalUrl = Astro.url.href;
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+    <!-- Klaviyo tracking -->
+    <script is:inline src={`https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=${import.meta.env.PUBLIC_KLAVIYO_PUBLIC_KEY || 'Rf3JPp'}`} async></script>
   </head>
   <body>
     <slot />

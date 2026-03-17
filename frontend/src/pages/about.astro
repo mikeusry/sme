@@ -8,21 +8,7 @@
  */
 
 import MainLayout from '../layouts/MainLayout.astro';
-
-// Business info
-const businessInfo = {
-  name: "Soul Miner's Eden",
-  phone: "+1-706-613-4415",
-  email: "info@soulminerseden.com",
-  address: {
-    street: "189 Luke Road",
-    city: "Bogart",
-    state: "GA",
-    zip: "30622"
-  },
-  hours: "Mon-Sat 8:00am - 6:00pm",
-  rating: { value: "4.9", count: "47" }
-};
+import { business } from '../lib/business';
 ---
 
 <MainLayout
@@ -242,15 +228,15 @@ const businessInfo = {
           We'd love to hear from you. Whether you have questions about our products or want to learn more about what we do, reach out anytime.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="tel:{businessInfo.phone}" class="btn bg-white text-primary-600 hover:bg-primary-50 text-lg px-8 py-4">
-            Call (706) 613-4415
+          <a href={business.phoneHref} class="btn bg-white text-primary-600 hover:bg-primary-50 text-lg px-8 py-4">
+            Call {business.phone}
           </a>
           <a href="/contact" class="btn border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4">
             Contact Us
           </a>
         </div>
         <p class="mt-6 text-sm text-primary-200">
-          {businessInfo.address.street}, {businessInfo.address.city}, {businessInfo.address.state} {businessInfo.address.zip}
+          {business.address.street}, {business.address.city}, {business.address.state} {business.address.zip}
         </p>
       </div>
     </section>

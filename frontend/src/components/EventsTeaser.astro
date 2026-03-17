@@ -1,0 +1,123 @@
+---
+/**
+ * EventsTeaser Component
+ *
+ * Homepage teaser for Eden Dinners, workshops, and farm tours.
+ * Collects email signups for event announcements.
+ * Placeholder-friendly — works even before dates are set.
+ */
+
+import CloudinaryImage from './CloudinaryImage.astro';
+---
+
+<section class="section bg-accent-600 text-white">
+  <div class="container-custom">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Image column (left) -->
+      <div class="rounded-2xl overflow-hidden shadow-xl hidden lg:block">
+        <CloudinaryImage
+          publicId="Soul Miner's/events/CB2C97ED-FBEA-4B0D-9807-A36BF19E7A5F_1_102_o_qg7vco"
+          alt="Farm-to-table dinner at Soul Miner's Eden"
+          width={800}
+          height={600}
+          crop="fill"
+          gravity="auto"
+          loading="lazy"
+          class="w-full h-full min-h-[400px] object-cover"
+        />
+      </div>
+      <div class="rounded-xl overflow-hidden shadow-lg lg:hidden">
+        <CloudinaryImage
+          publicId="Soul Miner's/events/CB2C97ED-FBEA-4B0D-9807-A36BF19E7A5F_1_102_o_qg7vco"
+          alt="Farm-to-table dinner at Soul Miner's Eden"
+          width={600}
+          height={400}
+          crop="fill"
+          gravity="auto"
+          loading="lazy"
+          class="w-full h-64 object-cover"
+        />
+      </div>
+
+      <!-- Content column (right) -->
+      <div>
+        <span class="inline-block bg-white/20 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-medium mb-4">Coming to Eden</span>
+
+        <h2 class="text-3xl md:text-5xl font-display font-bold mb-6 leading-tight">
+          Dinners, Workshops &amp; Farm Tours
+        </h2>
+
+        <p class="text-xl mb-6 text-accent-50 leading-relaxed">
+          Seasonal farm-to-table dinners under the pavilion. Hands-on composting and soil workshops. Saturday morning tours of the silvopasture, food forest, and livestock operation.
+        </p>
+
+        <div class="flex flex-wrap gap-3 mb-8">
+          <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">Eden Dinners</span>
+          <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">Composting Workshops</span>
+          <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">Farm Tours</span>
+          <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">U-Pick Flowers</span>
+        </div>
+
+        <!-- Email signup -->
+        <form
+          id="events-signup-form"
+          class="flex flex-col sm:flex-row gap-3"
+        >
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="your@email.com"
+            class="flex-1 px-4 py-3 rounded-lg text-warm-900 bg-white placeholder-warm-400 border-0 focus:ring-2 focus:ring-white/50"
+            aria-label="Email address for event announcements"
+          />
+          <input type="hidden" name="type" value="events-interest" />
+          <button
+            type="submit"
+            class="bg-white text-accent-700 hover:bg-accent-50 font-semibold px-6 py-3 rounded-lg transition-colors whitespace-nowrap"
+          >
+            Get First Access
+          </button>
+        </form>
+        <p class="text-xs text-accent-200 mt-2">
+          Be the first to know when we announce dates. One email, no spam.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.getElementById('events-signup-form')?.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var form = e.target;
+    var email = form.querySelector('input[name="email"]').value;
+    var btn = form.querySelector('button[type="submit"]');
+
+    btn.disabled = true;
+    btn.textContent = 'Saving...';
+
+    try {
+      var res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          name: '',
+          message: 'Events interest signup',
+          type: 'events-interest',
+        }),
+      });
+
+      if (res.ok) {
+        form.innerHTML = '<p class="text-white font-semibold py-3">You\'re on the list! We\'ll let you know first.</p>';
+      } else {
+        throw new Error('Failed');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Get First Access';
+      alert('Something went wrong. Please try again.');
+    }
+  });
+</script>

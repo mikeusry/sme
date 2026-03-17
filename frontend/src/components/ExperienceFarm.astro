@@ -30,10 +30,6 @@ export interface Props {
   ctaText?: string;
   /** CTA button link */
   ctaLink?: string;
-  /** Cloudinary image public ID (without folder prefix) */
-  imagePublicId?: string;
-  /** Image alt text */
-  imageAlt?: string;
   /** Additional CSS classes for the section */
   class?: string;
 }
@@ -44,10 +40,10 @@ const {
   subheadline = "Come enjoy our little slice of Eden with a farm tour.",
   ctaText = "VISIT OUR FARM",
   ctaLink = "/contact",
-  imagePublicId = "Southland_Office_hqmtez",
-  imageAlt = "Soul Miner's Eden Farm Building",
   class: className = "",
 } = Astro.props;
+
+import CloudinaryImage from './CloudinaryImage.astro';
 ---
 
 <section class:list={["experience-farm pt-20 md:pt-28 bg-white", className]}>
@@ -73,21 +69,33 @@ const {
 
       <!-- Farm photo strip -->
       <div class="flex justify-center gap-3 mb-10">
-        <img
-          src="https://res.cloudinary.com/southland-organics/image/upload/c_fill,w_200,h_200,g_auto,q_auto,f_auto/Soul%20Miner's/Pavilion_kgk8fi"
-          alt="The pavilion at Soul Miner's Eden"
+        <CloudinaryImage
+          publicId="bin_2"
+          alt="The grain bin at Soul Miner's Eden"
+          width={200}
+          height={200}
+          crop="fill"
+          gravity="auto"
           class="w-24 h-24 md:w-28 md:h-28 rounded-lg object-cover shadow-sm"
           loading="lazy"
         />
-        <img
-          src="https://res.cloudinary.com/southland-organics/image/upload/c_fill,w_200,h_200,g_auto,q_auto,f_auto/Soul%20Miner's/Farm%20Stand_k5q8jn"
+        <CloudinaryImage
+          publicId="Farm Stand_k5q8jn"
           alt="Fresh produce at the farm stand"
+          width={200}
+          height={200}
+          crop="fill"
+          gravity="auto"
           class="w-24 h-24 md:w-28 md:h-28 rounded-lg object-cover shadow-sm"
           loading="lazy"
         />
-        <img
-          src="https://res.cloudinary.com/southland-organics/image/upload/c_fill,w_200,h_200,g_auto,q_auto,f_auto/Soul%20Miner's/Animals/IMG_2679_z9f17v"
+        <CloudinaryImage
+          publicId="Soul Miner's/Animals/IMG_2679_z9f17v"
           alt="Animals grazing on pasture"
+          width={200}
+          height={200}
+          crop="fill"
+          gravity="auto"
           class="w-24 h-24 md:w-28 md:h-28 rounded-lg object-cover shadow-sm"
           loading="lazy"
         />
@@ -101,15 +109,15 @@ const {
         {ctaText}
       </a>
     </div>
-
-    <!-- Farm Image -->
-    <div class="text-center">
-      <img
-        src={`https://res.cloudinary.com/southland-organics/image/upload/q_auto,f_auto/Soul%20Miner's/${imagePublicId}`}
-        alt={imageAlt}
-        class="mx-auto"
-        loading="lazy"
-      />
-    </div>
   </div>
+
+  <!-- Full-bleed farm image — flush to footer -->
+  <img
+    src="https://res.cloudinary.com/southland-organics/image/upload/c_fill,w_1600,g_auto,q_auto,f_auto/Soul%20Miner%27s/Southland_Office_hqmtez"
+    alt="Soul Miner's Eden — the farm from above"
+    width="1600"
+    height="600"
+    class="w-full object-cover"
+    loading="lazy"
+  />
 </section>

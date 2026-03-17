@@ -36,11 +36,7 @@ const ogImage = buildCloudinaryUrl(grazingImages.hero, {
   format: 'jpg',
 });
 
-const businessInfo = {
-  name: "Soul Miner's Eden",
-  phone: "+1-706-613-4415",
-  email: "info@soulminerseden.com",
-};
+import { business } from '../../lib/business';
 
 const benefits = [
   {
@@ -416,13 +412,13 @@ const faqs = [
             <h2 class="text-3xl font-display font-bold text-warm-900 mb-3">
               On the Ground in Northeast Georgia
             </h2>
-            <p class="text-warm-500 font-medium text-sm mb-6">150-acre agrivoltaic solar site under active management near Lavonia, GA</p>
+            <p class="text-warm-500 font-medium text-sm mb-6">50-acre agrivoltaic solar site under active management near Lavonia, GA</p>
             <div class="text-warm-700 space-y-4">
               <p>
                 A utility-scale solar installation in Northeast Georgia needed reliable, local vegetation management. The previous provider was driving long distances and the site needed a better solution.
               </p>
               <p>
-                We evaluated the site, designed a rotational grazing plan, and deployed our flock. 150 acres now under active agrivoltaic management — vegetation controlled, soil improving, zero panel incidents.
+                We evaluated the site, designed a rotational grazing plan, and deployed our flock. 50 acres now under active agrivoltaic management — vegetation controlled, soil improving, zero panel incidents.
               </p>
             </div>
             <a href="/land-management/case-studies/lavonia" class="inline-block mt-8 bg-accent-600 hover:bg-accent-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors">
@@ -552,9 +548,14 @@ const faqs = [
               <td class="py-4 px-4 text-center text-accent-600 font-medium">Excellent</td>
             </tr>
             <tr class="border-b border-secondary-100 bg-accent-50/50">
+              <td class="py-4 px-4 font-medium text-warm-900">Dust / panel soiling</td>
+              <td class="py-4 px-4 text-center text-warm-600">Major source</td>
+              <td class="py-4 px-4 text-center text-accent-600 font-bold">Eliminated</td>
+            </tr>
+            <tr class="border-b border-secondary-100 bg-warm-50">
               <td class="py-4 px-4 font-medium text-warm-900">Panel performance</td>
-              <td class="py-4 px-4 text-center text-warm-600">No effect</td>
-              <td class="py-4 px-4 text-center text-accent-600 font-bold">Improved (cooler temps)</td>
+              <td class="py-4 px-4 text-center text-warm-600">Reduced by soiling</td>
+              <td class="py-4 px-4 text-center text-accent-600 font-bold">Improved (cleaner panels, cooler temps)</td>
             </tr>
             <tr>
               <td class="py-4 px-4 font-medium text-warm-900">ESG / community story</td>
@@ -563,6 +564,14 @@ const faqs = [
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- Dust callout -->
+      <div class="max-w-3xl mx-auto mt-10 bg-warm-50 border border-secondary-200 rounded-xl p-6 md:p-8">
+        <h3 class="text-lg font-bold text-warm-900 mb-2">Less Mowing, Less Dust, Cleaner Panels.</h3>
+        <p class="text-warm-700 leading-relaxed">
+          Conventional mowing throws fine soil dust into the air. That dust settles on panels as soiling — cutting energy production by several percent between cleanings, with severe soiling in dusty environments documented at double-digit losses. By replacing mowing passes with grazing, you eliminate one of the major local sources of dust that ends up on the glass.
+        </p>
       </div>
     </section>
 

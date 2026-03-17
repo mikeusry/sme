@@ -7,27 +7,33 @@
 
 import AdminLayout from '../../layouts/AdminLayout.astro';
 
-// Quick stats - in real implementation, these would come from API/Supabase
 const stats = {
-  pages: 8,
-  products: 12,
+  pages: 25,
+  products: 13,
   blogPosts: 8,
-  fakeContent: 2, // sections marked as fake
+  teamMembers: 10,
 };
 
 const recentActivity = [
-  { action: 'Page updated', target: '/about', time: 'Today' },
-  { action: 'Page updated', target: '/contact', time: 'Today' },
-  { action: 'Header/Footer added', target: 'All pages', time: 'Today' },
-  { action: 'Content extracted', target: '12 products', time: 'Today' },
+  { action: 'Launch prep', target: 'Full site audit + fixes', time: 'Mar 17' },
+  { action: 'Team page', target: '/team — 10 members', time: 'Mar 17' },
+  { action: 'SendGrid + Klaviyo', target: 'Email notifications live', time: 'Mar 17' },
+  { action: 'Redirect map', target: '28 Webflow → Astro redirects', time: 'Mar 17' },
+  { action: 'Solar grazing', target: 'Dust/soiling data, case study', time: 'Mar 16' },
+  { action: 'Medusa audit', target: 'SKUs, prices, thumbnails synced', time: 'Mar 16' },
 ];
 
 const contentStatus = [
-  { page: 'Home', status: 'draft', hasRealContent: true },
-  { page: 'About', status: 'draft', hasRealContent: true, fakeSection: 'The Farm' },
-  { page: 'Contact', status: 'draft', hasRealContent: true, fakeSection: 'FAQ' },
-  { page: 'Products', status: 'draft', hasRealContent: true },
-  { page: 'Land Management', status: 'not started', hasRealContent: false },
+  { page: 'Home', status: 'live', hasRealContent: true },
+  { page: 'About', status: 'live', hasRealContent: true },
+  { page: 'Contact', status: 'live', hasRealContent: true },
+  { page: 'Products (13)', status: 'live', hasRealContent: true },
+  { page: 'Land Management', status: 'live', hasRealContent: true },
+  { page: 'Solar Grazing', status: 'live', hasRealContent: true },
+  { page: 'Case Studies', status: 'live', hasRealContent: true },
+  { page: 'Team', status: 'live', hasRealContent: true },
+  { page: 'Blog (8 posts)', status: 'live', hasRealContent: true },
+  { page: 'Recipes (26)', status: 'live', hasRealContent: true },
 ];
 ---
 
@@ -54,8 +60,8 @@ const contentStatus = [
     </div>
     <div class="admin-card">
       <div class="admin-stat">
-        <div class="stat-value" style="color: #d946ef;">{stats.fakeContent}</div>
-        <div class="stat-label">Fake Sections</div>
+        <div class="stat-value">{stats.teamMembers}</div>
+        <div class="stat-label">Team Members</div>
       </div>
     </div>
   </div>
@@ -80,15 +86,13 @@ const contentStatus = [
               <tr style="border-bottom: 1px solid #e7e5e4;">
                 <td style="padding: 0.5rem;">{item.page}</td>
                 <td style="padding: 0.5rem;">
-                  <span class={`admin-badge admin-badge-${item.status === 'draft' ? 'warning' : 'error'}`}>
+                  <span class={`admin-badge admin-badge-${item.status === 'live' ? 'success' : 'warning'}`}>
                     {item.status}
                   </span>
                 </td>
                 <td style="padding: 0.5rem; color: #78716c;">
-                  {item.fakeSection ? (
-                    <span style="color: #d946ef;">Fake: {item.fakeSection}</span>
-                  ) : item.hasRealContent ? (
-                    <span style="color: #4D6B42;">Real content</span>
+                  {item.hasRealContent ? (
+                    <span style="color: #4D6B42;">Ready</span>
                   ) : (
                     <span style="color: #ef4444;">Needs content</span>
                   )}

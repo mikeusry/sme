@@ -9,13 +9,7 @@
 
 import MainLayout from '../../layouts/MainLayout.astro';
 import CloudinaryImage from '../../components/CloudinaryImage.astro';
-
-// Business info
-const businessInfo = {
-  name: "Soul Miner's Eden",
-  phone: "+1-706-613-4415",
-  email: "info@soulminerseden.com",
-};
+import { business } from '../../lib/business';
 
 // Target property types
 const targetProperties = [
@@ -78,7 +72,7 @@ const benefits = [
   <section class="relative bg-warm-900 text-white py-16 md:py-24 overflow-hidden">
     <div class="absolute inset-0">
       <CloudinaryImage
-        publicId="Animals/IMG_2679_z9f17v"
+        publicId="Soul Miner's/Animals/IMG_2679_z9f17v"
         alt="Grazing animals at Soul Miner's Eden"
         width={1600}
         height={900}
@@ -97,7 +91,7 @@ const benefits = [
           Animals Doing What Animals Do.
         </h1>
         <p class="text-xl md:text-2xl text-warm-200 mb-8">
-          Goats for your property. Sheep for solar farms. From HOA common areas to 150-acre agrivoltaic solar sites, we handle vegetation so you don't have to.
+          Goats for your property. Sheep for solar farms. From HOA common areas to 50-acre agrivoltaic solar sites, we handle vegetation so you don't have to.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="/land-management/how-it-works" class="btn bg-white text-accent-700 hover:bg-accent-50 text-lg px-8 py-4">
@@ -242,12 +236,12 @@ const benefits = [
           </div>
           <div class="rounded-xl overflow-hidden h-64 lg:h-80">
             <CloudinaryImage
-              publicId="Animals/IMG_2674_2_wssltq"
-              alt="Grazing animals at Soul Miner's Eden"
+              publicId="Soul Miner's/team/bo-carter"
+              alt="Bo Carter — grazing operations lead at Soul Miner's Eden"
               width={800}
               height={600}
               crop="fill"
-              gravity="auto"
+              gravity="face"
               class="w-full h-full object-cover rounded-xl"
             />
           </div>
@@ -296,7 +290,7 @@ const benefits = [
           </a>
         </div>
         <p class="mt-6 text-sm text-accent-200">
-          Or just call us at <a href="tel:{businessInfo.phone}" class="underline hover:text-white">(706) 613-4415</a>
+          Or just call us at <a href={business.phoneHref} class="underline hover:text-white">{business.phone}</a>
         </p>
       </div>
     </section>

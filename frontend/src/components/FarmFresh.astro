@@ -1,0 +1,131 @@
+---
+/**
+ * FarmFresh Component — "Coming to the Stand"
+ *
+ * Honor stand teaser section for the homepage.
+ * Currently in "coming soon" mode — collects email signups
+ * for when the farm stand opens.
+ */
+
+import CloudinaryImage from './CloudinaryImage.astro';
+---
+
+<section class="section bg-warm-50">
+  <div class="container-custom">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Image column -->
+      <div class="rounded-2xl overflow-hidden shadow-xl">
+        <CloudinaryImage
+          publicId="Soul Miner's/bin_3"
+          alt="The grain bin farm stand at Soul Miner's Eden"
+          width={800}
+          height={600}
+          crop="fill"
+          gravity="auto"
+          loading="lazy"
+          class="w-full h-full min-h-[350px] object-cover"
+        />
+      </div>
+
+      <!-- Content column -->
+      <div>
+        <span class="inline-block bg-primary-100 text-primary-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">Coming Soon</span>
+
+        <h2 class="text-3xl md:text-5xl font-display font-bold text-warm-900 mb-6 leading-tight">
+          The Eden Farm Stand
+        </h2>
+
+        <p class="text-lg text-warm-700 leading-relaxed mb-6">
+          Pastured eggs, raw milk, whole chickens, bone broth, seasonal fruit, and honey — raised on our land, available at our honor-system farm stand on Luke Road.
+        </p>
+
+        <ul class="space-y-3 mb-8 text-warm-600">
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-accent-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Soy-free, corn-free pastured eggs</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-accent-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Grade A raw milk from our Jersey cow</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-accent-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Pasture-raised chicken and bone broth</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-accent-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Seasonal fruit, honey, and elderberry</span>
+          </li>
+        </ul>
+
+        <!-- Email signup for stand opening -->
+        <form
+          id="stand-signup-form"
+          class="flex flex-col sm:flex-row gap-3"
+        >
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="your@email.com"
+            class="input flex-1 px-4 py-3"
+            aria-label="Email address for farm stand updates"
+          />
+          <input type="hidden" name="type" value="farm-stand-interest" />
+          <button
+            type="submit"
+            class="btn-primary px-6 py-3 whitespace-nowrap"
+          >
+            Notify Me When We Open
+          </button>
+        </form>
+        <p class="text-xs text-warm-500 mt-2">
+          We'll send one email when the stand opens. No spam, ever.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.getElementById('stand-signup-form')?.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var form = e.target;
+    var email = form.querySelector('input[name="email"]').value;
+    var btn = form.querySelector('button[type="submit"]');
+
+    btn.disabled = true;
+    btn.textContent = 'Saving...';
+
+    try {
+      var res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          name: '',
+          message: 'Farm stand interest signup',
+          type: 'farm-stand-interest',
+        }),
+      });
+
+      if (res.ok) {
+        form.innerHTML = '<p class="text-accent-600 font-semibold py-3">You\'re on the list! We\'ll let you know when the stand opens.</p>';
+      } else {
+        throw new Error('Failed');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Notify Me When We Open';
+      alert('Something went wrong. Please try again.');
+    }
+  });
+</script>

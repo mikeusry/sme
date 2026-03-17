@@ -391,48 +391,6 @@ export async function completeCart(cartId: string) {
 }
 
 // =============================================================================
-// ORDERS
-// =============================================================================
-
-/**
- * Get orders (requires authentication - admin only)
- * For customer-facing orders, use /store/customers/me/orders
- */
-export async function getOrders(params?: Record<string, any>) {
-  const searchParams = new URLSearchParams()
-  if (params) {
-    Object.entries(params).forEach(([key, value]) => {
-      if (value !== undefined) {
-        searchParams.append(key, String(value))
-      }
-    })
-  }
-
-  const query = searchParams.toString() ? `?${searchParams.toString()}` : ""
-  const data = await medusaFetch<{ orders: Order[]; count: number }>(`/admin/orders${query}`)
-  return data
-}
-
-/**
- * Get a single order by ID
- */
-export async function getOrder(orderId: string) {
-  const data = await medusaFetch<{ order: Order }>(`/admin/orders/${orderId}`)
-  return data.order
-}
-
-/**
- * Update order metadata
- */
-export async function updateOrderMetadata(orderId: string, metadata: Record<string, any>) {
-  const data = await medusaFetch<{ order: Order }>(`/admin/orders/${orderId}`, {
-    method: "POST",
-    body: { metadata },
-  })
-  return data.order
-}
-
-// =============================================================================
 // HELPERS
 // =============================================================================
 

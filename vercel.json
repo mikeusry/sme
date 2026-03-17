@@ -19,5 +19,41 @@
         { "key": "X-Frame-Options", "value": "DENY" }
       ]
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/medusa/:path*",
+      "destination": "${MEDUSA_BACKEND_URL}/:path*"
+    }
+  ],
+  "redirects": [
+    { "source": "/about-us", "destination": "/about", "permanent": true },
+    { "source": "/contact-us", "destination": "/contact", "permanent": true },
+    { "source": "/original-home", "destination": "/", "permanent": true },
+    { "source": "/privacy-policy", "destination": "/privacy", "permanent": true },
+    { "source": "/terms-of-service", "destination": "/terms", "permanent": true },
+    { "source": "/landscapes", "destination": "/products", "permanent": true },
+    { "source": "/landscapes/compost", "destination": "/products/compost", "permanent": true },
+    { "source": "/landscapes/black-mulch", "destination": "/products/black-mulch", "permanent": true },
+    { "source": "/landscapes/brown-mulch", "destination": "/products/brown-mulch", "permanent": true },
+    { "source": "/landscapes/double-ground-hardwood-mulch", "destination": "/products/double-ground-hardwood-mulch", "permanent": true },
+    { "source": "/landscapes/pine-bark-mulch", "destination": "/products/pine-bark-mulch", "permanent": true },
+    { "source": "/landscapes/red-mulch", "destination": "/products/red-mulch", "permanent": true },
+    { "source": "/landscapes/single-ground-mulch", "destination": "/products/single-ground-mulch", "permanent": true },
+    { "source": "/landscapes/wood-chips", "destination": "/products/wood-chips", "permanent": true },
+    { "source": "/landscapes/bioretention-soil", "destination": "/products/bioretention-soil", "permanent": true },
+    { "source": "/landscapes/sod-soil", "destination": "/products/sod-soil", "permanent": true },
+    { "source": "/landscapes/topsoil", "destination": "/products/topsoil", "permanent": true },
+    { "source": "/landscapes/used-turf", "destination": "/products/used-artificial-turf", "permanent": true },
+    { "source": "/paypal-checkout", "destination": "/checkout", "permanent": true },
+    { "source": "/order-confirmation", "destination": "/checkout", "permanent": true },
+    { "source": "/recipe/video", "destination": "/recipes", "permanent": true },
+    { "source": "/recipe/collections", "destination": "/recipes", "permanent": true },
+    { "source": "/recipe/favorites", "destination": "/recipes", "permanent": true },
+    { "source": "/collection/:slug*", "destination": "/recipes", "permanent": true },
+    { "source": "/people/:slug*", "destination": "/about", "permanent": true },
+    { "source": "/tags/:slug*", "destination": "/recipes", "permanent": true },
+    { "source": "/testimonials/:slug*", "destination": "/about", "permanent": true },
+    { "source": "/frequently-asked-questions/:slug*", "destination": "/resources/delivery", "permanent": true }
   ]
 }

@@ -1,0 +1,181 @@
+---
+/**
+ * Team Page
+ *
+ * Meet the people behind Soul Miner's Eden.
+ * Route: /team
+ */
+
+import MainLayout from '../layouts/MainLayout.astro';
+import CloudinaryImage from '../components/CloudinaryImage.astro';
+
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://www.soulminerseden.com';
+
+interface TeamMember {
+  name: string;
+  role: string;
+  bio: string;
+  photo?: string;
+  initials: string;
+}
+
+const team: TeamMember[] = [
+  {
+    name: "Bo Carter",
+    role: "Grazing Operations Lead",
+    bio: "Bo has been raising and managing livestock out of Oconee County for years — goats, sheep, rotational grazing, sawmill work, the whole picture. He leads all grazing operations at Soul Miner's Eden, manages the animals, designs grazing plans, and works directly with solar site operators and property managers.",
+    photo: "Soul Miner's/team/bo-carter",
+    initials: "BC",
+  },
+  {
+    name: "Mike Usry",
+    role: "Founder",
+    bio: "Entrepreneur, soil biology nerd, and former UGA football letterman. Mike built Southland Organics on the conviction that biology beats chemistry — then put 65 acres on the line to prove it. He handles the business side of the farm: pricing, contracts, scheduling, and the vision that ties compost, livestock, and solar grazing into one operation.",
+    photo: "Southland Website/team/MIKE_Usry",
+    initials: "MU",
+  },
+  {
+    name: "Matt Austin",
+    role: "Landscape Supply & Delivery",
+    bio: "Matt runs the landscape supply side of the operation — compost screening, mulch production, loading, and delivery logistics across the Athens area. If a supersack shows up at your job site on time, that was Matt.",
+    photo: "Southland Website/team/MATT_Austin",
+    initials: "MA",
+  },
+  {
+    name: "Ayn Parker Usry",
+    role: "Social Media & Brand",
+    bio: "Mike and Karin's daughter. Ayn Parker manages the Soul Miner's Eden Instagram, curates the visual identity of the farm online, and makes sure every post is beautiful first. She's the voice behind @soulminerseden.",
+    photo: "AP_whm5eq",
+    initials: "AP",
+  },
+  {
+    name: "Andi Ausborn",
+    role: "Customer Service & Sales",
+    bio: "Andi is the first voice you'll hear when you call the farm. She handles customer inquiries, processes orders, and coordinates between the supply yard, the delivery schedule, and you.",
+    photo: "Southland Website/team/ANDI_Ausborn",
+    initials: "AA",
+  },
+  {
+    name: "Riley Austin",
+    role: "Animal Care",
+    bio: "Matt's daughter. Riley is one of the farm's most dedicated animal caretakers — she's out with the livestock before most people are out of bed. If a lamb needs bottle-feeding or a hen's gone broody, Riley's already on it.",
+    initials: "RA",
+  },
+  {
+    name: "Harper Austin",
+    role: "Animal Care",
+    bio: "Matt's other daughter and Riley's partner in crime. Harper shares the same love for the animals and the same willingness to get muddy doing it. Between the two of them, nothing on four legs goes unnoticed.",
+    initials: "HA",
+  },
+  {
+    name: "Brandt Usry",
+    role: "Farm Hand",
+    bio: "Ayn Parker's little brother. Brandt can sometimes be spotted behind the wheel of the large wheel loader — looking very serious about it — or out feeding cows like he's been doing it for decades. He hasn't. But don't tell him that.",
+    initials: "BU",
+  },
+  {
+    name: "Sharon Lichey",
+    role: "Grammy",
+    bio: "Grammy keeps the farm kitchen running and the family fed. If there's farmers cheese being pressed, bone broth simmering, or elderberry syrup being bottled, Sharon's behind it. She's also the unofficial quality control department for anything that comes out of the oven.",
+    initials: "SL",
+  },
+  {
+    name: "Karin Usry",
+    role: "Co-Founder & Operations",
+    bio: "Karin keeps the entire operation running — accounts, logistics, customer service, scheduling, all of it. She won't go near the animals, but hand her what comes back from the processor and she'll turn it into farmers cheese, bone broth, and things you didn't know you needed. The livestock are Bo's department. The kitchen is hers.",
+    photo: "Southland Website/team/KARIN_Usry",
+    initials: "KU",
+  },
+];
+
+const teamSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "Our Team | Soul Miner's Eden",
+  "description": "Meet the people behind Soul Miner's Eden — a regenerative demonstration farm in Bogart, Georgia.",
+  "url": `${siteUrl}/team`,
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Soul Miner's Eden",
+    "url": siteUrl,
+    "employee": team.map((member) => ({
+      "@type": "Person",
+      "name": member.name,
+      "jobTitle": member.role,
+      "description": member.bio,
+    })),
+  },
+};
+---
+
+<MainLayout
+  title="Our Team | Soul Miner's Eden"
+  description="Meet the people behind Soul Miner's Eden. A small team running a 65-acre regenerative farm, landscape supply yard, and solar grazing operation in Bogart, Georgia."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(teamSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-warm-900 via-warm-800 to-warm-900 text-white py-16 md:py-24">
+    <div class="container-custom text-center">
+      <p class="text-sm font-medium uppercase tracking-wide text-accent-300 mb-3">Soul Miner's Eden</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">Meet Our Team</h1>
+      <p class="max-w-2xl mx-auto text-lg md:text-xl text-warm-300">
+        A small crew doing real work — regenerative farming, landscape supply, and land management in Northeast Georgia.
+      </p>
+    </div>
+  </section>
+
+  <!-- Team Grid -->
+  <section class="bg-warm-50 py-16 md:py-20">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {team.map((member) => (
+          <div class="bg-white rounded-2xl shadow-sm border border-warm-200 overflow-hidden hover:shadow-md transition-shadow">
+            <!-- Photo or Initials -->
+            <div class="aspect-[3/4] overflow-hidden bg-warm-100">
+              {member.photo ? (
+                <CloudinaryImage
+                  publicId={member.photo}
+                  alt={member.name}
+                  width={400}
+                  height={533}
+                  crop="fill"
+                  gravity="face"
+                  loading="lazy"
+                  class="w-full h-full object-cover"
+                />
+              ) : (
+                <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-warm-200 to-warm-300">
+                  <span class="text-5xl font-display font-bold text-warm-500">{member.initials}</span>
+                </div>
+              )}
+            </div>
+
+            <!-- Info -->
+            <div class="p-6">
+              <h2 class="text-xl font-display font-bold text-warm-900 mb-1">{member.name}</h2>
+              <p class="text-sm font-medium text-accent-600 mb-4">{member.role}</p>
+              <p class="text-warm-600 text-sm leading-relaxed">{member.bio}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-white py-16 border-t border-warm-200">
+    <div class="container-custom text-center max-w-3xl mx-auto">
+      <h2 class="text-3xl font-display font-bold text-warm-900 mb-4">Want to Work With Us?</h2>
+      <p class="text-lg text-warm-600 mb-8">
+        Whether you need landscape supply, want to talk solar grazing, or just want to visit the farm — we'd love to hear from you.
+      </p>
+      <a href="/contact" class="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-white font-semibold px-8 py-4 rounded-lg transition-colors">
+        Get in Touch
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </section>
+</MainLayout>

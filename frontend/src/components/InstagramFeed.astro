@@ -23,6 +23,7 @@
 
 import feedData from '../../../data/instagram-feed.json';
 import { socialPlatforms, instagramHandle } from '../lib/social';
+import FarmPhotoGrid from './FarmPhotoGrid.astro';
 
 export interface Props {
   headline?: string;
@@ -41,6 +42,9 @@ const {
 const instagramUrl = socialPlatforms.instagram.url;
 const posts = feedData.posts.slice(0, limit);
 
+// Detect placeholder shortcodes — render Cloudinary grid fallback instead
+const hasRealShortcodes = posts.length > 0 && !posts[0].shortcode.startsWith('REPLACE_WITH_REAL');
+
 const pillarLabels: Record<string, string> = {
   'today-at-the-stand': 'TODAY AT THE STAND',
   'around-the-pavilion': 'AROUND THE PAVILION',
@@ -49,6 +53,7 @@ const pillarLabels: Record<string, string> = {
 };
 ---
 
+{hasRealShortcodes ? (
 <section class="py-16 md:py-24 bg-warm-50" aria-labelledby="instagram-feed-heading">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
@@ -144,3 +149,7 @@ const pillarLabels: Record<string, string> = {
     observer.observe(feedGrid);
   });
 </script>
+) : (
+  <!-- Fallback: Cloudinary photo grid when no real Instagram shortcodes -->
+  <FarmPhotoGrid headline={headline} subheadline={subheadline} />
+)}

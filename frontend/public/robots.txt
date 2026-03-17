@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /cart
+Disallow: /checkout
+Disallow: /demo/
+
+Sitemap: https://www.soulminerseden.com/sitemap-index.xml

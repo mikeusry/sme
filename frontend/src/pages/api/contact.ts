@@ -8,6 +8,8 @@
 
 import type { APIRoute } from 'astro';
 import { createClient } from '@supabase/supabase-js';
+import { sendContactNotification } from '../../lib/notifications';
+import { subscribeToList } from '../../lib/klaviyo';
 
 export const prerender = false;
 
@@ -48,6 +50,23 @@ export const POST: APIRoute = async ({ request }) => {
     } else {
       console.log('Contact form submission (no Supabase configured):', { name, email, subject });
     }
+
+    // Subscribe to Klaviyo list
+    await subscribeToList({
+      email,
+      name,
+      phone,
+      source: data.type || 'contact_form',
+    }).catch(err => console.error('Klaviyo subscribe failed:', err));
+
+    // Send email notification to farm team
+    await sendContactNotification({
+      name,
+      email,
+      phone,
+      message,
+      type: data.type || 'contact',
+    }).catch(err => console.error('Email notification failed:', err));
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,

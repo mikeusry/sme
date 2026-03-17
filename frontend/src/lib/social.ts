@@ -29,8 +29,8 @@ export const socialPlatforms: Record<string, SocialPlatform> = {
     ariaLabel: 'Follow @soulminerseden on Instagram',
   },
   youtube: {
-    url: 'https://www.youtube.com/playlist?list=PLzhFffk45jBfnuHfFbLlaR2GajzI_vMZR',
-    handle: 'soulminerseden',
+    url: 'https://www.youtube.com/@SoulMinersEden',
+    handle: '@SoulMinersEden',
     label: 'YouTube',
     ariaLabel: 'Watch Soul Miner\'s Eden on YouTube',
   },

@@ -6,22 +6,10 @@
  */
 
 import { getSocialPlatformsArray, socialIconPaths } from '../lib/social';
+import { business } from '../lib/business';
 
 const currentYear = new Date().getFullYear();
 const socialLinks = getSocialPlatformsArray();
-
-const businessInfo = {
-  name: "Soul Miner's Eden",
-  address: {
-    street: "189 Luke Road",
-    city: "Bogart",
-    state: "GA",
-    zip: "30622"
-  },
-  phone: "(706) 613-4415",
-  phoneHref: "tel:+17066134415",
-  email: "info@soulminerseden.com",
-};
 
 const footerLinks = {
   compostAndMulch: [
@@ -61,21 +49,21 @@ const footerLinks = {
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
       <!-- Logo, Wheelbarrow Mark & Contact Info -->
       <div class="lg:col-span-1">
-        <a href="/" class="inline-block mb-4">
+        <div class="flex items-center gap-4 mb-5">
+          <a href="/" class="inline-block">
+            <img
+              src="/brand/logo-reversed.svg"
+              alt="Soul Miner's Eden"
+              class="h-12 w-auto"
+            />
+          </a>
           <img
-            src="/brand/logo-reversed.svg"
-            alt="Soul Miner's Eden"
-            class="h-12 w-auto"
+            src="/brand/mark-wheelbarrow-reversed.svg"
+            alt=""
+            class="h-8 w-auto opacity-40"
+            aria-hidden="true"
           />
-        </a>
-
-        <!-- Wheelbarrow mark -->
-        <img
-          src="/brand/mark-wheelbarrow-reversed.svg"
-          alt=""
-          class="h-8 w-auto mb-5 opacity-40"
-          aria-hidden="true"
-        />
+        </div>
 
         <div class="space-y-3 text-sm">
           <p class="flex items-start gap-2">
@@ -84,16 +72,16 @@ const footerLinks = {
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
             <span>
-              {businessInfo.address.street}<br />
-              {businessInfo.address.city}, {businessInfo.address.state} {businessInfo.address.zip}
+              {business.address.street}<br />
+              {business.address.city}, {business.address.state} {business.address.zip}
             </span>
           </p>
           <p>
-            <a href={businessInfo.phoneHref} class="flex items-center gap-2 hover:text-primary-400 transition-colors">
+            <a href={business.phoneHref} class="flex items-center gap-2 hover:text-primary-400 transition-colors">
               <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              {businessInfo.phone}
+              {business.phone}
             </a>
           </p>
           <p>

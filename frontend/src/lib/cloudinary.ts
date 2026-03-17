@@ -92,9 +92,13 @@ export function buildCloudinaryUrl(
 
   // Construct full URL
   const transformString = transformations.join('/');
-  const fullPublicId = publicId.startsWith(cloudFolder)
+  // Skip folder prefix if publicId already contains a folder path outside cloudFolder
+  const isExternalFolder = publicId.includes('/') && !publicId.startsWith(cloudFolder);
+  const fullPublicId = isExternalFolder
     ? publicId
-    : `${cloudFolder}/${publicId}`;
+    : publicId.startsWith(cloudFolder)
+      ? publicId
+      : `${cloudFolder}/${publicId}`;
 
   // Encode the public ID to handle spaces and special characters
   const encodedPublicId = fullPublicId.split('/').map(segment => encodeURIComponent(segment)).join('/');

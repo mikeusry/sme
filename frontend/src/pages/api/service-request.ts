@@ -14,7 +14,10 @@ export const prerender = false;
 export const POST: APIRoute = async ({ request }) => {
   try {
     const data = await request.json();
-    const { propertyType, propertySize, propertyLocation, currentMaintenance, timeline, name, email, phone, company, notes } = data;
+    const {
+      property_type, property_size, location, current_maintenance, timeline,
+      name, email, phone, organization, notes
+    } = data;
 
     // Validate required fields
     if (!name || !email || !phone) {
@@ -32,15 +35,15 @@ export const POST: APIRoute = async ({ request }) => {
       const supabase = createClient(supabaseUrl, supabaseKey);
 
       const { error } = await supabase.from('service_requests').insert({
-        property_type: propertyType || null,
-        property_size: propertySize || null,
-        property_location: propertyLocation || null,
-        current_maintenance: currentMaintenance || null,
+        property_type: property_type || null,
+        property_size: property_size || null,
+        property_location: location || null,
+        current_maintenance: current_maintenance || null,
         timeline: timeline || null,
         name,
         email,
         phone,
-        company: company || null,
+        company: organization || null,
         notes: notes || null,
         source: 'website_service_request',
         created_at: new Date().toISOString(),
@@ -50,7 +53,7 @@ export const POST: APIRoute = async ({ request }) => {
         console.error('Supabase insert error:', error);
       }
     } else {
-      console.log('Service request (no Supabase configured):', { name, email, propertyType });
+      console.log('Service request (no Supabase configured):', { name, email, property_type });
     }
 
     return new Response(JSON.stringify({ success: true }), {

@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://soulminerseden.com',
+  site: 'https://www.soulminerseden.com',
   adapter: vercel(),
   integrations: [
     sitemap({
