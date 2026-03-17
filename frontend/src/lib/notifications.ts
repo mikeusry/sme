@@ -249,7 +249,7 @@ export async function sendContactNotification(data: {
   `;
 
   return sendEmail({
-    to: 'farm@soulminerseden.com',
+    to: 'mike@southlandorganics.com',
     subject: `New inquiry from ${data.name || data.email} — soulminerseden.com`,
     html: brandWrap('Website Inquiry', body),
   });
