@@ -66,6 +66,17 @@ const canonicalUrl = Astro.url.href;
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
     <!-- Klaviyo tracking -->
     <script is:inline src={`https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=${import.meta.env.PUBLIC_KLAVIYO_PUBLIC_KEY || 'Rf3JPp'}`} async></script>
+
+    <!-- point.dog lead-gen pixel -->
+    <script is:inline>
+      window.pdPixelConfig = {
+        brandId: 'soul-miners-eden',
+        endpoint: 'https://pixel.point.dog/collect',
+        servicePatterns: ['/land-management/', '/solar-grazing/', '/products/'],
+        defaultLeadValue: 100,
+      };
+    </script>
+    <script is:inline src="https://cdn.point.dog/pixel/pd-pixel-leadgen.min.js" async></script>
   </head>
   <body>
     <slot />
