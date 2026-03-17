@@ -54,3 +54,4 @@ Thumbs.db
 *.seed
 *.pid.lock
 frontend/src/brand/photos/
+.vercel
