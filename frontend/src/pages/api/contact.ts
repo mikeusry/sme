@@ -18,9 +18,10 @@ export const POST: APIRoute = async ({ request }) => {
     const data = await request.json();
     const { name, email, phone, subject, message } = data;
 
-    // Validate required fields
-    if (!name || !email || !message) {
-      return new Response(JSON.stringify({ error: 'Name, email, and message are required.' }), {
+    // Validate required fields — email-only signups (events, farm stand) skip name/message
+    const isSignup = data.type === 'events-interest' || data.type === 'farm-stand-interest';
+    if (!email || (!isSignup && (!name || !message))) {
+      return new Response(JSON.stringify({ error: 'Email is required.' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
       });
