@@ -1,0 +1,639 @@
+---
+/**
+ * Why Expertise Matters — The Science Behind Professional Solar Grazing
+ *
+ * Authority page positioning SME's agricultural expertise as the differentiator
+ * in solar vegetation management. Science-backed talking points on parasites,
+ * soil biology, rotational grazing, and what goes wrong without expertise.
+ *
+ * SEO targets: "solar grazing best practices", "rotational grazing solar farms",
+ *              "solar farm vegetation management expertise", "agrivoltaic grazing management"
+ * Route: /land-management/why-expertise-matters
+ */
+
+import MainLayout from '../../layouts/MainLayout.astro';
+import CloudinaryImage from '../../components/CloudinaryImage.astro';
+import { buildCloudinaryUrl } from '../../lib/cloudinary';
+
+const grazingImages = {
+  hero: "Soul Miner's/Animals/solar-grazing/IMG_3679_dkimqi",
+  section: "Soul Miner's/Animals/solar-grazing/IMG_3685_dqh8sh",
+  detail: "Soul Miner's/Animals/solar-grazing/IMG_3683_kzbayx",
+  portrait1: "Soul Miner's/Animals/solar-grazing/IMG_3677_dri4bj",
+  portrait2: "Soul Miner's/Animals/solar-grazing/IMG_3692_ovhxly",
+  gallery: "Soul Miner's/Animals/solar-grazing/IMG_3686_szdopu",
+  farmSidebar: "Soul Miner's/Animals/IMG_5882_btfte7",
+};
+
+const ogImage = buildCloudinaryUrl(grazingImages.hero, {
+  width: 1200,
+  height: 630,
+  crop: 'fill',
+  gravity: 'auto',
+  quality: 'auto',
+  format: 'jpg',
+});
+
+import { business } from '../../lib/business';
+---
+
+<MainLayout
+  title="Why Expertise Matters in Solar Grazing | The Science | Soul Miner's Eden"
+  description="Most solar grazers don't know sheep. We're farmers first. The science behind rotational grazing, parasite management, and soil biology on solar sites — and what goes wrong without it."
+  ogImage={ogImage}
+>
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Why Expertise Matters in Solar Grazing",
+    "description": "The science behind professional solar grazing management — parasites, soil biology, rotational grazing, and what goes wrong without agricultural expertise.",
+    "author": {
+      "@type": "Organization",
+      "name": "Soul Miner's Eden",
+      "url": "https://www.soulminerseden.com"
+    },
+    "publisher": {
+      "@type": "LocalBusiness",
+      "name": "Soul Miner's Eden",
+      "telephone": "+1-706-613-4415"
+    }
+  })} />
+
+  <!-- Hero Section -->
+  <section class="relative bg-warm-900 text-white py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0">
+      <CloudinaryImage
+        publicId={grazingImages.detail}
+        alt="Sheep grazing under solar panels in Georgia"
+        width={1600}
+        height={900}
+        crop="fill"
+        gravity="auto"
+        loading="eager"
+        fetchpriority="high"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-warm-900/90 via-warm-900/70 to-warm-900/40"></div>
+    </div>
+
+    <div class="container-custom relative z-10">
+      <div class="max-w-3xl">
+        <nav class="text-warm-300 text-sm mb-4">
+          <a href="/land-management" class="hover:text-white">Land Management</a>
+          <span class="mx-2">/</span>
+          <a href="/land-management/solar-grazing" class="hover:text-white">Solar Grazing</a>
+          <span class="mx-2">/</span>
+          <span>Why Expertise Matters</span>
+        </nav>
+
+        <div class="inline-flex items-center gap-2 bg-primary-600/80 backdrop-blur-sm px-5 py-2 rounded-full text-sm font-medium mb-6">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          Farmers First. Always.
+        </div>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight">
+          Not All Solar Grazing<br class="hidden md:block" />
+          <span class="text-accent-300">Is Created Equal.</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-warm-100 mb-4">
+          Most solar grazers bought sheep to manage vegetation. We manage vegetation because we know sheep. That's a fundamentally different starting point — and the science proves why it matters.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+          <a href="/land-management/request" class="btn bg-white text-warm-900 hover:bg-warm-100 text-lg px-8 py-4 font-semibold">
+            Get Your Free Site Assessment
+          </a>
+          <a href="/land-management/solar-grazing" class="btn border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4">
+            Our Solar Grazing Program
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Problem Statement -->
+  <section class="bg-warm-800 text-white py-10">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-xl md:text-2xl text-warm-200 leading-relaxed font-medium">
+          "The horror stories asset owners tell — dead sheep, bare ground, sites that still need mowing — are exactly what the science predicts when someone without livestock experience puts animals under panels."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="container-custom py-16">
+
+    <!-- Intro -->
+    <section class="max-w-4xl mx-auto mb-20">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-8">
+        The Expertise Gap in Solar Grazing
+      </h2>
+
+      <div class="prose prose-lg max-w-none text-warm-700 space-y-6">
+        <p class="text-xl leading-relaxed">
+          Solar grazing is growing fast. Over 113,000 sheep graze 129,000 acres across 500+ solar sites in the U.S. But growth is outpacing expertise. Too many operators are solar contractors who bought some animals — not livestock producers who understand grazing management, animal health, and soil biology.
+        </p>
+
+        <p>
+          The result? Parasite-ridden flocks, eroding ground, concentrated manure that O&M crews complain about, and sites that still need mechanical mowing to stay in compliance. Asset owners get burned, and the whole industry gets a bad reputation.
+        </p>
+
+        <div class="bg-accent-50 border-l-4 border-accent-500 p-6 rounded-r-lg my-8">
+          <p class="text-warm-800 font-medium">
+            National agrivoltaic programs — including NREL's InSPIRE and the Agrisolar Clearinghouse — now explicitly recommend that every grazed solar site have a <strong>written grazing plan</strong> with stocking rates, rotation schedules, rest periods, and vegetation standards. Not "put sheep out and hope for the best."
+          </p>
+          <p class="text-warm-500 text-xs italic mt-3">
+            Source: Agrisolar Clearinghouse Best Management Practices
+          </p>
+        </div>
+
+        <p>
+          We're a regenerative farm in Bogart, Georgia. We understand compost science, rotational grazing, and native species establishment at a level most vegetation management companies never will — because this is what we do every day, not a side business we added to a solar contracting operation.
+        </p>
+      </div>
+    </section>
+
+    <!-- THE PARASITE PROBLEM -->
+    <section class="mb-20 -mx-4 md:-mx-8 lg:-mx-16">
+      <div class="bg-gradient-to-br from-warm-100 via-warm-50 to-warm-100 py-16 px-4 md:px-8 lg:px-16 rounded-2xl">
+        <div class="max-w-5xl mx-auto">
+          <p class="text-center text-primary-600 text-sm uppercase tracking-wider font-medium mb-3">The Science</p>
+          <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-3 text-center">
+            The Parasite Problem Nobody Talks About
+          </h2>
+          <p class="text-xl text-warm-600 text-center mb-12 font-medium max-w-3xl mx-auto">
+            In Georgia's warm, humid climate, internal parasites are the number one threat to sheep on solar sites. How you manage grazing determines whether you control them — or they control you.
+          </p>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- The Biology -->
+            <div class="bg-white rounded-xl p-8 shadow-sm border border-secondary-100">
+              <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mb-5">
+                <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-warm-900 mb-4">The Biology</h3>
+              <div class="text-warm-700 space-y-3 text-sm">
+                <p>
+                  Barber pole worm (<em>Haemonchus contortus</em>) completes its lifecycle in about 20 days. A single female produces 5,000 to 15,000 eggs per day. Under continuous grazing, pasture contamination is exponential.
+                </p>
+                <p>
+                  About 80% of infective larvae live in the first 5 centimeters of vegetation. When sheep graze the same ground continuously, they're walking through a minefield of parasites with every bite.
+                </p>
+                <p class="text-warm-500 text-xs italic">
+                  Sources: PMC6755402; SCOPS Veterinary Parasitology
+                </p>
+              </div>
+            </div>
+
+            <!-- How Rotation Breaks the Cycle -->
+            <div class="bg-white rounded-xl p-8 shadow-sm border border-secondary-100">
+              <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center mb-5">
+                <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-warm-900 mb-4">How Rotation Breaks the Cycle</h3>
+              <div class="text-warm-700 space-y-3 text-sm">
+                <p>
+                  Research shows rotational grazing can cut worm burdens roughly in half compared with continuous grazing. Short grazing bouts of 3 to 4 days, followed by 35 to 60 days of rest, keep grass taller than the parasite zone and give larvae time to die off.
+                </p>
+                <p>
+                  In warm climates like Georgia, infective larvae on pasture typically survive 30 to 35 days. Pastures become relatively clean by 90 days after contamination. Our rotation schedule is designed around this biology.
+                </p>
+                <p class="text-warm-500 text-xs italic">
+                  Sources: Missouri Extension G2613; PMC6755402
+                </p>
+              </div>
+            </div>
+
+            <!-- The Dewormer Trap -->
+            <div class="bg-white rounded-xl p-8 shadow-sm border border-secondary-100">
+              <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mb-5">
+                <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-warm-900 mb-4">The Dewormer Trap</h3>
+              <div class="text-warm-700 space-y-3 text-sm">
+                <p>
+                  Most solar grazers lean on frequent, whole-flock deworming to compensate for poor grazing management. The science is clear: this fast-tracks drug-resistant worms. Resistance to all major dewormer classes is now documented in small ruminants across the U.S.
+                </p>
+                <p>
+                  We use FAMACHA scoring and targeted selective treatment — treating only animals that need it, preserving drug effectiveness for when it actually matters.
+                </p>
+                <p class="text-warm-500 text-xs italic">
+                  Source: PMC9219448
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOIL BIOLOGY: THE HIDDEN SYSTEM -->
+    <section class="max-w-4xl mx-auto mb-20">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-8">
+        What's Happening Underground
+      </h2>
+
+      <div class="prose prose-lg max-w-none text-warm-700 space-y-6">
+        <p class="text-xl leading-relaxed">
+          Vegetation management isn't just what you see above the soil. It's what's happening below it. And the way you manage animals determines whether your site's soil is building — or dying.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+        <!-- Dung Beetles -->
+        <div class="bg-white border border-secondary-200 rounded-xl p-8">
+          <h3 class="text-xl font-bold text-warm-900 mb-4">The Dung Beetle Problem</h3>
+          <div class="text-warm-700 space-y-4 text-sm">
+            <p>
+              Ivermectin-heavy deworming programs don't just hit parasites inside the animal. The residues in manure knock back dung beetle populations by roughly two-thirds and slow manure breakdown across the entire pasture.
+            </p>
+            <p>
+              Without dung beetles, manure sits on the surface. Flies breed in it. Nutrients don't cycle back into the soil. O&M crews complain about the mess. And the "natural fertilization" that solar grazing promises? It never happens.
+            </p>
+            <div class="bg-warm-50 rounded-lg p-4 mt-4">
+              <p class="text-warm-800 font-semibold text-base">
+                ~66% decrease in dung beetle occurrence under conventional deworming programs vs. regenerative systems.
+              </p>
+              <p class="text-warm-500 text-xs italic mt-2">
+                Source: SD State Extension; PLOS ONE
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soil Carbon -->
+        <div class="bg-white border border-secondary-200 rounded-xl p-8">
+          <h3 class="text-xl font-bold text-warm-900 mb-4">Building Soil, Not Depleting It</h3>
+          <div class="text-warm-700 space-y-4 text-sm">
+            <p>
+              Multi-site research on commercial solar farms found that grazed sites had higher soil organic matter (4.14% vs 3.70%) and significantly better soil pH (6.20 vs 5.81) than non-grazed sites.
+            </p>
+            <p>
+              In the Southeast U.S. specifically, adaptive multi-paddock ranches showed over 300% higher standing crop biomass and about 13% higher soil organic carbon to one meter depth compared with continuously grazed operations.
+            </p>
+            <div class="bg-warm-50 rounded-lg p-4 mt-4">
+              <p class="text-warm-800 font-semibold text-base">
+                That means better root systems, more resilient turf, fewer erosion headaches under your panels — and a site that gets better over the life of the project.
+              </p>
+              <p class="text-warm-500 text-xs italic mt-2">
+                Sources: ASGA/NYSERDA; Agrisolar Clearinghouse; Teague et al.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EROSION AND TRAMPLING -->
+    <section class="mb-20">
+      <div class="bg-warm-100 rounded-2xl p-8 md:p-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <p class="text-accent-600 font-medium text-sm uppercase tracking-wider mb-3">Erosion Control</p>
+            <h2 class="text-3xl font-display font-bold text-warm-900 mb-3">
+              The Living Roller-Crimper
+            </h2>
+            <p class="text-warm-500 font-medium text-sm mb-6">How high-density, short-duration grazing protects your site from erosion</p>
+            <div class="text-warm-700 space-y-4">
+              <p>
+                Solar sites are built on construction-disturbed soil. Erosion is one of the most common — and expensive — problems asset owners face. Rills form under panels. Access roads wash out. Sediment moves.
+              </p>
+              <p>
+                Done right, high-density, short-duration grazing works like a living roller-crimper. Animals eat what they need and trample the rest into a mulch layer that armors the soil surface. Research shows this boosts water infiltration and reduces erosion compared to continuously grazed ground.
+              </p>
+              <p>
+                We use stock densities high enough to put litter on the ground and protect soil, but not the extreme levels that reduce animal performance. That balance is what separates a livestock producer from someone who read about mob grazing on the internet.
+              </p>
+            </div>
+            <p class="text-warm-500 text-xs italic mt-4">
+              Sources: Sand County Foundation; NDSU Grazing Management; UNL Research
+            </p>
+          </div>
+          <div class="rounded-xl overflow-hidden">
+            <CloudinaryImage
+              publicId={grazingImages.section}
+              alt="Managed grazing on solar site"
+              width={800}
+              height={600}
+              crop="fill"
+              gravity="auto"
+              loading="lazy"
+              class="w-full h-64 lg:h-80 object-cover rounded-xl"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT GOES WRONG -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-4 text-center">
+        What Goes Wrong Without Expertise
+      </h2>
+      <p class="text-xl text-warm-600 text-center mb-12 max-w-2xl mx-auto">
+        These aren't hypotheticals. They're what the science predicts — and what asset owners report — when grazing is managed by people who don't understand livestock.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white border border-secondary-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+          <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2 text-warm-900">Parasite Explosions</h3>
+          <p class="text-warm-600 text-sm">Continuous grazing in warm climates creates exponential parasite contamination. Thin, anemic animals under your panels — and a PR risk you don't want.</p>
+        </div>
+
+        <div class="bg-white border border-secondary-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+          <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2 text-warm-900">Drug Resistance</h3>
+          <p class="text-warm-600 text-sm">Frequent whole-flock deworming builds resistant parasites. Eventually, nothing works. The operation collapses — and the asset owner is left scrambling for a mowing crew mid-season.</p>
+        </div>
+
+        <div class="bg-white border border-secondary-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+          <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2 text-warm-900">Soil Degradation</h3>
+          <p class="text-warm-600 text-sm">Continuous grazing produces shallow roots, bare patches, compaction. On construction-disturbed solar sites, that means rills, sediment movement, and infrastructure risk.</p>
+        </div>
+
+        <div class="bg-white border border-secondary-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+          <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2 text-warm-900">Manure Accumulation</h3>
+          <p class="text-warm-600 text-sm">Dewormer residues kill the dung beetles that decompose manure. Result: persistent manure pats, fly problems, uneven nutrient distribution — exactly the opposite of what was promised.</p>
+        </div>
+
+        <div class="bg-white border border-secondary-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+          <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2 text-warm-900">Uneven Grazing</h3>
+          <p class="text-warm-600 text-sm">Understocked, unrotated flocks cherry-pick clover and ignore the rest. The site looks half-grazed, half-wild. You're paying for grazing and still sending in a mowing crew.</p>
+        </div>
+
+        <div class="bg-white border border-secondary-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+          <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2 text-warm-900">Infrastructure Damage</h3>
+          <p class="text-warm-600 text-sm">Without proper fencing and breed selection, animals rub on posts, chew cabling, and congregate in panel drip lines — creating compacted, muddy lanes and equipment hazards.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUR APPROACH -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-4 text-center">
+        How We Do It Differently
+      </h2>
+      <p class="text-xl text-warm-600 text-center mb-12 max-w-2xl mx-auto">
+        Every decision is built on the biology of the animal and the ecology of the site.
+      </p>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="space-y-8">
+          <div class="flex gap-6 items-start">
+            <div class="w-12 h-12 bg-accent-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold text-lg">
+              1
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-warm-900 mb-2">Adaptive Multi-Paddock Grazing</h3>
+              <p class="text-warm-600">Tight paddocks, 3 to 4 day rotations, high stock density. Animals eat everything — not just the candy. Rest periods of 35 to 60 days break the parasite lifecycle and let vegetation recover. The same way grasslands have worked for thousands of years.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-6 items-start">
+            <div class="w-12 h-12 bg-accent-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold text-lg">
+              2
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-warm-900 mb-2">FAMACHA Scoring & Targeted Treatment</h3>
+              <p class="text-warm-600">We check every animal's mucous membranes to assess anemia — a direct indicator of parasite load. Only animals that need treatment get it. This preserves drug effectiveness, protects dung beetles and soil biology, and produces healthier animals.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-6 items-start">
+            <div class="w-12 h-12 bg-accent-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold text-lg">
+              3
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-warm-900 mb-2">Site-Specific Grazing Plans</h3>
+              <p class="text-warm-600">Panel layout, shade patterns, and forage mix all affect how sheep use a solar field. We design rotations around your site geometry so animals clean up problem areas without overgrazing sensitive spots or congregating in drip lines.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-6 items-start">
+            <div class="w-12 h-12 bg-accent-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold text-lg">
+              4
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-warm-900 mb-2">Soil Biology as a Management Tool</h3>
+              <p class="text-warm-600">We manage for the whole system — not just what's visible above ground. Healthy dung beetle populations. Active earthworm communities. Nutrient cycling that feeds the soil that feeds the forage that feeds the sheep. That's regenerative agriculture, applied to your solar asset.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DATA TABLE: Managed vs Unmanaged -->
+    <section class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-4 text-center">
+        The Research Is Clear
+      </h2>
+      <p class="text-xl text-warm-600 text-center mb-12 max-w-2xl mx-auto">
+        Published data comparing managed rotational grazing vs. continuous grazing and mowing-only approaches.
+      </p>
+
+      <div class="max-w-3xl mx-auto overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b-2 border-secondary-200">
+              <th class="text-left py-4 px-4 font-bold text-warm-900">Metric</th>
+              <th class="text-center py-4 px-4 font-bold text-warm-500">Without Expertise</th>
+              <th class="text-center py-4 px-4 font-bold text-accent-600">SME Approach</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-secondary-100 bg-warm-50">
+              <td class="py-4 px-4 font-medium text-warm-900">Parasite burden</td>
+              <td class="py-4 px-4 text-center text-warm-600">Exponential growth</td>
+              <td class="py-4 px-4 text-center text-accent-600 font-medium">~55% reduction via rotation</td>
+            </tr>
+            <tr class="border-b border-secondary-100 bg-accent-50/50">
+              <td class="py-4 px-4 font-medium text-warm-900">Drug resistance risk</td>
+              <td class="py-4 px-4 text-center text-warm-600">High (whole-flock drenching)</td>
+              <td class="py-4 px-4 text-center text-accent-600 font-bold">Low (targeted treatment)</td>
+            </tr>
+            <tr class="border-b border-secondary-100 bg-warm-50">
+              <td class="py-4 px-4 font-medium text-warm-900">Dung beetle activity</td>
+              <td class="py-4 px-4 text-center text-warm-600">~66% decrease</td>
+              <td class="py-4 px-4 text-center text-accent-600 font-medium">Preserved</td>
+            </tr>
+            <tr class="border-b border-secondary-100">
+              <td class="py-4 px-4 font-medium text-warm-900">Soil organic matter</td>
+              <td class="py-4 px-4 text-center text-warm-600">3.70% (mowed only)</td>
+              <td class="py-4 px-4 text-center text-accent-600 font-medium">4.14% (grazed)</td>
+            </tr>
+            <tr class="border-b border-secondary-100 bg-warm-50">
+              <td class="py-4 px-4 font-medium text-warm-900">Standing biomass</td>
+              <td class="py-4 px-4 text-center text-warm-600">Baseline (continuous)</td>
+              <td class="py-4 px-4 text-center text-accent-600 font-bold">>300% higher (AMP)</td>
+            </tr>
+            <tr class="border-b border-secondary-100 bg-accent-50/50">
+              <td class="py-4 px-4 font-medium text-warm-900">Soil carbon (to 1m)</td>
+              <td class="py-4 px-4 text-center text-warm-600">Baseline</td>
+              <td class="py-4 px-4 text-center text-accent-600 font-bold">~13% higher</td>
+            </tr>
+            <tr class="border-b border-secondary-100 bg-warm-50">
+              <td class="py-4 px-4 font-medium text-warm-900">Supplemental mowing needed</td>
+              <td class="py-4 px-4 text-center text-warm-600">Frequently</td>
+              <td class="py-4 px-4 text-center text-accent-600 font-medium">Rarely</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-4 font-medium text-warm-900">Site condition over time</td>
+              <td class="py-4 px-4 text-center text-warm-600">Degrades</td>
+              <td class="py-4 px-4 text-center text-accent-600 font-bold">Improves every year</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="max-w-3xl mx-auto mt-6 text-center">
+        <p class="text-warm-500 text-xs italic">
+          Sources: ASGA/NYSERDA multi-site study; PMC6755402; SD State Extension; Teague et al. (ScienceDirect); Agrisolar Clearinghouse
+        </p>
+      </div>
+    </section>
+
+    <!-- Georgia Context -->
+    <section class="max-w-4xl mx-auto mb-20">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-8">
+        Why This Matters Even More in Georgia
+      </h2>
+
+      <div class="prose prose-lg max-w-none text-warm-700 space-y-6">
+        <p>
+          Georgia is one of the fastest-growing solar states in the Southeast. It's also one of the most challenging environments for livestock management. Warm, humid conditions year-round mean higher parasite pressure, faster larval development, and less margin for error.
+        </p>
+
+        <p>
+          An operator in Minnesota can get away with longer rest periods and less intensive monitoring because the cold kills parasites over winter. In Georgia, there's no winter reset. You have to manage your way through it — every month, every rotation, every animal check.
+        </p>
+
+        <p>
+          That's why expertise isn't optional here. It's the difference between a solar grazing operation that works and one that creates more problems than it solves.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="max-w-4xl mx-auto mb-20">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-warm-900 mb-12 text-center">
+        Questions Asset Owners Ask
+      </h2>
+
+      <div class="space-y-4">
+        <details class="group bg-white border border-secondary-200 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-warm-50 transition-colors">
+            <h3 class="text-lg font-bold text-warm-900">What is FAMACHA scoring?</h3>
+            <svg class="w-5 h-5 text-warm-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-6 text-warm-600">
+            <p>FAMACHA is a clinical method for assessing anemia in sheep and goats by examining the color of the lower eyelid mucous membrane. It was developed by South African researchers specifically to manage barber pole worm without blanket deworming. Only animals scoring 3 or above (on a 1-5 scale) receive treatment — preserving drug effectiveness in the flock and protecting beneficial soil organisms from dewormer residues.</p>
+          </div>
+        </details>
+
+        <details class="group bg-white border border-secondary-200 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-warm-50 transition-colors">
+            <h3 class="text-lg font-bold text-warm-900">How do you know your approach works on solar sites specifically?</h3>
+            <svg class="w-5 h-5 text-warm-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-6 text-warm-600">
+            <p>Multi-site research published through the American Solar Grazing Association and NYSERDA has documented measurable improvements in soil organic matter and pH on grazed solar sites vs. non-grazed controls. NREL's InSPIRE program and the Agrisolar Clearinghouse both now recommend rotational grazing with written grazing plans as best practice for solar vegetation management. Our approach aligns directly with these research-backed recommendations.</p>
+          </div>
+        </details>
+
+        <details class="group bg-white border border-secondary-200 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-warm-50 transition-colors">
+            <h3 class="text-lg font-bold text-warm-900">We've had a bad experience with grazing before. Why would this be different?</h3>
+            <svg class="w-5 h-5 text-warm-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-6 text-warm-600">
+            <p>Bad grazing experiences almost always trace back to the same root causes: continuous grazing without rotation, no parasite monitoring, understocking, and no written grazing plan. These are management failures, not failures of grazing itself. We operate a 65-acre regenerative farm — livestock management is our daily work, not a side business. We bring a written grazing plan, regular FAMACHA monitoring, adaptive rotation schedules, and agricultural expertise that most solar vegetation contractors simply don't have.</p>
+          </div>
+        </details>
+
+        <details class="group bg-white border border-secondary-200 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-warm-50 transition-colors">
+            <h3 class="text-lg font-bold text-warm-900">What about the manure? Our O&M crews have complained about it.</h3>
+            <svg class="w-5 h-5 text-warm-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-6 text-warm-600">
+            <p>Manure complaints are a symptom of poor management, not an inevitable consequence of grazing. When animals are packed into tight paddocks and moved frequently, manure is distributed evenly rather than concentrated in shade spots. When you avoid blanket deworming, dung beetle populations thrive and break down manure within days. Under our system, manure is a fertilizer that cycles nutrients back into the soil — not a mess that sits on the surface for weeks.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+  </div>
+
+  <!-- Final CTA -->
+  <section class="container-custom pb-20">
+    <div class="text-center">
+      <div class="bg-gradient-to-br from-accent-600 to-accent-700 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">
+          Your Site Deserves Better Than Guesswork
+        </h2>
+        <p class="text-xl text-accent-100 mb-4">
+          We're farmers who happen to manage solar sites — not solar contractors who happen to own sheep.
+        </p>
+        <p class="text-accent-200 mb-8">
+          Free site assessment. Written grazing plan. Agricultural expertise from day one.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/land-management/request" class="btn bg-white text-accent-700 hover:bg-warm-100 text-lg px-8 py-4 font-semibold">
+            Get Your Free Site Assessment
+          </a>
+          <a href="/land-management/solar-grazing" class="btn border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4">
+            Our Solar Grazing Program
+          </a>
+        </div>
+        <p class="mt-6 text-sm text-accent-200">
+          Or call us at <a href={`tel:${business.phone}`} class="underline hover:text-white">{business.phone}</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</MainLayout>
