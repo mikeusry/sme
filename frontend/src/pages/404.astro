@@ -1,0 +1,62 @@
+---
+/**
+ * 404 — Page Not Found
+ *
+ * Humorous, on-brand 404 page. The sheep wandered off.
+ */
+
+import MainLayout from '../layouts/MainLayout.astro';
+import CloudinaryImage from '../components/CloudinaryImage.astro';
+
+const sheepImage = "Soul Miner's/Animals/IMG_5882_btfte7";
+---
+
+<MainLayout
+  title="404 — The Sheep Got Out | Soul Miner's Eden"
+  description="This page has wandered off. Much like sheep do when the fencing isn't right."
+  noindex={true}
+>
+  <section class="min-h-[70vh] flex items-center justify-center py-20">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto text-center">
+
+        <!-- Big 404 -->
+        <div class="relative mb-8">
+          <p class="text-[10rem] md:text-[14rem] font-display font-bold text-warm-100 leading-none select-none">
+            404
+          </p>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="bg-white/90 backdrop-blur-sm rounded-2xl px-8 py-6 shadow-lg border border-secondary-200">
+              <p class="text-2xl md:text-3xl font-display font-bold text-warm-900">
+                The sheep got out.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-lg text-warm-600 mb-3 max-w-md mx-auto">
+          This page has wandered off — probably through a gap in the fencing we didn't check.
+        </p>
+        <p class="text-warm-500 text-sm mb-10">
+          Bo's on his way to round it up. In the meantime:
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <a href="/" class="btn bg-accent-600 hover:bg-accent-700 text-white text-lg px-8 py-4 font-semibold rounded-lg transition-colors">
+            Back to the Farm
+          </a>
+          <a href="/land-management/solar-grazing" class="btn border-2 border-secondary-300 text-warm-700 hover:border-accent-600 hover:text-accent-600 text-lg px-8 py-4 rounded-lg transition-colors">
+            Solar Grazing
+          </a>
+        </div>
+
+        <!-- Fun fact -->
+        <div class="bg-warm-50 rounded-xl p-6 max-w-md mx-auto border border-secondary-100">
+          <p class="text-sm text-warm-600">
+            <span class="font-bold text-warm-800">Fun fact:</span> A well-managed rotational grazing system keeps sheep exactly where they're supposed to be. This page, on the other hand, was never where it was supposed to be.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
