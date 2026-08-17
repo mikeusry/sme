@@ -54,6 +54,12 @@
     { "source": "/people/:slug*", "destination": "/about", "permanent": true },
     { "source": "/tags/:slug*", "destination": "/recipes", "permanent": true },
     { "source": "/testimonials/:slug*", "destination": "/about", "permanent": true },
-    { "source": "/frequently-asked-questions/:slug*", "destination": "/resources/delivery", "permanent": true }
+    { "source": "/frequently-asked-questions/:slug*", "destination": "/resources/delivery", "permanent": true },
+    { "source": "/land-management/solar-grazing", "destination": "/land-management", "permanent": true },
+    { "source": "/land-management/why-expertise-matters", "destination": "/land-management", "permanent": true },
+    { "source": "/land-management/case-studies", "destination": "/land-management", "permanent": true },
+    { "source": "/land-management/case-studies/:slug*", "destination": "/land-management", "permanent": true },
+    { "source": "/solar-grazing", "destination": "/land-management", "permanent": true },
+    { "source": "/solar-grazing/:slug*", "destination": "/land-management", "permanent": true }
   ]
 }
