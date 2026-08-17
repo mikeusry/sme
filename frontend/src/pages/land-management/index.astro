@@ -19,11 +19,6 @@ const targetProperties = [
     icon: "water"
   },
   {
-    name: "Solar Farms",
-    description: "Mowing equipment cracks panels and tears up wiring. Our sheep walk right under them — zero equipment damage, less soil compaction, and 150+ acres already under active management in Northeast Georgia.",
-    icon: "sun"
-  },
-  {
     name: "HOA Common Areas",
     description: "Board members love it. Residents love it. No 7am mowing. No chemical smell drifting over the pool. Plus kids think goats are hilarious.",
     icon: "home"
@@ -59,14 +54,14 @@ const benefits = [
   },
   {
     title: "Not Your Problem",
-    description: "Bo leads the grazing. We handle the logistics. You get results without having to learn animal husbandry."
+    description: "We handle the animals and the logistics. You get results without having to learn animal husbandry."
   }
 ];
 ---
 
 <MainLayout
   title="Eden Grazing Services | Land Management | Soul Miner's Eden"
-  description="Sustainable land management through rotational grazing. Natural vegetation control for retention ponds, solar farms, HOAs, and commercial properties in Athens, Georgia."
+  description="Sustainable land management through rotational grazing. Natural vegetation control for retention ponds, HOAs, and commercial properties in Athens, Georgia."
 >
   <!-- Hero Section -->
   <section class="relative bg-warm-900 text-white py-16 md:py-24 overflow-hidden">
@@ -91,7 +86,7 @@ const benefits = [
           Animals Doing What Animals Do.
         </h1>
         <p class="text-xl md:text-2xl text-warm-200 mb-8">
-          Goats for your property. Sheep for solar farms. From HOA common areas to 50-acre agrivoltaic solar sites, we handle vegetation so you don't have to.
+          Goats for your property. From HOA common areas to retention ponds and commercial sites, we handle vegetation so you don't have to.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="/land-management/how-it-works" class="btn bg-white text-accent-700 hover:bg-accent-50 text-lg px-8 py-4">
@@ -131,7 +126,7 @@ const benefits = [
         </div>
 
         <p>
-          So yeah. We bring goats. They eat. Bo checks on them. We move them around. Your property looks better. That's basically it.
+          So yeah. We bring goats. They eat. We check on them. We move them around. Your property looks better. That's basically it.
         </p>
       </div>
     </section>
@@ -142,7 +137,7 @@ const benefits = [
         Where Goats Work Best
       </h2>
       <p class="text-xl text-warm-600 text-center mb-12 max-w-2xl mx-auto">
-        We serve properties around Athens and across Northeast Georgia — and for solar sites, statewide.
+        We serve properties around Athens and across Northeast Georgia.
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -152,11 +147,6 @@ const benefits = [
               {property.icon === "water" && (
                 <svg class="w-8 h-8 text-accent-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                </svg>
-              )}
-              {property.icon === "sun" && (
-                <svg class="w-8 h-8 text-accent-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               )}
               {property.icon === "home" && (
@@ -200,75 +190,6 @@ const benefits = [
             <p class="text-warm-600 text-sm">{benefit.description}</p>
           </div>
         ))}
-      </div>
-    </section>
-
-    <!-- Partnership Section -->
-    <section class="mb-20">
-      <div class="bg-warm-100 rounded-2xl p-8 md:p-12">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 class="text-3xl font-display font-bold text-warm-900 mb-6">
-              Who's Behind This
-            </h2>
-            <div class="text-warm-700 space-y-4">
-              <p>
-                Bo Carter leads our grazing operations. He's been raising and managing livestock out of Oconee County for years — goats, sheep, rotational grazing, the whole picture. He's the expert.
-              </p>
-              <ul class="space-y-3">
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-accent-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
-                  <span><strong>Bo</strong> manages the animals, designs grazing plans, and works directly with property managers and solar operators to keep your site within spec.</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-accent-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
-                  <span><strong>We</strong> handle the business side — pricing, contracts, logistics, and coordination. Together, we run a tight operation.</span>
-                </li>
-              </ul>
-              <p class="font-medium text-warm-900">
-                One number to call. Bo leads the work. We figure out the rest.
-              </p>
-            </div>
-          </div>
-          <div class="rounded-xl overflow-hidden h-64 lg:h-80">
-            <CloudinaryImage
-              publicId="Soul Miner's/team/bo-carter"
-              alt="Bo Carter — grazing operations lead at Soul Miner's Eden"
-              width={800}
-              height={600}
-              crop="fill"
-              gravity="face"
-              class="w-full h-full object-cover rounded-xl"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Solar Grazing Spotlight -->
-    <section class="mb-20">
-      <div class="bg-gradient-to-br from-warm-800 to-warm-900 text-white rounded-2xl p-8 md:p-12">
-        <div class="max-w-4xl mx-auto">
-          <div class="flex items-center gap-3 text-warm-400 text-sm mb-4">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            <span>ASGA Member</span>
-          </div>
-          <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">
-            Solar Grazing &amp; Agrivoltaics
-          </h2>
-          <p class="text-xl text-warm-300 mb-6">
-            150+ acres under active management in Northeast Georgia. Sheep-based vegetation management for utility-scale and community solar sites — no panel damage, lower O&M costs, healthier soil. ASGA member. Taking on new sites for 2026.
-          </p>
-          <a href="/land-management/solar-grazing" class="btn bg-accent-500 text-white hover:bg-accent-600 text-lg px-8 py-4 inline-block">
-            Solar Grazing &amp; Agrivoltaics
-          </a>
-        </div>
       </div>
     </section>
 
