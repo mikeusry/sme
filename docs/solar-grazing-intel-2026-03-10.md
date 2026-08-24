@@ -205,7 +205,8 @@ Bo: "I think I know who owns all 3 so we can go after them and maybe one will st
 | **Lexi** | President, ASGA | — | — | Podcast episode | Bo thinks she discussed pricing ranges on the podcast — going to re-listen |
 | **Matthew Hicks** | Possible Lavonia site landowner | — | — | OnX/tax records | One of two individuals listed as owner. Not an LLC. |
 | **Individual from Lula, GA** | Possible Lavonia site co-owner | — | — | OnX/tax records | Second individual listed. Not an LLC. |
-| **Silicon Ranch tech employee** | Tech guy at Silicon Ranch | — | LinkedIn | Bo following | Has posted about grazing cattle on solar sites. Owns/operates Social Circle site. |
+| **Wade Archer** | Silicon Ranch — new vendor intake | wade.archer@siliconranch.com | LinkedIn | Bo connected, vendor packet sent Apr 6 | Asked for COI, business info, services. Will forward to team member who reviews new vendors. |
+| **Silicon Ranch tech employee ("Nic")** | Tech guy at Silicon Ranch | — | LinkedIn | Bo messaged, no response | Has posted about grazing cattle on solar sites. Owns/operates Social Circle site. |
 | **Iablonschi Pavel** | Livestock seller | 404-207-8884 | — | Bo bought animal | Sold animal to Bo on Feb 7. No Zelle, does cash/Venmo. Not solar-related but in Bo's contacts |
 | **FFA student (unnamed)** | Franklin County HS student | — | — | Via Taylor Brown | "On board to help if we decide to do it." Would do wellness checks ~every other day. Bo: "Pay her $10/hr cash" |
 
@@ -215,7 +216,7 @@ Bo: "I think I know who owns all 3 so we can go after them and maybe one will st
 
 | Company | Type | Website | Key People | Relevance |
 |---------|------|---------|------------|-----------|
-| **Silicon Ranch** | Solar operator | — | Tech employee on LinkedIn | Owns/operates Social Circle site. Bo building LinkedIn connections |
+| **Silicon Ranch** | Solar operator | — | Wade Archer (vendor intake), "Nic" (tech, no response) | Owns/operates Social Circle site. Vendor packet sent Apr 6, 2026. Awaiting review. |
 | **Nofar Energy / Nofar USA** | Solar developer (Israel-based) | nofarusa.com | — | Acquired bankrupt Pinegate Solar's holdings including Elberton (300-500 acres) |
 | **Heelstone Renewable Energy** | Solar developer (NC) | businesswire.com article | — | $357M financing, 345 MWDC across 5 projects. Developed site near Shealy/Social Circle |
 | **Pinegate Solar** | Former solar operator | — | — | Went bankrupt Nov 2025. Elberton site transferred to Nofar. |
