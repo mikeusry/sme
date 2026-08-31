@@ -192,9 +192,9 @@ import PickupTimeSlot from '../components/checkout/PickupTimeSlot.astro';
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 <div>
-                  <h3 class="font-bold text-warm-900 text-lg mb-2">Complete Your Order by Phone</h3>
+                  <h3 class="font-bold text-warm-900 text-lg mb-2">Reserve the load — pay at pickup</h3>
                   <p class="text-warm-700 mb-3">
-                    Call us to finalize payment and confirm your <span id="payment-fulfillment-type">pickup</span> details:
+                    Place the order and we’ll hold a yard for your <span id="payment-fulfillment-type">pickup</span>. Pay with cash, check, Venmo, or card when you get here — or call now:
                   </p>
                   <a href="tel:+17066134415" class="inline-flex items-center gap-2 text-2xl font-bold text-accent-600 hover:text-accent-700 transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -221,7 +221,7 @@ import PickupTimeSlot from '../components/checkout/PickupTimeSlot.astro';
                 Back
               </button>
               <button type="button" id="place-order" class="btn-primary flex-1 py-3">
-                Place Order (Call to Pay)
+                Place Order — Pay at Pickup
               </button>
             </div>
           </div>
@@ -392,7 +392,7 @@ import PickupTimeSlot from '../components/checkout/PickupTimeSlot.astro';
 
 <script>
   import { initializeCart, getCurrentCart, clearStoredCartId } from '../lib/cart-store';
-  import { updateCart, completeCart, type Cart } from '../lib/medusa-v2';
+  import { updateCart, completeCart, initiateManualPayment, type Cart } from '../lib/medusa-v2';
   import { updatePickupSchedule, getPickupSchedule, getFulfillmentSummary, isPickupScheduleComplete, type PickupSchedule, type FulfillmentMethod, type TimeSlot } from '../lib/pickup-scheduling';
 
   // State
@@ -652,7 +652,7 @@ import PickupTimeSlot from '../components/checkout/PickupTimeSlot.astro';
       btn.disabled = true;
       btn.textContent = 'Processing...';
 
-      // Complete cart
+      await initiateManualPayment(cart.id);
       const result = await completeCart(cart.id);
 
       // Clear cart
@@ -660,8 +660,9 @@ import PickupTimeSlot from '../components/checkout/PickupTimeSlot.astro';
 
       // Show success
       const orderNumberEl = document.getElementById('order-number');
-      if (orderNumberEl && result.data?.id) {
-        orderNumberEl.textContent = result.data.id;
+      const orderId = result.order?.id || result.data?.id;
+      if (orderNumberEl && orderId) {
+        orderNumberEl.textContent = orderId;
       }
 
       // Show appropriate confirmation

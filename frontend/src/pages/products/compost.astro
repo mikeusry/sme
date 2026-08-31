@@ -9,9 +9,12 @@
 import MainLayout from '../../layouts/MainLayout.astro';
 import ProductCard from '../../components/products/ProductCard.astro';
 import MaterialCalculator from '../../components/products/MaterialCalculator.astro';
-import { getProductsByCategory } from '../../lib/products';
+import AddToCartButton from '../../components/cart/AddToCartButton.astro';
+import { getProductsByCategory, getProductBySlug } from '../../lib/products';
+import { business } from '../../lib/business';
 
 const products = getProductsByCategory('compost');
+const humus = getProductBySlug('humus-compost');
 
 // MUX video for compost hero
 const muxPlaybackId = 'eql45dBwcc3we00ywhZRoo2Vu2EETkDALwWUjRmEt6ZU';
@@ -20,8 +23,8 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 ---
 
 <MainLayout
-  title="Organic Compost Athens GA | Soul Miner's Eden"
-  description="Georgia's ONLY organic compost. Transform your soil with nutrient-rich, microbially-active compost. Local delivery available in Athens, GA."
+  title="Organic Compost Athens GA | $45 a Yard | Soul Miner's Eden"
+  description="Buy organic compost in Athens, GA — $45 a cubic yard. In stock at 189 Luke Road, Bogart. Pickup Mon–Sat 8am–6pm. Call (706) 613-4415."
 >
   <!-- Hero Section with Video Background -->
   <section class="compost-hero relative py-20 md:py-28 overflow-hidden">
@@ -42,17 +45,27 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
       <div class="compost-video-overlay"></div>
     </div>
 
-    <!-- Hero Content -->
+    <!-- Hero Content — this URL is the product Google already sends people to -->
     <div class="container-custom relative z-10">
-      <div class="max-w-4xl mx-auto text-center text-white">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-8 leading-tight">
-          What is Composting?
+      <div class="max-w-3xl mx-auto text-center text-white">
+        <p class="text-sm font-semibold uppercase tracking-wider text-white/80 mb-3">In stock · Pickup today</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4 leading-tight">
+          Organic Compost in Athens
         </h1>
-        <p class="text-lg md:text-xl mb-6 leading-relaxed text-white/90">
-          Composting is a natural process that transforms organic materials, such as food scraps, yard trimmings and other organic waste, into a nutrient-rich soil amendment. This process is driven by microorganisms and insects that break down the organic materials into a humus-like substance. By composting, we can significantly reduce food waste, promote sustainability and mitigate greenhouse gas emissions.
+        <p class="text-2xl md:text-3xl font-semibold mb-4">$45 a cubic yard</p>
+        <p class="text-lg md:text-xl mb-8 leading-relaxed text-white/90">
+          Made on our Bogart farm. No biosolids. Load a yard on your truck — 16 to 18 cubic feet still buys a yard.
         </p>
-        <p class="text-lg md:text-xl leading-relaxed text-white/90">
-          Composting can be done in various settings, from backyard composting to community gardens and large-scale composting facilities. The composting process involves mixing food scraps, leaves and grass clippings with soil, water and air. This mixture is then left to decompose, with regular turning and monitoring to ensure optimal conditions.
+        {humus && (
+          <div class="max-w-md mx-auto mb-4">
+            <AddToCartButton productSlug={humus.slug} productName={humus.name} />
+          </div>
+        )}
+        <a href={business.phoneHref} class="inline-block text-white font-semibold underline underline-offset-4">
+          Or call {business.phone}
+        </a>
+        <p class="mt-4 text-sm text-white/75">
+          {business.address.full} · {business.hours.display}
         </p>
       </div>
     </div>
@@ -190,17 +203,19 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
     <section class="text-center">
       <div class="bg-gradient-to-br from-primary-600 to-primary-700 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">
-          Ready to Transform Your Soil?
+          Ready for a yard?
         </h2>
         <p class="text-xl text-primary-100 mb-8">
-          Order Georgia's only organic compost today. Local delivery available throughout Athens and surrounding areas.
+          $45 a cubic yard. Pickup at the farm or we deliver around Athens.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="tel:+17066134415" class="btn bg-white text-primary-600 hover:bg-primary-50 text-lg px-8 py-4">
-            Call (706) 613-4415
-          </a>
-          <a href="/contact" class="btn border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4">
-            Request a Quote
+        <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+          {humus && (
+            <div class="flex-1">
+              <AddToCartButton productSlug={humus.slug} productName={humus.name} />
+            </div>
+          )}
+          <a href={business.phoneHref} class="btn bg-white text-primary-600 hover:bg-primary-50 text-lg px-8 py-4 text-center">
+            Call {business.phone}
           </a>
         </div>
         <p class="mt-6 text-sm text-primary-100">

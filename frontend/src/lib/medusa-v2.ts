@@ -5,7 +5,10 @@
  * Medusa v2 uses different endpoints than v1.
  */
 
-const MEDUSA_BACKEND_URL = import.meta.env.PUBLIC_MEDUSA_BACKEND_URL || "https://backend-production-2bafd.up.railway.app"
+const MEDUSA_BACKEND_URL =
+  typeof window !== "undefined"
+    ? "/api/medusa"
+    : import.meta.env.PUBLIC_MEDUSA_BACKEND_URL || "https://backend-production-2bafd.up.railway.app"
 const PUBLISHABLE_API_KEY = import.meta.env.PUBLIC_MEDUSA_PUBLISHABLE_KEY || "pk_a503cb83700c8aead31f0bd42cd213ca12f7870f6922831c7f48bdf37748b877"
 
 interface FetchOptions {
@@ -360,33 +363,32 @@ export async function addShippingMethod(cartId: string, shippingOptionId: string
 // =============================================================================
 
 /**
- * Create payment sessions for cart
+ * Start a manual (pay-at-pickup) payment collection on the cart.
+ * Medusa v2 will not complete a cart until this exists.
  */
-export async function createPaymentSessions(cartId: string) {
-  const data = await medusaFetch<{ cart: Cart }>(`/store/carts/${cartId}/payment-sessions`, {
+export async function initiateManualPayment(cartId: string) {
+  const created = await medusaFetch<{
+    payment_collection: { id: string }
+  }>("/store/payment-collections", {
     method: "POST",
+    body: { cart_id: cartId },
   })
-  return data.cart
-}
 
-/**
- * Set payment session (select payment provider)
- */
-export async function setPaymentSession(cartId: string, providerId: string) {
-  const data = await medusaFetch<{ cart: Cart }>(`/store/carts/${cartId}/payment-session`, {
+  const collectionId = created.payment_collection.id
+  await medusaFetch(`/store/payment-collections/${collectionId}/payment-sessions`, {
     method: "POST",
-    body: { provider_id: providerId },
+    body: { provider_id: "pp_system_default" },
   })
-  return data.cart
 }
 
 /**
  * Complete cart (place order)
  */
 export async function completeCart(cartId: string) {
-  const data = await medusaFetch<{ type: string; data: any }>(`/store/carts/${cartId}/complete`, {
-    method: "POST",
-  })
+  const data = await medusaFetch<{ type: string; order?: { id: string }; data?: { id: string } }>(
+    `/store/carts/${cartId}/complete`,
+    { method: "POST" }
+  )
   return data
 }
 
