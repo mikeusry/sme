@@ -20,12 +20,6 @@
       ]
     }
   ],
-  "rewrites": [
-    {
-      "source": "/api/medusa/:path*",
-      "destination": "${MEDUSA_BACKEND_URL}/:path*"
-    }
-  ],
   "redirects": [
     { "source": "/about-us", "destination": "/about", "permanent": true },
     { "source": "/contact-us", "destination": "/contact", "permanent": true },

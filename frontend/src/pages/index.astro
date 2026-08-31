@@ -60,18 +60,20 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 					65 acres of regenerative pasture, farm&#8209;fresh food, and honest work — 20 minutes from Athens.
 				</p>
 
-				<!-- Dual CTAs — "Visit" primary + "Shop" secondary -->
-				<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-					<a href="/contact" class="bg-accent-600 hover:bg-accent-700 text-white text-lg md:text-xl px-12 py-5 rounded-lg font-semibold transition-colors shadow-lg">
-						Visit the Farm
+				<div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center w-full sm:w-auto px-4 sm:px-0">
+					<a href="/products/compost/" class="bg-accent-600 hover:bg-accent-700 text-white text-lg md:text-xl px-8 py-5 rounded-lg font-semibold transition-colors shadow-lg text-center">
+						Buy Compost — $45 / yard
 					</a>
-					<a href="/products" class="border-2 border-primary-300 text-primary-200 hover:bg-white/10 hover:text-white hover:border-white/70 text-base px-8 py-3 rounded-lg font-semibold transition-colors sm:inline-block hidden">
-						Shop Landscape Supply
-					</a>
-					<a href="/products" class="text-primary-200 hover:text-white font-semibold transition-colors underline underline-offset-4 sm:hidden">
-						Shop Landscape Supply →
+					<a href="tel:+17066134415" class="border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-5 rounded-lg font-semibold transition-colors text-center">
+						Call (706) 613-4415
 					</a>
 				</div>
+				<p class="mt-5 text-white/80 text-sm">
+					In stock · Pickup 189 Luke Road, Bogart · Mon–Sat 8am–6pm
+				</p>
+				<a href="/products" class="inline-block mt-3 text-primary-200 hover:text-white font-semibold underline underline-offset-4">
+					Shop all landscape supply
+				</a>
 			</div>
 		</div>
 	</section>
@@ -147,13 +149,7 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 		</div>
 	</section>
 
-	<!-- Coming to the Stand — honor stand teaser -->
-	<FarmFresh />
-
-	<!-- Origin Story -->
-	<OriginStory />
-
-	<!-- Featured Products -->
+	<!-- Featured Products — compost first, before Coming Soon -->
 	<section class="section bg-white">
 		<div class="container-custom">
 			<!-- Section header -->
@@ -194,6 +190,10 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 			</div>
 		</div>
 	</section>
+
+	<FarmFresh />
+
+	<OriginStory />
 
 	<!-- Land Management Services -->
 	<section class="section bg-gradient-to-br from-primary-500 to-primary-600 text-white mt-4 md:mt-6">
