@@ -8,9 +8,14 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://www.soulminerseden.com',
   adapter: vercel(),
+  redirects: {
+    '/products/humus-compost': '/products/compost/',
+    '/products/humus-compost/': '/products/compost/',
+    '/sitemap.xml': '/sitemap-index.xml',
+  },
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/admin/'),
+      filter: (page) => !page.includes('/admin/') && !page.includes('/humus-compost'),
     }),
   ],
   vite: {

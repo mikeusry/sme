@@ -13,9 +13,34 @@ import AddToCartButton from '../../components/cart/AddToCartButton.astro';
 import PdProductView from '../../components/PdProductView.astro';
 import { getProductsByCategory, getProductBySlug } from '../../lib/products';
 import { business } from '../../lib/business';
+import { farmId } from '../../lib/schema';
+import { imagePresets } from '../../lib/cloudinary';
 
 const products = getProductsByCategory('compost');
 const humus = getProductBySlug('humus-compost');
+
+const faqs = [
+  {
+    q: 'Where can I buy compost near me?',
+    a: `Buy compost at Soul Miner's Eden, 189 Luke Road in Bogart — about twenty minutes from Athens. Pickup is Monday–Saturday, 8am–6pm. Call ${business.phone} if you want us to load you.`,
+  },
+  {
+    q: 'Do you sell compost in bulk?',
+    a: 'Yes. We sell bulk compost by the cubic yard — $45 a yard. A pickup truck holds a yard (16 to 18 cubic feet). No bagged retail. No minimum for pickup.',
+  },
+  {
+    q: 'Do you deliver compost near Athens?',
+    a: 'We deliver bulk compost around Athens and the nearby counties. Delivery is $40 plus $1.25 a mile after 20 miles, three-yard minimum. Same-week on most orders.',
+  },
+  {
+    q: 'What is a cubic yard of compost?',
+    a: 'A cubic yard is 27 cubic feet — about what fits in a full-size pickup. It weighs roughly 1,000 to 1,400 pounds. That is the unit we sell.',
+  },
+  {
+    q: 'Can I pick up compost today?',
+    a: 'If we are open, yes. Compost is in stock at the farm. Come to 189 Luke Road, Bogart, Monday–Saturday 8am–6pm, or call ahead so we can have a yard ready.',
+  },
+];
 
 // MUX video for compost hero
 const muxPlaybackId = 'eql45dBwcc3we00ywhZRoo2Vu2EETkDALwWUjRmEt6ZU';
@@ -26,6 +51,7 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
 <MainLayout
   title="Organic Compost Athens GA | $45 a Yard | Soul Miner's Eden"
   description="Buy organic compost in Athens, GA — $45 a cubic yard. In stock at 189 Luke Road, Bogart. Pickup Mon–Sat 8am–6pm. Call (706) 613-4415."
+  ogType="product"
 >
   {humus && (
     <PdProductView productId={humus.slug} productName={humus.name} productPrice={humus.price} />
@@ -59,7 +85,7 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
         </h1>
         <p class="text-2xl md:text-3xl font-semibold mb-4">$45 a cubic yard</p>
         <p class="text-lg md:text-xl mb-8 leading-relaxed text-white/90">
-          Made on our Bogart farm. No biosolids. Load a yard on your truck — 16 to 18 cubic feet still buys a yard.
+          Buy bulk compost near Athens. Pickup on Luke Road in Bogart, or we deliver. No biosolids. A yard is 16 to 18 cubic feet.
         </p>
         {humus && (
           <div class="max-w-md mx-auto mb-4">
@@ -84,7 +110,7 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
           Why Soul Miner's Eden Compost?
         </h2>
         <p class="text-xl text-warm-700 leading-relaxed mb-8">
-          We're the only source in Georgia for organic compost. Our carefully crafted compost is the result of sustainable farming practices on our 65-acre family farm, creating a soil amendment that transforms gardens and landscapes.
+          Buy compost from the farm that makes it — twenty minutes from Athens, on Luke Road in Bogart. Load a bulk yard on your truck, or we deliver. No biosolids. $45 a cubic yard.
         </p>
       </div>
 
@@ -204,6 +230,20 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
       </div>
     </section>
 
+    <section class="mb-16 max-w-3xl mx-auto">
+      <h2 class="text-3xl font-display font-bold text-warm-900 mb-8 text-center">
+        Compost near Athens — common questions
+      </h2>
+      <dl class="space-y-6">
+        {faqs.map((item) => (
+          <div>
+            <dt class="font-semibold text-lg text-warm-900 mb-2">{item.q}</dt>
+            <dd class="text-warm-700 leading-relaxed">{item.a}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
     <!-- CTA -->
     <section class="text-center">
       <div class="bg-gradient-to-br from-primary-600 to-primary-700 text-white rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
@@ -229,6 +269,39 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
       </div>
     </section>
   </div>
+
+  {humus && (
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Product',
+          name: humus.name,
+          description: humus.description,
+          image: imagePresets.blogFeatured(humus.images.primary),
+          sku: humus.sku,
+          brand: { '@type': 'Brand', name: business.name },
+          offers: {
+            '@type': 'Offer',
+            url: `${business.url}/products/compost/`,
+            price: humus.price,
+            priceCurrency: 'USD',
+            availability: humus.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+            itemCondition: 'https://schema.org/NewCondition',
+            seller: { '@id': farmId },
+          },
+        },
+        {
+          '@type': 'FAQPage',
+          mainEntity: faqs.map((item) => ({
+            '@type': 'Question',
+            name: item.q,
+            acceptedAnswer: { '@type': 'Answer', text: item.a },
+          })),
+        },
+      ],
+    })} />
+  )}
 </MainLayout>
 
 <style>

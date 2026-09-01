@@ -20,10 +20,12 @@ import { imagePresets } from '../../lib/cloudinary';
 export async function getStaticPaths() {
   const products = getAllProducts();
 
-  return products.map(product => ({
-    params: { slug: product.slug },
-    props: { product },
-  }));
+  return products
+    .filter(product => product.slug !== 'humus-compost')
+    .map(product => ({
+      params: { slug: product.slug },
+      props: { product },
+    }));
 }
 
 const { slug } = Astro.params;

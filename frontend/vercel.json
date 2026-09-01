@@ -54,6 +54,9 @@
     { "source": "/land-management/case-studies", "destination": "/land-management", "permanent": true },
     { "source": "/land-management/case-studies/:slug*", "destination": "/land-management", "permanent": true },
     { "source": "/solar-grazing", "destination": "/land-management", "permanent": true },
-    { "source": "/solar-grazing/:slug*", "destination": "/land-management", "permanent": true }
+    { "source": "/solar-grazing/:slug*", "destination": "/land-management", "permanent": true },
+    { "source": "/products/humus-compost", "destination": "/products/compost/", "permanent": true },
+    { "source": "/products/humus-compost/", "destination": "/products/compost/", "permanent": true },
+    { "source": "/sitemap.xml", "destination": "/sitemap-index.xml", "permanent": true }
   ]
 }

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { farmJsonLd } from '../lib/schema';
 
 interface Props {
   title: string;
@@ -24,6 +25,7 @@ const {
 } = Astro.props;
 
 const canonicalUrl = Astro.url.href;
+const documentTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
 ---
 
 <!doctype html>
@@ -49,23 +51,24 @@ const canonicalUrl = Astro.url.href;
 
     <!-- Open Graph -->
     <meta property="og:site_name" content={siteName} />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={documentTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content={ogType} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content={`${title} | ${siteName}`} />
+    <meta property="og:image:alt" content={documentTitle} />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter / X Card -->
     <meta name="twitter:card" content={twitterCard} />
-    <meta name="twitter:title" content={title} />
+    <meta name="twitter:title" content={documentTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <title>{title} | {siteName}</title>
+    <title>{documentTitle}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(farmJsonLd())} />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

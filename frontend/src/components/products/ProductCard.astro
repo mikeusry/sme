@@ -10,7 +10,7 @@
  */
 
 import ProductImage from '../ProductImage.astro';
-import type { Product } from '../../lib/products';
+import { getProductPath, type Product } from '../../lib/products';
 
 export interface Props {
   product: Product;
@@ -27,7 +27,7 @@ const isCompact = variant === 'compact';
 ---
 
 <a
-  href={`/products/${product.slug}`}
+  href={getProductPath(product.slug)}
   class={`product-card group block ${className}`}
   data-product-slug={product.slug}
 >

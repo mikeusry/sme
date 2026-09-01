@@ -66,6 +66,12 @@ export function getProductBySlug(slug: string): Product | undefined {
   return typedProductsData.products.find(p => p.slug === slug);
 }
 
+/** Public PDP path. Compost SKU lives on /products/compost/, not the handle URL. */
+export function getProductPath(slug: string): string {
+  if (slug === 'humus-compost') return '/products/compost/';
+  return `/products/${slug}/`;
+}
+
 /**
  * Get products by category
  */

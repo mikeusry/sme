@@ -144,7 +144,7 @@
 </div>
 
 <script>
-  import { calculateCubicYards, recommendProducts, getProductBySlug, type Product } from '../../lib/products';
+  import { calculateCubicYards, recommendProducts, getProductBySlug, getProductPath, type Product } from '../../lib/products';
 
   // Get form and results elements
   const form = document.getElementById('material-calculator-form') as HTMLFormElement;
@@ -213,7 +213,7 @@
                     <p class="text-xs text-warm-600 mt-1">${cubicYards.toFixed(1)} cu yd × $${product.price}/${product.unit}</p>
                   </div>
                   <a
-                    href="/products/${product.slug}"
+                    href="${getProductPath(product.slug)}"
                     class="btn-primary text-sm px-6 py-2"
                   >
                     View Product →
