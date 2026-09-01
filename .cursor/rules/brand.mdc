@@ -1,0 +1,22 @@
+---
+description: Soul Miner's Eden visual and voice identity. Sibling of Southland, not a sub-brand.
+globs: frontend/src/**/*.astro,frontend/src/brand/**,frontend/src/styles/**
+alwaysApply: false
+---
+
+# Brand
+
+Positioning: **A regenerative farm in Bogart, Georgia.**
+
+Sibling of Southland Organics under TUFCO — shared family, independent look. Land first. Not a content-studio brand.
+
+Before visual or voice work, read:
+
+- `frontend/src/brand/BRAND_GUIDE.md`
+- `frontend/src/brand/VOICE_GUIDE.md`
+- `frontend/src/brand/design-tokens.css`
+- `frontend/src/brand/DESIGN_LOG.md`
+
+Skill: `/design` with a mode (`logo`, `color`, `review`, `check`).
+
+Do not restore solar-grazing marketing. Those URLs 301 to `/land-management`.

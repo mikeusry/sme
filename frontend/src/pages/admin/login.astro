@@ -1,0 +1,120 @@
+---
+export const prerender = false
+
+import { adminConfig } from '../../admin.config'
+import {
+  checkAdminPassword,
+  isAdminConfigured,
+  safeAdminNext,
+  setAdminCookie,
+} from '../../lib/admin-auth'
+
+const nextPath = safeAdminNext(Astro.url.searchParams.get('next'))
+let error = ''
+
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData()
+  const password = String(form.get('password') || '')
+  const postedNext = safeAdminNext(String(form.get('next') || nextPath))
+
+  if (!isAdminConfigured()) {
+    error = 'Admin password is not configured on this server.'
+  } else if (!checkAdminPassword(password)) {
+    error = 'Wrong password.'
+  } else {
+    setAdminCookie(Astro.cookies)
+    return Astro.redirect(postedNext)
+  }
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in | {adminConfig.siteName} Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      min-height: 100%;
+      font-family: Inter, system-ui, sans-serif;
+      background: #fafaf9;
+      color: #2D2926;
+    }
+    body {
+      display: grid;
+      place-items: center;
+      padding: 1.5rem;
+    }
+    .card {
+      width: min(100%, 24rem);
+      background: #fff;
+      border: 1px solid #e7e5e4;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      padding: 1.75rem 1.5rem;
+    }
+    h1 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    p { color: #78716c; font-size: 0.875rem; margin-bottom: 1.25rem; }
+    label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #78716c;
+      margin-bottom: 0.4rem;
+    }
+    input {
+      width: 100%;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid #e7e5e4;
+      border-radius: 8px;
+      font: inherit;
+      margin-bottom: 1rem;
+    }
+    input:focus { outline: 2px solid #A8643F; outline-offset: 1px; }
+    button {
+      width: 100%;
+      padding: 0.65rem 0.75rem;
+      border: 0;
+      border-radius: 8px;
+      background: #A8643F;
+      color: #fff;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover { background: #8B5233; }
+    .error {
+      background: #fef3c7;
+      color: #92400e;
+      border-radius: 8px;
+      padding: 0.6rem 0.75rem;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <form class="card" method="post">
+    <h1>Farm board</h1>
+    <p>Password for orders and the admin pages.</p>
+    {error && <div class="error">{error}</div>}
+    <input type="hidden" name="next" value={nextPath}>
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" autocomplete="current-password" autofocus required>
+    <button type="submit">Sign in</button>
+  </form>
+</body>
+</html>

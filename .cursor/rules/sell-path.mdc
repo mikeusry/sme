@@ -1,0 +1,15 @@
+---
+description: Compost is the product. Do not write explainer pages for the buy URL.
+globs: frontend/src/pages/products/**,frontend/src/pages/index.astro,frontend/src/components/Header.astro
+alwaysApply: false
+---
+
+# Sell path
+
+`/products/compost/` **is** the product. SKU handle `humus-compost`. **$45 / yard.** A yard is the unit.
+
+GSC (2026-08): that URL already has the clicks. It used to H1 “What is Composting?” with no add-to-cart. Do not put the SKU on `/products/humus-compost/` and leave `/products/compost/` as an explainer.
+
+Homepage: Buy Compost + Call on mobile, above “Farm Stand Coming Soon.”
+
+Do not write how-tos for free traffic. Doctrine lives in mothership `docs/seo/SEO-DOCTRINE.md`.

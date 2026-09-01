@@ -82,7 +82,7 @@ export const adminConfig: AdminConfig = {
     primaryText: '#ffffff',
   },
   typography: {
-    headingFont: "'Poppins', system-ui, sans-serif",
+    headingFont: "'EB Garamond', Georgia, serif",
     bodyFont: "'Inter', system-ui, sans-serif",
     baseSize: '16px',
     scaleRatio: 1.333,

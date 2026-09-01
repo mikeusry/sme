@@ -38,6 +38,8 @@ export async function getStoreCart(cartId: string) {
         total?: number | null
         subtotal?: number | null
         thumbnail?: string | null
+        product?: { handle?: string; title?: string } | null
+        variant?: { sku?: string | null } | null
       }[]
       email?: string | null
       metadata?: Record<string, unknown> | null

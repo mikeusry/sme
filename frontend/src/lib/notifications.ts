@@ -303,7 +303,10 @@ export async function sendPaidOrderEmails(order: PaidOrderEmail) {
     </table>
   `
 
-  const [customer, farm, mike] = await Promise.all([
+  const farmSubject = `PAID ${order.totalLabel} — ${order.items.map((i) => i.title).join(', ')}`
+  const farmHtml = brandWrap('Paid Order', farmBody)
+
+  const [customer, farm, mike, andi] = await Promise.all([
     sendEmail({
       to: order.customerEmail,
       subject: `Paid — ${order.totalLabel} ready for pickup — Soul Miner's Eden`,
@@ -311,15 +314,20 @@ export async function sendPaidOrderEmails(order: PaidOrderEmail) {
     }),
     sendEmail({
       to: 'farm@soulminerseden.com',
-      subject: `PAID ${order.totalLabel} — ${order.items.map((i) => i.title).join(', ')}`,
-      html: brandWrap('Paid Order', farmBody),
+      subject: farmSubject,
+      html: farmHtml,
     }),
     sendEmail({
       to: 'mike@southlandorganics.com',
-      subject: `PAID ${order.totalLabel} — ${order.items.map((i) => i.title).join(', ')}`,
-      html: brandWrap('Paid Order', farmBody),
+      subject: farmSubject,
+      html: farmHtml,
+    }),
+    sendEmail({
+      to: 'andi@southlandorganics.com',
+      subject: farmSubject,
+      html: farmHtml,
     }),
   ])
 
-  return { customer, farm, mike }
+  return { customer, farm, mike, andi }
 }

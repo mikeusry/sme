@@ -19,7 +19,7 @@ export const GET: APIRoute = async ({ url }) => {
     const params: Record<string, any> = {
       limit,
       offset,
-      expand: 'items,shipping_address,customer',
+      fields: '+items,+shipping_address,+customer',
     };
 
     if (status) {
@@ -29,28 +29,36 @@ export const GET: APIRoute = async ({ url }) => {
     const { orders, count } = await getOrders(params);
 
     // Transform orders to include pickup scheduling info from metadata
-    const transformedOrders = orders.map(order => ({
-      id: order.id,
-      orderNumber: `SME-${order.display_id}`,
-      customerName: order.shipping_address
-        ? `${order.shipping_address.first_name || ''} ${order.shipping_address.last_name || ''}`.trim()
-        : 'Unknown Customer',
-      email: order.email,
-      phone: order.shipping_address?.phone || undefined,
-      total: order.total,
-      itemCount: order.items.reduce((sum, item) => sum + item.quantity, 0),
-      status: order.metadata?.fulfillment_status || 'awaiting_pickup',
-      fulfillmentMethod: order.metadata?.fulfillment?.method || 'pickup',
-      pickupDate: order.metadata?.fulfillment?.pickupDate,
-      pickupTime: order.metadata?.fulfillment?.timeSlot,
-      notes: order.metadata?.fulfillment?.notes,
-      createdAt: order.created_at,
-      items: order.items.map(item => ({
-        title: item.title,
-        quantity: item.quantity,
-        price: item.unit_price,
-      })),
-    }));
+    const transformedOrders = orders.map(order => {
+      const address = order.shipping_address
+      const customer = order.customer
+      const name = [
+        address?.first_name || customer?.first_name,
+        address?.last_name || customer?.last_name,
+      ].filter(Boolean).join(' ').trim()
+      const items = order.items || []
+
+      return {
+        id: order.id,
+        orderNumber: order.display_id ? `SME-${order.display_id}` : order.id,
+        customerName: name || order.email || 'Customer',
+        email: order.email || customer?.email,
+        phone: address?.phone || customer?.phone || undefined,
+        total: order.total ?? 0,
+        itemCount: items.reduce((sum: number, item: { quantity?: number }) => sum + (item.quantity || 0), 0),
+        status: order.metadata?.fulfillment_status || 'awaiting_pickup',
+        fulfillmentMethod: order.metadata?.fulfillment?.method || 'pickup',
+        pickupDate: order.metadata?.fulfillment?.pickupDate,
+        pickupTime: order.metadata?.fulfillment?.timeSlot,
+        notes: order.metadata?.fulfillment?.notes,
+        createdAt: order.created_at,
+        items: items.map((item: { title?: string; quantity?: number; unit_price?: number }) => ({
+          title: item.title,
+          quantity: item.quantity,
+          price: item.unit_price,
+        })),
+      }
+    });
 
     return new Response(
       JSON.stringify({

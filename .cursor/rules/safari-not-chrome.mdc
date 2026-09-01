@@ -1,0 +1,15 @@
+---
+description: Mike's daily browser is Safari. Do not launch Chrome or treat a Chrome session as his.
+alwaysApply: true
+---
+
+# Safari, not Chrome
+
+Mike does not use Chrome for logged-in work. He uses **Safari**.
+
+- Do not launch Chrome, Cursor's Chrome browser, or browser-use against his accounts.
+- A Chrome login wall is expected. It is not his session.
+- Need a UI click → give him the URL. He is already in Safari.
+- Comet exists for some tooling. It does not override this.
+
+Vault: `~/Southland Ledger/3 - KNOWN/_Global Memory/mike-uses-safari-not-chrome.md`

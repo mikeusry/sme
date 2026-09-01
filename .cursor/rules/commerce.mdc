@@ -1,0 +1,24 @@
+---
+description: Cart via same-origin Medusa proxy. Checkout pays now with Stripe.
+globs: frontend/src/lib/medusa*.ts,frontend/src/lib/cart-store.ts,frontend/src/pages/api/medusa/**,frontend/src/pages/api/stripe/**,frontend/src/pages/checkout.astro,frontend/src/pages/cart.astro,frontend/src/components/cart/**
+alwaysApply: false
+---
+
+# Commerce
+
+Browser calls **`/api/medusa`**, not Railway.
+
+- Client: `frontend/src/lib/medusa-v2.ts`
+- Proxy: `frontend/src/pages/api/medusa/[...path].ts`
+- Pay now: Stripe Payment Element. Intent amount from Medusa cart total.
+- After Stripe succeeds: verify PI server-side, then complete Medusa with `pp_system_default` and `metadata.paid_via=stripe`. Railway has no Stripe provider.
+
+Do not add Shopify or JotForm. Do not go back to pay-at-pickup as the default.
+
+```ts
+// ❌ BAD — browser → Railway
+fetch(`${PUBLIC_MEDUSA_BACKEND_URL}/store/carts`, { credentials: "include" })
+
+// ✅ GOOD — browser → same origin
+fetch(`/api/medusa/store/carts`, { credentials: "include" })
+```

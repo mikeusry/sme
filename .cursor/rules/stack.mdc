@@ -1,0 +1,23 @@
+---
+description: Live stack — Vercel Astro + Railway Medusa v2. No local backend.
+alwaysApply: true
+---
+
+# Stack (trust AGENTS.md)
+
+This repo is a **frontend**. Commerce is remote.
+
+| What | Where |
+|---|---|
+| Site | https://www.soulminerseden.com |
+| Dev | `cd frontend && npm run dev` |
+| Medusa | Railway `https://backend-production-2bafd.up.railway.app` |
+| Browser API | `/api/medusa` (same-origin proxy) |
+
+**Lies on disk — ignore them:**
+
+- `docker-compose.yml` builds `./backend` — that folder is gone
+- `ROADMAP.md`, `TODO-NEXT-SESSION.md`, `SESSION_SUMMARY.md` are 2026-02 leftovers
+- `.env.example` still lists Stripe keys. Checkout is pay-at-pickup.
+
+Do not `docker-compose up`. Do not stand up localhost:9000. Do not restore a local Medusa to "make cart work."
