@@ -254,3 +254,72 @@ export async function sendContactNotification(data: {
     html: brandWrap('Website Contact', body),
   });
 }
+
+export interface PaidOrderEmail {
+  customerEmail: string
+  customerName?: string
+  customerPhone?: string
+  orderId: string
+  totalLabel: string
+  items: { title: string; quantity: number; priceLabel: string }[]
+  notes?: string
+}
+
+/**
+ * Customer receipt + farm alert after Stripe pays.
+ */
+export async function sendPaidOrderEmails(order: PaidOrderEmail) {
+  const itemRows = order.items
+    .map((item) => row(item.title, `${item.quantity} × ${item.priceLabel}`))
+    .join('')
+
+  const customerBody = `
+    <h2 style="margin:0 0 8px;font-size:22px;color:${BRAND.charcoal};">You're paid. We'll hold the load.</h2>
+    <p style="margin:0 0 20px;font-size:14px;color:${BRAND.steel};">Pick up at the farm. It's already paid — don't pay again at the stand.</p>
+    <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${BRAND.border};border-radius:8px;overflow:hidden;">
+      ${row('Order', order.orderId)}
+      ${itemRows}
+      ${row('Total', order.totalLabel)}
+      ${row('Pickup', '189 Luke Road, Bogart, GA 30622')}
+      ${row('Hours', 'Mon–Sat, 8am–6pm')}
+      ${order.notes ? row('Your note', order.notes) : ''}
+    </table>
+    <p style="margin:20px 0 0;font-size:14px;color:${BRAND.charcoal};">
+      Questions? Call (706) 613-4415.
+    </p>
+  `
+
+  const farmBody = `
+    <h2 style="margin:0 0 8px;font-size:22px;color:${BRAND.charcoal};">Paid order — hold the load</h2>
+    <p style="margin:0 0 20px;font-size:14px;color:${BRAND.steel};">Money is in Stripe. Do not collect again.</p>
+    <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${BRAND.border};border-radius:8px;overflow:hidden;">
+      ${row('Order', order.orderId)}
+      ${order.customerName ? row('Name', order.customerName) : ''}
+      ${row('Email', order.customerEmail)}
+      ${order.customerPhone ? row('Phone', order.customerPhone) : ''}
+      ${itemRows}
+      ${row('Total', order.totalLabel)}
+      ${order.notes ? row('Note', order.notes) : ''}
+    </table>
+  `
+
+  const [customer, farm, mike] = await Promise.all([
+    sendEmail({
+      to: order.customerEmail,
+      subject: `Paid — ${order.totalLabel} ready for pickup — Soul Miner's Eden`,
+      html: brandWrap('Paid Order', customerBody),
+    }),
+    sendEmail({
+      to: 'farm@soulminerseden.com',
+      subject: `PAID ${order.totalLabel} — ${order.items.map((i) => i.title).join(', ')}`,
+      html: brandWrap('Paid Order', farmBody),
+    }),
+    sendEmail({
+      to: 'mike@southlandorganics.com',
+      subject: `PAID ${order.totalLabel} — ${order.items.map((i) => i.title).join(', ')}`,
+      html: brandWrap('Paid Order', farmBody),
+    }),
+  ])
+
+  return { customer, farm, mike }
+}

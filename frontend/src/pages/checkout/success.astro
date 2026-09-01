@@ -1,0 +1,114 @@
+---
+/**
+ * After hosted Stripe Checkout. Fulfill the Medusa order, then hold the load.
+ */
+import MainLayout from '../../layouts/MainLayout.astro';
+import { business } from '../../lib/business';
+---
+
+<MainLayout title="Paid" description="You're paid. Pick up at the farm.">
+  <div class="container-custom py-12">
+    <div id="success-loading" class="text-center py-12">
+      <div class="inline-flex items-center gap-3 text-warm-600">
+        <svg class="w-6 h-6 animate-spin" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span>Confirming your payment…</span>
+      </div>
+    </div>
+
+    <div id="success-paid" class="hidden">
+      <div class="card text-center py-12">
+        <h1 class="text-3xl font-display font-bold text-warm-900 mb-4">Paid. We'll hold the load.</h1>
+        <p class="text-xl text-warm-600 mb-2">Pick up at the farm. It's already paid.</p>
+        <p class="text-warm-600 mb-4">
+          Order #<span id="order-number" class="font-semibold">-</span>
+        </p>
+        <div class="bg-accent-50 border border-accent-200 rounded-lg p-6 max-w-md mx-auto mb-8 text-left">
+          <h2 class="font-semibold text-warm-900 mb-3">Pickup</h2>
+          <p class="text-sm text-warm-700">{business.address.full}</p>
+          <p class="text-sm text-warm-700">{business.hours.display}</p>
+        </div>
+        <p class="text-warm-600 mb-8">Receipt is on its way. Questions? Call {business.phone}.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href={business.phoneHref} class="btn-primary">Call the farm</a>
+          <a href="/products" class="btn-outline">Continue shopping</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="success-paid-no-order" class="hidden">
+      <div class="card text-center py-12">
+        <h1 class="text-3xl font-display font-bold text-warm-900 mb-4">You're paid. Call the farm. Don't pay again.</h1>
+        <p class="text-warm-700 mb-8 max-w-md mx-auto">
+          The card went through. Call {business.phone} and we'll get your load ready.
+        </p>
+        <a href={business.phoneHref} class="btn-primary">Call the farm</a>
+      </div>
+    </div>
+  </div>
+</MainLayout>
+
+<script>
+  import { clearStoredCartId } from '../../lib/cart-store';
+  import { dollarsFromCents, pdIdentify, pdTrack } from '../../lib/pd-pixel';
+
+  const loadingEl = document.getElementById('success-loading');
+  const paidEl = document.getElementById('success-paid');
+  const paidNoOrderEl = document.getElementById('success-paid-no-order');
+
+  function show(state: 'loading' | 'paid' | 'paid-no-order') {
+    loadingEl?.classList.toggle('hidden', state !== 'loading');
+    paidEl?.classList.toggle('hidden', state !== 'paid');
+    paidNoOrderEl?.classList.toggle('hidden', state !== 'paid-no-order');
+  }
+
+  async function init() {
+    const sessionId = new URLSearchParams(window.location.search).get('session_id');
+    if (!sessionId) {
+      window.location.replace('/checkout');
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/stripe/fulfill-session', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ sessionId }),
+      });
+      const data = await res.json();
+
+      if (res.status === 502 || data.paid === true) {
+        clearStoredCartId();
+        show('paid-no-order');
+        return;
+      }
+
+      if (!res.ok || !data.orderId) {
+        window.location.replace('/checkout');
+        return;
+      }
+
+      clearStoredCartId();
+      const orderEl = document.getElementById('order-number');
+      if (orderEl) orderEl.textContent = data.orderId;
+      show('paid');
+
+      const items = Array.isArray(data.items) ? data.items : [];
+      await pdIdentify({ email: data.email, phone: data.phone });
+      await pdTrack('purchase', {
+        order_id: data.orderId,
+        order_value: dollarsFromCents(data.total),
+        order_currency: 'USD',
+        order_item_count: items.length,
+        items,
+      });
+    } catch (err) {
+      console.error('Fulfillment failed:', err);
+      window.location.replace('/checkout');
+    }
+  }
+
+  init();
+</script>

@@ -1,0 +1,33 @@
+---
+interface Props {
+  productId: string;
+  productName: string;
+  productPrice: number;
+}
+
+const { productId, productName, productPrice } = Astro.props;
+---
+
+<div
+  class="pd-product-view"
+  hidden
+  data-product-id={productId}
+  data-product-name={productName}
+  data-product-price={String(productPrice)}
+></div>
+
+<script>
+  import { pdTrack } from '../lib/pd-pixel';
+
+  document.querySelectorAll('.pd-product-view').forEach((el) => {
+    const productId = el.getAttribute('data-product-id');
+    const productName = el.getAttribute('data-product-name') || '';
+    const productPrice = Number(el.getAttribute('data-product-price') || 0);
+    if (!productId) return;
+    pdTrack('product_view', {
+      product_id: productId,
+      product_name: productName,
+      product_price: productPrice,
+    });
+  });
+</script>

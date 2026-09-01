@@ -2,7 +2,7 @@
 
 > All design decisions, rationale, and rejected alternatives. Updated by the Design Agent.
 
-**Last Updated:** 2026-03-04
+**Last Updated:** 2026-08-31
 
 ---
 
@@ -11,7 +11,7 @@
 - **Logo:** Primary mark selected (pavilion icon + EB Garamond wordmark). See Decision #2 below. Files: `logo-primary.svg`, `logo-reversed.svg`
 - **Secondary mark:** Wheelbarrow selected (charcoal structure + sage botanical). See Decision #3 below. Files: `mark-wheelbarrow.svg`, `mark-wheelbarrow-reversed.svg`, `mark-wheelbarrow-mono.svg`
 - **Color palette:** LOCKED. 5-color estate palette derived from property photos. See Decision #1 below.
-- **Typography:** EB Garamond confirmed as logo/display serif. Site stack (Poppins/Playfair/Inter) pending alignment — see Decision #2 notes.
+- **Typography:** LOCKED. EB Garamond display + Inter body. See Decision #5.
 - **Photos:** Available in `frontend/src/brand/photos/` — pavilion (multiple angles + interior), cattle on pasture, pond, compost yard, landscape wide shots, Parker in garden, Southland office.
 
 ---
@@ -156,6 +156,25 @@ cd /tmp && npm install playwright && node screenshots.mjs
 Screenshots land in `frontend/screenshots/` (gitignored). Feed to `/design review`, ChatGPT, or Perplexity for cross-AI critique.
 
 **First capture:** 2026-03-04 — 10 screenshots after eden palette implementation (homepage, products, compost, land management, solar grazing, about, contact, admin brand).
+
+### Decision #5 — Estate type + Apricot Lane feel (2026-08-31)
+
+**Status:** Shipped on homepage / chrome
+
+Apricot Lane Farms is a spiritual reference (warmth, photography, restraint) — not a clone. Applied to Eden’s locked palette.
+
+| Choice | What we did | Why |
+|--------|-------------|-----|
+| Display type | EB Garamond (already the logo serif) replaces Poppins / Playfair on H1–H3 | Book-jacket, 50-year estate. Poppins read startup. |
+| Body / UI | Inter | Quiet, readable, stays out of the way |
+| Buttons | 2px radius, no drop shadow, sage fill | ALF’s forest-green rectangles, not app pills |
+| Nav | Cream bar, 11px uppercase, wide tracking | Quiet chrome. Logo is the brand. |
+| Homepage | Full-bleed hero, 50/50 photo chapters, compost $45 before product grid | Farm first, then the sale. Kill the icon-grid brochure. |
+| Overlay | Gradient, not 50% black | Let the land show |
+
+**Rejected:** Copying ALF’s tractor mark, all-caps stencil headlines, popup quiz, or clay-gradient grazing band.
+
+**Open:** Product PDPs and compost category still have leftover pill/card chrome. Next pass if this homepage holds.
 
 ### Decision #4 — Homepage Design Iterations (2026-03-04)
 

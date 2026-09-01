@@ -1,5 +1,7 @@
 # Architecture
 
+> **Current map is [AGENTS.md](../../AGENTS.md).** This file is structure, not setup. There is no local `backend/`. Checkout is pay at pickup, not Stripe.
+
 ## Tech Stack
 
 | Layer | Technology |

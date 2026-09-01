@@ -28,11 +28,11 @@ const isCompact = variant === 'compact';
 
 <a
   href={`/products/${product.slug}`}
-  class={`product-card group block bg-warm-50 rounded-xl p-4 ${className}`}
+  class={`product-card group block ${className}`}
   data-product-slug={product.slug}
 >
   <!-- Image Container -->
-  <div class="relative overflow-hidden rounded-lg mb-4">
+  <div class="relative overflow-hidden mb-4">
     <ProductImage
       publicId={product.images.primary}
       alt={product.name}
@@ -59,7 +59,7 @@ const isCompact = variant === 'compact';
     </div>
 
     <!-- Product Name -->
-    <h3 class="font-display font-bold text-xl text-warm-900 group-hover:text-primary-600 transition-colors line-clamp-2">
+    <h3 class="font-display font-medium text-xl text-warm-900 group-hover:text-primary-600 transition-colors line-clamp-2">
       {product.name}
     </h3>
 

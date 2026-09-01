@@ -109,6 +109,7 @@ export interface Cart {
   shipping_address: Address | null
   billing_address: Address | null
   shipping_methods: ShippingMethod[]
+  metadata?: Record<string, unknown> | null
 }
 
 export interface LineItem {
@@ -121,9 +122,10 @@ export interface LineItem {
   thumbnail: string | null
   quantity: number
   unit_price: number
-  subtotal: number
-  total: number
-  variant: ProductVariant
+  /** Medusa v2 store carts often omit these — use lineItemCents() */
+  subtotal?: number | null
+  total?: number | null
+  variant?: ProductVariant
 }
 
 export interface Address {
@@ -325,6 +327,7 @@ export async function updateCart(cartId: string, data: Partial<{
   email: string
   shipping_address: Partial<Address>
   billing_address: Partial<Address>
+  metadata: Record<string, unknown>
 }>) {
   const result = await medusaFetch<{ cart: Cart }>(`/store/carts/${cartId}`, {
     method: "POST",
@@ -397,13 +400,45 @@ export async function completeCart(cartId: string) {
 // =============================================================================
 
 /**
- * Format price for display
+ * Coerce Medusa money (cents, or a { value } object) to a finite number.
  */
-export function formatPrice(amount: number, currencyCode: string = "usd"): string {
+export function cents(value: unknown, fallback = 0): number {
+  if (typeof value === "number" && Number.isFinite(value)) return value
+  if (typeof value === "string" && value.trim() !== "") {
+    const n = Number(value)
+    if (Number.isFinite(n)) return n
+  }
+  if (value && typeof value === "object" && "value" in value) {
+    const n = Number((value as { value: unknown }).value)
+    if (Number.isFinite(n)) return n
+  }
+  return fallback
+}
+
+/**
+ * Line-item amount in cents. v2 store carts have unit_price, not item.total.
+ */
+export function lineItemCents(item: {
+  unit_price?: unknown
+  total?: unknown
+  subtotal?: unknown
+  quantity?: number
+}): number {
+  const fromTotal = cents(item.total, Number.NaN)
+  if (Number.isFinite(fromTotal)) return fromTotal
+  const fromSub = cents(item.subtotal, Number.NaN)
+  if (Number.isFinite(fromSub)) return fromSub
+  return cents(item.unit_price) * (item.quantity ?? 1)
+}
+
+/**
+ * Format price for display (Medusa stores amounts in cents)
+ */
+export function formatPrice(amount: unknown, currencyCode: string = "usd"): string {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: currencyCode.toUpperCase(),
-  }).format(amount / 100) // Medusa stores prices in cents
+  }).format(cents(amount) / 100)
 }
 
 /**

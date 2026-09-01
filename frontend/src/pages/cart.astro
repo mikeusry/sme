@@ -58,12 +58,8 @@ import MainLayout from '../layouts/MainLayout.astro';
                 <span id="cart-subtotal">$0.00</span>
               </div>
               <div class="flex justify-between text-warm-700">
-                <span>Shipping</span>
-                <span id="cart-shipping" class="text-sm text-warm-500">Calculated at checkout</span>
-              </div>
-              <div class="flex justify-between text-warm-700">
-                <span>Tax</span>
-                <span id="cart-tax">$0.00</span>
+                <span>Pickup</span>
+                <span>Free</span>
               </div>
               <div class="flex justify-between font-bold text-xl pt-4 border-t border-warm-200">
                 <span>Total</span>
@@ -76,11 +72,11 @@ import MainLayout from '../layouts/MainLayout.astro';
               id="checkout-btn"
               class="btn-primary w-full text-center text-lg py-4 block"
             >
-              Proceed to Checkout
+              Continue to pay
             </a>
 
             <p class="text-sm text-warm-500 mt-4 text-center">
-              Shipping calculated based on delivery location
+              Pay now · pick up at 189 Luke Road, Bogart
             </p>
 
             <!-- Scheduled Pickup/Delivery Info -->
@@ -90,23 +86,18 @@ import MainLayout from '../layouts/MainLayout.astro';
                 <!-- Populated via JavaScript -->
               </div>
               <a href="/checkout" class="text-sm text-accent-600 hover:underline mt-2 inline-block">
-                Change fulfillment method →
+                Edit pickup notes →
               </a>
             </div>
 
-            <!-- Delivery Info -->
             <div class="mt-6 pt-6 border-t border-warm-200">
-              <h3 class="font-semibold text-warm-900 mb-2">Delivery Options</h3>
-              <ul class="text-sm text-warm-600 space-y-1">
-                <li>Local Delivery: $40 base + $1.25/mile after 20 miles</li>
-                <li>Pickup: 189 Luke Road, Bogart, GA 30622</li>
-              </ul>
-            </div>
-
-            <!-- Contact -->
-            <div class="mt-4 pt-4 border-t border-warm-200">
+              <h3 class="font-semibold text-warm-900 mb-2">Pickup</h3>
               <p class="text-sm text-warm-600">
-                Questions? Call <a href="tel:+17066134415" class="text-primary-600 font-semibold">(706) 613-4415</a>
+                189 Luke Road, Bogart, GA 30622<br/>
+                Mon–Sat, 8am–6pm
+              </p>
+              <p class="text-sm text-warm-600 mt-2">
+                Need it delivered? Call <a href="tel:+17066134415" class="text-primary-600 font-semibold">(706) 613-4415</a>
               </p>
             </div>
           </div>
@@ -136,9 +127,12 @@ import MainLayout from '../layouts/MainLayout.astro';
 </MainLayout>
 
 <script>
-  import { initializeCart, getCurrentCart, updateItemQuantity, removeItemFromCart, subscribeToCart, formatCartTotal, formatLineItemPrice } from '../lib/cart-store';
-  import type { Cart, LineItem } from '../lib/medusa-v2';
+  import { initializeCart, updateItemQuantity, removeItemFromCart, subscribeToCart } from '../lib/cart-store';
+  import { formatPrice, lineItemCents, type Cart, type LineItem } from '../lib/medusa-v2';
   import { getPickupSchedule, getFulfillmentSummary } from '../lib/pickup-scheduling';
+  import { dollarsFromCents, pdTrack } from '../lib/pd-pixel';
+
+  let cartViewSent = false;
 
   const loadingEl = document.getElementById('cart-loading');
   const emptyEl = document.getElementById('cart-empty');
@@ -146,16 +140,8 @@ import MainLayout from '../layouts/MainLayout.astro';
   const errorEl = document.getElementById('cart-error');
   const cartItemsEl = document.getElementById('cart-items');
   const subtotalEl = document.getElementById('cart-subtotal');
-  const taxEl = document.getElementById('cart-tax');
   const totalEl = document.getElementById('cart-total');
   const errorMessageEl = document.getElementById('error-message');
-
-  function formatPrice(amount: number, currencyCode: string = 'usd'): string {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: currencyCode.toUpperCase(),
-    }).format(amount / 100);
-  }
 
   function showState(state: 'loading' | 'empty' | 'content' | 'error') {
     loadingEl?.classList.toggle('hidden', state !== 'loading');
@@ -207,7 +193,7 @@ import MainLayout from '../layouts/MainLayout.astro';
               +
             </button>
           </div>
-          <span class="font-semibold text-warm-900">${formatPrice(item.total, currencyCode)}</span>
+          <span class="font-semibold text-warm-900">${formatPrice(lineItemCents(item), currencyCode)}</span>
           <button
             type="button"
             class="remove-item text-red-600 text-sm hover:text-red-700 transition-colors"
@@ -227,6 +213,14 @@ import MainLayout from '../layouts/MainLayout.astro';
     }
 
     showState('content');
+
+    if (!cartViewSent) {
+      cartViewSent = true;
+      pdTrack('cart_view', {
+        cart_value: dollarsFromCents(cart.total),
+        cart_item_count: cart.items.length,
+      });
+    }
 
     // Render items
     if (cartItemsEl) {
@@ -268,7 +262,6 @@ import MainLayout from '../layouts/MainLayout.astro';
 
     // Update totals
     if (subtotalEl) subtotalEl.textContent = formatPrice(cart.subtotal, cart.currency_code);
-    if (taxEl) taxEl.textContent = formatPrice(cart.tax_total, cart.currency_code);
     if (totalEl) totalEl.textContent = formatPrice(cart.total, cart.currency_code);
 
     // Update fulfillment info

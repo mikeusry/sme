@@ -10,6 +10,7 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import ProductCard from '../../components/products/ProductCard.astro';
 import MaterialCalculator from '../../components/products/MaterialCalculator.astro';
 import AddToCartButton from '../../components/cart/AddToCartButton.astro';
+import PdProductView from '../../components/PdProductView.astro';
 import { getProductsByCategory, getProductBySlug } from '../../lib/products';
 import { business } from '../../lib/business';
 
@@ -26,6 +27,10 @@ const muxStreamUrl = `https://stream.mux.com/${muxPlaybackId}.m3u8`;
   title="Organic Compost Athens GA | $45 a Yard | Soul Miner's Eden"
   description="Buy organic compost in Athens, GA — $45 a cubic yard. In stock at 189 Luke Road, Bogart. Pickup Mon–Sat 8am–6pm. Call (706) 613-4415."
 >
+  {humus && (
+    <PdProductView productId={humus.slug} productName={humus.name} productPrice={humus.price} />
+  )}
+
   <!-- Hero Section with Video Background -->
   <section class="compost-hero relative py-20 md:py-28 overflow-hidden">
     <!-- Background Video -->

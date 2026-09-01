@@ -12,10 +12,12 @@
     "@astrojs/sitemap": "^3.7.0",
     "@astrojs/vercel": "^9.0.4",
     "@cloudinary/url-gen": "^1.22.0",
+    "@stripe/stripe-js": "^9.15.0",
     "@supabase/supabase-js": "^2.91.1",
     "@tailwindcss/vite": "^4.1.16",
     "astro": "^5.15.1",
     "cloudinary": "^2.8.0",
+    "stripe": "^22.6.0",
     "tailwindcss": "^4.1.16"
   },
   "engines": {

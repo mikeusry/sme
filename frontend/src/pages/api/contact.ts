@@ -9,7 +9,7 @@
 import type { APIRoute } from 'astro';
 import { createClient } from '@supabase/supabase-js';
 import { sendContactNotification } from '../../lib/notifications';
-import { subscribeToList } from '../../lib/klaviyo';
+import { identifyAndTrack } from '../../lib/customerio';
 
 export const prerender = false;
 
@@ -52,13 +52,12 @@ export const POST: APIRoute = async ({ request }) => {
       console.log('Contact form submission (no Supabase configured):', { name, email, subject });
     }
 
-    // Subscribe to Klaviyo list
-    await subscribeToList({
+    await identifyAndTrack({
       email,
       name,
       phone,
       source: data.type || 'contact_form',
-    }).catch(err => console.error('Klaviyo subscribe failed:', err));
+    }).catch(err => console.error('Customer.io identify failed:', err));
 
     // Send email notification to farm team
     await sendContactNotification({

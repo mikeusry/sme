@@ -1,3 +1,7 @@
+# DEAD. The backend/ folder this builds is gone.
+# Commerce is Medusa v2 on Railway. Do not docker-compose up.
+# See AGENTS.md.
+
 version: '3.8'
 
 services:

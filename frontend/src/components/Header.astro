@@ -60,37 +60,36 @@ const navItems = [
 ];
 ---
 
-<header class="bg-white sticky top-0 z-50 border-b border-warm-200">
+<header class="bg-warm-50/95 backdrop-blur-sm sticky top-0 z-50 border-b border-warm-200">
   <nav class="container-custom">
-    <div class="flex items-center justify-between py-4">
+    <div class="flex items-center justify-between py-3">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-3">
         <img
           src="/brand/logo-primary.svg"
           alt="Soul Miner's Eden"
-          class="h-14 w-auto"
+          class="h-12 w-auto"
         />
-        <span class="hidden xl:block text-xs text-secondary-500 leading-tight max-w-[120px]">A regenerative farm in Bogart, Georgia</span>
       </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden lg:flex items-center gap-8">
+      <div class="hidden lg:flex items-center gap-7">
         {navItems.map((item) => (
           <div class="relative group">
             {item.dropdown ? (
               <>
-                <button class="flex items-center gap-1 text-warm-700 hover:text-primary-600 font-medium py-2 transition-colors">
+                <button class="flex items-center gap-1 text-[11px] uppercase tracking-[0.18em] text-warm-700 hover:text-primary-600 font-medium py-2 transition-colors">
                   {item.label}
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
                 <div class="absolute top-full left-0 mt-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  <div class="bg-white shadow-lg rounded-lg border border-warm-200 py-2 min-w-[220px]">
+                  <div class="bg-warm-50 shadow-md border border-warm-200 py-2 min-w-[220px]">
                     {item.dropdown.map((subItem, idx) => (
                       <a
                         href={subItem.href}
-                        class={`block px-4 py-2 text-warm-700 hover:bg-primary-50 hover:text-primary-600 transition-colors ${idx === 0 ? 'font-semibold border-b border-warm-100 mb-1' : ''}`}
+                        class={`block px-4 py-2 text-sm text-warm-700 hover:bg-warm-100 hover:text-primary-600 transition-colors ${idx === 0 ? 'font-medium border-b border-warm-200 mb-1' : ''}`}
                       >
                         {subItem.label}
                       </a>
@@ -99,7 +98,7 @@ const navItems = [
                 </div>
               </>
             ) : (
-              <a href={item.href} class="text-warm-700 hover:text-primary-600 font-medium py-2 transition-colors">
+              <a href={item.href} class="text-[11px] uppercase tracking-[0.18em] text-warm-700 hover:text-primary-600 font-medium py-2 transition-colors">
                 {item.label}
               </a>
             )}
@@ -109,10 +108,7 @@ const navItems = [
 
       <!-- Right Side: Phone + Cart -->
       <div class="hidden lg:flex items-center gap-4">
-        <a href={business.phoneHref} class="flex items-center gap-2 text-warm-700 hover:text-primary-600 transition-colors">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-          </svg>
+        <a href={business.phoneHref} class="flex items-center gap-2 text-[11px] uppercase tracking-[0.14em] text-warm-700 hover:text-primary-600 transition-colors">
           <span class="font-medium">{business.phone}</span>
         </a>
         <CartIcon />

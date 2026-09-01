@@ -38,9 +38,9 @@
      TYPOGRAPHY TOKENS
      ======================================== */
 
-  /* Font Families */
-  --sme-font-display: 'Poppins', system-ui, sans-serif;
-  --sme-font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  /* Font Families — estate book-jacket (Decision #5) */
+  --sme-font-display: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --sme-font-serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
   --sme-font-sans: 'Inter', system-ui, sans-serif;
 
   /* Font Sizes - Mobile First */

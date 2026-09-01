@@ -52,8 +52,10 @@
   --color-accent-800: #2E4028;
   --color-accent-900: #1F2B1B;
 
-  /* Font Families */
-  --font-display: Poppins, system-ui, sans-serif;
+  /* Font Families — estate book-jacket */
+  --font-display: "EB Garamond", Georgia, "Times New Roman", serif;
+  --font-serif: "EB Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: Inter, system-ui, sans-serif;
 }
 
 /* Base Styles */
@@ -64,13 +66,14 @@ html {
 body {
   background-color: var(--color-warm-50);
   color: var(--color-warm-900);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 h1 {
@@ -134,11 +137,12 @@ a {
 
 /* Component Styles — Eden Palette */
 .btn {
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
+  padding: 0.85rem 1.75rem;
+  border-radius: 2px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   transition: all 0.2s;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: none;
 }
 
 .btn:focus {
@@ -214,31 +218,31 @@ a {
 }
 
 .card {
-  background-color: white;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-warm-50);
+  border-radius: 2px;
+  box-shadow: none;
   padding: 1.5rem;
   transition: all 0.2s;
   border: 1px solid var(--color-secondary-200);
 }
 
 .card:hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-color: var(--color-secondary-300);
 }
 
 .product-card {
-  background-color: white;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
   transition: all 0.2s;
-  border: 1px solid var(--color-secondary-200);
+  border: none;
   cursor: pointer;
 }
 
 .product-card:hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  transform: scale(1.02);
+  box-shadow: none;
+  transform: none;
 }
 
 .input,
@@ -323,13 +327,15 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background-color: var(--color-primary-50);
-  border: 1px solid var(--color-primary-200);
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--color-primary-700);
+  padding: 0.4rem 0.85rem;
+  background-color: transparent;
+  border: 1px solid var(--color-secondary-300);
+  border-radius: 2px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-warm-700);
 }
 
 /* Feature box: eden-clay hover */

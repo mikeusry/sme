@@ -113,13 +113,11 @@ Deep charcoal for text and line art. Warm cream for backgrounds. One accent colo
 
 #### Font Stack
 ```css
-/* Display — Elegant, story-driven (headlines, hero text) */
---font-display: 'Poppins', system-ui, sans-serif;
+/* Display + serif — estate book-jacket (headlines, pull quotes) */
+--font-display: 'EB Garamond', Georgia, serif;
+--font-serif: 'EB Garamond', Georgia, serif;
 
-/* Serif — Poetic, invitational (pull quotes, testimonials, "Experience the Farm") */
---font-serif: 'Playfair Display', Georgia, serif;
-
-/* Body — Clean, readable (all body text, forms, nav) */
+/* Body / UI — quiet, readable */
 --font-sans: 'Inter', system-ui, sans-serif;
 ```
 

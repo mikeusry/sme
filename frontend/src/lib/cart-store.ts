@@ -5,7 +5,7 @@
  * Uses a simple event-based pattern for reactivity.
  */
 
-import { createCart, getCart, addToCart, updateCartItem, removeFromCart, type Cart } from "./medusa-v2"
+import { createCart, getCart, addToCart, updateCartItem, removeFromCart, formatPrice, lineItemCents, type Cart, type LineItem } from "./medusa-v2"
 
 const CART_ID_KEY = "sme_cart_id"
 
@@ -210,18 +210,12 @@ export function subscribeToCart(callback: (cart: Cart | null, isLoading: boolean
  * Format cart total for display
  */
 export function formatCartTotal(cart: Cart): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: cart.currency_code.toUpperCase(),
-  }).format(cart.total / 100)
+  return formatPrice(cart.total, cart.currency_code)
 }
 
 /**
  * Format line item price for display
  */
-export function formatLineItemPrice(item: { total: number }, currencyCode: string = "usd"): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: currencyCode.toUpperCase(),
-  }).format(item.total / 100)
+export function formatLineItemPrice(item: LineItem, currencyCode: string = "usd"): string {
+  return formatPrice(lineItemCents(item), currencyCode)
 }
