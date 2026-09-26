@@ -57,6 +57,6 @@ Proxy: `frontend/src/pages/api/medusa/[...path].ts`
 
 ## Docs that are still useful
 
-- `docs/FARM-MASTER-PLAN.md` — farm economics
+- Farm economics → [Mothership](https://github.com/mikeusry/mothership/tree/main/docs/sme/farm) (moved 2026-09-26)
 - `docs/context/architecture.md` — structure (stack table can be stale; this file wins)
 - `frontend/src/brand/` — identity
